@@ -13,11 +13,11 @@
     }
   ],
   "env": {
-    "MY_VARIABLE": ""
+    "STRIPE_KEY": ""
   },
   "build": {
     "env": {
-      "MY_VARIABLE": ""
+      "STRIPE_KEY": ""
     }
   },
   "routes": [
@@ -27,7 +27,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -36,7 +36,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -45,7 +45,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -54,7 +54,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -63,7 +63,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -72,7 +72,7 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     },
     {
@@ -81,7 +81,25 @@
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
+      }
+    },
+    {
+      "src": "/api/login/(.*)",
+      "dest": "/api/login/$1.js",
+      "methods": ["POST"],
+      "headers": {
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
+      }
+    },
+    {
+      "src": "/api/logout/(.*)",
+      "dest": "/api/logout/$1.js",
+      "methods": ["POST"],
+      "headers": {
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     }
   ]

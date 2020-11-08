@@ -2,16 +2,11 @@ import axios from "axios"
 
 import stripe from "stripe"
 
-const sqlite3 = require("sqlite3").verbose();
+const { PrismaClient } = require('@prisma/client');
 
-import { open } from 'sqlite'
+const prisma = new PrismaClient();
 
 module.exports = async function (req, res) {
-
-    const dbInstance = await open({
-        filename: "serverMiddleware/azurefun.sqlite",
-        driver: sqlite3.Database
-    });
 
     if (req.query.name || (req.body && req.body.name)) {
       let table = 'accounts';
