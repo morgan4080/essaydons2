@@ -30,14 +30,14 @@ html {
 }
 
 .conf {
-  --color-bg-secondary: #273837;
+  --color-bg-secondary: rgb(73,73,73);
   --color-bg-light: #f4f7f7;
   --color-bg-inverse: #1e2625;
-  --color-text-secondary: #8c9992;
-  --color-text-vuegreen: #4db879;
-  --color-text-vuergreen: #03b19a;
-  --color-text-lightgreen: #75c05e;
-  --color-text-lightergreen: #96c93c;
+  --color-text-secondary: #49544e;
+  --color-text-vuegreen: #42fbb7;
+  --color-text-vuergreen: #42fbb7;
+  --color-text-lightgreen: #42fbb7;
+  --color-text-lightergreen: #42fbb7;
 }
 
 .bg-gradient-to-r, .group:hover .group-hover\:bg-gradient-to-r {
@@ -92,3 +92,26 @@ html {
   color: var(--color-text-vuegreen);
 }
 
+.custom-mg-head {
+  background: rgba(66, 251, 183, 0.8);
+}
+
+.button-bg {
+  background: rgba(66, 251, 183, 0.8);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+button:focus {
+  outline: unset;
+}

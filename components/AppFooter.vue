@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div class="bg-gradient-to-r from-vuergreen to-lightergreen pt-16 pb-4" >
+    <div class="pt-16 pb-4" style="background: rgb(73,73,73);">
       <div class="max-w-6xl mx-auto px-4 lg:px-0" >
         <h3 class="text-2xl font-semibold text-white leading-none pb-4 lg:pb-0" >
           Utilize our vast writer network
@@ -52,7 +52,7 @@
         </div>
         <div class="text-center pt-8" >
           <p class="text-white opacity-50 py-1" >
-            Copyright © 2020 Research Course Pro | All Rights Reserved. |
+            Copyright © 2020 EssayDons | All Rights Reserved. |
             <a href="https://twitter.com/morgan4080" target="_blank" class="hover:text-white" >Developed by @morgan4080</a>
           </p>
         </div>

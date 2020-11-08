@@ -1,6 +1,11 @@
 module.exports = {
   theme: {
     extend: {
+      inset: {
+        '30': '30%',
+        '50': '2rem',
+        '70': '7rem',
+      },
       spacing: {
         '72': '18rem',
         '84': '21rem',
@@ -11,6 +16,13 @@ module.exports = {
       },
       height: {
         '80': '23rem'
+      },
+      padding: {
+        '80': '20rem'
+      },
+      backgroundPosition: {
+        'center-0': '100% 0%',
+        'left-0': '63% 100%',
       }
     },
   },
@@ -18,6 +30,7 @@ module.exports = {
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'group-focus'],
     scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    inset: ['responsive'],
   },
   plugins: [],
   purge: {

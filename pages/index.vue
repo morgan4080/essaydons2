@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="absolute top-0 right-0 opacity-25" >
-      <svg width="846" height="741" viewBox="0 0 846 741" fill="none" xmlns="http://www.w3.org/2000/svg" >
-        <g opacity="0.3" >
+    <div class="absolute top-0 right-0 opacity-25 " >
+      <svg class="mt-3" width="846" height="741" viewBox="0 0 846 741" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <g opacity="0.2" >
           <path fill-rule="evenodd" clip-rule="evenodd" d="M874 -14H587V294.32C598.516 225.471 658.38 173 730.5 173C802.62 173 862.484 225.471 874 294.32V-14ZM587 318.5C587 319.335 587.007 320.168 587.021 321H647C647 274.608 684.608 237 731 237C777.392 237 815 274.608 815 321H873.979C873.993 320.168 874 319.335 874 318.5C874 239.247 809.753 175 730.5 175C651.247 175 587 239.247 587 318.5ZM813 321C813 275.713 776.287 239 731 239C685.713 239 649 275.713 649 321H813ZM649.024 323H812.976C811.914 367.363 775.619 403 731 403C686.381 403 650.086 367.363 649.024 323ZM647.023 323C648.086 368.468 685.277 405 731 405C776.723 405 813.914 368.468 814.977 323H873.931C871.554 400.171 808.247 462 730.5 462C652.753 462 589.446 400.171 587.069 323H647.023ZM585 321V318.5V-14V-16H587H874H876V-14V318.5V321V323H875.932C873.554 401.275 809.352 464 730.5 464C651.648 464 587.446 401.275 585.068 323H585V321Z" fill="black" ></path>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M874 -14H587V294.32C598.516 225.471 658.38 173 730.5 173C802.62 173 862.484 225.471 874 294.32V-14ZM587 318.5C587 319.335 587.007 320.168 587.021 321H647C647 274.608 684.608 237 731 237C777.392 237 815 274.608 815 321H873.979C873.993 320.168 874 319.335 874 318.5C874 239.247 809.753 175 730.5 175C651.247 175 587 239.247 587 318.5ZM813 321C813 275.713 776.287 239 731 239C685.713 239 649 275.713 649 321H813ZM649.024 323H812.976C811.914 367.363 775.619 403 731 403C686.381 403 650.086 367.363 649.024 323ZM647.023 323C648.086 368.468 685.277 405 731 405C776.723 405 813.914 368.468 814.977 323H873.931C871.554 400.171 808.247 462 730.5 462C652.753 462 589.446 400.171 587.069 323H647.023ZM585 321V318.5V-14V-16H587H874H876V-14V318.5V321V323H875.932C873.554 401.275 809.352 464 730.5 464C651.648 464 587.446 401.275 585.068 323H585V321Z" fill="url(#paint0_linear)" ></path>
         </g>
@@ -12,71 +12,83 @@
         </g>
         <defs >
           <linearGradient id="paint0_linear" x1="730.5" y1="-16" x2="730.5" y2="464" gradientUnits="userSpaceOnUse" >
-            <stop offset="0.354167" stop-color="#4DB879" ></stop>
-            <stop offset="1" stop-color="#75C05E" ></stop>
+            <stop offset="0.354167" stop-color="#42FBB7" ></stop>
+            <stop offset="1" stop-color="#42FBB7" ></stop>
           </linearGradient>
           <linearGradient id="paint1_linear" x1="623.093" y1="-105" x2="623.093" y2="741" gradientUnits="userSpaceOnUse" >
-            <stop offset="0.354167" stop-color="#75C05E" ></stop>
-            <stop offset="1" stop-color="#4DB879" ></stop>
+            <stop offset="0.354167" stop-color="#42FBB7" ></stop>
+            <stop offset="1" stop-color="#42FBB7" ></stop>
           </linearGradient>
         </defs>
       </svg>
     </div>
     <div class="lg:block hidden absolute top-0 left-0 opacity-75" >
-      <svg width="576" height="600" viewBox="0 0 576 600" fill="none" xmlns="http://www.w3.org/2000/svg" >
-        <g opacity="0.05" >
+      <svg class="mt-12 ml-6" width="576" height="600" viewBox="0 0 576 600" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <g opacity="0.2" >
           <path fill-rule="evenodd" clip-rule="evenodd" d="M232.215 -205L232.215 269.601L-113.172 -75.7853L226.215 -415.172L573.172 -68.2147L234.215 270.742L234.215 -205L232.215 -205ZM231.785 272L-74.7853 272L-74.7853 274L233.215 274L559.215 600L560.629 598.586L367.043 405L559.215 405L559.215 403L366.215 403L366.215 404.172L236.043 274L544.215 274L544.215 272L235.785 272L574.586 -66.8005L576 -68.2147L574.586 -69.6289L227.629 -416.586L226.215 -418L224.8 -416.586L-114.586 -77.1995L-116 -75.7853L-114.586 -74.3711L231.785 272Z" fill="black" ></path>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M232.215 -205L232.215 269.601L-113.172 -75.7853L226.215 -415.172L573.172 -68.2147L234.215 270.742L234.215 -205L232.215 -205ZM231.785 272L-74.7853 272L-74.7853 274L233.215 274L559.215 600L560.629 598.586L367.043 405L559.215 405L559.215 403L366.215 403L366.215 404.172L236.043 274L544.215 274L544.215 272L235.785 272L574.586 -66.8005L576 -68.2147L574.586 -69.6289L227.629 -416.586L226.215 -418L224.8 -416.586L-114.586 -77.1995L-116 -75.7853L-114.586 -74.3711L231.785 272Z" fill="url(#paint0_linear)" ></path>
         </g>
         <defs >
           <linearGradient id="paint0_linear" x1="-116" y1="91" x2="576" y2="91" gradientUnits="userSpaceOnUse" >
-            <stop offset="0.354167" stop-color="#75C05E" ></stop>
-            <stop offset="1" stop-color="#4DB879" ></stop>
+            <stop offset="0.354167" stop-color="#42FBB7" ></stop>
+            <stop offset="1" stop-color="#42FBB7" ></stop>
           </linearGradient>
         </defs>
       </svg>
     </div>
     <div>
-      <div class="min-h-screen" style="background:linear-gradient(125.1deg, #1e2624 41%, #000000 82%), #201a27;">
-        <div class="max-w-6xl mx-auto pt-40 lg:pt-64 z-10 relative px-8 lg:px-0">
-          <h3 class="text-xl lg:text-2xl text-lightgreen font-semibold">
-            From initial topic to finished paper
-          </h3>
-          <h1 class="text-4xl lg:text-6xl text-white font-bold leading-tight py-2 lg:py-0">
-            Professional Essays Writers
-          </h1>
-          <p class="text-secondary text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
-            Join <strong>5,000+</strong> Learners from more than 100
-            countries around the world and better your grades..
-          </p>
-          <div class="flex flex-col">
-            <div class="inline-block py-6 text-xl">
-              <select v-model="form.subject" class="bg-secondary text-secondary mt-1 form-input py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5 w-64 sm:w-64">
+      <div class="min-h-screen" style="background: #FBFBFB;">
+        <div class="mobile-b bg-left-0 lg:bg-center-0">
+          <div class="max-w-6xl mx-auto pt-40 lg:pt-80 z-10 relative px-8 lg:px-0 pb-24 relative">
+            <h1 class="text-4xl lg:text-5xl text-white font-bold leading-tight py-2 lg:py-0">
+              Professional Essay Writer You've <br>
+              Been Looking For!
+            </h1>
+            <p class="text-white text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
+              We write your papers - you get top grades!
+            </p>
+            <div class="absolute text-center flex flex-col py-6 text-xl custom-calc right-0 top-30">
+              <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
+                Place your order
+              </h2>
+              <select v-model="form.subject" class="bg-secondary text-vuegreen mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5 w-64 sm:w-64">
                 <optgroup label="Subjects">
                   <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
                 </optgroup>
               </select>
-              <select @change="setFirstDuration" v-model="form.level" class="bg-secondary text-secondary hover:bg-gradient-to-r mt-1 form-input py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+              <select @change="setFirstDuration" v-model="form.level" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                 <optgroup label="Academic Levels">
                   <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
                 </optgroup>
               </select>
-              <select v-model="form.duration" class="bg-secondary hover:bg-gradient-to-r text-secondary mt-1 form-input py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                <optgroup label="Deadline">
-                  <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
-                </optgroup>
-              </select>
+              <div class="flex mt-2 sm:text-sm sm:leading-5">
+                <select v-model="form.duration" class="w-1/2 bg-secondary hover:bg-gradient-to-r py-3 px-3 text-vuegreen form-input border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out ">
+                  <optgroup label="Deadline">
+                    <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
+                  </optgroup>
+                </select>
+                <div class="flex w-1/2 ml-1 text-vuegreen border border-gray-300 bg-secondary rounded-3xl">
+                  <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
+                  <input class="w-1/3 form-input bg-secondary hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
+                  <button class="w-1/3" @click="form.pages++">+</button>
+                </div>
+              </div>
+              <div class="px-1 py-3 text-white font-medium text-xl">{{ totalPrice | dollar }}</div>
+              <div class="flex">
+                 <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</a>
+                 <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</a>
+              </div>
             </div>
+            <a href="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+              Order Now
+            </a>
           </div>
-          <a href="/order" class="bg-gradient-to-r from-vuegreen to-lightgreen py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
-            Get started <span class="px-1 text-black">{{ form.duration.price | dollar }}</span>
-          </a>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 pt-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             Guarantees
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             We offer quick and transparent support.
           </p>
           <div class="mt-12">
@@ -120,29 +132,29 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             Why Choose Us
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             We walk you through your toughest academic problems as you learn how to solve them from expert writers.
           </p>
           <div class="mt-12" >
             <div class="flex flex-col md:flex-row lg:flex-row flex-wrap -mx-4" >
-              <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
+              <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4" >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" id="ic_phone_in_talk_48px" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
-                        <path id="Path_5" data-name="Path 5" d="M48.557,37.292a28.556,28.556,0,0,1-8.937-1.427,2.512,2.512,0,0,0-2.541.613L31.572,42a37.764,37.764,0,0,1-16.5-16.484l5.507-5.52a2.512,2.512,0,0,0,.613-2.541A28.634,28.634,0,0,1,19.768,8.5a2.5,2.5,0,0,0-2.5-2.5H8.5A2.5,2.5,0,0,0,6,8.5,42.553,42.553,0,0,0,48.557,51.06a2.5,2.5,0,0,0,2.5-2.5V39.8A2.5,2.5,0,0,0,48.557,37.292Zm-2.5-8.762H51.06A22.532,22.532,0,0,0,28.53,6v5.007A17.527,17.527,0,0,1,46.053,28.53Zm-10.013,0h5.007A12.521,12.521,0,0,0,28.53,16.013V21.02A7.516,7.516,0,0,1,36.04,28.53Z" transform="translate(-6 -6)" fill="#4db879"/>
+                      <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" id="ic_phone_in_talk_48px" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
+                        <path id="Path_5" data-name="Path 5" d="M48.557,37.292a28.556,28.556,0,0,1-8.937-1.427,2.512,2.512,0,0,0-2.541.613L31.572,42a37.764,37.764,0,0,1-16.5-16.484l5.507-5.52a2.512,2.512,0,0,0,.613-2.541A28.634,28.634,0,0,1,19.768,8.5a2.5,2.5,0,0,0-2.5-2.5H8.5A2.5,2.5,0,0,0,6,8.5,42.553,42.553,0,0,0,48.557,51.06a2.5,2.5,0,0,0,2.5-2.5V39.8A2.5,2.5,0,0,0,48.557,37.292Zm-2.5-8.762H51.06A22.532,22.532,0,0,0,28.53,6v5.007A17.527,17.527,0,0,1,46.053,28.53Zm-10.013,0h5.007A12.521,12.521,0,0,0,28.53,16.013V21.02A7.516,7.516,0,0,1,36.04,28.53Z" transform="translate(-6 -6)" fill="#42FBB7"/>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >We understand your Style
                       </h4>
                       <p class="text-secondary leading-none py-2" >Our seasoned writers can imitate your desired style</p>
@@ -152,21 +164,21 @@
               </div>
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
+                      <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
                         <g id="archive-paper" transform="translate(-1 -1)">
-                          <path id="Path_6" data-name="Path 6" d="M45.08,13H42.142V31.475a.976.976,0,0,1-.98.972h-9.8a.976.976,0,0,0-.98.972v2.917H16.673V33.419a.976.976,0,0,0-.98-.972H5.9a.976.976,0,0,1-.98-.972V13H1.98a.976.976,0,0,0-.98.972v28.2A3.9,3.9,0,0,0,4.918,46.06H42.142a3.9,3.9,0,0,0,3.918-3.889v-28.2A.976.976,0,0,0,45.08,13Z" fill="#4db879"/>
-                          <path id="Path_7" data-name="Path 7" d="M39.088,1H7.972A.986.986,0,0,0,7,2V30a.986.986,0,0,0,.972,1H39.088a.986.986,0,0,0,.972-1V2A.986.986,0,0,0,39.088,1ZM30.336,20H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Zm0-8H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Z" fill="#4db879"/>
+                          <path id="Path_6" data-name="Path 6" d="M45.08,13H42.142V31.475a.976.976,0,0,1-.98.972h-9.8a.976.976,0,0,0-.98.972v2.917H16.673V33.419a.976.976,0,0,0-.98-.972H5.9a.976.976,0,0,1-.98-.972V13H1.98a.976.976,0,0,0-.98.972v28.2A3.9,3.9,0,0,0,4.918,46.06H42.142a3.9,3.9,0,0,0,3.918-3.889v-28.2A.976.976,0,0,0,45.08,13Z" fill="#42FBB7"/>
+                          <path id="Path_7" data-name="Path 7" d="M39.088,1H7.972A.986.986,0,0,0,7,2V30a.986.986,0,0,0,.972,1H39.088a.986.986,0,0,0,.972-1V2A.986.986,0,0,0,39.088,1ZM30.336,20H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Zm0-8H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Z" fill="#42FBB7"/>
                         </g>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Young and Ambitious
                       </h4>
                       <p class="text-secondary leading-none py-2" >We break away from huge conglomerates whose interest is in your dollar</p>
@@ -176,20 +188,20 @@
               </div>
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
+                      <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
                         <g id="ic_block_48px" transform="translate(-4 -4)">
-                          <path id="Path_8" data-name="Path 8" d="M26.53,4A22.53,22.53,0,1,0,49.06,26.53,22.524,22.524,0,0,0,26.53,4ZM8.506,26.53A18.005,18.005,0,0,1,37.57,12.3L12.3,37.57A17.956,17.956,0,0,1,8.506,26.53ZM26.53,44.554a17.956,17.956,0,0,1-11.04-3.8L40.758,15.49A18.005,18.005,0,0,1,26.53,44.554Z" fill="#4db879"/>
+                          <path id="Path_8" data-name="Path 8" d="M26.53,4A22.53,22.53,0,1,0,49.06,26.53,22.524,22.524,0,0,0,26.53,4ZM8.506,26.53A18.005,18.005,0,0,1,37.57,12.3L12.3,37.57A17.956,17.956,0,0,1,8.506,26.53ZM26.53,44.554a17.956,17.956,0,0,1-11.04-3.8L40.758,15.49A18.005,18.005,0,0,1,26.53,44.554Z" fill="#42FBB7"/>
                         </g>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >We take data privacy seriously
                       </h4>
                       <p class="text-secondary leading-none py-2" >Our seasoned writers can imitate your desired style</p>
@@ -199,22 +211,22 @@
               </div>
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="53.164" height="51.239" viewBox="0 0 53.164 51.239">
+                      <svg class=" mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="53.164" height="51.239" viewBox="0 0 53.164 51.239">
                         <g id="handout" transform="translate(-2 -3)">
-                          <path id="Path_9" data-name="Path 9" d="M23.394,3a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,23.394,3Zm2.8,9.327H20.6a.933.933,0,1,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-1.741)" fill="#4db879"/>
-                          <path id="Path_10" data-name="Path 10" d="M47.394,15a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,47.394,15Zm2.8,9.327H44.6a.933.933,0,0,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-5.288 -1.62)" fill="#4db879"/>
-                          <path id="Path_11" data-name="Path 11" d="M51.553,44.049l-21.17,1.938a9.275,9.275,0,0,1-5.633-1.3l-5.835-3.51H32.53a3.391,3.391,0,0,0,3.3-3.475,3.432,3.432,0,0,0-2.693-3.416L20.915,31.872A45.958,45.958,0,0,0,12.007,31H2V49.415l19.875,8.722a11.047,11.047,0,0,0,6.873.261L55.164,47.534h0A3.4,3.4,0,0,0,51.553,44.049Z" transform="translate(0 -4.581)" fill="#4db879"/>
+                          <path id="Path_9" data-name="Path 9" d="M23.394,3a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,23.394,3Zm2.8,9.327H20.6a.933.933,0,1,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-1.741)" fill="#42FBB7"/>
+                          <path id="Path_10" data-name="Path 10" d="M47.394,15a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,47.394,15Zm2.8,9.327H44.6a.933.933,0,0,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-5.288 -1.62)" fill="#42FBB7"/>
+                          <path id="Path_11" data-name="Path 11" d="M51.553,44.049l-21.17,1.938a9.275,9.275,0,0,1-5.633-1.3l-5.835-3.51H32.53a3.391,3.391,0,0,0,3.3-3.475,3.432,3.432,0,0,0-2.693-3.416L20.915,31.872A45.958,45.958,0,0,0,12.007,31H2V49.415l19.875,8.722a11.047,11.047,0,0,0,6.873.261L55.164,47.534h0A3.4,3.4,0,0,0,51.553,44.049Z" transform="translate(0 -4.581)" fill="#42FBB7"/>
                         </g>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >High quality for affordable prices
                       </h4>
                       <p class="text-secondary leading-none py-2" >High-quality content for the most affordable prices on the market</p>
@@ -224,20 +236,20 @@
               </div>
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="36.06" height="56.666" viewBox="0 0 36.06 56.666">
+                      <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="36.06" height="56.666" viewBox="0 0 36.06 56.666">
                         <g id="ic_phone_android_48px" transform="translate(-10 -2)">
-                          <path id="Path_12" data-name="Path 12" d="M38.333,2H17.727A7.733,7.733,0,0,0,10,9.727V50.939a7.733,7.733,0,0,0,7.727,7.727H38.333a7.733,7.733,0,0,0,7.727-7.727V9.727A7.733,7.733,0,0,0,38.333,2ZM33.181,53.514h-10.3V50.939h10.3Zm8.371-7.727H14.507V9.727H41.552Z" fill="#4db879"/>
+                          <path id="Path_12" data-name="Path 12" d="M38.333,2H17.727A7.733,7.733,0,0,0,10,9.727V50.939a7.733,7.733,0,0,0,7.727,7.727H38.333a7.733,7.733,0,0,0,7.727-7.727V9.727A7.733,7.733,0,0,0,38.333,2ZM33.181,53.514h-10.3V50.939h10.3Zm8.371-7.727H14.507V9.727H41.552Z" fill="#42FBB7"/>
                         </g>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Any subject, any deadline
                       </h4>
                       <p class="text-secondary leading-none py-2" >We will meet your expectations, just hire an essay writer and take a look</p>
@@ -247,21 +259,21 @@
               </div>
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4"  >
                 <div class="group-hover:bg-gradient-to-r from-vuergreen to-lightergreen p-1 rounded-lg" >
-                  <div class="py-8 px-4 rounded-lg flex-1 relative hover:shadow-md bg-secondary" >
+                  <div class="py-8 px-4 rounded-lg flex-1 md:flex relative hover:shadow-md bg-white shadow" >
                     <div class="items-center absolute w-full top-0 justify-end pr-4 pt-4 left-0 hidden group-hover:flex" >
 
                     </div>
-                    <div class="flex justify-center py-4" >
+                    <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
-                      <svg class="transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="50" height="62" viewBox="0 0 50 62">
+                      <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="50" height="62" viewBox="0 0 50 62">
                         <g id="single-folded-content" transform="translate(-7 -1)">
-                          <path id="Path_13" data-name="Path 13" d="M42,2.586V16H55.414Z" fill="#4db879"/>
-                          <path id="Path_14" data-name="Path 14" d="M40,17V1H9A2,2,0,0,0,7,3V61a2,2,0,0,0,2,2H55a2,2,0,0,0,2-2V18H41A1,1,0,0,1,40,17ZM20,17h8a1,1,0,0,1,0,2H20a1,1,0,0,1,0-2ZM44,49H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm0-10H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm1-11a1,1,0,0,1-1,1H20a1,1,0,0,1,0-2H44A1,1,0,0,1,45,28Z" fill="#4db879"/>
+                          <path id="Path_13" data-name="Path 13" d="M42,2.586V16H55.414Z" fill="#42FBB7"/>
+                          <path id="Path_14" data-name="Path 14" d="M40,17V1H9A2,2,0,0,0,7,3V61a2,2,0,0,0,2,2H55a2,2,0,0,0,2-2V18H41A1,1,0,0,1,40,17ZM20,17h8a1,1,0,0,1,0,2H20a1,1,0,0,1,0-2ZM44,49H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm0-10H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm1-11a1,1,0,0,1-1,1H20a1,1,0,0,1,0-2H44A1,1,0,0,1,45,28Z" fill="#42FBB7"/>
                         </g>
                       </svg>
 
                     </div>
-                    <div class="flex flex-col items-center text-center" >
+                    <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Quality Samples
                       </h4>
                       <p class="text-secondary leading-none py-2" >Some of the best work of our experienced essay writers</p>
@@ -327,11 +339,11 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             Frequently Asked Questions about Custom Writing.
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             What to expect in this virtual service?
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
@@ -380,7 +392,7 @@
             <div class="w-full lg:w-2/3 bg-secondary h-auto rounded-r-xl">
               <div class="lg:px-6 py-2">
 
-                <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-white py-2 text-xl">
 
                   <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
@@ -390,7 +402,7 @@
 
                 </div>
 
-                <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-white py-2 text-xl">
 
                   <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
@@ -398,7 +410,7 @@
 
                 </div>
 
-                <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}" class="text-white py-2 text-xl">
 
                   <p class="p-1">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
 
@@ -406,7 +418,7 @@
 
                 </div>
 
-                <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}" class="text-white py-2 text-xl">
 
                   <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
@@ -414,13 +426,13 @@
 
                 </div>
 
-                <div v-bind:class="{'hidden': openTab !== 5, 'block': openTab === 5}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 5, 'block': openTab === 5}" class="text-white py-2 text-xl">
 
                   <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
                 </div>
 
-                <div v-bind:class="{'hidden': openTab !== 6, 'block': openTab === 6}" class="text-secondary py-2 text-xl">
+                <div v-bind:class="{'hidden': openTab !== 6, 'block': openTab === 6}" class="text-white py-2 text-xl">
 
                   <p class="p-1">Expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
@@ -429,11 +441,11 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             Do You Need an Essay Writer?
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             Our Essay Writing Service is Here to Help You Out!
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
@@ -501,11 +513,11 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             What You Get in the End
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             We get you quality grades.
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
@@ -535,15 +547,15 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-16 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-white">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
             Blog
           </h2>
-          <p class="lg:text-2xl text-secondary">
+          <p class="lg:text-2xl text-secondary text-center">
             Read about matters writing.
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
-            <div class="w-full lg:w-4/6 h-auto">
+            <div class="w-full lg:w-7/12 h-auto">
               <div class="lg:pr-4 py-2 block flex flex-row" >
                 <div class="lg:w-auto md:w-full">
                   <img class="h-80" src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
@@ -554,7 +566,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#4db879"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1">08.27.2020</span>
@@ -562,7 +574,7 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#4db879"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
@@ -570,7 +582,7 @@
                       </span>
                     </div>
                     <h1 class="title-font sm:text-2xl text-xl font-medium text-vuegreen mb-3">Steps Towards Mastering Proposal Essay Writting</h1>
-                    <p class="leading-relaxed mb-3">What is a proposal essay?<br>
+                    <p class="leading-relaxed text-white mb-3">What is a proposal essay?<br>
                       A proposal essay is an essay in which the writer has to identify a problem in a specific area and provide a pro ..</p>
                     <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
@@ -579,10 +591,10 @@
                 </div>
               </div>
             </div>
-            <div class="w-full lg:w-2/6 h-auto">
+            <div class="w-full lg:w-5/12 h-auto">
               <div class="lg:pr-4 py-2 block flex flex-row" >
-                <div class="lg:w-auto md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
+                <div class="lg:w-1/2 md:w-full">
+                  <img src="~/assets/images/blog_placeholder.png" class="rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
@@ -590,7 +602,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#4db879"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1">08.27.2020</span>
@@ -598,23 +610,23 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#4db879"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font sm:text-2xl text-xl font-medium text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
-                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <h1 class="title-font md:text-base lg:text-base font-medium text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
                 </div>
               </div>
               <div class="lg:pr-4 py-2 block flex flex-row" >
-                <div class="lg:w-auto md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
+                <div class="lg:w-1/2 md:w-full">
+                  <img src="~/assets/images/blog_placeholder.png" class="rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
@@ -622,7 +634,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#4db879"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1">08.27.2020</span>
@@ -630,15 +642,15 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#4db879"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font sm:text-2xl text-xl font-medium text-vuegreen mb-3">How To Write A Response (Reaction) Paper?</h1>
-                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <h1 class="title-font md:text-base lg:text-base font-medium text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -655,6 +667,7 @@
 <script>
 import { mapState } from "vuex"
 export default {
+  auth: false,
   data() {
     return {
       openTab: 1,
@@ -665,6 +678,7 @@ export default {
           duration: null,
           price: null
         },
+        pages: 1,
       }
     }
   },
@@ -675,13 +689,16 @@ export default {
     },
     subjects() {
       return this.storedata.filter(el => el.id === this.form.level)[0].subjects;
+    },
+    totalPrice() {
+      return this.form.duration.price * this.form.pages
     }
   },
   methods: {
     setFirstDuration() {
       this.form.duration = {
         duration: Object.entries(this.duration)[0][0],
-        price: Object.entries(this.duration)[0][1],
+        price: Object.entries(this.duration)[0][1] * this.form.pages,
       };
     },
     toggleTabs(tabNumber){
@@ -702,18 +719,29 @@ export default {
 
 <style scoped>
 .moneyBack {
-  background-image: linear-gradient(rgba(116,191,96,.65098),rgba(78,184,120,.92941)),url(~assets/images/moneyback.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.65098),rgba(78,184,120,.92941)),url(~assets/images/moneyback.png);
   background-position: 85% 33%;
 }
 .revisions {
-  background-image: linear-gradient(rgba(116,191,96,.65098),rgba(78,184,120,.92941)),url(~assets/images/freerevisions.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.65098),rgba(78,184,120,.92941)),url(~assets/images/freerevisions.png);
   background-position: 33% 33%;
 }
 .safePayments {
-  background-image: linear-gradient(rgba(116,191,96,.65098),rgba(78,184,120,.92941)),url(~assets/images/safe.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.65098),rgba(78,184,120,.92941)),url(~assets/images/safe.png);
   background-position: 33% 33%;
 }
 .bg-img {
-  background-image: linear-gradient(rgba(116,191,96,.65098),rgba(78,184,120,.92941));
+  background-image: linear-gradient(rgba(66, 251, 183,.65098),rgba(78,184,120,.92941));
+}
+.mobile-b {
+  background-image: linear-gradient(rgba(101,101,101,.5),rgba(101,101,101,.5)),url(~assets/images/Header_Image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.custom-calc {
+  background: rgb(98,98,98);
+  padding: 20px;
+  border: 1px solid #42fbff;
+  border-radius: 1rem;
 }
 </style>

@@ -1,13 +1,13 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
-
+  target: 'server',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
       lang: 'en'
     },
-    title: 'RCP',
+    title: 'Essaydons',
+    script: [{ src: 'https://js.stripe.com/v3/' }],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -29,6 +29,7 @@ export default {
     { src: '~/assets/main.scss', lang: 'sass' }
   ],
 
+
   loading: { color: '#000000' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -47,7 +48,31 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+
+  auth: {
+    // Options
+    strategies: {
+      local: {
+        local: {
+          endpoints: {
+            login: { url: '/api/auth/login', method: 'post' },
+            logout: { url: '/api/auth/logout', method: 'post' },
+          },
+          tokenRequired: false,
+          tokenType: false
+        }
+      },
+      google: {
+        client_id: '...'
+      },
+    }
+  },
+
+  router: {
+    middleware: ['auth']
+  },
 
   tailwindcss: {
     configPath: '~/config/tailwind.config.js',
