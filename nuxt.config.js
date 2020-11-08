@@ -65,7 +65,7 @@ export default {
         }
       },
       google: {
-        client_id: '...'
+        client_id: '724202903355-q30cmukn8vkl63pi7pocftde4v20qscb.apps.googleusercontent.com'
       },
     }
   },
