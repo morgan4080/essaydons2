@@ -9,7 +9,7 @@ import { open } from 'sqlite'
 module.exports = async function (req, res) {
 
     const dbInstance = await open({
-        filename: "E:/Git/azfunTS/azurefun.sqlite",
+        filename: "serverMiddleware/azurefun.sqlite",
         driver: sqlite3.Database
     });
 
