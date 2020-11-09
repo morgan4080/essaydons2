@@ -4,7 +4,7 @@ export const state = () => ({
   cartUIStatus: "idle",
   storedata: data,
   cart: [],
-  clientSecret: ""
+  clientSecret: "",
 });
 
 export const getters = {
@@ -25,7 +25,14 @@ export const getters = {
       };
     });
   },
-  clientSecret: state => state.clientSecret
+  clientSecret: state => state.clientSecret,
+  isAuthenticated(state) {
+    return state.auth.loggedIn
+  },
+
+  loggedInUser(state) {
+    return state.auth.user
+  }
 };
 
 export const mutations = {

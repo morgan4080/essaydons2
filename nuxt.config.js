@@ -57,11 +57,14 @@ export default {
       local: {
         local: {
           endpoints: {
-            login: { url: '/api/auth/login', method: 'post' },
-            logout: { url: '/api/auth/logout', method: 'post' },
+            login: { url: '/api/login', method: 'post', propertyName: 'data.token' },
+            me: { url: '/api/me', method: 'get', propertyName: 'data' },
+            logout: false,
           },
-          tokenRequired: false,
-          tokenType: false
+          tokenRequired: true,
+          tokenType: 'bearer',
+          globalToken: true,
+          autoFetchUser: true
         }
       },
       google: {

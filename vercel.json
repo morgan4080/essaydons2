@@ -4,7 +4,7 @@
       "src": "nuxt.config.js",
       "use": "@nuxtjs/vercel-builder",
       "config": {
-        "serverFiles": ["serverMiddleware/**"]
+        "serverFiles": ["serverMiddleware/**", "_JWTKeys/**"]
       }
     },
     {
@@ -94,11 +94,11 @@
       }
     },
     {
-      "src": "/api/logout/(.*)",
-      "dest": "/api/logout/$1.js",
-      "methods": ["POST"],
+      "src": "/api/me/(.*)",
+      "dest": "/api/me/$1.js",
+      "methods": ["GET"],
       "headers": {
-        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Methods": "GET",
         "Access-Control-Allow-Headers": "Content-Type, Cookie"
       }
     }

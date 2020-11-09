@@ -1,13 +1,27 @@
+'use strict'
+
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken');
+
+const { readFileSync } = require('fs');
+
+const { join } = require('path');
+
+const privateKey = readFileSync(join(__dirname, '_JWTKeys', 'jwtRS256.key'), 'utf8');
+
 module.exports = async function (req, res) {
   if (req.body && req.body.email && req.body.password) {
-    // res.setHeader()
-    res.json(await doLogin(req))
+    let response = await doLogin(req);
+    if (response.token !== null) {
+      res.status(200).json(response);
+    } else {
+      res.status(400).json(response);
+    }
   } else {
     res.json({
       error: "request body missing required parameters"
@@ -18,37 +32,41 @@ module.exports = async function (req, res) {
 async function doLogin(req) {
   const clientPassword = req.body.password;
   const clientEmail = req.body.email;
-  let hash = null;
-  const user = await prisma.user.findOne({
+  const user = await prisma.users.findOne({
     where: {
       email: clientEmail
     }
   });
-
-  if (user) {
-    hash = user.password;
-    bcrypt.compare(clientPassword, hash, function(err, response) {
-      if (response === true) {
-        return userFound(user)
-      } else {
-        return userNotFound(err)
-      }
-    })
+  if (user !== null && user !== undefined) {
+    let match = await bcrypt.compare(clientPassword, user.password);
+    if (match) {
+      const token = jwt.sign({ hash: user.password }, privateKey, { algorithm: 'RS256', expiresIn: '1d' });
+      return await userFound(user, token);
+    } else {
+      return userNotFound("password mismatch");
+    }
   } else {
-    return userNotFound("user not found")
+    return userNotFound("user not found");
   }
 }
 
 function userNotFound(err) {
   return {
-    error: err,
-    user: null,
+    data: {
+      status: 'error: ' + err,
+      token: null,
+      user: null,
+    }
   };
 }
 
-function userFound(user) {
+async function userFound(user, token) {
+  // update user to include token
   return {
-    error: null,
-    user: user,
+    data: {
+      status: 'success',
+      token: token,
+      user: user,
+    }
   };
 }

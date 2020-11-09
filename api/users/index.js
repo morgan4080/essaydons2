@@ -1,3 +1,5 @@
+'use strict'
+
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -6,17 +8,58 @@ const bcrypt = require('bcrypt');
 
 module.exports = async function (req, res) {
     if (Object.keys(req.query).length === 0 && req.method === "GET") {
-        res.status(200).send(await index());
+        let response = await index();
+        if (response !== null) {
+          res.status(200).json({
+            data: response
+          });
+        } else {
+          res.status(400).json({
+            data: response
+          });
+        }
     } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
-        res.status(200).send(await edit(parseInt(req.query.id)));
+        let response = await edit(parseInt(req.query.id));
+        if (response !== null) {
+          res.status(200).json({
+            data: response
+          });
+        } else {
+          res.status(400).json({
+            data: response
+          });
+        }
     } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
-        res.status(200).send(await store(req));
+        let response = await store(req);
+
+        if (response !== null) {
+          res.status(200).json({
+            data: response
+          });
+        } else {
+          res.status(400).json({
+            data: response
+          });
+        }
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.body.name !== undefined && req.query.id) {
-        res.status(200).send(await update(req, parseInt(req.query.id)));
+        let response = await update(req, parseInt(req.query.id));
+
+        if (response !== null) {
+          res.status(200).json({
+            data: response
+          });
+        } else {
+          res.status(400).json({
+            data: response
+          });
+        }
     } else {
-        res.status(400).send(JSON.stringify({
-          requestObject: req
-        }));
+        res.status(400).json({
+          data: {
+            message: "error",
+            request: req
+          }
+        });
     }
 
 };
@@ -24,43 +67,41 @@ module.exports = async function (req, res) {
 /**
  * Display a listing of the users.
  *
- * @return JsonResponse
+ * @return Object
  */
 
 async function index() {
-    const users = await prisma.user.findMany();
-    return JSON.stringify(users);
+    return await prisma.users.findMany()
 }
 
 /**
  * Show the form for editing the specified user.
  *
- * @return JsonResponse
+ * @return Object
  * @param id
  */
 
 async function edit(id) {
-    return JSON.stringify(await db.all(`SELECT * FROM users WHERE id = ${id}`));
+    return  await prisma.users.findOne({
+      where: {
+        id: id
+      }
+    })
 }
 
 /**
  * Store a newly created user.
  *
- * @return JsonResponse
+ * @return Object
  * @param req
  */
 
 async function store(req) {
   const saltRounds = 10;
   const yourPassword = req.body.password;
-  let hashedPassword = null;
-  bcrypt.hash(yourPassword, saltRounds, (err, hash) => {
-    if (err) {
-      throw err
-    }
-    hashedPassword = hash
-  });
-  const newUser = await prisma.user.create({
+  let hashedPassword = await bcrypt.hash(yourPassword, saltRounds);
+
+  return await prisma.users.create({
     data: {
       account_id: req.body.account_id,
       name: req.body.name,
@@ -75,21 +116,35 @@ async function store(req) {
       updated_at: null,
       deleted_at: null,
     },
-  });
-
-  return JSON.stringify(newUser);
+  })
 }
 
 /**
  * Update the specified user.
  *
- * @return JsonResponse
+ * @return Object
  * @param req
  * @param id
  */
 
 async function update(req, id) {
-    return JSON.stringify(await db.run('UPDATE users SET name = ? WHERE id = ?', req.body.name, id));
+  const saltRounds = 10;
+  const yourPassword = req.body.password;
+  let hashedPassword = await bcrypt.hash(yourPassword, saltRounds);
+  return await prisma.users.update({
+    where: { id: id },
+    data: {
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+      phone: req.body.phone,
+      provider: (req.body.provider !== undefined && req.body.provider) ? req.body.provider : "local",
+      provider_id: (req.body.provider_id !== undefined && req.body.provider_id) ? req.body.provider_id : "local_id",
+      owner: (req.body.owner !== undefined && req.body.owner) ? req.body.owner : false,
+      metadata: (req.body.metadata !== undefined && req.body.metadata) ? JSON.stringify(req.body.metadata) : null,
+      updated_at: '',
+    },
+  })
 }
 
 

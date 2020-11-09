@@ -50,9 +50,27 @@
               <a href="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-transparent text-white border-2 border-white rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                 New Order
               </a>
-              <a href="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
-                My Account
-              </a>
+              <div class="relative inline-block text-left">
+                <button v-on:click="showDropdown" type="button" class="uppercase inline-flex justify-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+                  My Account
+                  <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+
+                <div v-if="dropDownOpen" @mouseleave="showDropdown" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
+                  <div class="rounded-md bg-white shadow-xs">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                      <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
+                        Login In
+                      </button>
+                      <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
+                        Register
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="lg:hidden mx-8 absolute z-20 right-0" >
               <button class="block lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white" >
@@ -76,9 +94,22 @@ export default {
   components: {
     Logo
   },
+  data() {
+    return {
+      dropDownOpen: false
+    }
+  },
   computed: {
     ...mapGetters(["cartCount"])
-  }
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+    },
+    showDropdown() {
+      this.dropDownOpen = !this.dropDownOpen;
+    },
+  },
 };
 </script>
 

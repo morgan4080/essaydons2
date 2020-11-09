@@ -4,70 +4,116 @@ const prisma = new PrismaClient();
 
 module.exports = async function (req, res) {
     if (Object.keys(req.query).length === 0 && req.method === "GET") {
-      res.status(200).send( await index());
+      let response = await index();
+      if (response !== null) {
+        res.status(200).json({
+          data: response
+        });
+      } else {
+        res.status(400).json({
+          data: response
+        });
+      }
     } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
-      res.status(200).send( await edit(parseInt(req.query.id)));
+      let response = await edit(parseInt(req.query.id));
+      if (response !== null) {
+        res.status(200).json({
+          data: response
+        });
+      } else {
+        res.status(400).json({
+          data: response
+        });
+      }
     } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
-      res.status(200).send( await store(req));
+      let response = await store(req);
+
+      if (response !== null) {
+        res.status(200).json({
+          data: response
+        });
+      } else {
+        res.status(400).json({
+          data: response
+        });
+      }
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.body.name !== undefined && req.query.id) {
-      res.status(200).send( await update(req, parseInt(req.query.id)));
+      let response = await update(req, parseInt(req.query.id));
+
+      if (response !== null) {
+        res.status(200).json({
+          data: response
+        });
+      } else {
+        res.status(400).json({
+          data: response
+        });
+      }
     } else {
-      res.status(200).send(
-        JSON.stringify({
-          requestObject: req
-        })
-      )
+      res.status(400).json({
+        data: {
+          message: "error",
+          request: req
+        }
+      });
     }
 };
 
 /**
  * Display a listing of the accounts.
  *
- * @return JsonResponse
+ * @return Object
  */
 
 async function index() {
-    return JSON.stringify(await db.all(`SELECT * FROM accounts`));
+  return await prisma.accounts.findMany()
 }
 
 /**
  * Show the form for editing the specified account.
  *
- * @return JsonResponse
+ * @return Object
  * @param id
  */
 
 async function edit(id) {
-    return JSON.stringify(await db.all(`SELECT * FROM accounts WHERE id = ${id}`));
+  return  await prisma.accounts.findOne({
+    where: {
+      id: id
+    }
+  })
 }
 
 /**
  * Store a newly created account.
  *
- * @return JsonResponse
+ * @return Object
  * @param req
  */
 
 async function store(req) {
-  const newAccount = await prisma.account.create({
+  return await prisma.accounts.create({
     data: {
       name: req.body.name,
     },
-  });
-
-  return JSON.stringify(newAccount);
+  })
 }
 
 /**
  * Update the specified account.
  *
- * @return JsonResponse
+ * @return Object
  * @param req
  * @param id
  */
 
 async function update(req, id) {
-    return JSON.stringify(await db.run('UPDATE accounts SET name = ? WHERE id = ?', req.body.name, id));
+    return await prisma.accounts.update({
+      where: { id: id },
+      data: {
+        name: req.body.name
+      }
+    })
 }
 
 
