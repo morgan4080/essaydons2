@@ -8,7 +8,7 @@
       }
     },
     {
-      "src": "api/**/*.js",
+      "src": "pages/api/**/*.js",
       "use": "@vercel/node"
     }
   ],
@@ -22,8 +22,8 @@
   },
   "routes": [
     {
-      "src": "/api/accounts/(.*)",
-      "dest": "/api/accounts/$1.js",
+      "src": "pages/api/accounts/(.*)",
+      "dest": "pages/api/accounts/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -31,8 +31,8 @@
       }
     },
     {
-      "src": "/api/categories/(.*)",
-      "dest": "/api/categories/$1.js",
+      "src": "pages/api/categories/(.*)",
+      "dest": "pages/api/categories/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -40,8 +40,8 @@
       }
     },
     {
-      "src": "/api/orders/(.*)",
-      "dest": "/api/orders/$1.js",
+      "src": "pages/api/orders/(.*)",
+      "dest": "pages/api/orders/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -49,8 +49,8 @@
       }
     },
     {
-      "src": "/api/posts/(.*)",
-      "dest": "/api/posts/$1.js",
+      "src": "pages/api/posts/(.*)",
+      "dest": "pages/api/posts/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -58,8 +58,8 @@
       }
     },
     {
-      "src": "/api/storedata/(.*)",
-      "dest": "/api/storedata/$1.js",
+      "src": "pages/api/storedata/(.*)",
+      "dest": "pages/api/storedata/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -67,8 +67,8 @@
       }
     },
     {
-      "src": "/api/stripeTransactions00/(.*)",
-      "dest": "/api/stripeTransactions00/$1.js",
+      "src": "pages/api/stripeTransactions00/(.*)",
+      "dest": "pages/api/stripeTransactions00/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -76,8 +76,8 @@
       }
     },
     {
-      "src": "/api/users/(.*)",
-      "dest": "/api/users/$1.js",
+      "src": "pages/api/users/(.*)",
+      "dest": "pages/api/users/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
@@ -85,8 +85,8 @@
       }
     },
     {
-      "src": "/api/login/(.*)",
-      "dest": "/api/login/$1.js",
+      "src": "pages/api/login/(.*)",
+      "dest": "pages/api/login/$1.js",
       "methods": ["POST"],
       "headers": {
         "Access-Control-Allow-Methods": "POST",
@@ -94,8 +94,8 @@
       }
     },
     {
-      "src": "/api/me/(.*)",
-      "dest": "/api/me/$1.js",
+      "src": "pages/api/me/(.*)",
+      "dest": "pages/api/me/$1.js",
       "methods": ["GET"],
       "headers": {
         "Access-Control-Allow-Methods": "GET",
