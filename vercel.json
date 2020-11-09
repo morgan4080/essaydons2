@@ -12,14 +12,6 @@
       "use": "@vercel/node"
     }
   ],
-  "env": {
-    "STRIPE_KEY": ""
-  },
-  "build": {
-    "env": {
-      "STRIPE_KEY": ""
-    }
-  },
   "routes": [
     {
       "src": "/api/accounts/(.*)",
