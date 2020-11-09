@@ -44,17 +44,17 @@ export const mutations = {
     (state.cart = []), (state.cartUIStatus = "idle");
   },
   addToCart: (state, payload) => {
-    let itemfound = state.cart.find(el => el.id === payload.id);
-    itemfound
-      ? (itemfound.quantity += payload.quantity)
+    let itemFound = state.cart.find(el => el.id === payload.id);
+    itemFound
+      ? (itemFound.quantity += payload.quantity)
       : state.cart.push(payload)
   },
   setClientSecret: (state, payload) => {
     state.clientSecret = payload;
   },
   addOneToCart: (state, payload) => {
-    let itemfound = state.cart.find(el => el.id === payload.id)
-    itemfound ? itemfound.quantity++ : state.cart.push(payload)
+    let itemFound = state.cart.find(el => el.id === payload.id)
+    itemFound ? itemFound.quantity++ : state.cart.push(payload)
   },
   removeOneFromCart: (state, payload) => {
     let index = state.cart.findIndex(el => el.id === payload.id)
