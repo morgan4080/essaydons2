@@ -3,6 +3,7 @@ module.exports = {
     extend: {
       inset: {
         '30': '30%',
+        '40': '40%',
         '50': '2rem',
         '70': '7rem',
       },
@@ -18,6 +19,8 @@ module.exports = {
         '80': '23rem'
       },
       padding: {
+        '60': '12rem',
+        '70': '16rem',
         '80': '20rem'
       },
       backgroundPosition: {

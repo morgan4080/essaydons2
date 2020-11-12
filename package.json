@@ -5,7 +5,7 @@
   "private": true,
   "author": "morgan4080",
   "scripts": {
-    "dev": "nuxt --port $PORT",
+    "dev": "nuxt --port 8080",
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/tailwindcss": "^3.2.0",
-    "@prisma/client": "^2.10.2",
+    "@prisma/client": "^2.11.0",
     "access-log": "^0.4.1",
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
@@ -28,7 +28,7 @@
     "vue-stripe-elements-plus": "^0.3.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
-    "@prisma/cli": "^2.10.2"
+    "@prisma/cli": "^2.11.0",
+    "nodemon": "^1.18.9"
   }
 }

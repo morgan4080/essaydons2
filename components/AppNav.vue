@@ -35,21 +35,21 @@
               </a>
             </div>
             <div class="hidden lg:block relative" >
-              <a href="/about" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
+              <nuxt-link to="/about" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 About us
-              </a>
-              <a href="/services" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
+              </nuxt-link>
+              <nuxt-link to="/services" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 Services
-              </a>
-              <a href="/papers" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
+              </nuxt-link>
+              <nuxt-link to="/papers" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 Sample papers
-              </a>
-              <a href="/blog" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
+              </nuxt-link>
+              <nuxt-link to="/blog" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 Blog
-              </a>
-              <a href="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-transparent text-white border-2 border-white rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+              </nuxt-link>
+              <nuxt-link to="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-transparent text-white border-2 border-white rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                 New Order
-              </a>
+              </nuxt-link>
               <div class="relative inline-block text-left">
                 <button v-on:click="showDropdown" type="button" class="uppercase inline-flex justify-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   My Account
@@ -61,12 +61,12 @@
                 <div v-if="dropDownOpen" @mouseleave="showDropdown" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
                   <div class="rounded-md bg-white shadow-xs">
                     <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                      <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
-                        Login In
-                      </button>
-                      <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
+                      <nuxt-link to="/login" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
+                        Log In
+                      </nuxt-link>
+                      <nuxt-link to="/register" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
                         Register
-                      </button>
+                      </nuxt-link>
                     </div>
                   </div>
                 </div>

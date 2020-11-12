@@ -115,3 +115,7 @@ input[type=number] {
 button:focus {
   outline: unset;
 }
+
+.focus\:shadow-outline:focus {
+  box-shadow: 0 0 0 3px rgba(66, 251, 183, 0.5);
+}
