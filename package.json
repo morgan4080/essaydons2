@@ -1,7 +1,7 @@
 {
   "name": "essaydons",
   "version": "1.0.0",
-  "description": "My astonishing Nuxt.js project",
+  "description": "Nuxt.js project on Vercel",
   "private": true,
   "author": "morgan4080",
   "scripts": {
