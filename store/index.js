@@ -5,6 +5,7 @@ export const state = () => ({
   storedata: data,
   cart: [],
   clientSecret: "",
+  orders: []
 });
 
 export const getters = {
@@ -68,6 +69,31 @@ export const mutations = {
 };
 
 export const actions = {
+  async deleteItem({ commit, dispatch }, payload) {
+    try {
+
+      await this.$axios.get(`csrf-cookie`);
+
+      const result = await this.$axios.delete(
+        `${payload.uri}/${payload.data}`,
+      );
+      if (result.data) {
+
+        return result
+
+      }
+    } catch (e) {
+      if (e.response.status === 422) {
+
+        console.log("error", e.response);
+
+      } else {
+
+        return e;
+
+      }
+    }
+  },
   async createPaymentIntent({ getters, commit }) {
     try {
       // Create a PaymentIntent with the information about the order
