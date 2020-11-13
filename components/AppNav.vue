@@ -28,11 +28,11 @@
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
             <div class="px-6 py-2 w-auto" >
-              <a href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active" >
+              <nuxt-link to="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active" >
                 <div>
                   <Logo />
                 </div>
-              </a>
+              </nuxt-link>
             </div>
             <div class="hidden lg:block relative" >
               <nuxt-link to="/about" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >

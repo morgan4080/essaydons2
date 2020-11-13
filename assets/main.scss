@@ -119,3 +119,64 @@ button:focus {
 .focus\:shadow-outline:focus {
   box-shadow: 0 0 0 3px rgba(66, 251, 183, 0.5);
 }
+
+@media (max-width: 767px) {
+  .custom-calc {
+    top: 32rem;
+    left: 25vw;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-calc {
+    top: 32rem;
+    left: 20vw;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 500px) {
+  .custom-calc {
+    top: 32rem;
+    left: 16vw;
+    z-index: 10;
+  }
+  .topBanner {
+    padding-bottom: 23rem;
+  }
+  .secondSectAbout0 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 449px) {
+  .custom-calc {
+    top: 32rem;
+    left: 12vw;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 400px) {
+  .custom-calc {
+    top: 32rem;
+    left: 7vw;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 359px) {
+  .custom-calc {
+    top: 32rem;
+    left: 6vw;
+    z-index: 10;
+    max-width: 18rem;
+  }
+}
+
+@media (max-width: 330px) {
+  .button-bg {
+    display: none
+  }
+}

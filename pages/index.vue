@@ -38,8 +38,8 @@
     </div>
     <div>
       <div class="min-h-screen" style="background: #FBFBFB;">
-        <div class="mobile-b relative bg-left-0 lg:bg-center-0">
-          <div class="max-w-6xl mx-auto pt-40 lg:pt-70 z-10 relative px-8 lg:px-0 pb-48">
+        <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
+          <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
               <h1 class="text-4xl lg:text-5xl text-white font-bold leading-tight py-2 lg:py-0">
                 Professional Essay Writer You've <br>
@@ -48,44 +48,44 @@
               <p class="text-white text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
               </p>
+              <a href="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                Order Now
+              </a>
             </div>
-            <div class="md:absolute text-center flex flex-col py-6 text-xl custom-calc md:right-0 md:top-30 lg:top-30">
-              <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
-                Place your order
-              </h2>
-              <select v-model="form.subject" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                <optgroup label="Subjects">
-                  <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
-                </optgroup>
-              </select>
-              <select @change="setFirstDuration" v-model="form.level" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                <optgroup label="Academic Levels">
-                  <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
-                </optgroup>
-              </select>
-              <div class="flex mt-2 sm:text-sm sm:leading-5">
-                <select v-model="form.duration" class="w-1/2 bg-secondary hover:bg-gradient-to-r py-3 px-3 text-vuegreen form-input border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out ">
-                  <optgroup label="Deadline">
-                    <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
-                  </optgroup>
-                </select>
-                <div class="flex w-1/2 ml-1 text-vuegreen border border-gray-300 bg-secondary rounded-3xl">
-                  <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
-                  <input class="w-1/3 form-input bg-secondary hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
-                  <button class="w-1/3" @click="form.pages++">+</button>
-                </div>
-              </div>
-              <div class="px-1 py-3 text-white font-medium text-xl">{{ totalPrice | dollar }}</div>
-              <div class="flex">
-                 <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</a>
-                 <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</a>
-              </div>
-            </div>
-            <a href="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
-              Order Now
-            </a>
           </div>
           <div class="header-main-shape"></div>
+          <div class="absolute text-center flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+            <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
+              Place your order
+            </h2>
+            <select v-model="form.subject" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+              <optgroup label="Subjects">
+                <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
+              </optgroup>
+            </select>
+            <select @change="setFirstDuration" v-model="form.level" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+              <optgroup label="Academic Levels">
+                <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
+              </optgroup>
+            </select>
+            <div class="flex mt-2 sm:text-sm sm:leading-5">
+              <select v-model="form.duration" class="w-1/2 bg-secondary hover:bg-gradient-to-r py-3 px-3 text-vuegreen form-input border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out ">
+                <optgroup label="Deadline">
+                  <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
+                </optgroup>
+              </select>
+              <div class="flex w-1/2 ml-1 text-vuegreen border border-gray-300 bg-secondary rounded-3xl">
+                <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
+                <input class="w-1/3 form-input bg-secondary hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
+                <button class="w-1/3" @click="form.pages++">+</button>
+              </div>
+            </div>
+            <div class="px-1 py-3 text-white font-medium text-xl">{{ totalPrice | dollar }}</div>
+            <div class="flex">
+              <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</a>
+              <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</a>
+            </div>
+          </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
           <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">

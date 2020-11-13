@@ -40,8 +40,8 @@ async function doLogin(req) {
   if (user !== null && user !== undefined) {
     let match = await bcrypt.compare(clientPassword, user.password);
     if (match) {
-      const token = jwt.sign({ hash: user.password }, privateKey, { algorithm: 'RS256', expiresIn: '1d' });
-      return await userFound(user, token);
+      const token = jwt.sign({ user: user }, privateKey, { algorithm: 'RS256', expiresIn: '1d' });
+      return await userFound(token);
     } else {
       return userNotFound("password mismatch");
     }
