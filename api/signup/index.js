@@ -12,7 +12,7 @@ const { readFileSync } = require('fs');
 
 const { join } = require('path');
 
-const privateKey = readFileSync(join(__dirname, '_JWTKeys', 'jwtRS256.key'), 'utf8');
+const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8');
 
 /**
  * Store a newly created user.
