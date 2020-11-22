@@ -1,23 +1,28 @@
 'use strict'
 
-const { PrismaClient } = require('@prisma/client');
+const jwt = require('jsonwebtoken');
 
-const prisma = new PrismaClient();
+const { readFileSync } = require('fs');
+
+const { join } = require('path');
+
+const privateKey = readFileSync(join(__dirname, '_JWTKeys', 'jwtRS256.key'), 'utf8');
+
+function authenticateToken(req, res) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (token === null) res.status(401)
+
+  jwt.verify(token, privateKey, (err, user) => {
+    if (err) res.status(403)
+    req.user = user
+  })
+}
 
 module.exports = async function (req, res) {
-    let response = await prisma.user.findOne({
-      where: {
-        id: id
-      }
-    });
+  await authenticateToken(req, res);
 
-    if (response) {
-      res.status(200).json({
-        data: response
-      })
-    } else {
-      res.status(400).json({
-        data: response
-      })
-    }
+  res.json({
+    test: req.user,
+  })
 };

@@ -11,8 +11,8 @@ datasource db {
 model accounts {
   id         Int        @id @default(autoincrement())
   name       String?
-  created_at DateTime?
-  updated_at DateTime?
+  created_at DateTime?  @default(now())
+  updated_at DateTime?  @default(now())
   deleted_at DateTime?
   orders     orders[]
   posts      posts[]
@@ -26,8 +26,8 @@ model categories {
   slug           String?
   description    String?
   specifications Json?
-  created_at     DateTime?
-  updated_at     DateTime?
+  created_at     DateTime?  @default(now())
+  updated_at     DateTime?  @default(now())
   deleted_at     DateTime?
   products       products[]
 }
@@ -37,8 +37,8 @@ model orders {
   user_id       Int
   account_id    Int
   order_details Json
-  created_at    DateTime?
-  updated_at    DateTime?
+  created_at    DateTime? @default(now())
+  updated_at    DateTime? @default(now())
   deleted_at    DateTime?
   accounts      accounts  @relation(fields: [account_id], references: [id])
   users         users     @relation(fields: [user_id], references: [id])
@@ -57,8 +57,8 @@ model posts {
   description String?
   tags        Json?
   metadata    Json?
-  created_at  DateTime?
-  updated_at  DateTime?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
   deleted_at  DateTime?
   accounts    accounts? @relation(fields: [account_id], references: [id])
   users       users?    @relation(fields: [user_id], references: [id])
@@ -73,8 +73,8 @@ model products {
   user_id     Int
   category_id Int
   product     Json
-  created_at  DateTime?
-  updated_at  DateTime?
+  created_at  DateTime?  @default(now())
+  updated_at  DateTime?  @default(now())
   deleted_at  DateTime?
   accounts    accounts   @relation(fields: [account_id], references: [id])
   categories  categories @relation(fields: [category_id], references: [id])
@@ -97,8 +97,8 @@ model users {
   provider_id       String?
   owner             Boolean
   metadata          Json?
-  created_at        DateTime?
-  updated_at        DateTime?
+  created_at        DateTime?  @default(now())
+  updated_at        DateTime?  @default(now())
   deleted_at        DateTime?
   accounts          accounts?  @relation(fields: [account_id], references: [id])
   orders            orders[]

@@ -6,60 +6,67 @@ const prisma = new PrismaClient();
 
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken');
+
+const { readFileSync } = require('fs');
+
+const { join } = require('path');
+
+const privateKey = readFileSync(join(__dirname, '_JWTKeys', 'jwtRS256.key'), 'utf8');
+
+function authenticateToken(req, res) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (token === null) res.status(401)
+
+  jwt.verify(token, privateKey, (err, user) => {
+    if (err) res.status(403)
+    req.user = user
+  })
+}
+
 module.exports = async function (req, res) {
+    await authenticateToken(req, res);
+
+    // read req.user
+
+    res.json({
+      test: req.user,
+    })
+
     if (Object.keys(req.query).length === 0 && req.method === "GET") {
-        let response = await index();
-        if (response !== null) {
+        try{
+          let response = await index();
+
           res.status(200).json({
             data: response
           });
-        } else {
-          res.status(400).json({
-            data: response
-          });
+        } catch (e) {
+          res.status(500)
         }
     } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
-        let response = await edit(parseInt(req.query.id));
-        if (response !== null) {
-          res.status(200).json({
-            data: response
-          });
-        } else {
-          res.status(400).json({
-            data: response
-          });
-        }
-    } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
-        let response = await store(req);
+        try {
+          let response = await edit(parseInt(req.query.id));
 
-        if (response !== null) {
           res.status(200).json({
             data: response
           });
-        } else {
-          res.status(400).json({
-            data: response
-          });
+        } catch (e) {
+          res.status(500)
         }
+
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.body.name !== undefined && req.query.id) {
-        let response = await update(req, parseInt(req.query.id));
+        try {
+          let response = await update(req, parseInt(req.query.id));
 
-        if (response !== null) {
           res.status(200).json({
             data: response
           });
-        } else {
-          res.status(400).json({
-            data: response
-          });
+        } catch (e) {
+          res.status(500)
         }
     } else {
-        res.status(400).json({
-          data: {
-            message: "error",
-            request: req
-          }
-        });
+        res.status(500)
     }
 
 };
@@ -90,36 +97,6 @@ async function edit(id) {
 }
 
 /**
- * Store a newly created user.
- *
- * @return Object
- * @param req
- */
-
-async function store(req) {
-  const saltRounds = 10;
-  const yourPassword = req.body.password;
-  let hashedPassword = await bcrypt.hash(yourPassword, saltRounds);
-
-  return await prisma.users.create({
-    data: {
-      account_id: req.body.account_id,
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-      phone: req.body.phone,
-      provider: (req.body.provider !== undefined && req.body.provider) ? req.body.provider : "local",
-      provider_id: (req.body.provider_id !== undefined && req.body.provider_id) ? req.body.provider_id : "local_id",
-      owner: (req.body.owner !== undefined && req.body.owner) ? req.body.owner : false,
-      metadata: (req.body.metadata !== undefined && req.body.metadata) ? JSON.stringify(req.body.metadata) : null,
-      created_at: '',
-      updated_at: null,
-      deleted_at: null,
-    },
-  })
-}
-
-/**
  * Update the specified user.
  *
  * @return Object
@@ -128,23 +105,29 @@ async function store(req) {
  */
 
 async function update(req, id) {
-  const saltRounds = 10;
-  const yourPassword = req.body.password;
-  let hashedPassword = await bcrypt.hash(yourPassword, saltRounds);
-  return await prisma.users.update({
-    where: { id: id },
-    data: {
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-      phone: req.body.phone,
-      provider: (req.body.provider !== undefined && req.body.provider) ? req.body.provider : "local",
-      provider_id: (req.body.provider_id !== undefined && req.body.provider_id) ? req.body.provider_id : "local_id",
-      owner: (req.body.owner !== undefined && req.body.owner) ? req.body.owner : false,
-      metadata: (req.body.metadata !== undefined && req.body.metadata) ? JSON.stringify(req.body.metadata) : null,
-      updated_at: '',
-    },
-  })
+  try {
+    const saltRounds = 10;
+    let data = {};
+    (req.body.name) ? data.name = req.body.name : null;
+    (req.body.email) ? data.email = req.body.email : null;
+    (req.body.password) ? data.password = await hash(req.body.password, saltRounds) : null;
+    (req.body.phone) ? data.phone = req.body.phone : null;
+    (req.body.provider) ? data.provider = req.body.provider : null;
+    (req.body.provider_id) ? data.provider_id = req.body.provider_id : null;
+    (req.body.owner) ? data.owner = req.body.owner : null;
+    (req.body.metadata) ? data.metadata = req.body.metadata : null;
+
+    return await prisma.users.update({
+      where: { id: id },
+      data: {
+        ...data
+      },
+    })
+  } catch (e) {
+    return e
+  }
 }
 
-
+async function hash(yourPassword, saltRounds) {
+  return  await bcrypt.hash(yourPassword, saltRounds)
+}
