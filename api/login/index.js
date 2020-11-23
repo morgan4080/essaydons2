@@ -16,58 +16,44 @@ const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 
 
 module.exports = async function (req, res) {
   if (req.body && req.body.email && req.body.password) {
-    try {
-      await doLogin(req, res);
-    } catch (e) {
-      res.status(500);
-    }
+    let response = await doLogin(req);
+    res.status(response.status).json({
+      data: response
+    })
   } else {
     res.status(500)
   }
 };
 
-async function doLogin(req, res) {
+async function doLogin(req) {
+  const clientEmail = req.body.email;
 
-  try {
-    const clientEmail = req.body.email;
-
-    const user = await prisma.users.findOne({
-      where: {
-        email: clientEmail
-      }
-    });
-
-    if (user === null) {
-      res.status(401).json({
-        data: {
-          status: 'user not found',
-          token: null,
-          user: null,
-        }
-      });
+  const user = await prisma.users.findOne({
+    where: {
+      email: clientEmail
     }
+  });
 
-    let match = await bcrypt.compare(req.body.password, user.password);
-
-    if (match) {
-      const token = jwt.sign({ user: user }, privateKey, { algorithm: 'RS256' });
-      res.status(200).json({
-        data: {
-          status: 'success',
-          token: token,
-          user: user,
-        }
-      });
-    } else {
-      res.status(401).json({
-        data: {
-          status: 'password/email dont match our record',
-          token: null,
-          user: null,
-        }
-      })
+  if (user === null) {
+    return {
+      message: 'user not found',
+      status: 401
     }
-  } catch (e) {
-    res.status(500);
+  }
+
+  let match = await bcrypt.compare(req.body.password, user.password);
+
+  if (match) {
+    const token = jwt.sign({ user: user }, privateKey, { algorithm: 'RS256' });
+    return {
+      message: 'success',
+      status: 200,
+      token: token
+    }
+  } else {
+    return {
+      message: 'password/email dont match our record',
+      status: 401
+    }
   }
 }
