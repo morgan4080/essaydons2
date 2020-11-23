@@ -2,12 +2,10 @@ generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native"]
 }
-
 datasource db {
   provider = "mysql"
   url      = "mysql://morgan:2fpLxthn@139.59.83.180:3306/essaydons"
 }
-
 model accounts {
   id         Int        @id @default(autoincrement())
   name       String?
@@ -19,7 +17,6 @@ model accounts {
   products   products[]
   users      users[]
 }
-
 model categories {
   id             Int        @id @default(autoincrement())
   name           String?
@@ -31,7 +28,6 @@ model categories {
   deleted_at     DateTime?
   products       products[]
 }
-
 model orders {
   id            Int       @id @default(autoincrement())
   user_id       Int
@@ -46,7 +42,6 @@ model orders {
   @@index([account_id], name: "orders_account_index")
   @@index([user_id], name: "orders_user_index")
 }
-
 model posts {
   id          Int       @id @default(autoincrement())
   account_id  Int?
@@ -66,7 +61,6 @@ model posts {
   @@index([account_id], name: "posts_account_index")
   @@index([user_id], name: "posts_user_index")
 }
-
 model products {
   id          Int        @id @default(autoincrement())
   account_id  Int
@@ -84,7 +78,6 @@ model products {
   @@index([category_id], name: "products_category_index")
   @@index([user_id], name: "products_user_index")
 }
-
 model users {
   id                Int        @id @default(autoincrement())
   account_id        Int
