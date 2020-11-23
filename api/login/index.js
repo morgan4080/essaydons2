@@ -26,13 +26,11 @@ module.exports = async function (req, res) {
 };
 
 async function doLogin(req) {
-  const clientEmail = req.body.email;
-
   const user = await prisma.users.findOne({
     where: {
-      email: clientEmail
-    }
-  });
+      email: req.body.email,
+    },
+  })
 
   if (user === null) {
     return {
@@ -41,10 +39,10 @@ async function doLogin(req) {
     }
   }
 
-  let match = await bcrypt.compare(req.body.password, user.password);
+  let match = await bcrypt.compare(req.body.password, user.password)
 
   if (match) {
-    const token = jwt.sign({ user: user }, privateKey, { algorithm: 'RS256' });
+    const token = jwt.sign({ user: user }, privateKey, { algorithm: 'RS256' })
     return {
       message: 'success',
       status: 200,
