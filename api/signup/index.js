@@ -27,8 +27,6 @@ async function doSignup(req) {
   const yourPassword = req.body.password
   let hashedPassword = await bcrypt.hash(yourPassword, saltRounds);
 
-  return hashedPassword;
-
   let response = await prisma.users.create({
     data: {
       account_id: req.body.account_id,
@@ -42,14 +40,9 @@ async function doSignup(req) {
       owner: (req.body.owner !== undefined && req.body.owner) ? req.body.owner : false,
       metadata: (req.body.metadata !== undefined && req.body.metadata) ? JSON.stringify(req.body.metadata) : null
     }
-  });
-
-  if (response === null) res.status(500);
-
-  res.status(200).json({
-    data: {
-      status: 'success',
-      response: response
-    }
   })
+
+  if (response === null) return response;
+
+  return response
 }
