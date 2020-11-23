@@ -1,22 +1,22 @@
 'use strict'
 
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
-const { readFileSync } = require('fs');
+const { readFileSync } = require('fs')
 
-const { join } = require('path');
+const { join } = require('path')
 
-const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8');
+const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 module.exports = async function (req, res) {
   if (req.body && req.body.email && req.body.password) {
-    let response = await doLogin(req);
+    let response = await doLogin(req)
     res.status(response.status).json({
       data: response
     })
