@@ -9,10 +9,8 @@ const bcrypt = require('bcrypt');
 module.exports = async function (req, res) {
   if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
     res.status(200).json({
-      data: {
-        status: 'success',
-        response: req
-      }
+      status: 'success',
+      response: req
     });
     try {
       const saltRounds = 10
