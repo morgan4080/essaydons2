@@ -8,15 +8,15 @@ const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 
 
 function authMiddleware(req) {
   return new Promise((resolve, reject) => {
-    const header = req.headers['authorization'];
+    const header = req.headers['authorization']
 
     if (header === undefined) {
       reject("header undefined")
     }
 
-    const bearer = header.split(' ');
+    const bearer = header.split(' ')
 
-    const token = bearer[1];
+    const token = bearer[1]
 
     jwt.verify(token, privateKey, (err, user) => {
       if (err) {
