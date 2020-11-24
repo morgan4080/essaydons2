@@ -8,14 +8,13 @@ const { join } = require('path');
 
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8');
 
-function authenticateToken(req) {
+module.exports = async function (req, res) {
   const header = req.headers['authorization'];
 
   if (header === undefined) {
-    return {
-      token: req.headers,
-      status: 403
-    }
+    res.status(403).json({
+      data: req.headers
+    })
   }
 
   const bearer = header.split(' ');
@@ -24,22 +23,13 @@ function authenticateToken(req) {
 
   jwt.verify(token, privateKey, (err, user) => {
     if (err) {
-      return {
-        error: err,
-        status: 403
-      }
+      res.status(403).json({
+        data: err
+      })
     }
-    return {
-      user: user,
-      status: 200
-    }
+    res.status(200).json({
+      data: user
+    })
   })
-}
 
-module.exports = async function (req, res) {
-  let response = await authenticateToken(req);
-
-  res.status(response.status).json({
-    data: response
-  })
 };
