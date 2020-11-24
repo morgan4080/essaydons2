@@ -26,7 +26,7 @@ module.exports = async function (req, res) {
 };
 
 async function doLogin(req) {
-  const user = await prisma.users.findOne({
+  const user = await prisma.users.findFirst({
     where: {
       email: req.body.email,
     },
