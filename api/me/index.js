@@ -13,7 +13,7 @@ module.exports = async function (req, res) {
 
   if (header === undefined) {
     res.status(403).json({
-      data: req.headers
+      data: header
     })
   }
 
