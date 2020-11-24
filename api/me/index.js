@@ -4,7 +4,7 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
-const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
+const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8')
 
 function authMiddleware(req) {
   return new Promise((resolve, reject) => {
@@ -18,9 +18,9 @@ function authMiddleware(req) {
 
     const token = bearer[1]
 
-    jwt.verify(token, privateKey, (err, user) => {
+    jwt.verify(token, publicKey,{ algorithm: 'RS256' }, (err, user) => {
       if (err) {
-        reject("jwt verification error " + token)
+        reject("jwt verification error")
       }
       resolve(user)
     })
