@@ -1,4 +1,4 @@
-import authMiddleware from '../utils/auth-middleware'
+import authMiddleware from '../serverMiddleware/auth-middleware'
 
 module.exports = async function (req, res) {
   authMiddleware(req).then(user => {
