@@ -41,6 +41,20 @@ async function doLogin(req) {
 
   let match = await bcrypt.compare(req.body.password, user.password)
 
+  delete user.password
+
+  delete user.deleted_at
+
+  delete user.created_at
+
+  delete user.updated_at
+
+  delete user.account_id
+
+  delete user.provider
+
+  delete user.provider_id
+
   if (match) {
     const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
     return {
