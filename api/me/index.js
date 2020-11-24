@@ -20,7 +20,7 @@ function authMiddleware(req) {
 
     jwt.verify(token, privateKey, (err, user) => {
       if (err) {
-        reject("jwt verification error", err)
+        reject("jwt verification error " + token)
       }
       resolve(user)
     })
