@@ -1,6 +1,6 @@
-import axios from "axios"
-
 import stripe from "stripe"
+
+const fetch = require('node-fetch')
 
 const { PrismaClient } = require('@prisma/client');
 
@@ -8,17 +8,37 @@ const prisma = new PrismaClient();
 
 module.exports = async function (req, res) {
 
-    if (req.query.name || (req.body && req.body.name)) {
-      let table = 'accounts';
+    if (req.query.payment_intent && (req.body && req.body.items)) {
 
-      res.status(200).send(JSON.stringify({
-        requestObject: req,
-        accounts: await dbInstance.all(`SELECT * FROM ${table}`)
-      }));
+      try {
+        // get store data to verify item prices from client application
+        let storeDatabase = await prisma.products.findMany({
+          where: {
+            account_id: 1,
+          },
+        });
+
+        const amount = req.body.reduce((prev, item) => {
+          // lookup item information from "database" and calculate total amount
+          const itemData = storeDatabase.data.find(
+            storeItem => storeItem.id === item.id
+          );
+          return prev + itemData.price * 100 * item.quantity;
+        }, 0);
+
+
+
+      } catch (e) {
+
+      }
 
     } else {
 
-      res.status(400).send('Please pass a payment query string or request body');
+      res.status(401).json({
+        data: {
+          message: "missing information"
+        }
+      });
 
     }
 

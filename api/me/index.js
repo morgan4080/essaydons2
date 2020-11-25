@@ -20,7 +20,7 @@ function authMiddleware(req) {
 
     jwt.verify(token, publicKey,{ algorithm: 'RS256' }, (err, user) => {
       if (err) {
-        reject("jwt verification error")
+        reject(err)
       }
       resolve(user)
     })

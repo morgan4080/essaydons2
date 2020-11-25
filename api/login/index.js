@@ -49,8 +49,6 @@ async function doLogin(req) {
 
   delete user.updated_at
 
-  delete user.account_id
-
   delete user.provider
 
   delete user.provider_id

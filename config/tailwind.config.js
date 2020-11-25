@@ -1,6 +1,9 @@
 module.exports = {
   theme: {
     extend: {
+      gridTemplateRows: {
+        'orders': '150px 1fr'
+      },
       inset: {
         '10': '10%',
         '30': '30%',

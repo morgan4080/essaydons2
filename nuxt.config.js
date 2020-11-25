@@ -29,6 +29,34 @@ export default {
     { src: '~/assets/main.scss', lang: 'sass' }
   ],
 
+  auth: {
+    // Options
+    strategies: {
+      local: {
+        local: {
+          endpoints: {
+            login: { url: '/api/login', method: 'post', propertyName: 'data.token' },
+            me: { url: '/api/me', method: 'get', propertyName: 'data' },
+            logout: false,
+          },
+          tokenRequired: true,
+          tokenType: 'bearer',
+          globalToken: true,
+          autoFetchUser: true
+        }
+      },
+      google: {
+        client_id: '724202903355-q30cmukn8vkl63pi7pocftde4v20qscb.apps.googleusercontent.com'
+      },
+      facebook: {
+        endpoints: {
+          userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday'
+        },
+        clientId: '1671464192946675',
+        scope: ['public_profile', 'email', 'user_birthday']
+      },
+    }
+  },
 
   loading: { color: '#000000' },
 
@@ -51,28 +79,6 @@ export default {
     '@nuxtjs/auth'
   ],
 
-  auth: {
-    // Options
-    strategies: {
-      local: {
-        local: {
-          endpoints: {
-            login: { url: '/api/login', method: 'post', propertyName: 'data.token' },
-            me: { url: '/api/me', method: 'get', propertyName: 'data' },
-            logout: false,
-          },
-          tokenRequired: true,
-          tokenType: 'bearer',
-          globalToken: true,
-          autoFetchUser: true
-        }
-      },
-      google: {
-        client_id: '724202903355-q30cmukn8vkl63pi7pocftde4v20qscb.apps.googleusercontent.com'
-      },
-    }
-  },
-
   router: {
     middleware: ['auth']
   },
@@ -86,7 +92,7 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     withCredentials: true,
-    baseURL: "http://localhost:8000/api/"
+    baseURL: "https://essaydons2.vercel.app"
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
