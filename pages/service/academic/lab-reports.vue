@@ -6,7 +6,7 @@
           <div style="height: 100%;background: rgba(0, 0, 0, 0.5);">
             <div class="max-w-6xl px-4 md:px-0 mx-auto pt-16 pb-24">
               <div class="flex flex-col w-full" >
-                <span class="font-black text-vuegreen text-6xl">Services</span>
+                <span class="font-black text-vuegreen text-6xl">Lab reports</span>
                 <span class="text-white font-black text-3xl">Overview</span>
               </div>
             </div>

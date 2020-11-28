@@ -1,29 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 bg-white">
-      <div class="max-w-6xl mx-auto">
-        <div class="w-full h-auto">
-          <div class="flex items-center justify-between">
-            <div class="px-6 py-4 w-auto"></div>
-            <div class="hidden lg:flex relative">
-              <div class="text-xs mr-8 flex">
-                <svg class="mx-2" id="email-84" xmlns="http://www.w3.org/2000/svg" width="16.108" height="11.951" viewBox="0 0 16.108 11.951">
-                  <path id="Path_55" data-name="Path 55" d="M16.588,9H1.52A.519.519,0,0,0,1,9.52V20.431a.519.519,0,0,0,.52.52H16.588a.519.519,0,0,0,.52-.52V9.52A.519.519,0,0,0,16.588,9Zm-.893,1.774L9.2,15.19a.26.26,0,0,1-.292,0l-6.5-4.417a.26.26,0,0,1,.292-.43l6.349,4.318L15.4,10.344a.26.26,0,1,1,.292.43Z" transform="translate(-1 -9)" fill="#626262"/>
-                </svg>
-                <p>info@essaydons.com</p>
-              </div>
-              <div class="text-xs mr-4 flex">
-                <svg class="mx-2" id="ic_phone_in_talk_48px" xmlns="http://www.w3.org/2000/svg" width="11.5" height="11.5" viewBox="0 0 11.5 11.5">
-                  <path id="Path_5" data-name="Path 5" d="M6.639,13.986a7.288,7.288,0,0,0,2.281-.364.641.641,0,0,1,.648.157l1.406,1.409a9.638,9.638,0,0,0,4.21-4.207L13.778,9.571a.641.641,0,0,1-.157-.648,7.308,7.308,0,0,0,.364-2.284A.637.637,0,0,1,14.625,6h2.236a.637.637,0,0,1,.639.639A10.86,10.86,0,0,1,6.639,17.5.637.637,0,0,1,6,16.861V14.625A.637.637,0,0,1,6.639,13.986Zm.639-2.236H6A5.75,5.75,0,0,1,11.75,6V7.278A4.473,4.473,0,0,0,7.278,11.75Zm2.556,0H8.556A3.2,3.2,0,0,1,11.75,8.556V9.833A1.918,1.918,0,0,0,9.833,11.75Z" transform="translate(-6 -6)" fill="#626262"/>
-                </svg>
-                <p>+254720753971</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="absolute top-50 w-full z-20 custom-mg-head" >
+    <div class="absolute top-0 w-full z-20 custom-mg-head" >
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -38,14 +15,288 @@
               <nuxt-link to="/about" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 About us
               </nuxt-link>
-              <nuxt-link to="/services" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
-                Services
-              </nuxt-link>
               <nuxt-link to="/papers" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 Sample papers
               </nuxt-link>
-              <nuxt-link to="/blog" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
+              <nuxt-link to="/blogs" class="uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black" >
                 Blog
+              </nuxt-link>
+              <nuxt-link to="/services" class="group uppercase mx-2 text-base text-white font-semibold py-3 px-4 hover:text-black inline-block" >
+                <span @mouseover="showSubMenu0 = true" class="flex flex-row items-center">
+                  Services
+                  <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+
+                <transition
+                  enter-active-class="transition ease-out duration-200"
+                  leave-active-class="transition ease-in duration-150"
+                  enter-class="opacity-0 translate-y-1"
+                  enter-to-class="opacity-100 translate-y-0"
+                  leave-class="opacity-100 translate-y-0"
+                  leave-to-class="opacity-0 translate-y-1"
+                >
+                  <div @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/6 capitalize" style="max-width: 15rem;">
+                    <div class="rounded-lg shadow-lg">
+                      <div class="rounded-lg shadow-xs">
+                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
+                          <a href="javascript:void(0)" class="group -m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu2 = false;showSubMenu1 = true;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-black leading-6 text-white flex flex-row items-center text-lg -mb-1 transition ease-in-out duration-150">
+                                Academic Writing
+                                <svg class="ml-auto h-5 w-5 transform -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </p>
+                            </div>
+                            <transition
+                              enter-active-class="transition ease-out duration-200"
+                              leave-active-class="transition ease-in duration-150"
+                              enter-class="opacity-0 translate-y-1"
+                              enter-to-class="opacity-100 translate-y-0"
+                              leave-class="opacity-100 translate-y-0"
+                              leave-to-class="opacity-0 translate-y-1"
+                            >
+                            <div @mouseleave="showSubMenu1 = false" v-if="showSubMenu1" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                              <div class="rounded-lg shadow-lg">
+                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
+                                    <nuxt-link to="/service/academic/college-papers" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          College Papers
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/articles" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Articles
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/personal-statement" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Personal statement
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/literature-review" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Literature review
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/coursework" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Coursework
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/case-study" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Case study
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/term-papers" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Term Paper
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/speech" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Speech
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/presentation" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Presentation
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/academic/lab-reports" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Lab report
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </transition>
+                          </a>
+                          <a href="javascript:void(0)" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu2 = true;showSubMenu1 = false;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-black flex flex-row items-center leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                Essay writing
+                                <svg class="ml-auto h-5 w-5 transform -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </p>
+                            </div>
+                            <transition
+                              enter-active-class="transition ease-out duration-200"
+                              leave-active-class="transition ease-in duration-150"
+                              enter-class="opacity-0 translate-y-1"
+                              enter-to-class="opacity-100 translate-y-0"
+                              leave-class="opacity-100 translate-y-0"
+                              leave-to-class="opacity-0 translate-y-1"
+                            >
+                            <div @mouseleave="showSubMenu2 = false" v-if="showSubMenu2" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                              <div class="rounded-lg shadow-lg">
+                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
+                                    <nuxt-link to="/service/essay/argumentative" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Argumentative Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/descriptive" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Descriptive Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/narrative" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Narrative Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/scholarship" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Scholarship Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/mba" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          MBA Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/persuasive" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Persuasive Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/admission" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Admission Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/essay/literature" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Literature Essay
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </transition>
+                          </a>
+                          <nuxt-link to="/service/thesis" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu1 = false;showSubMenu2 = false;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                Thesis writing
+                              </p>
+                            </div>
+                          </nuxt-link>
+                          <nuxt-link to="/service/research-paper" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu1 = false;showSubMenu2 = false;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                Research paper writing
+                              </p>
+                            </div>
+                          </nuxt-link>
+                          <nuxt-link to="/service/dissertation" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu1 = false;showSubMenu2 = false;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                Dissertation writing
+                              </p>
+                            </div>
+                          </nuxt-link>
+                          <a href="javascript:void(0)" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                            <div class="flex-1 space-y-1">
+                              <p @mouseover="showSubMenu2 = false;showSubMenu1 = false;showSubMenu3 = true;" class="transform hover:translate-x-2 hover:text-black flex flex-row items-center leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                Editing work
+                                <svg class="ml-auto h-5 w-5 transform -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </p>
+                            </div>
+                            <transition
+                              enter-active-class="transition ease-out duration-200"
+                              leave-active-class="transition ease-in duration-150"
+                              enter-class="opacity-0 translate-y-1"
+                              enter-to-class="opacity-100 translate-y-0"
+                              leave-class="opacity-100 translate-y-0"
+                              leave-to-class="opacity-0 translate-y-1"
+                            >
+                            <div @mouseleave="showSubMenu3 = false" v-if="showSubMenu3" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                              <div class="rounded-lg shadow-lg">
+                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
+                                    <nuxt-link to="/service/editing/essay" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Essay editing
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/editing/thesis" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Thesis editing
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                    <nuxt-link to="/service/editing/dissertation" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
+                                      <div class="flex-1 space-y-1">
+                                        <p class="transform hover:translate-x-2 hover:text-black leading-6 text-white text-lg -mb-1 transition ease-in-out duration-150">
+                                          Dissertation editing
+                                        </p>
+                                      </div>
+                                    </nuxt-link>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </transition>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </transition>
+
               </nuxt-link>
               <nuxt-link to="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-transparent text-white border-2 border-white rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                 New Order
@@ -96,11 +347,23 @@ export default {
   },
   data() {
     return {
-      dropDownOpen: false
+      dropDownOpen: false,
+      showSubMenu0: false,
+      showSubMenu1: false,
+      showSubMenu2: false,
+      showSubMenu3: false,
     }
   },
   computed: {
-    ...mapGetters(["cartCount"])
+    ...mapGetters(["cartCount"]),
+    showSubMenu() {
+      if (!this.showSubMenu0) {
+        this.showSubMenu1 = false;
+        this.showSubMenu2 = false;
+        this.showSubMenu3 = false;
+      }
+      return this.showSubMenu0
+    }
   },
   methods: {
     async logout() {

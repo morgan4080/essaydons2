@@ -38,6 +38,9 @@ html {
   --color-text-vuergreen: #42fbb7;
   --color-text-lightgreen: #42fbb7;
   --color-text-lightergreen: #42fbb7;
+  --borderRadius: 20px;
+  --textColor: #898a95;
+  --inputBorderColor: #bdbdbd;
 }
 
 .bg-gradient-to-r, .group:hover .group-hover\:bg-gradient-to-r {
@@ -109,7 +112,7 @@ html {
 }
 
 .button-bg {
-  background: rgba(66, 251, 183, 0.8);
+  background: rgba(66, 251, 183, 1);
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -191,4 +194,8 @@ button:focus {
   .button-bg {
     display: none
   }
+}
+
+.nuxt-link-exact-active {
+  @apply text-black;
 }

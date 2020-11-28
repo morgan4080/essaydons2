@@ -50,7 +50,7 @@
                 <button class="w-1/3" @click="form.pages++">+</button>
               </div>
             </div>
-            <div class="px-1 py-3 text-white font-medium text-xl">{{ totalPrice | dollar }}</div>
+            <div class="px-1 py-3 text-white font-bold text-xl">{{ totalPrice | dollar }}</div>
             <div class="flex">
               <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</a>
               <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</a>
@@ -726,7 +726,7 @@ export default {
   width: 100%;
   background: #fbfbfb;
   border-radius: 50% 50% 0 0/90px 90px 0px 0px;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   z-index: 0;
 }

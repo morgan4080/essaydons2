@@ -76,8 +76,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/cloudinary'
   ],
+
+  cloudinary: {
+    cloudName: 'morgan-tugi',
+    apiKey: '881473564676785',
+    apiSecret: 'WlQX5Szlug_OTPtQOyyISh0Fc1c',
+    useComponent: true
+  },
 
   router: {
     middleware: ['auth']

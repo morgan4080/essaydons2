@@ -1,8 +1,11 @@
 module.exports = {
   theme: {
     extend: {
+      maxWidth: {
+        'xxs': '15rem'
+      },
       gridTemplateRows: {
-        'orders': '150px 1fr'
+        'orders': '80px 1fr'
       },
       inset: {
         '10': '10%',
@@ -16,6 +19,7 @@ module.exports = {
         '72': '18rem',
         '84': '21rem',
         '96': '24rem',
+        '1/6': '100%',
       },
       borderRadius: {
         'large': '3rem',

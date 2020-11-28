@@ -12,7 +12,8 @@
     "@nuxt/core": "^2.14.6",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
-    "@prisma/client": "^2.11.0",
+    "@nuxtjs/cloudinary": "^1.0.2",
+    "@prisma/client": "^2.12.1",
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "core-js": "^3.6.5",
@@ -28,6 +29,6 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.2.0",
-    "@prisma/cli": "^2.11.0"
+    "@prisma/cli": "^2.12.1"
   }
 }

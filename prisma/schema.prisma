@@ -29,6 +29,7 @@ model categories {
   created_at     DateTime?  @default(now())
   updated_at     DateTime?  @default(now())
   deleted_at     DateTime?
+  posts          posts[]
   products       products[]
 }
 
@@ -48,22 +49,25 @@ model orders {
 }
 
 model posts {
-  id          Int       @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   account_id  Int
   user_id     Int
+  category_id Int
   title       String
   slug        String
   excerpt     String
   description String?
   tags        Json?
   metadata    Json?
-  created_at  DateTime? @default(now())
-  updated_at  DateTime? @default(now())
+  created_at  DateTime?  @default(now())
+  updated_at  DateTime?  @default(now())
   deleted_at  DateTime?
-  accounts    accounts  @relation(fields: [account_id], references: [id])
-  users       users     @relation(fields: [user_id], references: [id])
+  accounts    accounts   @relation(fields: [account_id], references: [id])
+  categories  categories @relation(fields: [category_id], references: [id])
+  users       users      @relation(fields: [user_id], references: [id])
 
   @@index([account_id], name: "posts_account_index")
+  @@index([category_id], name: "posts_category_index")
   @@index([user_id], name: "posts_user_index")
 }
 
