@@ -89,11 +89,11 @@ async function index() {
  */
 
 async function edit(id) {
-    return  await prisma.users.findOne({
+    return await prisma.users.findUnique({
       where: {
         id: id
       }
-    })
+    });
 }
 
 /**

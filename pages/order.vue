@@ -127,10 +127,10 @@
                     <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
                   </div>
                   <div class="flex items-center justify-between">
-                    <button class="bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+                    <button class="bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100 w-24" type="submit">
                       Sign In
                     </button>
-                    <a class="inline-block align-baseline font-bold text-base text-black hover:text-teal-300" href="#">
+                    <a class="inline-block align-baseline font-bold text-base text-black hover:text-teal-300 text-right" href="#">
                       Forgot Password?
                     </a>
                   </div>

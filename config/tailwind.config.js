@@ -20,6 +20,7 @@ module.exports = {
         '84': '21rem',
         '96': '24rem',
         '1/6': '100%',
+        '1/8': '30%',
       },
       borderRadius: {
         'large': '3rem',

@@ -52,8 +52,8 @@
             </div>
             <div class="px-1 py-3 text-white font-bold text-xl">{{ totalPrice | dollar }}</div>
             <div class="flex">
-              <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</a>
-              <a href="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</a>
+              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</nuxt-link>
             </div>
           </div>
         </div>

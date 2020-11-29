@@ -117,11 +117,11 @@ async function index(account_id) {
  */
 
 async function edit(id) {
-  return  await prisma.posts.findOne({
+  return await prisma.posts.findUnique({
     where: {
       id: id
     }
-  })
+  });
 }
 
 /**
