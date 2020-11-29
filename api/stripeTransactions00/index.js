@@ -17,7 +17,6 @@ module.exports = async function (req, res) {
             account_id: 1,
           },
         });
-
         const amount = req.body.reduce((prev, item) => {
           // lookup item information from "database" and calculate total amount
           const itemData = storeDatabase.data.find(
