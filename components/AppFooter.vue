@@ -2,9 +2,6 @@
   <div >
     <div class="pt-16 pb-4" style="background: rgb(73,73,73);">
       <div class="max-w-6xl mx-auto px-4 lg:px-0" >
-        <h3 class="text-2xl font-semibold text-white leading-none pb-4 lg:pb-0" >
-          Utilize our vast writer network
-        </h3>
         <div class="text-white flex flex-col lg:flex-row" >
           <div class="lg:w-1/4 lg:py-4" >
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="164" height="63" viewBox="0 0 164 63">

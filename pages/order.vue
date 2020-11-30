@@ -172,52 +172,52 @@
               <div class="px-5 py-6 w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                    <label for="paperType" class="block text-gray-700 text-base font-bold mb-1">
                       Type of paper
                     </label>
-                    <select v-model="form.paper_type" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                    <select id="paperType" v-model="form.paper_type" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
                       <optgroup label="Paper">
                         <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
                       </optgroup>
                     </select>
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                    <label for="academic" class="block text-gray-700 text-base font-bold mb-1">
                       Academic level
                     </label>
-                    <select @change="setFirstDuration" v-model="form.level" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                    <select id="academic" @change="setFirstDuration" v-model="form.level" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
                       <optgroup label="Academic Levels">
                         <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
                       </optgroup>
                     </select>
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                    <label for="subjects" class="block text-gray-700 text-base font-bold mb-1">
                       Subject, Discipline
                     </label>
-                    <select v-model="form.subject" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                    <select id="subjects" v-model="form.subject" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
                       <optgroup label="Subject, Discipline">
                         <option v-for="subject in subjects0" :value="subject">{{ subject }}</option>
                       </optgroup>
                     </select>
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                    <label for="topic" class="block text-gray-700 text-base font-bold mb-1">
                       Topic
                     </label>
-                    <input v-model="form.topic" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="Writers Choice" type="text">
+                    <input id="topic" v-model="form.topic" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out" placeholder="Writers Choice" type="text">
                   </div>
                   <div class="flex flex-col">
                     <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
                       <div class="mr-1">
-                        <label for="username" class="block text-gray-700 text-base font-bold mb-1 text-center">
+                        <label for="sources" class="block text-gray-700 text-base font-bold mb-1 text-center">
                           Sources
                         </label>
                         <div class="flex ml-1 border border-gray-300 rounded-3xl h-10">
                           <button class="w-1/3 bg-gray-400 rounded-l-3xl" @click="form.sources > 0 ? form.sources-- : form.sources = 0">-</button>
-                          <input class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.sources" />
+                          <input id="sources" class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.sources" />
                           <button class="w-1/3 bg-gray-400 rounded-r-3xl" @click="form.sources++">+</button>
                         </div>
                       </div>
                       <div class="ml-1">
-                        <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                        <label for="format" class="block text-gray-700 text-base font-bold mb-1">
                           Paper Format
                         </label>
-                        <select v-model="form.format" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out ">
+                        <select id="format" v-model="form.format" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
                           <optgroup label="Paper Format">
                             <option v-for="value of formats" :value="value" >{{ value }}</option>
                           </optgroup>
@@ -225,14 +225,14 @@
                       </div>
                     </div>
 
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
+                    <label for="details" class="block text-gray-700 text-base font-bold mb-1">
                       Paper details
                     </label>
-                    <textarea v-model="form.details" class="mb-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="Add details" type="text" style="min-height: 85px;">
+                    <textarea id="details" v-model="form.details" class="mb-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="Add details" type="text" style="min-height: 85px;">
                     </textarea>
 
                     <div id="dragBox" @drop="dropHandler" @dragover="handleDragOver" @dragleave="handleDragLeave" @dragenter="handleDragEnter">
-                      <input id="fileUploader" accept="text/plain,image/jpeg,image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/x-iwork-pages-sffpages" multiple="" type="file" autocomplete="off" tabindex="-1" class="hidden h-full w-full" style="z-index: 2;">
+                      <input id="fileUploader" @change="change" accept="text/plain,image/jpeg,image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/x-iwork-pages-sffpages" multiple="" type="file" autocomplete="off" tabindex="-1" class="hidden h-full w-full" style="z-index: 2;">
                       <span class="flex items-center">
                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                           <path d="M403.002 217.001C388.998 148.002 328.998 96 256 96c-57.998 0-107.998 32.998-132.998 81.001C63.002 183.002 16 233.998 16 296c0 65.996 53.999 120 120 120h260c55 0 100-45 100-100 0-52.998-40.996-96.001-92.998-98.999zM288 276v76h-64v-76h-68l100-100 100 100h-68z"></path>
@@ -240,12 +240,12 @@
                         <span>Drop files here or click</span>
                       </span>
                     </div>
-                    <ul class="mt-2">
-                      <li v-for="upload in form.uploads">{{ upload.name }} - {{ upload.size }} bytes<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg></li>
+                    <ul class="mt-2 previewImgTab">
+                      <li v-for="upload in form.uploads">{{ upload.name }} - {{ upload.size }} bytes<svg @click="removeFile(upload)" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg></li>
                     </ul>
                   </div>
                 </div>
-                <button type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to options</button>
+                <button @click="toggleTabs(3)" type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to options</button>
               </div>
             </div>
             <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full py-8">
@@ -279,21 +279,21 @@
                       <div class="flex items-center">
                         <input id="advanced" type="checkbox" v-model="form.advanced_writer" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="advanced" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">Advanced Writer (+25%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Advanced Writer (+25%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="editing" type="checkbox" v-model="form.additional_editing" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="editing" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">Additional editing (+15%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Additional editing (+15%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="dCopies" type="checkbox" v-model="form.digital_copies" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="dCopies" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">Digital copies of sources used ($9.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Digital copies of sources used ($9.99)</span>
                         </label>
                       </div>
 
@@ -340,21 +340,21 @@
                       <div class="flex items-center">
                         <input id="draft" type="checkbox" v-model="form.initial_draft" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="draft" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">Initial Draft (+10%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Initial Draft (+10%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="summary" type="checkbox" v-model="form.one_page_summary" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="summary" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">One-page summary ($17.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">One-page summary ($17.99)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="report" type="checkbox" v-model="form.plagiarism_report" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="report" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base">Plagiarism report ($7.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Plagiarism report ($7.99)</span>
                         </label>
                       </div>
 
@@ -379,7 +379,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to checkout</button>
+                <button @click="toggleTabs(4)" type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to checkout</button>
               </div>
             </div>
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
@@ -421,6 +421,13 @@
                     :disabled="!complete || !stripeEmail || loading"
                   >Pay with credit card</button>
                 </div>
+                <div v-else class="flex flex-col justify-center items-center h-64">
+                  <svg class="animate-spin -ml-1 mr-3 h-24 w-24 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <h2 class="text-gray-700 mb-2 mt-5 font-bold -ml-6 text-center">Processing<br>Payment</h2>
+                </div>
               </div>
             </div>
           </div>
@@ -431,46 +438,82 @@
               </h2>
               <div class="grid pb-2 text-lg font-semibold text-gray-700" style="grid-row-gap: 5px;">
                 <div class="grid innerGrid">
-                  <span>Type</span>
-                  <span class="font-normal text-base">{{ form.paper_type }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Type</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.paper_type }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Level</span>
-                  <span class="font-normal text-base">{{ levelName }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Level</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ levelName }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Deadline</span>
-                  <span class="font-normal text-base">{{ form.duration.duration }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Deadline</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.duration.duration }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Pages</span>
-                  <span class="font-normal text-base">{{ form.pages }} ({{ form.spacing }})</span>
+                  <div class="h-full flex flex-col">
+                    <span>Pages</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.pages }} ({{ form.spacing }})</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Paper format</span>
-                  <span class="font-normal text-base">{{ form.format }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Paper format</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.format }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Sources</span>
-                  <span class="font-normal text-base">{{ form.sources }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Sources</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.sources }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Slides</span>
-                  <span class="font-normal text-base">{{ form.slides }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Slides</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.slides }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Charts</span>
-                  <span class="font-normal text-base">{{ form.charts }}</span>
+                  <div class="h-full flex flex-col">
+                    <span>Charts</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.charts }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <span>Discount</span>
-                  <span class="font-normal text-base">none</span>
+                  <div class="h-full flex flex-col">
+                    <span>Discount</span>
+                  </div>
+                  <ul class="font-normal text-base text-right">
+                    <li>{{ form.discount_code }}</li>
+                  </ul>
                 </div>
                 <div class="grid innerGrid">
                   <div class="h-full flex flex-col">
                     <span>Extra options:</span>
                   </div>
-                  <ul class="font-normal text-base">
+                  <ul class="font-normal text-base text-right">
                     <li v-if="advancedWriter">Advanced writer</li>
                     <li v-if="additionalEditing">Additional editing</li>
                     <li v-if="digitalCopies">Digital copies of sources</li>
@@ -611,6 +654,41 @@ export default {
     }
   },
   methods: {
+    removeFile(file) {
+      console.log('removing file:-', file);
+      let index = this.form.uploads.findIndex(file0 => file0 === file);
+      this.form.uploads.splice(index, 1);
+    },
+    change(e) {
+      this.readFileUrl(e.target);
+    },
+    async readFileUrl(input) {
+
+      if (input.files && input.files[0]) {
+
+        /*function getBase64(file) {
+          const reader = new FileReader()
+          return new Promise(resolve => {
+            reader.onload = ev => {
+              resolve(ev.target.result)
+            }
+            reader.readAsDataURL(file)
+          })
+        }*/
+        // here will be array of promisified functions
+        /*const promises = []*/
+
+        // loop through fileList with for loop
+        for (let i = 0; i < input.files.length; i++) {
+          this.form.uploads.push(input.files[i]);
+          /*promises.push(getBase64(input.files[i]));*/
+        }
+
+        // array with base64 strings
+        /*let base64Strings = await Promise.all(promises);*/
+      }
+
+    },
     dropHandler(ev) {
       ev.preventDefault();
       if (ev.dataTransfer.items) {
@@ -621,7 +699,9 @@ export default {
           if (ev.dataTransfer.items[i].kind === 'file') {
             let file = ev.dataTransfer.items[i].getAsFile();
             console.log('... file[' + i + '].name = ' + file.name);
+            this.form.uploads.push(file);
             document.querySelector('#dragBox > span > span').innerText = 'Drop files here or click';
+            document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
           }
         }
       } else {
@@ -629,7 +709,9 @@ export default {
         // Use DataTransfer interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.files.length; i++) {
           console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+          this.form.uploads.push(ev.dataTransfer.files[i]);
           document.querySelector('#dragBox > span > span').innerText = 'Drop files here or click';
+          document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
         }
       }
     },
@@ -643,16 +725,18 @@ export default {
       }, false);
     },
     handleDragOver(ev) {
-      console.log('File(s) in drop zone');
       ev.preventDefault();
+      console.log('File(s) in drop zone');
+      document.querySelector('#dragBox').style.borderColor = 'rgb(66, 251, 183)';
+      document.querySelector('#dragBox > span > span').innerText = 'Drop it like its hot';
     },
     handleDragEnter(ev) {
       ev.preventDefault();
-      document.querySelector('#dragBox > span > span').innerText = 'Drop it like its hot';
     },
     handleDragLeave(ev) {
       ev.preventDefault();
       document.querySelector('#dragBox > span > span').innerText = 'Drop files here or click';
+      document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
     },
     setFirstDuration() {
       this.form.duration = {
@@ -667,7 +751,7 @@ export default {
       try {
         let response = await this.$auth.loginWith('local', { data: this.login });
         console.log('login response', response);
-        this.$router.push('/');
+        this.toggleTabs(2);
       } catch (err) {
         console.log(err);
         this.error = err.response.data.message
@@ -797,5 +881,18 @@ img {
   font-size: 14px;
   height: 70px;
   width: 100%;
+}
+
+.previewImgTab li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  background-color: #f7f7f7;
+  color: var(--textColor);
+  padding: 10px 15px;
+  margin-top: 5px;
 }
 </style>

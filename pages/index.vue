@@ -280,9 +280,10 @@
                         <div class="ml-form-formContent" >
                           <div class="ml-form-fieldRow ml-last-item" >
                             <div class="flex items-center w-full lg:w-1/2 ml-field-group ml-field-email ml-validate-email ml-validate-required" >
-                              <input type="email" placeholder="Your Email*" data-inputmask="" name="fields[email]" class="form-control py-3 px-6 rounded-full bg-secondary text-lg text-secondary rounded-r-none w-1/2 lg:w-full" > <button class="rounded-full text-white font-semibold inline-block mt-4 nuxt-link-exact-active nuxt-link-active transform hover:scale-105 transition ease-in-out duration-100 mb-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg text-vuegreen"  >
-                              Submit Email
-                            </button>
+                              <input type="email" placeholder="Email" class="form-control py-3 px-6 rounded-full bg-secondary text-lg text-secondary rounded-r-none w-1/2 lg:w-full" >
+                              <button class="rounded-full text-black font-semibold inline-block transform hover:scale-105 transition ease-in-out duration-100 my-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg">
+                                Submit
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -324,90 +325,90 @@
               <div class="h-full">
                 <ul>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 1, 'rounded-l-full bg-accordion': openTab === 1}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">What is research course pro?</span>
+                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 1, 'rounded-l-full bg-accordion': openTab === 1}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">What is Essay Dons?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 2, 'rounded-l-full bg-accordion': openTab === 2}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">What is free inquiry?</span>
+                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 2, 'rounded-l-full bg-accordion': openTab === 2}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">What is free inquiry?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-accordion bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 3, 'rounded-l-full bg-accordion': openTab === 3}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">Is your service legal?</span>
+                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-accordion bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 3, 'rounded-l-full bg-accordion': openTab === 3}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">Is your service legal?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-accordion bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 4, 'rounded-l-full bg-accordion': openTab === 4}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">Do you have any discounts?</span>
+                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-accordion bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 4, 'rounded-l-full bg-accordion': openTab === 4}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">Do you have any discounts?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-accordion bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 5, 'rounded-l-full bg-accordion': openTab === 5}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">Which formats do you provide?</span>
+                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-accordion bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 5, 'rounded-l-full bg-accordion': openTab === 5}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">Which formats do you provide?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-accordion bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl" href="javascript:void(0);">
-                      <span :class="{'bg-transparent': openTab !== 6, 'rounded-l-full bg-accordion': openTab === 6}" class="absolute inset-0 w-6"></span>
-                      <span class="relative ml-8 text-lg">How will I receive the completed paper?</span>
+                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-accordion bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                      <div :class="{'bg-transparent': openTab !== 6, 'rounded-l-full bg-accordion': openTab === 6}" class="absolute inset-0 w-6"></div>
+                      <div class="ml-8 text-lg">How will I receive the completed paper?</div>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="w-full lg:w-2/3 bg-secondary h-auto rounded-r-xl">
-              <div class="lg:px-6 py-2">
+            <div class="w-full lg:w-2/3 bg-secondary h-auto md:rounded-r-xl">
+              <div class="px-4 lg:px-6 py-2">
 
                 <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
+                  <p class="">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
-                  <p class="p-1">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
+                  <p class="">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
 
-                  <p class="p-1">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
+                  <p class="">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
 
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
+                  <p class="">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
-                  <p class="p-1">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
+                  <p class="">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
 
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
+                  <p class="">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
 
-                  <p class="p-1">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
+                  <p class="">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
 
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
+                  <p class="">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
-                  <p class="p-1">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
+                  <p class="">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
 
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 5, 'block': openTab === 5}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
+                  <p class="">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 6, 'block': openTab === 6}" class="text-white py-2 text-xl">
 
-                  <p class="p-1">Expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
+                  <p class="">Expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
 
                 </div>
               </div>
@@ -462,7 +463,7 @@
             </div>
             <div class="w-full lg:w-1/2 h-auto">
               <div class="lg:pl-4 text-secondary py-2 text-base block">
-                <h3 class="font-black text-xl">Why Choose Our RCP</h3>
+                <h3 class="font-black text-xl">Why Choose Our EssayDons</h3>
                 <p class="py-2">Well, there are multiple reasons for it. The most important among them include but are not limited to:</p>
 
                 <h3 class="font-black text-xl">Vast experience.</h3>
@@ -529,12 +530,12 @@
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
             <div class="w-full lg:w-7/12 h-auto">
-              <div class="lg:pr-4 py-2 block flex flex-row" >
-                <div class="lg:w-auto md:w-full">
+              <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
+                <div class="md:block lg:w-auto md:w-full">
                   <img class="h-80" src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
-                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
+                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
                     <div class="mx-auto text-center mt-2 leading-none absolute top-0 left-0 w-full py-4 px-6 flex justify-center" >
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -565,12 +566,12 @@
               </div>
             </div>
             <div class="w-full lg:w-5/12 h-auto">
-              <div class="lg:pr-4 py-2 block flex flex-row" >
-                <div class="lg:w-1/2 md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" class="rounded-l-large" alt="writing a proposal essay">
+              <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
+                <div class="md:block lg:w-1/2 md:w-full">
+                  <img src="~/assets/images/blog_placeholder.png" class="md:rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
-                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
+                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
                     <div class="mx-auto text-center mt-2 leading-none absolute top-0 left-0 w-full py-4 px-6 flex justify-center" >
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -597,12 +598,12 @@
                   </div>
                 </div>
               </div>
-              <div class="lg:pr-4 py-2 block flex flex-row" >
-                <div class="lg:w-1/2 md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" class="rounded-l-large" alt="writing a proposal essay">
+              <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
+                <div class="md:block lg:w-1/2 md:w-full">
+                  <img src="~/assets/images/blog_placeholder.png" class="md:rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
-                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
+                  <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
                     <div class="mx-auto text-center mt-2 leading-none absolute top-0 left-0 w-full py-4 px-6 flex justify-center" >
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
