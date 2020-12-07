@@ -106,11 +106,17 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-4 text-black text-center">
             Why Choose Us
           </h2>
           <p class="lg:text-2xl text-secondary text-center">
-            We walk you through your toughest academic problems as you learn how to solve them from expert writers.
+            We guide you through your toughest academic huddles as you learn to overcome them from expert writers.
+            It is easy to fall victim to unreliable academic help solutions. Our advice is that you
+            choose to work with a company that has been in the industry long enough to get recognition in the industry.
+            Besides our customer testimonials, we have received a ranking and positive review from Studential for the quality homework help services we
+            offer. Sit back and watch your academic performance drastically improve by having one of our
+            competent and reliable writers work on your homework and our quality assurance team confirm on
+            the quality of your homework before it is handed over to you.
           </p>
           <div class="mt-12" >
             <div class="flex flex-col md:flex-row lg:flex-row flex-wrap -mx-4" >
@@ -327,13 +333,13 @@
                   <li class="mb-3 lg:mb-1">
                     <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 1, 'rounded-l-full bg-accordion': openTab === 1}" class="absolute inset-0 w-6"></div>
-                      <div class="ml-8 text-lg">What is Essay Dons?</div>
+                      <div class="ml-8 text-lg">Who are Essay Dons?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
                     <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 2, 'rounded-l-full bg-accordion': openTab === 2}" class="absolute inset-0 w-6"></div>
-                      <div class="ml-8 text-lg">What is free inquiry?</div>
+                      <div class="ml-8 text-lg">About free inquiry?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
@@ -368,12 +374,14 @@
 
                 <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-white py-2 text-xl">
 
-                  <p class="">We're an expert essay writing service that offers a wealth of academic writing experience to students from all over the world. We aim to match the most qualified essay writer to your order, and for that, we hire the most seasoned essay writers from various disciplines.</p>
-
-                  <p class="">Quality is our top priority, so you can rest assured that every order you place via our website will be completed on the highest level possible. To order your first essay with us, simply fill out an order form, pay for the piece, and get in touch with the assigned essay writer.</p>
-
-                  <p class="">Make sure to familiarize yourselves with our Guarantees should you have any doubts or questions. And feel free to contact us via our 24/7 chat support: our team is working around-the-clock helping you with any issues you might face.</p>
-
+                  <p class="">In recent years, there has been rising demand among students for online homework help. Owing to
+                    this demand, <a href="/">Essaydons.com</a> was established with an aim to offer high quality homework help
+                    services to anyone that came knocking our door. We are one of those companies that have been of
+                    great help to many students for the past eight years. Over time we have built trust among our clients
+                    through continuously providing high-quality homework help services. So far we have served over
+                    forty thousand clients in different fields of study. The company has recruited over three hundred
+                    professional writers to ensure that you always have a writer to personally attend to any of your
+                    homework needs.</p>
                 </div>
 
                 <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-white py-2 text-xl">
@@ -466,20 +474,54 @@
                 <h3 class="font-black text-xl">Why Choose Our EssayDons</h3>
                 <p class="py-2">Well, there are multiple reasons for it. The most important among them include but are not limited to:</p>
 
-                <h3 class="font-black text-xl">Vast experience.</h3>
-                <p class="py-2">We have worked with papers on subjects you wouldn’t believe and for all sorts of subjects. We outperform ourselves to meet the needs of our customers. Therefore, if you choose to seek our assistance, you won’t regret it.</p>
+                <h3 class="font-black text-xl">Plagiarism Free Assignments.</h3>
+                <p class="py-2">
+                  All our services are 100% original content, expect no trace of plagiarism in any of your assignments
+                  handled by our competent homework writers. The company has clear guidelines and rules on
+                  plagiarism which our writers have always been keen to adhere to. The level of discipline and
+                  commitment our writers have has ensured that essaydons.com never gets to deal with any
+                  plagiarism case for all the time we have been in the homework help service industry. With the
+                  advancement of plagiarism checking tools, it is even hard for us to submit plagiarised work to you as
+                  our quality assurance team pass all your assignments through these plagiarism checking tools before
+                  your assignment is uploaded to you.
+                </p>
 
                 <h3 class="font-black text-xl">Professional writing team.</h3>
-                <p class="py-2">We do not hire cheap unseasoned essay writers to work on your projects. We value your trust and our reputation way too high to use their services. It’s impossible to recover the loyalty of a customer, so why risking it at all?</p>
+                <p class="py-2">
+                  Our team of writers has been hired after a thorough recruitment exercise conducted after every two years.
+                  We want to ensure consistency, and for this reason, we like to train and perfect on the writers we have as opposed to having new writers in the company every other month, which will certainly not work in favour of the company’s standards.
+                </p>
 
                 <h3 class="font-black text-xl">Timely delivery.</h3>
-                <p class="py-2">We never miss deadlines. So, no matter when you send us a request to compose a decent essay for you, you can expect the ready-made piece in your inbox long before the deadline.</p>
+                <p class="py-2">Your assignment will be delivered on time. We know the implications late assignment submission
+                  could have on your academic life, for this reason, we will ensure that you get to submit all your
+                  assignments in time by having our writers upload to you your homework in good time to allow you
+                  go through your homework and have any necessary corrections made on it by your homework
+                  writer. All we ask of you is to simply place your order with us right away for our writers to
+                  immediately start working on it. Timely order requests allow our writers to have ample time and less
+                  pressure working on your assignments. It is not late, place your order now.
+                </p>
 
                 <h3 class="font-black text-xl">High quality.</h3>
-                <p class="py-2">Quality is our top priority. Our online essay writers use multiple tools to ensure that the quality of the paper is top-notch. They check for grammar, punctuation, syntax and formatting style correctness. All in all, they leave no room for poor quality.</p>
+                <p class="py-2">
+                  Our writers have gained industry
+                  experience in their various fields of expertise. Therefore, they not only apply academic knowledge to
+                  your homework but also add a professional touch to it. <a href="/">Essaydons.com</a> assures you that your
+                  assignment is in the best hands and brains. Our quality assurance team also conducts training and
+                  tests on our writers to ensure that <a href="/">essaydons.com</a> homework quality standards are always met by
+                  our writers.
+                </p>
 
                 <h3 class="font-black text-xl">Round-the-clock support.</h3>
-                <p class="py-2">In this business, it’s essential to keep in touch all the time. That is why our Customer Support service operates 24/7. They’re here to answer your questions and settle any disputes you have with an essay writer.</p>
+                <p class="py-2">
+                  You can always get your homework needs tended to 24/7 regardless of your location.
+                  <a href="/">Essaydons.com</a> has hired enough writers and support personnel to ensure that you do not have to
+                  wait to get your homework needs attended to. Our response from both our writers and customer
+                  support is prompt and comes as soon as you reach out to us. Our 24/7 availability has especially
+                  been of great help to students with urgent homework needs. Place your homework order with us
+                  anytime you wish. It does not matter how close you are to your deadline; we will effectively work on
+                  your assignment and deliver high-quality homework help to you and on time.
+                </p>
 
                 <h3 class="font-black text-xl">How It Works</h3>
                 <p class="py-2">By now, you might probably be looking for ways to place your first order. If so, then we’ve got fantastic news for you! It will only take a couple of minutes.</p>

@@ -16,10 +16,15 @@
           <div class="lg:grid lg:grid-cols-4 lg:gap-6">
             <div class="col-span-3 mx-auto pb-24 flex flex-col w-full" >
               <h2 class="text-4xl font-semibold leading-none pb-8 text-black">
-                About Us
+                Professional Writing Help
               </h2>
               <p class="text-lg text-secondary">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Besides offering homework help services to students, we equally offer help to professionals in areas
+                such as, proofreading services for professional journals and articles, writing for articles for
+                professionals, business proposal writing, writing marketing strategies, and accounting help for
+                individual professionals and corporates. If you are in practicing professional looking for online help in
+                your area of expertise, contact our customer service agent and get all the advice and help you need
+                from us.
               </p>
             </div>
             <div class="min-h-64 pb-24 col-span-1 mx-auto text-center">

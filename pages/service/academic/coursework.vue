@@ -16,10 +16,16 @@
           <div class="lg:grid lg:grid-cols-4 lg:gap-6">
             <div class="col-span-3 mx-auto pb-24 flex flex-col w-full" >
               <h2 class="text-4xl font-semibold leading-none pb-8 text-black">
-                About Us
+                Coursework Assignment Help
               </h2>
               <p class="text-lg text-secondary">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Coursework assignments are an unavoidable pain and that you just have to embrace as a student.
+                Depending on the nature of your course and your professor’s level of affiliation to issuing
+                assignments, you will have them as often as every other week. Considering that you have several
+                subjects to deal with, working on each and every of your coursework homework can be quite a
+                challenge to you. The more reason you need a hand from essaydons.com in your homework. Our
+                team of writers is available 24/7 to deal with all your coursework assignments regardless of your
+                study discipline, or the time you may need that help.
               </p>
             </div>
             <div class="min-h-64 pb-24 col-span-1 mx-auto text-center">

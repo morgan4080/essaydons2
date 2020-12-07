@@ -16,10 +16,114 @@
           <div class="lg:grid lg:grid-cols-4 lg:gap-6">
             <div class="col-span-3 mx-auto pb-24 flex flex-col w-full" >
               <h2 class="text-4xl font-semibold leading-none pb-8 text-black">
-                About Us
+                Term Paper Homework Help
               </h2>
               <p class="text-lg text-secondary">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Every end of the semester comes with its fair share of pressure and confusion. Avoid this pressure
+                and confusion by having your term paper written by us. We have a team of certified team of writers
+                who will ensure that all your term papers are delivered to you on time and in the best quality
+                possible. Our term paper homework help applies to all disciplines and all levels of study; be it high
+                school, college/university or graduate school. We assure you timely delivery of your term paper
+                homework at a very affordable price. Try us today and let us know your feedback.
+              </p>
+              <p class="text-lg text-secondary">
+                As a student, expect to deal with different natures of academic assignments throughout your studies. Be
+                prepared to deal with coursework assignments, term papers, research assignments, and thesis
+                assignment for postgraduate students. Assignments are not everyone’s piece of cake and as such, quite
+                often students will find themselves rushing to handle their homework just a few days or hours to its
+                submission. This last minute rush compromises on the quality of assignment you end up handing in to
+                your professor.
+              </p>
+              <p class="text-lg text-secondary">
+                You do not have to go through all that and miss out in those coveted scores when there are homework
+                help options to help you with your assignments. Note that unlike other nature of assignments, term
+                papers are longer and more intense since they test you on all that you have learnt throughout the
+                semester. Note that these assignments, coincide with your end of semester examination. As it is most
+                students’ norm, examination revision often happens weeks to the examination and most assignments
+                are usually done days to the submission date. This means that one task has to be denied time and focus
+                needed to effectively accomplish it. That is probably your term paper assignment.
+              </p>
+              <p class="text-lg text-secondary">
+                For this reason, essaydons.com offers affordable and reliable term paper homework help right when
+                you need it. This is a very common area of homework help request from our clients and as such, the
+                company has dealt effectively with plenty of term papers, plenty enough to know exactly what is
+                expected of any term paper. Your term paper is safe and home at the hands of our experienced
+                homework helpers. Take your time revising for your end of semester examination as we focus on
+                helping you attain the best scores in your assignment. Our term paper help applies to high school
+                students, college/university students/ and postgraduate students.
+              </p>
+              <h2 class="text-3xl font-semibold leading-none pb-4 text-black">
+                Why Choose <a href="/">Essaydons.com</a> for Your Term Paper Help
+              </h2>
+              <p class="text-lg text-secondary">
+                <a href="/">Essaydons.com</a> is an accredited company and has been in the market long enough to deliver quality
+                services to our clients. Term papers can be quite demanding in terms of time and research work needed.
+                These assignments also coincide with your end of semester examination revision. Your priority around
+                that time should be examination revision. Leave all your homework tasks to us and we will certainly
+                work on ensuring that we help you achieve your very best in your academics by delivering high quality
+                term papers and creating ample time for your examination revision. Place your term paper help request
+                with us today.
+              </p>
+              <h2 class="text-2xl font-semibold leading-none pb-4 text-black">
+                Urgent term paper help
+              </h2>
+              <p class="text-lg text-secondary">
+                Your many commitments as a students are certainly bound to interfere with your academic
+                life. Your part of academic life that suffers most happens to be your assignments. Quite often, you will
+                find yourself short of time to work on your term papers. This time shortage does not have to cost you
+                academic excellence anyway. We deal with all sorts of urgent assignments including your urgent term
+                paper homework. Place your order with us today and let our reliable and competent tutors deliver the
+                best quality for your term paper.
+              </p>
+
+              <h2 class="text-2xl font-semibold leading-none pb-4 text-black">
+                On Time Term Paper Help
+              </h2>
+              <p class="text-lg text-secondary">
+                All our services are delivered to you within the time frame given to us by you. Our homework writers are
+                solely dedicated to working on your assignments and as such, you can be assured that they have enough
+                time with them to focus on your term paper and deliver it to you on time. Do not risk late assignment
+                submission by squeezing the little time you have to deal with all of your academic responsibilities. Let us handle all your term paper assignments and hand the assignment to you on time. Work with the best
+                when it comes to term paper homework help.
+              </p>
+
+              <h2 class="text-2xl font-semibold leading-none pb-4 text-black">
+                Professional Homework Helpers
+              </h2>
+              <p class="text-lg text-secondary">
+                Our team of writers is made up of highly trained individuals in all matters pertaining homework help
+                writing. We are professionals and will ensure that all our engagement with you remains professional.
+                Your term paper will be a masterpiece, thoroughly researched and written with the precision of your
+                professor&#39;s assignment. Essaydons.com writers have gained both professional and academic writing
+                experience making them more suitable writers to handle all your term paper assignment needs. The
+                company also ensures regular training of our writers and homework tutors to ensure that they stay
+                updated with the latest in the academic writing world to ensure that you do not miss out on any
+                necessary writing changes.
+              </p>
+
+              <h2 class="text-2xl font-semibold leading-none pb-4 text-black">
+                Affordable Essay Help/ easy payment services
+              </h2>
+              <p class="text-lg text-secondary">
+                Our services have been made accessible to everyone through subsidized prices. You will certainly find no
+                other company offering the kind of high quality services we offer you at our price. Besides our cheap
+                prices, our payment mode is equally very flexible and easy for anyone to use. Our price calculator
+                enables you to know how much your assignment will cost you. We will not quote random prices for you
+                just to extort you. The cost of doing your assignment will mainly be based on the length of your
+                assignment, and time given to complete the assignment. Very transparent price setting measures.
+              </p>
+
+              <h2 class="text-2xl font-semibold leading-none pb-4 text-black">
+                Flawless Communication Channels
+              </h2>
+              <p class="text-lg text-secondary">
+                We have great value for communication with our clients. For this reason, we have created flexible and
+                flawless communication channels between our writers and clients. Our customer support response is
+                also a click away. All through your assignment handling, your writer will provide you with assignment
+                progress updates whenever you need them. One on one communication with your writer allows you a
+                chance to discuss all assignment instructions with your writer. In the event that some changes need be
+                made on your assignment, use our communication channel to communicate these changes to your
+                writer as soon as you can.
               </p>
             </div>
             <div class="min-h-64 pb-24 col-span-1 mx-auto text-center">

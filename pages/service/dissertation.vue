@@ -16,10 +16,16 @@
           <div class="lg:grid lg:grid-cols-4 lg:gap-6">
             <div class="col-span-3 mx-auto pb-24 flex flex-col w-full" >
               <h2 class="text-4xl font-semibold leading-none pb-8 text-black">
-                About Us
+                Dissertation Writing Help
               </h2>
               <p class="text-lg text-secondary">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                At essaydons.com, we have everyone catered for when it comes to homework help. This includes
+                graduate school students too. We have a team of well trained and experienced professors meant to
+                deal with your dissertation assignments. The delicate nature of dissertations has had the company
+                hire professors from different fields of study to help graduate school students with their thesis
+                assignment. We promise to deliver high-quality dissertation papers to our clients, do all necessary
+                revisions and corrections as requested by you or your thesis supervisor free of charge until you and
+                your supervisor are satisfied with the quality of your thesis paper.
               </p>
             </div>
             <div class="min-h-64 pb-24 col-span-1 mx-auto text-center">
