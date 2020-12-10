@@ -118,13 +118,15 @@ export default {
   methods: {
     async register() {
       try {
-        await this.$axios.post('api/signup', {
+        let signupRes = await this.$axios.post('api/signup', {
           name: this.username,
           email: this.email,
           phone: this.phone,
           password: this.password,
           account_id: this.account_id
         });
+
+        console.log(signupRes, "from sigup");
 
         let result = await this.$auth.loginWith('local', {
           data: {
