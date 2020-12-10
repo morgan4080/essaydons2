@@ -718,7 +718,7 @@ import { mapGetters, mapState } from 'vuex'
 import LoadingButton from "@/components/LoadingButton"
 
 export default {
-  auth: false,
+  /*auth: false,*/
   components: {
     LoadingButton,
     Icon,

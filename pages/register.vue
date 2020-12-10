@@ -44,10 +44,10 @@
               <div class="lg:flex-grow md:w-1/4 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                 <div class="w-full max-w-xs" >
                   <Notification :message="error" v-if="error"/>
-                  <form @submit="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
+                  <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                     <div class="mb-4">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        Username
+                        Names
                       </label>
                       <input v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                     </div>
@@ -56,6 +56,12 @@
                         Email
                       </label>
                       <input v-model="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="mb-4">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                        Phone
+                      </label>
+                      <input v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="number" placeholder="+100000000">
                     </div>
                     <div class="mb-6">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -102,28 +108,34 @@ export default {
   data() {
     return {
       username: '',
+      account_id: 1,
       email: '',
       password: '',
+      phone: '',
       error: null
     }
   },
   methods: {
     async register() {
       try {
-        await this.$axios.post('api/users', {
-          username: this.username,
+        await this.$axios.post('api/signup', {
+          name: this.username,
           email: this.email,
-          password: this.password
-        })
+          phone: this.phone,
+          password: this.password,
+          account_id: this.account_id
+        });
 
-        await this.$auth.loginWith('local', {
+        let result = await this.$auth.loginWith('local', {
           data: {
             email: this.email,
             password: this.password
           },
-        })
+        });
 
-        this.$router.push('/')
+        console.log(result, "from login");
+
+        this.$router.push('/profile')
       } catch (e) {
         this.error = e.response.data.message
       }

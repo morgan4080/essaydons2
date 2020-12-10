@@ -15,6 +15,15 @@ const { join } = require('path')
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 module.exports = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods', 'POST')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
   if (req.body && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({
@@ -42,14 +51,6 @@ async function doLogin(req) {
   let match = await bcrypt.compare(req.body.password, user.password)
 
   delete user.password
-
-  delete user.deleted_at
-
-  delete user.created_at
-
-  delete user.updated_at
-
-  delete user.provider
 
   delete user.provider_id
 
