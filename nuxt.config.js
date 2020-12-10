@@ -33,16 +33,20 @@ export default {
     // Options
     strategies: {
       local: {
-        local: {
-          endpoints: {
-            login: { url: '/api/login', method: 'post', propertyName: 'data.token' },
-            me: { url: '/api/me', method: 'get', propertyName: 'data' },
-            logout: false,
-          },
-          tokenRequired: true,
-          tokenType: 'bearer',
-          globalToken: true,
-          autoFetchUser: true
+        token: {
+          property: 'data.token',
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'data',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/api/login', method: 'post' },
+          logout: false,
+          // logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/me', method: 'get' }
         }
       },
       google: {
@@ -76,7 +80,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
     '@nuxtjs/cloudinary'
   ],
 

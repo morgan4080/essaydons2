@@ -44,12 +44,12 @@
               <div class="lg:flex-grow md:w-1/3 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                 <div class="w-full max-w-xs" >
                   <Notification :message="error" v-if="error"/>
-                  <form @submit="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
+                  <form @submit.prevent="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                     <div class="mb-4">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        Username
+                        Email
                       </label>
-                      <input v-model="login.username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                      <input v-model="login.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                     </div>
                     <div class="mb-6">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -126,7 +126,7 @@ export default {
   data() {
     return {
       login: {
-        username: '',
+        email: '',
         password: ''
       },
       error: null
@@ -137,7 +137,7 @@ export default {
       try {
         let response = await this.$auth.loginWith('local', { data: this.login });
         console.log('login response', response);
-        this.$router.push('/');
+        this.$router.push('/profile');
       } catch (err) {
         console.log(err);
         this.error = err.response.data.message
