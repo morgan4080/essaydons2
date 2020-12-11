@@ -1,4 +1,5 @@
 'use strict'
+import Cors from 'cors'
 
 const { PrismaClient } = require('@prisma/client');
 
@@ -6,7 +7,30 @@ const prisma = new PrismaClient();
 
 const bcrypt = require('bcrypt');
 
+function initMiddleware(middleware) {
+  return (req, res) =>
+    new Promise((resolve, reject) => {
+      middleware(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+        return resolve(result)
+      })
+    })
+}
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ['GET', 'POST', 'OPTIONS'],
+  })
+)
+
 module.exports = async function (req, res) {
+  // Run cors
+  await cors(req, res)
 
   if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
     try {

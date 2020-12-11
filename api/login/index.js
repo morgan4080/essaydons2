@@ -1,4 +1,5 @@
 'use strict'
+import Cors from 'cors'
 
 import { PrismaClient } from '@prisma/client'
 
@@ -14,7 +15,31 @@ const { join } = require('path')
 
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
+function initMiddleware(middleware) {
+  return (req, res) =>
+    new Promise((resolve, reject) => {
+      middleware(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+        return resolve(result)
+      })
+    })
+}
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ['GET', 'POST', 'OPTIONS'],
+  })
+)
+
 module.exports = async function (req, res) {
+  // Run cors
+  await cors(req, res)
+
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({
