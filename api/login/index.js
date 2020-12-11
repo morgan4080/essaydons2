@@ -15,9 +15,6 @@ const { join } = require('path')
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 module.exports = async function (req, res) {
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({

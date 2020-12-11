@@ -7,8 +7,6 @@ const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
 module.exports = async function (req, res) {
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
 
   if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
     try {
