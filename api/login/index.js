@@ -15,22 +15,20 @@ const { join } = require('path')
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 module.exports = async function (req, res) {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-  if (req.body && req.body.email && req.body.password) {
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+
+  if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({
       data: response
     })
   } else {
-    res.status(500)
+    res.status(401).json({
+      data: {
+        message: 'required details missing'
+      }
+    })
   }
 };
 
