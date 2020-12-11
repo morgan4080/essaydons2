@@ -19,8 +19,8 @@
       "dest": "/api/accounts/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -30,8 +30,8 @@
       "dest": "/api/categories/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -41,8 +41,8 @@
       "dest": "/api/orders/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -52,8 +52,8 @@
       "dest": "/api/posts/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -63,8 +63,8 @@
       "dest": "/api/storedata/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -74,8 +74,8 @@
       "dest": "/api/stripeTransactions00/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -85,8 +85,8 @@
       "dest": "/api/users/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -96,8 +96,8 @@
       "dest": "/api/login/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -107,8 +107,8 @@
       "dest": "/api/signup/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
@@ -118,8 +118,8 @@
       "dest": "/api/me/$1.js",
       "methods": ["GET", "POST", "PUT", "OPTIONS"],
       "headers": {
+        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-        "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Access-Control-Allow-Origin": "*"
       }
