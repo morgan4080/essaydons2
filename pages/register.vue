@@ -101,7 +101,7 @@
 import Notification from '~/components/Notification'
 
 export default {
-  auth: false,
+  auth: 'guest',
   components: {
     Notification,
   },
@@ -112,11 +112,13 @@ export default {
       email: '',
       password: '',
       phone: '',
-      error: null
+      error: null,
+      loading: false
     }
   },
   methods: {
     async register() {
+      this.loading = true;
       try {
         let signupRes = await this.$axios.post('api/signup', {
           name: this.username,
@@ -124,20 +126,31 @@ export default {
           phone: this.phone,
           password: this.password,
           account_id: this.account_id
-        });
+        })
 
-        console.log(signupRes, "from sigup");
+        console.log(signupRes, "from sigup")
 
-        let result = await this.$auth.loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password
-          },
-        });
+        if (signupRes.code === "P2002" ) {
+          let e = {};
+          e.response.data.message = "record already exists";
+          throw e;
+        } else {
+          let result = await this.$auth.loginWith('local', {
+            data: {
+              email: this.email,
+              password: this.password
+            },
+          });
 
-        console.log(result, "from login");
+          if (result.status === 200) {
+            this.$router.push('/profile')
+          } else {
+            let e = {};
+            e.response.data.message = "something went wrong";
+            throw e;
+          }
+        }
 
-        this.$router.push('/profile')
       } catch (e) {
         this.error = e.response.data.message
       }

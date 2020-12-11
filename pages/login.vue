@@ -119,7 +119,7 @@
 import Notification from '~/components/Notification'
 
 export default {
-  auth: false,
+  auth: 'guest',
   components: {
     Notification,
   },
@@ -136,8 +136,9 @@ export default {
     async userLogin() {
       try {
         let response = await this.$auth.loginWith('local', { data: this.login });
-        console.log('login response', response);
-        this.$router.push('/profile');
+        if (response.status === 200) {
+          this.$router.push('/profile');
+        }
       } catch (err) {
         console.log(err);
         this.error = err.response.data.message
