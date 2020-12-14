@@ -31,21 +31,26 @@ export default {
 
   auth: {
     // Options
+    /*redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/profile',
+      home: '/profile'
+    },*/
     strategies: {
       local: {
         token: {
-          property: 'data.token',
+          property: 'token',
           required: true,
           type: 'Bearer'
         },
         user: {
-          property: 'data',
+          property: false,
           autoFetch: true
         },
         endpoints: {
           login: { url: '/api/login', method: 'post' },
           logout: false,
-          // logout: { url: '/api/auth/logout', method: 'post' },
           user: { url: '/api/me', method: 'get' }
         }
       },

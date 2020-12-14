@@ -29,10 +29,10 @@
 
                   </p>
                   <span class="flex ml-auto sm:mt-0 justify-center justify-start">
-                      <nuxt-link to="/logout" style="background: #42FBB7;display: flex;align-items: center;" class="uppercase ml-4 text-base font-semibold py-3 px-4 bg-transparent text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" data-v-4f57e35d="">
+                      <button @click="logout" style="background: #42FBB7;display: flex;align-items: center;" class="uppercase ml-4 text-base font-semibold py-3 px-4 bg-transparent text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" >
                        Log Out
-                      </nuxt-link>
-                    </span>
+                      </button>
+                  </span>
                 </div>
                 <div class="absolute h-px w-full mt-4 bg-gray-300 pointer-events-none"></div>
               </div>
@@ -718,7 +718,6 @@ import { mapGetters, mapState } from 'vuex'
 import LoadingButton from "@/components/LoadingButton"
 
 export default {
-  /*auth: false,*/
   components: {
     LoadingButton,
     Icon,
@@ -769,6 +768,10 @@ export default {
         this.$store.dispatch("deleteItem", { uri: 'orders', data: id });
       }
     },
+    async logout() {
+      await this.$auth.logout();
+      this.$store.commit('setAuth', null);
+    }
   },
   mounted() {
     this.form.subject = this.subjects[0];

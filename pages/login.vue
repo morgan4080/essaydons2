@@ -148,7 +148,7 @@ export default {
             position: "bottom-left",
             duration : 5000
         });
-        setTimeout(()=>this.$router.push('/profile'), 2000)
+        this.$router.push('/profile');
       } catch (err) {
         this.loading = false;
         this.$toast.error('Error while authenticating', {

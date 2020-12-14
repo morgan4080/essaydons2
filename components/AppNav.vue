@@ -415,6 +415,7 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout();
+      this.$store.commit('setAuth', null);
     },
     showDropdown() {
       this.dropDownOpen = !this.dropDownOpen;

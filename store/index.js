@@ -37,6 +37,10 @@ export const getters = {
 };
 
 export const mutations = {
+  setAuth: (state, auth = null) => {
+    state.auth.user = auth;
+    state.auth.loggedIn = false;
+  },
   updateCartUI: (state, payload) => {
     state.cartUIStatus = payload;
   },
