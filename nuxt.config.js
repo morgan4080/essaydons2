@@ -110,7 +110,7 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     withCredentials: true,
-    baseURL: "https://essaydons2.vercel.app"
+    baseURL: "https://essaydons.co"
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
