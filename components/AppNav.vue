@@ -302,7 +302,7 @@
                 New Order
               </nuxt-link>
 
-              <div class="relative inline-block text-left">
+              <div v-if="!$auth.loggedIn" class="relative inline-block text-left">
                 <button v-on:click="showDropdown" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   My Account
                   <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -385,7 +385,7 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   components: {

@@ -23,7 +23,7 @@
                         </g>
                       </g>
                     </svg>
-                    <span class="ml-3 text-base">Jogn Doe</span>
+                    <span class="ml-3 text-base">{{ fullName }}</span>
                   </a>
                   <p class="text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
 
@@ -739,6 +739,9 @@ export default {
   },
   computed: {
     ...mapState(["storedata", "orders"]),
+    fullName() {
+      return this.$auth.user ? this.$auth.user.name : null;
+    },
     duration() {
       return this.storedata.filter(el => el.id === this.form.level)[0].deadline;
     },
@@ -775,6 +778,7 @@ export default {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
     };
+    console.log("token", this.$auth.token);
   }
 }
 </script>
