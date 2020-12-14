@@ -136,6 +136,7 @@ export default {
     async userLogin() {
       try {
         let response = await this.$auth.loginWith('local', { data: this.login });
+        console.log(response);
         if (response.status === 200) {
           this.$router.push('/profile');
         }
