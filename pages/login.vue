@@ -45,26 +45,31 @@
                 <Notification :message="error" v-if="error"/>
                 <form @submit.prevent="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                   <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username">
                       Email
                     </label>
-                    <input v-model="login.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                    <input name="email" required v-model="login.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                   </div>
                   <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="password">
                       Password
                     </label>
                     <!--border-red-500-->
-                    <input v-model="login.password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                    <input name="password" required v-model="login.password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
                     <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
                   </div>
                   <div class="flex items-center justify-between">
-                    <button class="bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
-                      Sign In
+                    <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+                      <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Login
                     </button>
-                    <a class="inline-block align-baseline font-bold text-sm text-black hover:text-teal-300" href="#">
-                      Forgot Password?
-                    </a>
+                    <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset" class="underline text-teal-600">Reset</nuxt-link></span>
+                      <nuxt-link to="/register" class="flex-1 underline text-teal-600">Signup</nuxt-link>
+                    </span>
                   </div>
                 </form>
                 <div class="flex flex-row justify-center flex-no-wrap w-full space-x-2 relative" style="border-top: 1px solid #f1f1f1;padding-top: 10px;padding-bottom: 10px;">
@@ -127,20 +132,30 @@ export default {
         email: '',
         password: ''
       },
-      error: null
+      error: null,
+      loading: false
     }
   },
   methods: {
     async userLogin() {
       try {
+        this.loading = true;
         let response = await this.$auth.loginWith('local', { data: this.login });
+        this.loading = false;
         console.log(response);
-        if (response.status === 200) {
-          this.$router.push('/profile');
-        }
+        this.$toast.success('Logged In!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+        });
+        setTimeout(()=>this.$router.push('/profile'), 2000)
       } catch (err) {
-        console.log(err);
-        this.error = err.response.data.message
+        this.loading = false;
+        this.$toast.error('Error while authenticating', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
       }
     }
   }

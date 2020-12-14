@@ -43,15 +43,17 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = async function (req, res) {
-  authMiddleware(req).then(user => {
+  try {
+    let user = await authMiddleware(req)
+
     res.status(200).json({
-      data: user
+      ...user
     })
-  }).catch(error => {
+  } catch (e) {
     res.status(401).json({
-      data: error
+      error: e
     })
-  })
+  }
 }
 
 module.exports = allowCors(handler)

@@ -46,38 +46,44 @@
                   <Notification :message="error" v-if="error"/>
                   <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                     <div class="mb-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        Names
+                      <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username">
+                        Name
                       </label>
-                      <input v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                      <input required name="names" v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                     </div>
                     <div class="mb-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                      <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="email">
                         Email
                       </label>
-                      <input v-model="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                      <input required name="email" v-model="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
                     </div>
                     <div class="mb-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                      <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="phone">
                         Phone
                       </label>
-                      <input v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="number" placeholder="+100000000">
+                      <input required name="phone" v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="+100000000">
                     </div>
                     <div class="mb-6">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                      <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="password">
                         Password
                       </label>
                       <!--border-red-500-->
-                      <input v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                      <input required name="password" v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
                       <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
                     </div>
                     <div class="flex items-center justify-between">
-                      <button class="bg-black hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        Register
+                      <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+                        <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Signup
                       </button>
-                      <nuxt-link to="/login" class="inline-block align-baseline font-bold text-sm text-teal-500 hover:text-black" href="#">
-                        Registered? Login
-                      </nuxt-link>
+                      <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                        <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                          Already have an account? <nuxt-link to="/login" class="flex-1 underline text-teal-600">Login</nuxt-link>
+                        </span>
+                      </span>
                     </div>
                   </form>
                   <p class="text-center text-gray-500 text-xs">
@@ -131,10 +137,19 @@ export default {
         console.log(signupRes, "from sigup")
 
         if (signupRes.code === "P2002" ) {
-          let e = {};
-          e.response.data.message = "record already exists";
-          throw e;
+          this.loading = false;
+          this.$toast.error('record already exists!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
         } else {
+          this.loading = false;
+          this.$toast.success('Registered!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
           let result = await this.$auth.loginWith('local', {
             data: {
               email: this.email,
@@ -142,17 +157,20 @@ export default {
             },
           });
 
-          if (result.status === 200) {
-            this.$router.push('/profile')
-          } else {
-            let e = {};
-            e.response.data.message = "something went wrong";
-            throw e;
-          }
+          this.$toast.success('Logged In!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
         }
 
       } catch (e) {
-        this.error = e.response.data.message
+        this.loading = false;
+        this.$toast.error('Error while authenticating', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
       }
     }
   }

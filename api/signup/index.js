@@ -46,10 +46,10 @@ const handler = async function (req, res) {
       })
 
       res.status(200).json({
-        data: response
+        ...response
       })
     } catch (e) {
-      res.status(401).json({ data: e })
+      res.status(401).json({ error: e })
     }
   }
 }
