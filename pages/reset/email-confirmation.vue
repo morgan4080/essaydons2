@@ -9,16 +9,15 @@
 
         <form @submit.prevent="forgotPassword">
           <div class="block">
-            <label class="block font-medium text-sm text-gray-700">
-              Email
-            </label>
-
-            <input v-model="form.email" class="form-input rounded-md shadow-sm block mt-1 w-full" type="email" name="email" required="required" autofocus="autofocus">
-
+            <input name="email" required="required" autofocus="autofocus" v-model="form.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email">
           </div>
 
           <div class="flex items-center justify-end mt-4">
-            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+            <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+              <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
               Email Password Reset Link
             </button>
 
@@ -36,12 +35,33 @@ export default {
     return {
       form: {
         email: null,
-      }
+        account_id: 1
+      },
+      loading: false
     }
   },
   methods: {
     forgotPassword() {
+      try {
+        this.loading = true;
 
+        this.$toast.success('Check mail!', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
+
+        this.loading = false;
+
+      } catch (e) {
+        this.loading = false;
+
+        this.$toast.error('sm went terribly wrong!', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
+      }
     }
   }
 }

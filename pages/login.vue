@@ -149,13 +149,16 @@ export default {
             duration : 5000
         });
         this.$router.push('/profile');
-      } catch (err) {
+      } catch (e) {
+        console.log(e.response.data)
         this.loading = false;
-        this.$toast.error('Error while authenticating', {
-          theme: "outline",
-          position: "bottom-left",
-          duration : 5000
-        });
+        if (e.response.data.message) {
+          this.$toast.error(e.response.data.message, {
+            theme: "outline",
+            position: "bottom-left",
+            duration: 5000
+          });
+        }
       }
     }
   }

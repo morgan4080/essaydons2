@@ -134,43 +134,41 @@ export default {
           account_id: this.account_id
         })
 
-        console.log(signupRes, "from sigup")
-
-        if (signupRes.code === "P2002" ) {
-          this.loading = false;
-          this.$toast.error('record already exists!', {
-            theme: "outline",
-            position: "bottom-left",
-            duration : 5000
-          });
-        } else {
-          this.loading = false;
-          this.$toast.success('Registered!', {
-            theme: "outline",
-            position: "bottom-left",
-            duration : 5000
-          });
-          let result = await this.$auth.loginWith('local', {
-            data: {
-              email: this.email,
-              password: this.password
-            },
-          });
-
-          this.$toast.success('Logged In!', {
-            theme: "outline",
-            position: "bottom-left",
-            duration : 5000
-          });
-        }
-
-      } catch (e) {
         this.loading = false;
-        this.$toast.error('Error while authenticating', {
+        this.$toast.success('Registered!', {
           theme: "outline",
           position: "bottom-left",
           duration : 5000
         });
+        let result = await this.$auth.loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password
+          },
+        });
+        this.toggleTabs(2)
+        this.$toast.success('Logged In!', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
+
+      } catch (e) {
+        this.loading = false;
+        console.log(e.response.data)
+        if (e.response.data.message) {
+          this.$toast.error(e.response.data.message, {
+            theme: "outline",
+            position: "bottom-left",
+            duration: 5000
+          });
+        } else {
+          this.$toast.error(e.response.data.error.meta.target, {
+            theme: "outline",
+            position: "bottom-left",
+            duration: 5000
+          });
+        }
       }
     }
   }
