@@ -750,7 +750,7 @@ export default {
   background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941));
 }
 .mobile-b {
-  background-image: linear-gradient(rgba(101,101,101,.5),rgba(101,101,101,.5)),url(~assets/images/Header_Image.png);
+  background-image: linear-gradient(rgba(98, 98, 98, .3),rgba(98, 98, 98, .3)),url(~assets/images/Header_Image.png);
   background-size: cover;
   background-repeat: no-repeat;
 }

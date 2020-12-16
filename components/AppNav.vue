@@ -341,7 +341,11 @@
                   </div>
                 </transition>
               </div>
-
+              <div v-else class="relative inline-block text-left">
+                <button v-on:click="$router.push('/profile')" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+                  My Account
+                </button>
+              </div>
             </div>
             <div class="lg:hidden mx-8 absolute z-20 right-0" >
               <button @click="showMobileMenu = !showMobileMenu" class="block lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white" >

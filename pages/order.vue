@@ -26,7 +26,7 @@
                 <div class="flex-1">
                 </div>
 
-                <div class="flex-1 cursor-pointer" @click="toggleTabs(1)">
+                <div class="flex-1 cursor-pointer" >
                   <div :class="{'bg-white border-2 border-grey-light text-gray-700': openTab === 1, 'bg-teal-300 border-0 text-white': openTab >= 1}" class="w-10 h-10 mx-auto rounded-full text-lg flex items-center">
                     <span class="text-center w-full">
                       <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 mx-auto"><title>1</title><path class="a" d="M12.5,2.5H20a.5.5,0,0,1,.5.5V21a.5.5,0,0,1-.5.5H12.5"></path><path class="a" d="M3.5,21.222a.5.5,0,0,0,.392.488l8,1.778A.5.5,0,0,0,12.5,23V1a.5.5,0,0,0-.608-.488l-8,1.778a.5.5,0,0,0-.392.488Z"></path><circle class="a" cx="9" cy="12" r="1.5"></circle></svg>
@@ -109,30 +109,34 @@
               </div>
             </div>
             <div :class="{'hidden': openTab !== 1 , 'block': openTab === 1}" class="flex flex-col text-left w-full py-8">
-              <div class="w-full max-w-xs mx-auto" >
-                <Notification :message="error" v-if="error"/>
-                <form @submit="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
+              <div :class="{'hidden': openTab0 !== 1 , 'block': openTab0 === 1}" class="w-full max-w-xs mx-auto" >
+                <form @submit.prevent="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                   <div class="mb-4">
-                    <label class="block text-gray-700 text-base font-bold mb-2" for="username">
-                      Username
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username">
+                      Email
                     </label>
-                    <input v-model="login.username" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" id="username" type="text" placeholder="Username">
+                    <input name="email" required v-model="login.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                   </div>
                   <div class="mb-6">
-                    <label class="block text-gray-700 text-base font-bold mb-2" for="password">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="password">
                       Password
                     </label>
                     <!--border-red-500-->
-                    <input v-model="login.password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                    <input name="password" required v-model="login.password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
                     <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
                   </div>
                   <div class="flex items-center justify-between">
-                    <button class="bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100 w-24" type="submit">
-                      Sign In
+                    <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+                      <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Login
                     </button>
-                    <a class="inline-block align-baseline font-bold text-base text-black hover:text-teal-300 text-right" href="#">
-                      Forgot Password?
-                    </a>
+                    <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset/email-confirmation" class="underline text-teal-600">Reset</nuxt-link></span>
+                      <a @click="toggleTabs0(2)" href="javascript:void(0)" class="flex-1 underline text-teal-600">Signup</a>
+                    </span>
                   </div>
                 </form>
                 <div class="flex flex-row justify-center flex-no-wrap w-full space-x-2 relative" style="border-top: 1px solid #f1f1f1;padding-top: 10px;padding-bottom: 10px;">
@@ -166,6 +170,50 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div :class="{'hidden': openTab0 !== 2 , 'block': openTab0 === 2}" class="w-full max-w-xs mx-auto" >
+                <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
+                  <div class="mb-4">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username">
+                      Name
+                    </label>
+                    <input required name="names" v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="email">
+                      Email
+                    </label>
+                    <input required name="email" v-model="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="phone">
+                      Phone
+                    </label>
+                    <input required name="phone" v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="+100000000">
+                  </div>
+                  <div class="mb-6">
+                    <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="password">
+                      Password
+                    </label>
+                    <!--border-red-500-->
+                    <input required name="password" v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                    <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
+                      <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Signup
+                    </button>
+                    <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                        <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
+                          Already have an account? <a @click="toggleTabs0(1)" href="javascript:void(0)" class="flex-1 underline text-teal-600">Login</a>
+                        </span>
+                      </span>
+                  </div>
+                </form>
               </div>
             </div>
             <div :class="{'hidden': openTab !== 2 , 'block': openTab === 2}" class="flex flex-col text-left w-full py-8">
@@ -384,6 +432,7 @@
             </div>
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
               <div class="w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
+                <Notification :message="error" v-if="error"/>
                 <div v-if="cartUIStatus === 'idle'" class="px-5 py-6">
                   <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
                   <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
@@ -419,7 +468,9 @@
                     class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100"
                     @click="pay"
                     :disabled="!complete || !stripeEmail || loading"
-                  >Pay with credit card</button>
+                  >
+                    Pay with credit card
+                  </button>
                 </div>
                 <div v-else class="flex flex-col justify-center items-center h-64">
                   <svg class="animate-spin -ml-1 mr-3 h-24 w-24 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -546,7 +597,14 @@ export default {
     Card
   },
   mounted() {
-    // this.$store.dispatch("createPaymentIntent");
+    // this.$store.dispatch("createPaymentIntent"); toggleTabs(1)
+
+    if (this.$auth.loggedIn) {
+      this.toggleTabs(2)
+    } else {
+      this.toggleTabs(1)
+    }
+
     this.form.paper_type = this.subjects[0];
     this.form.subject = this.subjects0[0];
     this.form.format = this.formats[0];
@@ -561,6 +619,11 @@ export default {
   },
   data() {
     return {
+      username: '',
+      account_id: 1,
+      email: '',
+      password: '',
+      phone: '',
       complete: false,
       stripeEmail: null,
       stripeOptions: {
@@ -568,6 +631,7 @@ export default {
       },
       loading: false,
       openTab: 1,
+      openTab0: 1,
       form: {
         uploads: [],
         level: 1,
@@ -747,14 +811,78 @@ export default {
     toggleTabs(tabNumber){
       this.openTab = tabNumber
     },
+    toggleTabs0(tabNumber){
+      this.openTab0 = tabNumber
+    },
     async userLogin() {
       try {
+        this.loading = true;
         let response = await this.$auth.loginWith('local', { data: this.login });
-        console.log('login response', response);
-        this.toggleTabs(2);
+        this.loading = false;
+        console.log(response);
+        this.toggleTabs(2)
+        this.$toast.success('Logged In!', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
       } catch (err) {
-        console.log(err);
-        this.error = err.response.data.message
+        this.loading = false;
+        this.$toast.error('Error while authenticating', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
+      }
+    },
+    async register() {
+      this.loading = true;
+      try {
+        let signupRes = await this.$axios.post('api/signup', {
+          name: this.username,
+          email: this.email,
+          phone: this.phone,
+          password: this.password,
+          account_id: this.account_id
+        })
+
+        console.log(signupRes, "from sigup")
+
+        if (signupRes.code === "P2002" ) {
+          this.loading = false;
+          this.$toast.error('record already exists!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
+        } else {
+          this.loading = false;
+          this.$toast.success('Registered!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
+          let result = await this.$auth.loginWith('local', {
+            data: {
+              email: this.email,
+              password: this.password
+            },
+          });
+          this.toggleTabs(2)
+          this.$toast.success('Logged In!', {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          });
+        }
+
+      } catch (e) {
+        this.loading = false;
+        this.$toast.error('Error in registration', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        });
       }
     },
     pay() {

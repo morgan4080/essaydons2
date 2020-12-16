@@ -30,13 +30,6 @@ export default {
   ],
 
   auth: {
-    // Options
-    /*redirect: {
-      login: '/login',
-      logout: '/',
-      callback: '/profile',
-      home: '/profile'
-    },*/
     strategies: {
       local: {
         token: {

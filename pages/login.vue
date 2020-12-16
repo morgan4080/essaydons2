@@ -67,7 +67,7 @@
                       Login
                     </button>
                     <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
-                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset" class="underline text-teal-600">Reset</nuxt-link></span>
+                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset/email-confirmation" class="underline text-teal-600">Reset</nuxt-link></span>
                       <nuxt-link to="/register" class="flex-1 underline text-teal-600">Signup</nuxt-link>
                     </span>
                   </div>
