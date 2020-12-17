@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen" style="background: #FBFBFB;">
+    <div class="min-h-screen bg-gray-100">
       <div class="mobile-b min-h-screen bg-left-0 lg:bg-center-0">
         <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-8 lg:px-0 pb-32">
           <div class="mx-auto flex flex-wrap">
@@ -8,7 +8,8 @@
               <div class="w-full md:py-2 relative">
                 <div class="mx-auto flex flex-row">
                   <a class="flex title-font font-medium items-center justify-start justify-center text-gray-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 111 111">
+                    <img v-if="formProfile.profile_image" class="w-12 h-12 rounded-full" :src="formProfile.profile_image[0]" alt="profile-photo">
+                    <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 111 111">
                       <defs>
                         <clipPath id="clip-path">
                           <circle id="Ellipse_10" data-name="Ellipse 10" cx="55.5" cy="55.5" r="55.5" transform="translate(0.153)" fill="#42fbb7"/>
@@ -25,8 +26,11 @@
                     </svg>
                     <span class="ml-3 text-base">{{ fullName }}</span>
                   </a>
-                  <p class="text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
-
+                  <p v-if="$auth.user.owner" class="flex items-center text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
+                    Admin
+                  </p>
+                  <p v-else class="flex items-center text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
+                    {{ formProfile.type }}
                   </p>
                   <span class="flex ml-auto sm:mt-0 justify-center justify-start">
                       <button @click="logout" style="background: #42FBB7;display: flex;align-items: center;" class="uppercase ml-4 text-base font-semibold py-3 px-4 bg-transparent text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" >
@@ -345,222 +349,201 @@
                       </table>
                     </div>
                     <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-gray-700 py-2 text-xl">
-                      <div>
-                        <div class="md:grid md:grid-cols-3 md:gap-6">
-                          <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                              <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
-                              <p class="mt-1 text-base leading-5 text-gray-600">
-                                This information will be displayed publicly so be careful what you share.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="#" method="POST">
+                      <form @submit.prevent="saveProfile('personal')" >
+                        <div>
+                          <div class="md:grid md:grid-cols-3 md:gap-6">
+                            <div class="mt-5 md:mt-0 md:col-span-3">
                               <div class="shadow sm:rounded-md sm:overflow-hidden">
-                                <div class="px-4 py-5 bg-white sm:p-6">
-                                  <div class="mt-6">
-                                    <label for="about" class="block text-base leading-5 font-medium text-gray-700">
-                                      About
-                                    </label>
-                                    <div class="rounded-md shadow-sm border rounded">
-                                      <textarea id="about" rows="3" class="form-textarea mt-1 appearance-none w-full py-2 px-3 text-gray-700 focus:outline-none sm:text-base sm:leading-5" placeholder="you@example.com"></textarea>
-                                    </div>
-                                    <p class="mt-2 text-base text-gray-500">
-                                      Brief description for your profile. URLs are hyperlinked.
-                                    </p>
-                                  </div>
-
-                                  <div class="mt-6">
-                                    <label class="block text-base leading-5 font-medium text-gray-700">
-                                      Photo
-                                    </label>
-                                    <div class="mt-2 flex items-center">
-                                        <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                          <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                          </svg>
-                                        </span>
-                                      <span class="ml-5 rounded-md shadow-sm">
-                                          <button type="button" class="py-2 px-3 border border-gray-300 rounded-md text-base leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
-                                            Change
-                                          </button>
-                                        </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                    <span class="inline-flex rounded-md shadow-sm">
-                                      <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent text-base leading-5 font-medium rounded-md text-white custom-mg-head hover:bg-black focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                                        Save
-                                      </button>
-                                    </span>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="hidden sm:block">
-                        <div class="py-5">
-                          <div class="border-t border-gray-200"></div>
-                        </div>
-                      </div>
-
-                      <div class="mt-10 sm:mt-0">
-                        <div class="md:grid md:grid-cols-3 md:gap-6">
-                          <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                              <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-                              <p class="mt-1 text-base leading-5 text-gray-600">
-                                Use a permanent address where you can receive mail.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="#" method="POST">
-                              <div class="shadow overflow-hidden sm:rounded-md">
                                 <div class="px-4 py-5 bg-white sm:p-6">
                                   <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                      <label for="first_name" class="block text-base font-medium leading-5 text-gray-700">First name</label>
-                                      <input id="first_name" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                      <label class="block text-base leading-5 font-medium text-gray-700">
+                                        Photo
+                                      </label>
+                                      <div class="mt-2 flex items-center">
+                                        <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                          <img v-if="formProfile.profile_image" class="w-12 h-12 rounded-full" :src="formProfile.profile_image[0]" alt="profile-photo">
+                                          <svg v-else class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                          </svg>
+                                        </span>
+                                        <span class="ml-5 rounded-md shadow-sm">
+                                          <input @change="fileChange" accept="image/jpeg,image/jpeg,image/png" id="fileUploader" class="hidden" type="file">
+                                          <button @click="handleFileUploadClick" type="button" class="py-2 px-3 border border-gray-300 rounded-md text-base leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                            Change
+                                          </button>
+                                        </span>
+                                      </div>
                                     </div>
-
                                     <div class="col-span-6 sm:col-span-3">
-                                      <label for="last_name" class="block text-base font-medium leading-5 text-gray-700">Last name</label>
-                                      <input id="last_name" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-4">
-                                      <label for="email_address" class="block text-base font-medium leading-5 text-gray-700">Email address</label>
-                                      <input id="email_address" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3">
-                                      <label for="country" class="block text-base font-medium leading-5 text-gray-700">Country / Region</label>
-                                      <select id="country" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-base sm:leading-5">
-                                        <option>United States</option>
-                                        <option>Canada</option>
-                                        <option>Mexico</option>
+                                      <label for="about" class="block text-base leading-5 font-medium text-gray-700">
+                                        User Type
+                                      </label>
+                                      <select id="about" v-model="formProfile.type" class="block mt-2 w-2/3 pl-2 form-select w-full py-2 pr-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-rfocus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-base sm:leading-5">
+                                        <option v-for="user in userTypes" :value="user" >{{ user }}</option>
                                       </select>
-                                    </div>
-
-                                    <div class="col-span-6">
-                                      <label for="street_address" class="block text-base font-medium leading-5 text-gray-700">Street address</label>
-                                      <input id="street_address" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                      <label for="city" class="block text-base font-medium leading-5 text-gray-700">City</label>
-                                      <input id="city" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                      <label for="state" class="block text-base font-medium leading-5 text-gray-700">State / Province</label>
-                                      <input id="state" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                      <label for="postal_code" class="block text-base font-medium leading-5 text-gray-700">ZIP / Postal</label>
-                                      <input id="postal_code" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
                                     </div>
                                   </div>
                                 </div>
-                                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                  <button class="py-2 px-4 border border-transparent text-base leading-5 font-medium rounded-md text-white custom-mg-head shadow-sm hover:bg-black focus:outline-none focus:shadow-outline-blue active:custom-mg-head transition duration-150 ease-in-out">
-                                    Save
-                                  </button>
-                                </div>
                               </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="hidden sm:block">
-                        <div class="py-5">
-                          <div class="border-t border-gray-200"></div>
-                        </div>
-                      </div>
-
-                      <div class="mt-10 sm:mt-0">
-                        <div class="md:grid md:grid-cols-3 md:gap-6">
-                          <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                              <h3 class="text-lg font-medium leading-6 text-gray-900">Notifications</h3>
-                              <p class="mt-1 text-base leading-5 text-gray-600">
-                                Decide which communications you'd like to receive and how.
-                              </p>
                             </div>
                           </div>
-                          <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="#" method="POST">
-                              <div class="shadow overflow-hidden sm:rounded-md">
-                                <div class="px-4 py-5 bg-white sm:p-6">
-                                  <fieldset>
-                                    <legend class="text-base leading-6 font-medium text-gray-900">By Email</legend>
-                                    <div class="mt-4">
-                                      <div class="mt-4">
-                                        <div class="flex items-start">
-                                          <div class="flex items-center h-5">
-                                            <input id="candidates" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                                          </div>
-                                          <div class="ml-3 text-base leading-5">
-                                            <label for="candidates" class="font-medium text-gray-700">Order Complete</label>
-                                            <p class="text-gray-500">Get notified when order is completed.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="mt-4">
-                                        <div class="flex items-start">
-                                          <div class="flex items-center h-5">
-                                            <input id="offers" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                                          </div>
-                                          <div class="ml-3 text-base leading-5">
-                                            <label for="offers" class="font-medium text-gray-700">Offers</label>
-                                            <p class="text-gray-500">Get notified when a discount offer is available.</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </fieldset>
-                                  <fieldset class="mt-6">
-                                    <legend class="text-base leading-6 font-medium text-gray-900">Push Notifications</legend>
-                                    <p class="text-base leading-5 text-gray-500">These are delivered via SMS to your mobile phone.</p>
-                                    <div class="mt-4">
-                                      <div class="flex items-center">
-                                        <input id="push_everything" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                                        <label for="push_everything" class="ml-3">
-                                          <span class="block text-base leading-5 font-medium text-gray-700">Everything</span>
-                                        </label>
-                                      </div>
-                                      <div class="mt-4 flex items-center">
-                                        <input id="push_email" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                                        <label for="push_email" class="ml-3">
-                                          <span class="block text-base leading-5 font-medium text-gray-700">Same as email</span>
-                                        </label>
-                                      </div>
-                                      <div class="mt-4 flex items-center">
-                                        <input id="push_nothing" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                                        <label for="push_nothing" class="ml-3">
-                                          <span class="block text-base leading-5 font-medium text-gray-700">No push notifications</span>
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </fieldset>
-                                </div>
-                                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                  <button class="py-2 px-4 border border-transparent text-base font-medium rounded-md text-white custom-mg-head shadow-sm hover:bg-black focus:outline-none focus:shadow-outline-blue focus:bg-indigo-500 active:custom-mg-head transition duration-150 ease-in-out">
-                                    Save
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
+                        </div>
+
+                        <div class="hidden sm:block">
+                          <div class="py-5">
+                            <div class="border-t border-gray-200"></div>
                           </div>
                         </div>
-                      </div>
+
+                        <div class="mt-10 sm:mt-0">
+                          <div class="md:grid md:grid-cols-3 md:gap-6">
+                            <div class="mt-5 md:mt-0 md:col-span-3">
+
+                                <div class="shadow overflow-hidden sm:rounded-md">
+                                  <div class="px-4 py-5 bg-white sm:p-6">
+                                    <div class="grid grid-cols-6 gap-6">
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="first_name" class="block text-base font-medium leading-5 text-gray-700">First name</label>
+                                        <input v-model="formProfile.first_name" id="first_name" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                      </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="last_name" class="block text-base font-medium leading-5 text-gray-700">Last name</label>
+                                        <input id="last_name" v-model="formProfile.last_name" class="block form-input mt-1  appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                      </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="country" class="block text-base font-medium leading-5 text-gray-700 mb-1">Country / Region</label>
+                                        <div class="relative">
+                                          <div class="absolute inset-y-0 left-0 py-2 pl-3 flex items-center pointer-events-none">
+                                          <span class="text-gray-500 sm:text-sm">
+                                            <img ref="flag" :src="computedCountry.flag" alt="flag" style="width: 30px;height: 23px;">
+                                          </span>
+                                          </div>
+                                          <select id="country" v-model="formProfile.country" class="block form-select w-full py-2 pl-12 pr-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-rfocus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-base sm:leading-5">
+                                            <option v-for="co in countries" :value="co.name" >{{ co.name }}</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="phone" class="block text-base font-medium leading-5 text-gray-700">Phone number</label>
+                                        <div class="relative">
+                                          <div class="absolute inset-y-0 left-0 py-2 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-gray-700 sm:text-base">
+                                              +{{ computedCountry.callingCode }}
+                                            </span>
+                                          </div>
+                                          <input id="phone" v-model="formProfile.phone" class="block form-input mt-1 pl-12 appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                        </div>
+                                      </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="email_address" class="block text-base font-medium leading-5 text-gray-700">Email address</label>
+                                        <input id="email_address" v-model="formProfile.email" type="email" class="block form-input mt-1 appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                      </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="password" class="block text-base font-medium leading-5 text-gray-700">Password</label>
+                                        <div class="relative">
+                                          <input id="password" :type="!passwordFieldType ? 'password' : 'text'" v-model="formProfile.password" class="block form-input mt-1 pr-12 appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                          <button type="button" @click="changePasswordFieldType" class="absolute cursor-pointer inset-y-0 right-0 py-2 pl-3 pr-3 flex items-center">
+                                            <span class="text-gray-700 sm:text-base">
+                                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" class="w-6" enable-background="new 0 0 512 512">
+                                                <g>
+                                                  <g fill="#231F20">
+                                                    <path d="m34,256l26.2,26.2c108,108 283.7,108 391.7,0l26.1-26.2-26.2-26.2c-108-108-283.7-108-391.7,0l-26.1,26.2zm222,126.2c-75.8,0-151.6-28.9-209.3-86.6l-32.9-32.9c-3.7-3.7-3.7-9.7 0-13.5l32.9-32.9c115.4-115.4 303.2-115.4 418.6,0l32.9,32.9c3.7,3.7 3.7,9.7 0,13.5l-32.9,32.9c-57.7,57.7-133.5,86.6-209.3,86.6z"/>
+                                                    <path d="m256,183.5c-40,0-72.5,32.5-72.5,72.5s32.5,72.5 72.5,72.5c40,0 72.5-32.5 72.5-72.5s-32.5-72.5-72.5-72.5zm0,164c-50.5,0-91.5-41.1-91.5-91.5 0-50.5 41.1-91.5 91.5-91.5s91.5,41.1 91.5,91.5c0,50.5-41,91.5-91.5,91.5z"/>
+                                                  </g>
+                                                </g>
+                                              </svg>
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="hidden sm:block">
+                          <div class="py-5">
+                            <div class="border-t border-gray-200"></div>
+                          </div>
+                        </div>
+
+                        <div class="mt-10 sm:mt-0">
+                          <div class="md:grid md:grid-cols-3 md:gap-6">
+                            <div class="mt-5 md:mt-0 md:col-span-3">
+
+                                <div class="shadow overflow-hidden sm:rounded-md">
+                                  <div class="px-4 py-5 bg-white sm:p-6">
+                                    <fieldset>
+                                      <legend class="text-base leading-6 font-medium text-gray-900">By Email</legend>
+                                      <div class="mt-4">
+                                        <div class="mt-4">
+                                          <div class="flex items-start">
+                                            <div class="flex items-center h-5">
+                                              <input v-model="formProfile.emailNotifications.onOrderComplete" id="candidates" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            </div>
+                                            <div class="ml-3 text-base leading-5">
+                                              <label for="candidates" class="font-medium text-gray-700">Order Complete</label>
+                                              <p class="text-gray-500">Get notified when order is completed.</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="mt-4">
+                                          <div class="flex items-start">
+                                            <div class="flex items-center h-5">
+                                              <input v-model="formProfile.emailNotifications.offers" id="offers" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            </div>
+                                            <div class="ml-3 text-base leading-5">
+                                              <label for="offers" class="font-medium text-gray-700">Offers</label>
+                                              <p class="text-gray-500">Get notified when a discount offer is available.</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </fieldset>
+                                    <fieldset class="mt-6">
+                                      <legend class="text-base leading-6 font-medium text-gray-900">Push Notifications</legend>
+                                      <p class="text-base leading-5 text-gray-500">These are delivered via SMS to your mobile phone.</p>
+                                      <div class="mt-4">
+                                        <div class="mt-4 flex items-center">
+                                          <input v-model="formProfile.pushNotifications.sameAsEmail" id="push_email" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <label for="push_email" class="ml-3">
+                                            <span class="block text-base leading-5 font-medium text-gray-700">Same as email</span>
+                                          </label>
+                                        </div>
+                                        <div class="mt-4 flex items-center">
+                                          <input v-model="formProfile.pushNotifications.noneAtAll" id="push_nothing" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <label for="push_nothing" class="ml-3">
+                                            <span class="block text-base leading-5 font-medium text-gray-700">No push notifications</span>
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="px-4 py-3 text-right mt-6 sm:px-6">
+                          <button class="flex items-center ml-auto bg-black hover:bg-teal-300 text-white hover:text-black py-2 px-4 text-base font-medium rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
+                            <svg v-if="loading && currentForm === 'personal'" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Save Profile
+                          </button>
+                        </div>
+                      </form>
                     </div>
                     <div :class="{'hidden': openTab !== 3, 'block': openTab === 3}" class="text-gray-700 py-2 text-xl">
                       <table class="w-full px-2 overflow-x-auto whitespace-no-wrap table-auto">
@@ -733,11 +716,33 @@ export default {
           price: null
         },
         pages: 1,
-      }
+      },
+      formProfile: {
+        first_name: null,
+        last_name: null,
+        profile_image: null,
+        country: 'United States of America',
+        type: 'Student',
+        email: null,
+        phone: null,
+        emailNotifications: {
+          onOrderComplete: true,
+          offers: true
+        },
+        pushNotifications: {
+          sameAsEmail: true,
+          noneAtAll: false
+        },
+        password: null,
+      },
+      userMeta: null,
+      loading: false,
+      currentForm: '',
+      passwordFieldType: false
     }
   },
   computed: {
-    ...mapState(["storedata", "orders"]),
+    ...mapState(["storedata", "orders","countries","userTypes"]),
     fullName() {
       return this.$auth.user ? this.$auth.user.name : null;
     },
@@ -749,9 +754,116 @@ export default {
     },
     totalPrice() {
       return this.form.duration.price * this.form.pages
+    },
+    computedCountry() {
+      return this.formProfile.country ? { flag: this.countries.find(x => x.name === this.formProfile.country).flag, callingCode: this.countries.find(x => x.name === this.formProfile.country).callingCode } : ''
     }
   },
   methods: {
+    changePasswordFieldType() {
+      this.passwordFieldType = !this.passwordFieldType
+    },
+    async saveProfile(section) {
+      if (this.loadMetaData()) {
+        this.loading = true;
+        this.currentForm = section;
+        let uploadInstance = this.userMeta;
+        try {
+          if (section === 'personal') {
+            console.log('uploading', this.userMeta.profile.profile_image[0]);
+            let public_id = 'profile_photo_' + Math.random().toString(36).substr(2, 16);
+            // check for user metadata profile_image public_id for existing profiles to overwrite public_id
+            uploadInstance.profile.profile_image = await this.$cloudinary.upload(this.userMeta.profile.profile_image[0], {
+              public_id: public_id,
+              folder: "profile/" + this.userMeta.personalInformation.email,
+              upload_preset: 'ybfqkqyu'
+            });
+          }
+        } catch (e) {
+          console.log(e);
+        }
+        try {
+          const response = await this.$axios.put('api/users?data=' + section, {
+            ...uploadInstance
+          })
+          console.log('response', response)
+          this.$toast.success(section + ' Information Updated', {
+            theme: 'outline',
+            position: 'bottom-right',
+            duration: 5000
+          })
+        } catch (e) {
+          this.loading = false;
+          if (e.response && e.response.data.message) {
+            this.$toast.error(e.response.data.message, {
+              theme: "outline",
+              position: "bottom-right",
+              duration: 5000
+            });
+          } else {
+            this.$toast.error("Network Error", {
+              theme: "outline",
+              position: "bottom-right",
+              duration: 5000
+            });
+          }
+        }
+      }
+    },
+    loadMetaData() {
+      this.userMeta = {
+        profile: {
+          profile_image: this.formProfile.profile_image,
+          userType: this.formProfile.type
+        },
+        personalInformation: {
+          first_name: this.formProfile.first_name,
+          last_name: this.formProfile.last_name,
+          email: this.formProfile.email,
+          phone: "+" + this.computedCountry.callingCode + " " + this.formProfile.phone,
+        },
+        notifications: {
+          emailNotifications: this.emailNotifications,
+          pushNotifications: this.pushNotifications
+        }
+      }
+      return true
+    },
+    async readFileUrl(input) {
+
+      if (input.files && input.files[0]) {
+
+        function getBase64(file) {
+          const reader = new FileReader()
+          return new Promise(resolve => {
+            reader.onload = ev => {
+              resolve(ev.target.result)
+            }
+            reader.readAsDataURL(file)
+          })
+        }
+
+        const promises = [];
+
+        for (let i = 0; i < input.files.length; i++) {
+          promises.push(getBase64(input.files[i]));
+        }
+
+        return await Promise.all(promises);
+      }
+
+    },
+    async fileChange(e) {
+      let fileArr = await this.readFileUrl(e.target);
+      this.formProfile.profile_image = fileArr;
+      console.log(fileArr)
+    },
+    handleFileUploadClick() {
+      let fileElem = document.getElementById("fileUploader");
+      if (fileElem) {
+        fileElem.click();
+      }
+    },
     setFirstDuration() {
       this.form.duration = {
         duration: Object.entries(this.duration)[0][0],
@@ -781,7 +893,20 @@ export default {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
     };
-    console.log("token", this.$auth.token);
+    this.formProfile.email = this.$auth.user ? this.$auth.user.email : null;
+    this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
+    this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
+    this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
+    // load profile photo from metadata to formProfile.profile_image formProfile.type
+
+    if (this.$auth.user.email_verified_at === null) {
+      this.$toast.error("Check Mail Verification", {
+        theme: "outline",
+        position: "bottom-center",
+        duration: 15000
+      });
+    }
+    console.log(this.$auth.user)
   }
 }
 </script>

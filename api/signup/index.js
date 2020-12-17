@@ -242,7 +242,7 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Welcome to Essaydons</td>
+<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey ${req.body.name} welcome to Essaydons</td>
 </tr>
 
 <tr>
@@ -257,16 +257,6 @@ padding: 0 15px 0 15px !important;
 <tbody><tr>
 <td style="text-align: center; padding: 50px 0 10px 0;">
 <a href="#" style="font-size: 28px; text-decoration: none; color: #d5d5d5;">Welcome</a>
-</td>
-</tr>
-
-<tr>
-<td align="middle">
-<table width="60" height="2" border="0" cellpadding="0" cellspacing="0" style="width: 60px; height: 2px;">
-<tbody><tr>
-<td align="middle" width="60" height="2" style="background-color: #eeeeee; width: 60px; height: 2px; font-size: 1px;"><img src="img/img16.jpg"></td>
-</tr>
-</tbody></table>
 </td>
 </tr>
 

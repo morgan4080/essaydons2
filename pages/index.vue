@@ -7,7 +7,7 @@
 
     </div>
     <div>
-      <div class="min-h-screen" style="background: #FBFBFB;">
+      <div class="min-h-screen bg-gray-100">
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
@@ -23,7 +23,7 @@
               </a>
             </div>
           </div>
-          <div class="header-main-shape"></div>
+          <div class="header-main-shape bg-gray-100"></div>
           <div class="absolute text-center flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
             <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
               Place your order
@@ -767,7 +767,6 @@ export default {
   height: 90px;
   position: absolute;
   width: 100%;
-  background: #fbfbfb;
   border-radius: 50% 50% 0 0/90px 90px 0px 0px;
   bottom: -1px;
   left: 0;

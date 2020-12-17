@@ -61,17 +61,31 @@
                       <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="phone">
                         Phone
                       </label>
-                      <input required name="phone" v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="+100000000">
+                      <input required name="phone" v-model="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="cell number">
                     </div>
                     <div class="mb-6">
                       <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="password">
                         Password
                       </label>
                       <!--border-red-500-->
-                      <input required name="password" v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-                      <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
+                      <div class="relative">
+                        <input required name="password" v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" :type="!passwordFieldType ? 'password' : 'text'" placeholder="******************">
+                        <button type="button" @click="changePasswordFieldType" class="absolute cursor-pointer inset-y-0 right-0 py-2 pl-3 pr-3 flex items-center">
+                        <span class="text-gray-700 sm:text-base">
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512" class="w-6" enable-background="new 0 0 512 512">
+                            <g>
+                              <g fill="#231F20">
+                                <path d="m34,256l26.2,26.2c108,108 283.7,108 391.7,0l26.1-26.2-26.2-26.2c-108-108-283.7-108-391.7,0l-26.1,26.2zm222,126.2c-75.8,0-151.6-28.9-209.3-86.6l-32.9-32.9c-3.7-3.7-3.7-9.7 0-13.5l32.9-32.9c115.4-115.4 303.2-115.4 418.6,0l32.9,32.9c3.7,3.7 3.7,9.7 0,13.5l-32.9,32.9c-57.7,57.7-133.5,86.6-209.3,86.6z"/>
+                                <path d="m256,183.5c-40,0-72.5,32.5-72.5,72.5s32.5,72.5 72.5,72.5c40,0 72.5-32.5 72.5-72.5s-32.5-72.5-72.5-72.5zm0,164c-50.5,0-91.5-41.1-91.5-91.5 0-50.5 41.1-91.5 91.5-91.5s91.5,41.1 91.5,91.5c0,50.5-41,91.5-91.5,91.5z"/>
+                              </g>
+                            </g>
+                          </svg>
+                        </span>
+                        </button>
+                        <p class="hidden text-red-500 text-xs italic">Please choose a password.</p>
+                      </div>
                     </div>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between pt-3">
                       <button class="flex items-center bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100" type="submit">
                         <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -119,14 +133,18 @@ export default {
       password: '',
       phone: '',
       error: null,
-      loading: false
+      loading: false,
+      passwordFieldType: false
     }
   },
   methods: {
+    changePasswordFieldType() {
+      this.passwordFieldType = !this.passwordFieldType
+    },
     async register() {
       this.loading = true;
       try {
-        let signupRes = await this.$axios.post('api/signup', {
+        const signupRes = await this.$axios.post('api/signup', {
           name: this.username,
           email: this.email,
           phone: this.phone,
@@ -140,13 +158,12 @@ export default {
           position: "bottom-left",
           duration : 5000
         });
-        let result = await this.$auth.loginWith('local', {
+        const result = await this.$auth.loginWith('local', {
           data: {
             email: this.email,
             password: this.password
           },
         });
-        this.toggleTabs(2)
         this.$toast.success('Logged In!', {
           theme: "outline",
           position: "bottom-left",

@@ -55,9 +55,9 @@ module.exports = async function (req, res) {
           res.status(500)
         }
 
-    } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.body.name !== undefined && req.query.id) {
+    } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
         try {
-          let response = await update(req, parseInt(req.query.id));
+          let response = await update(req, req.user.id);
 
           res.status(200).json({
             data: response

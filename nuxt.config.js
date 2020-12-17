@@ -60,7 +60,7 @@ export default {
     }
   },
 
-  loading: { color: '#000000' },
+  loading: { color: '#ffffff' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [`~/plugins/currency.js`],
@@ -84,9 +84,9 @@ export default {
   ],
 
   cloudinary: {
-    cloudName: 'morgan-tugi',
-    apiKey: '881473564676785',
-    apiSecret: 'WlQX5Szlug_OTPtQOyyISh0Fc1c',
+    cloudName: 'essaydonsco',
+    apiKey: '756518659458387',
+    apiSecret: 'n8qvU5D-_mBUSSxRLJ1w9b3AbYM',
     useComponent: true
   },
 

@@ -1,8 +1,11 @@
 import data from "~/static/storedata.json";
+import countries from "~/static/countries.json";
 
 export const state = () => ({
   cartUIStatus: "idle",
   storedata: data,
+  countries: countries,
+  userTypes: ["Student","Writer"],
   cart: [],
   clientSecret: "",
   orders: []
