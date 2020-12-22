@@ -8,7 +8,7 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
-const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8')
+const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8');
 
 function authMiddleware(req) {
   return new Promise((resolve, reject) => {

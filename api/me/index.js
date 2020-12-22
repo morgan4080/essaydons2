@@ -44,7 +44,7 @@ const allowCors = fn => async (req, res) => {
 
 const handler = async function (req, res) {
   try {
-    let user = await authMiddleware(req)
+    const user = await authMiddleware(req)
 
     res.status(200).json({
       ...user

@@ -63,7 +63,8 @@ module.exports = async function (req, res) {
       });
     }
   } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0 ) {
-    let response = await store(req);
+    const user = await authMiddleware(req)
+    let response = await store(req, user);
 
     if (response !== null) {
       res.status(200).json({
@@ -131,9 +132,8 @@ async function edit(id) {
  * @param req
  */
 
-async function store(req) {
+async function store(req, user) {
   try {
-    let user = await authMiddleware(req)
 
     return await prisma.posts.create({
       data: {

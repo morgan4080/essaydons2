@@ -12,21 +12,31 @@ const { readFileSync } = require('fs');
 
 const { join } = require('path');
 
-const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8');
+const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8');
 
-function authenticateToken(req, res) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (token === null) res.status(401)
+function authMiddleware(req) {
+  return new Promise((resolve, reject) => {
+    const header = req.headers['authorization']
 
-  jwt.verify(token, privateKey, (err, user) => {
-    if (err) res.status(403)
-    req.user = user
+    if (header === undefined) {
+      reject("header undefined")
+    }
+
+    const bearer = header.split(' ')
+
+    const token = bearer[1]
+
+    jwt.verify(token, publicKey,{ algorithm: 'RS256' }, (err, user) => {
+      if (err) {
+        reject(err)
+      }
+      resolve(user)
+    })
   })
 }
 
 module.exports = async function (req, res) {
-    await authenticateToken(req, res);
+  const user = await authMiddleware(req, res);
 
     // read req.user
 
@@ -57,7 +67,7 @@ module.exports = async function (req, res) {
 
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
         try {
-          let response = await update(req, req.user.id);
+          let response = await update(req, user.id);
 
           res.status(200).json({
             data: response
