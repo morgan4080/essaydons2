@@ -17,7 +17,6 @@ const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'
 const Stripe = require("stripe");
 
 const stripe = Stripe('sk_test_MKa3c0iWsVFbV9WK64cNnyQd');
-
 // Create your webhook in the Stripe dashboard at https://dashboard.stripe.com/webhooks
 // Use the secret listed in the "Signing secret" section
 const endpointSecret = 'whsec_pAgBXyncG361YrZ6Nq2f29EssTJsZDko';
