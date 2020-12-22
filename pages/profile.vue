@@ -362,7 +362,7 @@
                                       </label>
                                       <div class="mt-2 flex items-center">
                                         <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                          <img v-if="formProfile.profile_image" class="w-12 h-12 rounded-full" :src="formProfile.profile_image[0]" alt="profile-photo">
+                                          <img v-if="formProfile.profile_image" class="w-12 h-12 rounded-full" :src="`${formProfile.profile_image[0]}`" alt="profile-photo">
                                           <svg v-else class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                                           </svg>
@@ -520,13 +520,13 @@
                                       <p class="text-base leading-5 text-gray-500">These are delivered via SMS to your mobile phone.</p>
                                       <div class="mt-4">
                                         <div class="mt-4 flex items-center">
-                                          <input v-model="formProfile.pushNotifications.sameAsEmail" id="push_email" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <input @change="changer($event)" v-model="formProfile.pushNotifications.sameAsEmail" id="push_email" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                           <label for="push_email" class="ml-3">
                                             <span class="block text-base leading-5 font-medium text-gray-700">Same as email</span>
                                           </label>
                                         </div>
                                         <div class="mt-4 flex items-center">
-                                          <input v-model="formProfile.pushNotifications.noneAtAll" id="push_nothing" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <input @change="changer($event)" v-model="formProfile.pushNotifications.none" id="push_nothing" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                           <label for="push_nothing" class="ml-3">
                                             <span class="block text-base leading-5 font-medium text-gray-700">No push notifications</span>
                                           </label>
@@ -736,7 +736,7 @@ export default {
         },
         pushNotifications: {
           sameAsEmail: true,
-          noneAtAll: false
+          none: false
         },
         password: null,
         admin_key: null,
@@ -766,6 +766,9 @@ export default {
     }
   },
   methods: {
+    changer(e) {
+      console.log(e)
+    },
     changePasswordFieldType() {
       this.passwordFieldType = !this.passwordFieldType
     },
@@ -922,7 +925,8 @@ export default {
 
     if (this.$auth.user.metadata) {
       this.formProfile.country = this.$auth.user.metadata.country;
-      this.formProfile.profile_image = this.$auth.user.metadata.profile_image.url; //
+      this.formProfile.profile_image = [];
+      this.formProfile.profile_image.push(`${this.$auth.user.metadata.profile_image.secure_url}`);
       this.formProfile.type = this.$auth.user.metadata.userType;
       this.formProfile.emailNotifications = this.$auth.user.metadata.emailNotifications;
       this.formProfile.pushNotifications = this.$auth.user.metadata.pushNotifications;

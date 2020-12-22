@@ -76,6 +76,29 @@ export const mutations = {
 };
 
 export const actions = {
+  async deleteItem({ commit, dispatch }, payload) {
+    try {
+
+      const result = await this.$axios.delete(
+        `${payload.uri}/${payload.data}`,
+      );
+      if (result.data) {
+
+        return result
+
+      }
+    } catch (e) {
+      if (e.response.status === 422) {
+
+        console.log("error", e.response);
+
+      } else {
+
+        return e;
+
+      }
+    }
+  },
   createPaymentIntent({ commit }, payload) {
     return new Promise(async (resolve, reject) => {
       try {
