@@ -106,6 +106,7 @@ async function edit(id) {
 
 async function update(req, id) {
   try {
+    let admin_key = '!Awesome@2021'
     const saltRounds = 10;
     let data = {};
     (req.body.name) ? data.name = req.body.name : null;
@@ -114,7 +115,9 @@ async function update(req, id) {
     (req.body.phone) ? data.phone = req.body.phone : null;
     (req.body.provider) ? data.provider = req.body.provider : null;
     (req.body.provider_id) ? data.provider_id = req.body.provider_id : null;
-    (req.body.owner) ? data.owner = req.body.owner : null;
+    if (req.body.admin_key !== undefined && req.body.admin_key === admin_key) {
+      (req.body.owner) ? data.owner = req.body.owner : null;
+    }
     (req.body.metadata) ? data.metadata = req.body.metadata : null;
 
     return await prisma.users.update({

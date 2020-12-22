@@ -462,6 +462,11 @@
                                           </button>
                                         </div>
                                       </div>
+
+                                      <div class="col-span-6 sm:col-span-3">
+                                        <label for="adminKey" class="block text-base font-medium leading-5 text-gray-700">Admin Key</label>
+                                        <input id="adminKey" v-model="formProfile.admin_key" type="text" class="block form-input mt-1 appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline sm:text-base sm:leading-5">
+                                      </div>
                                     </div>
                                   </div>
 
@@ -734,6 +739,7 @@ export default {
           noneAtAll: false
         },
         password: null,
+        admin_key: null,
       },
       userMeta: null,
       loading: false,
@@ -783,15 +789,32 @@ export default {
           console.log(e);
         }
         try {
+          let payload = {
+            name: uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name,
+            email: uploadInstance.personalInformation.email,
+            password: this.formProfile.password,
+            phone: uploadInstance.personalInformation.phone,
+            admin_key: this.formProfile.admin_key,
+            owner: !!(this.formProfile.admin_key),
+            metadata: {
+              ...uploadInstance.profile,
+              ...uploadInstance.notifications,
+              country: this.formProfile.country
+            }
+          };
+
+          console.log(payload);
           const response = await this.$axios.put('api/users?data=' + section, {
-            ...uploadInstance
-          })
-          console.log('response', response)
+            ...payload
+          });
+          console.log('response', response);
           this.$toast.success(section + ' Information Updated', {
             theme: 'outline',
             position: 'bottom-right',
             duration: 5000
-          })
+          });
+
+          this.loading = false;
         } catch (e) {
           this.loading = false;
           if (e.response && e.response.data.message) {
@@ -823,8 +846,8 @@ export default {
           phone: "+" + this.computedCountry.callingCode + " " + this.formProfile.phone,
         },
         notifications: {
-          emailNotifications: this.emailNotifications,
-          pushNotifications: this.pushNotifications
+          emailNotifications: this.formProfile.emailNotifications,
+          pushNotifications: this.formProfile.pushNotifications
         }
       }
       return true
@@ -897,7 +920,14 @@ export default {
     this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
-    // load profile photo from metadata to formProfile.profile_image formProfile.type
+
+    if (this.$auth.user.metadata) {
+      this.formProfile.country = this.$auth.user.metadata.country;
+      this.formProfile.profile_image = this.$auth.user.metadata.profile_image.url; //
+      this.formProfile.type = this.$auth.user.metadata.userType;
+      this.formProfile.emailNotifications = this.$auth.user.metadata.emailNotifications;
+      this.formProfile.pushNotifications = this.$auth.user.metadata.pushNotifications;
+    }
 
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
