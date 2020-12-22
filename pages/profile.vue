@@ -781,7 +781,7 @@ export default {
             // check for user metadata profile_image public_id for existing profiles to overwrite public_id
             uploadInstance.profile.profile_image = await this.$cloudinary.upload(this.userMeta.profile.profile_image[0], {
               public_id: public_id,
-              folder: "profile/" + this.userMeta.personalInformation.email,
+              folder: "profile",
               upload_preset: 'ybfqkqyu'
             });
           }

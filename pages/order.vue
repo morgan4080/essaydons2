@@ -628,10 +628,11 @@ export default {
     // this.$store.dispatch("createPaymentIntent"); toggleTabs(1)
 
     if (this.$auth.loggedIn) {
-      this.toggleTabs(2)
-      this.form.name = this.$auth.user.name
-      this.form.phone = this.$auth.user.phone
-      this.form.email = this.$auth.user.email
+      this.toggleTabs(2);
+      this.form.name = this.$auth.user.name;
+      this.form.phone = this.$auth.user.phone;
+      this.form.email = this.$auth.user.email;
+      this.stripeEmail = this.$auth.user.email;
     } else {
       this.toggleTabs(1)
     }
@@ -788,6 +789,24 @@ export default {
       }
 
     },
+    async toBase64(arr) {
+      function getBase64(file) {
+        const reader = new FileReader();
+        return new Promise(resolve => {
+          reader.onload = ev => {
+            resolve(ev.target.result)
+          }
+          reader.readAsDataURL(file)
+        })
+      }
+      const promises = [];
+
+      for (let i = 0; i < arr.length; i++) {
+        promises.push(getBase64(arr[i]));
+      }
+
+      return await Promise.all(promises);
+    },
     dropHandler(ev) {
       ev.preventDefault();
       if (ev.dataTransfer.items) {
@@ -921,22 +940,37 @@ export default {
         }
       }
     },
-    pay() {
+    async pay() {
       this.loading = true;
+      const files = await this.toBase64(this.form.uploads);
+      console.log(files);
+      this.form.uploads = [];
+      for (let i = 0; i < files.length; i++) {
+        let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
+        this.form.uploads.push(await this.$cloudinary.upload(files[i], {
+          public_id: public_id,
+          folder: "orders",
+          upload_preset: 'ybfqkqyu'
+        }));
+      }
       let order = {
         amount: this.totalPrice,
         ...this.form
       };
+      console.log(order);
+      const url = this.$cloudinary.image
+        .url(this.form.uploads[0].public_id, {});
+      console.log(url);
 
-      console.log(order)
-      /*this.$store.dispatch("createPaymentIntent", {order}).then(result => {
+      this.$store.dispatch("createPaymentIntent", {order}).then(result => {
         // confirms the payment and will automatically display a
         // pop-up modal if the purchase requires authentication
-
+        console.log(result, this.$store.getters.clientSecret);
         handleCardPayment(this.$store.getters.clientSecret, {
           receipt_email: this.stripeEmail
         }).then(result => {
           this.loading = false;
+          console.log("handle card payments", result)
           if (result.error) {
             // show the error to the customer, let them try to pay again
             this.error = result.error.message;
@@ -951,13 +985,13 @@ export default {
             this.$store.commit("updateCartUI", "success");
             setTimeout(this.clearCart, 5000);
           } else {
-            this.error = "Some unknown error occured";
+            this.error = "Some unknown error occurred";
             setTimeout(() => (this.error = ""), 3000);
           }
         });
       }).catch(e => {
         console.log(e)
-      })*/
+      })
     },
   }
 }

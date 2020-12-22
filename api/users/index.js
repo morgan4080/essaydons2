@@ -36,13 +36,7 @@ function authMiddleware(req) {
 }
 
 module.exports = async function (req, res) {
-  const user = await authMiddleware(req, res);
-
-    // read req.user
-
-    res.json({
-      test: req.user,
-    })
+    const user = await authMiddleware(req, res);
 
     if (Object.keys(req.query).length === 0 && req.method === "GET") {
         try{
