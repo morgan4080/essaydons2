@@ -26,7 +26,7 @@
     "nodemailer": "^6.4.17",
     "nuxt": "^2.0.0",
     "sass-loader": "^10.0.5",
-    "stripe": "^8.119.0",
+    "stripe": "^8.129.0",
     "vue-stripe-elements-plus": "^0.3.2"
   },
   "devDependencies": {
