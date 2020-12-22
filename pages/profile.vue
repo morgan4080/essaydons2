@@ -778,7 +778,6 @@ export default {
           if (section === 'personal') {
             console.log('uploading', this.userMeta.profile.profile_image[0]);
             let public_id = 'profile_photo_' + Math.random().toString(36).substr(2, 16);
-            // check for user metadata profile_image public_id for existing profiles to overwrite public_id
             uploadInstance.profile.profile_image = await this.$cloudinary.upload(this.userMeta.profile.profile_image[0], {
               public_id: public_id,
               folder: "profile",
