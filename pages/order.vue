@@ -922,31 +922,42 @@ export default {
       }
     },
     pay() {
-      // confirms the payment and will automatically display a
-      // pop-up modal if the purchase requires authentication
       this.loading = true;
-      handleCardPayment(this.$store.getters.clientSecret, {
-        receipt_email: this.stripeEmail
-      }).then(result => {
-        this.loading = false;
-        if (result.error) {
-          // show the error to the customer, let them try to pay again
-          this.error = result.error.message;
-          setTimeout(() => (this.error = ""), 3000);
-        } else if (
-          result.paymentIntent &&
-          result.paymentIntent.status === "succeeded"
-        ) {
-          // payment succeeded! show a success message
-          // there's always a chance your customer closes the browser after the payment process and before this code runs so
-          // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
-          this.$store.commit("updateCartUI", "success");
-          setTimeout(this.clearCart, 5000);
-        } else {
-          this.error = "Some unknown error occured";
-          setTimeout(() => (this.error = ""), 3000);
-        }
-      });
+      let order = {
+        amount: this.totalPrice,
+        ...this.form
+      };
+
+      console.log(order)
+      /*this.$store.dispatch("createPaymentIntent", {order}).then(result => {
+        // confirms the payment and will automatically display a
+        // pop-up modal if the purchase requires authentication
+
+        handleCardPayment(this.$store.getters.clientSecret, {
+          receipt_email: this.stripeEmail
+        }).then(result => {
+          this.loading = false;
+          if (result.error) {
+            // show the error to the customer, let them try to pay again
+            this.error = result.error.message;
+            setTimeout(() => (this.error = ""), 3000);
+          } else if (
+            result.paymentIntent &&
+            result.paymentIntent.status === "succeeded"
+          ) {
+            // payment succeeded! show a success message
+            // there's always a chance your customer closes the browser after the payment process and before this code runs so
+            // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
+            this.$store.commit("updateCartUI", "success");
+            setTimeout(this.clearCart, 5000);
+          } else {
+            this.error = "Some unknown error occured";
+            setTimeout(() => (this.error = ""), 3000);
+          }
+        });
+      }).catch(e => {
+        console.log(e)
+      })*/
     },
   }
 }

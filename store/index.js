@@ -76,53 +76,34 @@ export const mutations = {
 };
 
 export const actions = {
-  async deleteItem({ commit, dispatch }, payload) {
-    try {
-
-      await this.$axios.get(`csrf-cookie`);
-
-      const result = await this.$axios.delete(
-        `${payload.uri}/${payload.data}`,
-      );
-      if (result.data) {
-
-        return result
-
-      }
-    } catch (e) {
-      if (e.response.status === 422) {
-
-        console.log("error", e.response);
-
-      } else {
-
-        return e;
-
-      }
-    }
-  },
-  async createPaymentIntent({ getters, commit }) {
-    try {
-      // Create a PaymentIntent with the information about the order
-      const result = await this.$axios.post(
-        "https://ecommerce-netlify.netlify.app/.netlify/functions/create-payment-intent",
-        {
-          items: getters.cartItems
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
+  createPaymentIntent({ commit }, payload) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Create a PaymentIntent with the information about the order
+        const result = await this.$axios.post(
+          "https://essaydons.co/api/transactions?payment_intent=true",
+          {
+            order: payload.order
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
-        }
-      );
+        );
 
-      if (result.data.clientSecret) {
-        // Store a reference to the client secret created by the PaymentIntent
-        // This secret will be used to finalize the payment from the client
-        commit("setClientSecret", result.data.clientSecret);
+        console.log('payment_intent', result)
+
+        if (result.data.clientSecret) {
+          // Store a reference to the client secret created by the PaymentIntent
+          // This secret will be used to finalize the payment from the client
+          commit("setClientSecret", result.data.clientSecret);
+          resolve(result)
+        }
+      } catch (e) {
+        console.log("error", e);
+        reject(e)
       }
-    } catch (e) {
-      console.log("error", e);
-    }
+    });
   }
 };
