@@ -962,9 +962,6 @@ export default {
         ...this.form
       };
       console.log(order);
-      const url = this.$cloudinary.image
-        .url(this.form.uploads[0].public_id, {});
-      console.log(url);
 
       this.$store.dispatch("createPaymentIntent", {order}).then(result => {
         // confirms the payment and will automatically display a
