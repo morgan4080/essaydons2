@@ -59,6 +59,9 @@ module.exports = async function (req, res) {
           res.status(500)
         }
 
+    }else if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.user_ticket) {
+      // handle complaints
+
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
         try {
           let response = await update(req, user.id);

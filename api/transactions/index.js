@@ -45,13 +45,6 @@ module.exports = async (req, res) => {
       try {
         const user = await authMiddleware(req);
 
-        const response = await prisma.orders.create({
-          data: {
-            accounts: { connect: { id: user.account_id } },
-            users: { connect: { id: user.id } },
-            order_details: JSON.stringify(req.body.order)
-          }
-        });
         // get store data to verify item prices from client application
 
         // Create a PaymentIntent on Stripe
@@ -61,12 +54,22 @@ module.exports = async (req, res) => {
           currency: "usd",
           amount: req.body.order.amount * 100,
           description: "Essaydons co - Order" + response.id,
-          customer: user.email
+          customer: user.email,
+          metadata: {'order_id': response.id}
         });
 
         // Send the client_secret to the client
         // The client secret has a limited set of permissions that
         // let you finalize the payment and update some details from the client
+
+        const response = await prisma.orders.create({
+          data: {
+            accounts: { connect: { id: user.account_id } },
+            users: { connect: { id: user.id } },
+            status: "processing",
+            order_details: JSON.stringify(req.body.order)
+          }
+        });
 
         res.status(200).json({
           clientSecret: paymentIntent.client_secret
@@ -110,6 +113,15 @@ module.exports = async (req, res) => {
             "Payment was successful! Charge information:",
             paymentIntent.charges.data.filter(charge => charge.status === "succeeded")
           );
+          let data = {
+            status: "success"
+          };
+          await prisma.orders.update({
+            where: { id: paymentIntent.metadata.order_id },
+            data: {
+              ...data
+            },
+          });
           break;
         case "charge.dispute.created":
           const charge = stripeEvent.data.object;

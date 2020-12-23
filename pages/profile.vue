@@ -326,7 +326,7 @@
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.price }}
+                              {{ order.order_details.amount }}
                             </a>
                           </td>
                           <td class="border-t">
@@ -573,7 +573,7 @@
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.price }}
+                              {{ order.order_details.amount }}
                             </a>
                           </td>
                           <td class="border-t">
@@ -622,7 +622,7 @@
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.price }}
+                              {{ order.order_details.amount }}
                             </a>
                           </td>
                           <td class="border-t">
@@ -667,7 +667,7 @@
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.price }}
+                              {{ order.order_details.amount }}
                             </a>
                           </td>
                           <td class="border-t">
@@ -711,8 +711,8 @@ export default {
     Icon,
   },
   async fetch() {
-    const orders = await this.$axios.get('api/signup');
-    this.$store.commit('setOrders', orders);
+    const { data } = await this.$axios.get('api/signup');
+    this.$store.commit('setOrders', data);
   },
   data() {
     return {
