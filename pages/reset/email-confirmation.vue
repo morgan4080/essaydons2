@@ -40,6 +40,12 @@ export default {
       loading: false
     }
   },
+  mounted() {
+    const urlParams = new URLSearchParams(window.location.search);
+    for (let p of urlParams) {
+      console.log(p);
+    }
+  },
   methods: {
     forgotPassword() {
       try {
