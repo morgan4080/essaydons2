@@ -36,12 +36,22 @@ module.exports = async function (req, res) {
   if (Object.keys(req.query).length === 0 && req.method === "GET") {
 
     try {
-      let user = await authMiddleware(req)
+      const user = await authMiddleware(req);
 
       if (user.owner) {
         let response = await prisma.orders.findMany({
           where: {
             account_id: user.account_id,
+          },
+        });
+
+        res.status(200).json({
+          data: response
+        });
+      } else {
+        let response = await prisma.orders.findMany({
+          where: {
+            user_id: user.id,
           },
         })
 
@@ -50,15 +60,6 @@ module.exports = async function (req, res) {
         })
       }
 
-      let response = await prisma.orders.findMany({
-        where: {
-          user_id: user.id,
-        },
-      })
-
-      res.status(200).json({
-        data: response
-      })
     } catch (e) {
 
       res.status(401).json({

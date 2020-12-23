@@ -51,8 +51,8 @@ module.exports = async (req, res) => {
           data: {
             accounts: { connect: { id: user.account_id } },
             users: { connect: { id: user.id } },
+            order_details: JSON.stringify(req.body.order),
             status: "processing",
-            order_details: JSON.stringify(req.body.order)
           }
         });
 
