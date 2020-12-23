@@ -701,9 +701,9 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon'
-import { mapGetters, mapState } from 'vuex'
-import LoadingButton from "@/components/LoadingButton"
+import Icon from '@/components/Icon';
+import { mapState } from 'vuex';
+import LoadingButton from "@/components/LoadingButton";
 
 export default {
   components: {
@@ -711,12 +711,13 @@ export default {
     Icon,
   },
   async fetch() {
-    const { data } = await this.$axios.get('api/orders');
-    this.$store.commit('setOrders', data);
+    const response = await this.$axios.get('api/orders');
+    this.orders = [...response.data.orders];
   },
   data() {
     return {
       openTab: 1,
+      orders: [],
       form: {
         level: 1,
         subject: null,
@@ -752,7 +753,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["storedata", "orders","countries","userTypes"]),
+    ...mapState(["storedata","countries","userTypes"]),
     fullName() {
       return this.$auth.user ? this.$auth.user.name : null;
     },

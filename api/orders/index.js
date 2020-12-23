@@ -46,7 +46,7 @@ module.exports = async function (req, res) {
         });
 
         res.status(200).json({
-          data: response
+          orders: response
         });
       } else {
         let response = await prisma.orders.findMany({
@@ -56,24 +56,22 @@ module.exports = async function (req, res) {
         })
 
         res.status(200).json({
-          data: response
+          orders: response
         })
       }
 
     } catch (e) {
 
-      res.status(401).json({
-        data: e
+      res.status(400).json({
+        error: e
       })
 
     }
 
   } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
 
-    res.status(401).json({
-      data: {
-        message: "single order views not active"
-      }
+    res.status(400).json({
+      message: "single order views not active"
     })
 
   } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0 ) {
@@ -91,19 +89,19 @@ module.exports = async function (req, res) {
       });
 
       res.status(200).json({
-        data: response
+        response: response
       })
     } catch (e) {
 
-      res.status(401).json({
-        data: e
+      res.status(400).json({
+        error: e
       })
 
     }
 
   } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.query.id) {
 
-    res.status(401).json({
+    res.status(400).json({
       data: {
         message: "order edits not active"
       }
@@ -111,7 +109,7 @@ module.exports = async function (req, res) {
 
   } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
 
-    res.status(401).json({
+    res.status(400).json({
       data: {
         message: "order deletes not active"
       }
