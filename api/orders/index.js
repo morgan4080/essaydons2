@@ -85,9 +85,10 @@ module.exports = async function (req, res) {
         data: {
           users: { connect: { id: user.id } },
           accounts: { connect: { id: user.account_id } },
+          status: "processing",
           order_details: JSON.stringify(req.body.order_details)
         }
-      })
+      });
 
       res.status(200).json({
         data: response
