@@ -1,7 +1,3 @@
-import stripe from "stripe"
-
-const fetch = require('node-fetch');
-
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
