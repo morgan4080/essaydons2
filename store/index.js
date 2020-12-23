@@ -72,6 +72,9 @@ export const mutations = {
   },
   removeAllFromCart: (state, payload) => {
     state.cart = state.cart.filter(el => el.id !== payload.id)
+  },
+  setOrders: (state, payload) => {
+    state.orders = payload
   }
 };
 

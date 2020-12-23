@@ -710,6 +710,10 @@ export default {
     LoadingButton,
     Icon,
   },
+  async fetch() {
+    const orders = await this.$axios.get('api/signup');
+    this.$store.commit('setOrders', orders);
+  },
   data() {
     return {
       openTab: 1,
