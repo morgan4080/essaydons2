@@ -4,6 +4,14 @@ const prisma = new PrismaClient();
 
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken')
+
+const { readFileSync } = require('fs')
+
+const { join } = require('path')
+
+const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
+
 const nodemailer = require("nodemailer");
 
 const allowCors = fn => async (req, res) => {
@@ -64,7 +72,9 @@ const handler = async function (req, res) {
           phone: req.body.phone,
           owner: owner
         }
-      })
+      });
+
+      const token = jwt.sign({ ...response }, privateKey, { algorithm: 'RS256' });
 
       const origin = {
         name: "EssayDons Signups",
@@ -242,11 +252,13 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey ${req.body.name} welcome to Essaydons</td>
+<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #42fbb7;">${req.body.name}</span> welcome to Essaydons.co</td>
 </tr>
 
 <tr>
-<td class="hero-subheader__content" style="font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;" align="left">Thank you for the opportunity to serve you.</td>
+<td class="hero-subheader__content" style="font-size: 16px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
+<a href="https://essaydons.co/reset/email-confirmation?token=${token}" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #42fbb7; color: white;">Confirm Email</a>
+</td>
 </tr>
 </tbody></table>
 <!-- / Footer -->
@@ -256,7 +268,7 @@ padding: 0 15px 0 15px !important;
 <table class="container" border="0" cellpadding="0" cellspacing="0" width="620" align="center" style="border-top: 1px solid #eeeeee; width: 620px;">
 <tbody><tr>
 <td style="text-align: center; padding: 50px 0 10px 0;">
-<a href="#" style="font-size: 28px; text-decoration: none; color: #d5d5d5;">Welcome</a>
+<a href="#" style="font-size: 28px; text-decoration: none; color: #d5d5d5;">Thank You</a>
 </td>
 </tr>
 

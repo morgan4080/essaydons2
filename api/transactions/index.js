@@ -68,6 +68,45 @@ module.exports = async (req, res) => {
       });
     }
 
+    let customer;
+
+    if (!user.metadata.hasOwnProperty("stripe_ck_id")) {
+      try {
+        customer = await stripe.customers.create({
+          name: user.name,
+          description: 'essaydons.co customer',
+          email: user.email,
+          phone: user.phone,
+        });
+      } catch (e) {
+        res.status(400).json({
+          error: e
+        });
+      }
+
+      try {
+        let data = {};
+        data.metadata = JSON.stringify({
+          ...user.metadata,
+          stripe_ck_id: customer.id,
+        });
+        await prisma.users.update({
+          where: { id: user.id },
+          data: {
+            ...data
+          },
+        });
+      } catch (e) {
+        res.status(400).json({
+          error: e
+        });
+      }
+    } else {
+      customer = {
+        id: user.metadata.stripe_ck_id
+      };
+    }
+
     try {
       // Create a PaymentIntent on Stripe
       // A PaymentIntent represents your customer's intent to pay
@@ -75,8 +114,8 @@ module.exports = async (req, res) => {
       const paymentIntent = await stripe.paymentIntents.create({
         currency: "usd",
         amount: req.body.order.amount * 100,
-        description: "Essaydons co - Order" + response.id,
-        customer: user.email,
+        description: "essaydons.co - OrderID: " + response.id,
+        customer: customer.id,
         metadata: {'order_id': response.id}
       });
       // Send the client_secret to the client

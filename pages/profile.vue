@@ -326,7 +326,7 @@
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.order_details.amount }}
+                              {{ JSON.parse(order.order_details).amount }}
                             </a>
                           </td>
                           <td class="border-t">
