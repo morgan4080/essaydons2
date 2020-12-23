@@ -47,6 +47,15 @@ module.exports = async (req, res) => {
 
         // get store data to verify item prices from client application
 
+        const response = await prisma.orders.create({
+          data: {
+            accounts: { connect: { id: user.account_id } },
+            users: { connect: { id: user.id } },
+            status: "processing",
+            order_details: JSON.stringify(req.body.order)
+          }
+        });
+
         // Create a PaymentIntent on Stripe
         // A PaymentIntent represents your customer's intent to pay
         // and needs to be confirmed on the client to finalize the payment
@@ -61,15 +70,6 @@ module.exports = async (req, res) => {
         // Send the client_secret to the client
         // The client secret has a limited set of permissions that
         // let you finalize the payment and update some details from the client
-
-        const response = await prisma.orders.create({
-          data: {
-            accounts: { connect: { id: user.account_id } },
-            users: { connect: { id: user.id } },
-            status: "processing",
-            order_details: JSON.stringify(req.body.order)
-          }
-        });
 
         res.status(200).json({
           clientSecret: paymentIntent.client_secret
