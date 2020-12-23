@@ -711,7 +711,7 @@ export default {
     Icon,
   },
   async fetch() {
-    const { data } = await this.$axios.get('api/signup');
+    const { data } = await this.$axios.get('api/orders');
     this.$store.commit('setOrders', data);
   },
   data() {
