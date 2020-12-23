@@ -59,7 +59,7 @@ module.exports = async (req, res) => {
         // and needs to be confirmed on the client to finalize the payment
         const paymentIntent = await stripe.paymentIntents.create({
           currency: "usd",
-          amount: req.body.order.amount,
+          amount: req.body.order.amount * 100,
           description: "Order from store"
         });
 
