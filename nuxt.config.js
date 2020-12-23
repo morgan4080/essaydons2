@@ -60,7 +60,7 @@ export default {
     }
   },
 
-  loading: { color: '#ffffff' },
+  loading: { color: '#000000' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [`~/plugins/currency.js`],

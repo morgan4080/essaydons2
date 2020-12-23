@@ -60,7 +60,8 @@ module.exports = async (req, res) => {
         const paymentIntent = await stripe.paymentIntents.create({
           currency: "usd",
           amount: req.body.order.amount * 100,
-          description: "Order from store"
+          description: "Essaydons co - Order" + response.id,
+          customer: user.email
         });
 
         // Send the client_secret to the client
@@ -68,8 +69,7 @@ module.exports = async (req, res) => {
         // let you finalize the payment and update some details from the client
 
         res.status(200).json({
-          clientSecret: paymentIntent.client_secret,
-          response: response
+          clientSecret: paymentIntent.client_secret
         });
 
       } catch (e) {

@@ -504,12 +504,12 @@
                     Pay with credit card
                   </button>
                 </div>
-                <div v-else class="flex flex-col justify-center items-center h-64">
-                  <svg class="animate-spin -ml-1 mr-3 h-24 w-24 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <div v-else-if="cartUIStatus === 'success'" class="flex flex-col justify-center items-center h-64">
+                  <svg class="animate-pulse green-tick -ml-1 mr-3 h-24 w-24 text-green-600" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                    <circle class="circle" fill="currentColor" cx="24" cy="24" r="22"/>
+                    <path class="tick" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14 27l5.917 4.917L34 17"/>
                   </svg>
-                  <h2 class="text-gray-700 mb-2 mt-5 font-bold -ml-6 text-center">Processing<br>Payment</h2>
+                  <h2 class="text-gray-700 mb-2 mt-5 font-bold -ml-6 text-center">Payment<br>Complete</h2>
                 </div>
               </div>
             </div>
@@ -884,6 +884,15 @@ export default {
           position: "bottom-left",
           duration : 5000
         });
+        if (this.$auth.loggedIn) {
+          this.toggleTabs(2);
+          this.form.name = this.$auth.user.name;
+          this.form.phone = this.$auth.user.phone;
+          this.form.email = this.$auth.user.email;
+          this.stripeEmail = this.$auth.user.email;
+        } else {
+          this.toggleTabs(1)
+        }
       } catch (e) {
         this.loading = false;
         console.log(e.response.data)
@@ -925,6 +934,15 @@ export default {
           position: "bottom-left",
           duration : 5000
         });
+        if (this.$auth.loggedIn) {
+          this.toggleTabs(2);
+          this.form.name = this.$auth.user.name;
+          this.form.phone = this.$auth.user.phone;
+          this.form.email = this.$auth.user.email;
+          this.stripeEmail = this.$auth.user.email;
+        } else {
+          this.toggleTabs(1)
+        }
 
       } catch (e) {
         this.loading = false;
@@ -962,6 +980,7 @@ export default {
         ...this.form
       };
       console.log(order);
+      // make the order data more relevant
 
       this.$store.dispatch("createPaymentIntent", {order}).then(result => {
         // confirms the payment and will automatically display a
@@ -975,6 +994,11 @@ export default {
           if (result.error) {
             // show the error to the customer, let them try to pay again
             this.error = result.error.message;
+            this.$toast.error(this.error, {
+              theme: "outline",
+              position: "bottom-left",
+              duration: 5000
+            });
             setTimeout(() => (this.error = ""), 3000);
           } else if (
             result.paymentIntent &&
@@ -984,9 +1008,19 @@ export default {
             // there's always a chance your customer closes the browser after the payment process and before this code runs so
             // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
             this.$store.commit("updateCartUI", "success");
+            this.$toast.success("Payment" + result.paymentIntent.status, {
+              theme: "outline",
+              position: "bottom-left",
+              duration : 5000
+            });
             setTimeout(this.clearCart, 5000);
           } else {
             this.error = "Some unknown error occurred";
+            this.$toast.error(this.error, {
+              theme: "outline",
+              position: "bottom-left",
+              duration: 5000
+            });
             setTimeout(() => (this.error = ""), 3000);
           }
         });
