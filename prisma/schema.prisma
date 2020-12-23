@@ -38,7 +38,7 @@ model orders {
   user_id       Int
   account_id    Int
   order_details Json
-  status        String?
+  status        String
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
   deleted_at    DateTime?
