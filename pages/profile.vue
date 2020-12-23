@@ -559,35 +559,35 @@
                           <th class="px-6 pt-6 pb-4">Percent</th>
                         </tr>
                         </thead>
-                        <tbody v-if="orders.length === 0">
+                        <tbody v-if="discounts.length === 0">
                         <tr>
                           <td class="border-t px-6 py-4" colspan="4">No Discounts found.</td>
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(discount, index) in discounts" :key="discount.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
-                              {{ order.id }}
+                              {{ discount.id }}
                             </a>
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.order_details.amount }}
+                              {{ discount.code }}
                             </a>
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.status }}
+                              {{ discount.percent }}
                             </a>
                           </td>
                           <td class="border-t">
-                            <div class="px-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <div class="px-4 flex items-center" tabindex="-1">
                               <a href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
                               </a>
-                              <a @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
-                                <icon  :name="'trash'" class="block w-4 h-4 fill-gray-400" />
+                              <a @click="deleteOrder(discount.id)" href="javascript:void(0);" class="ml-auto">
+                                <icon :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
                           </td>
@@ -604,7 +604,7 @@
                           <th class="px-6 pt-6 pb-4">Status</th>
                         </tr>
                         </thead>
-                        <tbody v-if="orders.length === 0">
+                        <tbody v-if="tickets.length === 0">
                         <tr>
                           <td class="border-t px-6 py-4" colspan="4">
                             <nuxt-link to="/ticket" class="w-32 cta text-base font-semibold py-3 px-4 bg-transparent rounded-full transform hover:scale-105 transition ease-in-out duration-100">
@@ -614,28 +614,28 @@
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(ticket, index) in tickets" :key="ticket.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
-                              {{ order.id }}
+                              {{ ticket.id }}
                             </a>
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.order_details.amount }}
+                              {{ ticket.details }}
                             </a>
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.status }}
+                              {{ ticket.status }}
                             </a>
                           </td>
                           <td class="border-t">
-                            <div class="px-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <div class="px-4 flex items-center" tabindex="-1">
                               <a href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
                               </a>
-                              <a @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
+                              <a @click="deleteOrder(ticket.id)" href="javascript:void(0);" class="ml-auto">
                                 <icon  :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
@@ -653,21 +653,21 @@
                           <th class="px-6 pt-6 pb-4">Status</th>
                         </tr>
                         </thead>
-                        <tbody v-if="orders.length === 0">
+                        <tbody v-if="invoices.length === 0">
                         <tr>
                           <td class="border-t px-6 py-4" colspan="4">No Invoices found.</td>
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(invoice, index) in invoices" :key="invoice.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
-                              {{ order.id }}
+                              {{ invoice.id }}
                             </a>
                           </td>
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.order_details.amount }}
+                              {{ invoice.total }}
                             </a>
                           </td>
                           <td class="border-t">
@@ -676,11 +676,11 @@
                             </a>
                           </td>
                           <td class="border-t">
-                            <div class="px-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <div class="px-4 flex items-center" tabindex="-1">
                               <a href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
                               </a>
-                              <a @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
+                              <a @click="deleteOrder(invoice.id)" href="javascript:void(0);" class="ml-auto">
                                 <icon  :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
@@ -718,6 +718,9 @@ export default {
     return {
       openTab: 1,
       orders: [],
+      invoices: [],
+      tickets: [],
+      discounts: [],
       form: {
         level: 1,
         subject: null,
@@ -944,7 +947,8 @@ export default {
         duration: 15000
       });
     }
-    console.log(this.$auth.user)
+    console.log(this.$auth.user);
+    console.log('orders', this.orders);
   }
 }
 </script>
