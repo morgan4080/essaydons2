@@ -102,17 +102,13 @@ module.exports = async function (req, res) {
   } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.query.id) {
 
     res.status(400).json({
-      data: {
-        message: "order edits not active"
-      }
+      message: "order edits not active"
     })
 
   } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
 
     res.status(400).json({
-      data: {
-        message: "order deletes not active"
-      }
+      message: "order deletes not active"
     });
 
   }
