@@ -788,8 +788,8 @@ export default {
       this.passwordFieldType = !this.passwordFieldType
     },
     async saveProfile(section) {
+      this.loading = true;
       if (this.loadMetaData()) {
-        this.loading = true;
         this.currentForm = section;
         let uploadInstance = this.userMeta;
         try {
