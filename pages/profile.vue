@@ -802,10 +802,6 @@ export default {
               upload_preset: 'ybfqkqyu'
             });
           }
-        } catch (e) {
-          console.log(e);
-        }
-        try {
           let payload = {
             name: uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name,
             email: uploadInstance.personalInformation.email,
@@ -822,7 +818,6 @@ export default {
           payload.metadata.profile.profile_image = uploadInstance.profile.profile_image;
           payload.metadata.notifications.emailNotifications = uploadInstance.notifications.emailNotifications;
           payload.metadata.notifications.pushNotifications = uploadInstance.notifications.pushNotifications;
-
           console.log(payload);
           const response = await this.$axios.put('api/users?data=' + section, {
             ...payload
@@ -833,7 +828,6 @@ export default {
             position: 'bottom-right',
             duration: 5000
           });
-
           this.loading = false;
         } catch (e) {
           this.loading = false;
