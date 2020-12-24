@@ -814,11 +814,14 @@ export default {
             admin_key: this.formProfile.admin_key,
             owner: !!(this.formProfile.admin_key),
             metadata: {
-              ...uploadInstance.profile,
-              ...uploadInstance.notifications,
-              country: this.formProfile.country
+              ...this.$auth.user.metadata,
             }
           };
+          payload.metadata.country = this.formProfile.country;
+          payload.metadata.profile.userType = uploadInstance.profile.userType;
+          payload.metadata.profile.profile_image = uploadInstance.profile.profile_image;
+          payload.metadata.notifications.emailNotifications = uploadInstance.notifications.emailNotifications;
+          payload.metadata.notifications.pushNotifications = uploadInstance.notifications.pushNotifications;
 
           console.log(payload);
           const response = await this.$axios.put('api/users?data=' + section, {
@@ -942,8 +945,8 @@ export default {
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
 
-    if (this.$auth.user.metadata) {
-      this.formProfile.country = this.$auth.user.metadata.country;
+    if (this.$auth.user.metadata !== null && this.$auth.user.metadata.userType) {
+      this.formProfile.country = (this.$auth.user.metadata.country) ? this.$auth.user.metadata.country : this.formProfile.country;
       this.formProfile.profile_image = [];
       this.formProfile.profile_image.push(`${this.$auth.user.metadata.profile_image.secure_url}`);
       this.formProfile.type = this.$auth.user.metadata.userType;
@@ -958,7 +961,7 @@ export default {
         duration: 15000
       });
     }
-    console.log(this.$auth.user);
+    console.log(this.$auth.user.metadata);
     console.log('orders', this.orders);
   }
 }
