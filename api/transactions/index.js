@@ -134,7 +134,7 @@ module.exports = async (req, res) => {
       });
     }
 
-  } else if (req.query.payment_succeeded && (req.body && req.body.order)) {
+  } else if (req.query.payment_succeeded) {
     // payment_succeeded
 
     // Webhook that listens for events sent from Stripe
@@ -161,19 +161,28 @@ module.exports = async (req, res) => {
           "Payment was successful! Charge information:",
           paymentIntent.charges.data.filter(charge => charge.status === "succeeded")
         );
-        let data = {
-          status: "success"
-        };
-        await prisma.orders.update({
-          where: { id: paymentIntent.metadata.order_id },
-          data: {
-            ...data
-          },
-        });
-        break;
+        try {
+          await prisma.orders.update({
+            where: { id: paymentIntent.data.object.metadata.order_id },
+            data: {
+              status: "success"
+            },
+          });
+          res.status(200);
+          break;
+        } catch (e) {
+          res.status(400).json({
+            error: e
+          });
+          break;
+        }
       case "charge.dispute.created":
         const charge = stripeEvent.data.object;
         console.log("Someone disputed a payment!");
+        res.status(400).json({
+          charge,
+          message: "Someone disputed a payment!"
+        });
         break;
       // ... handle other event types
       default:
@@ -183,7 +192,7 @@ module.exports = async (req, res) => {
 
     // Return a 200 response to acknowledge receipt of the event
     res.status(200)
-  } else if (req.query.paypal_intent && (req.body && req.body.order)) {
+  } else if (req.query.paypal_intent) {
     res.status(400).json({
       message: "missing information"
     });

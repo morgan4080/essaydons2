@@ -126,7 +126,7 @@
                 </div>
                 <div class="w-full lg:w-5/6 h-auto">
                   <div class="lg:px-6 py-2">
-                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
+                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
                       <div v-if="!orderview && orders.length === 0">
                         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                           <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">The more orders, the higher the discount</h1>
