@@ -140,10 +140,8 @@ module.exports = async (req, res) => {
     // Webhook that listens for events sent from Stripe
     // Requires configuration in the Stripe Dashboard
     // For more information read https://stripe.com/docs/webhooks
-
     const sig = req.headers["stripe-signature"];
     let stripeEvent;
-
     try {
       // Verifies that the event was sent by Stripe and deserializes the event
       stripeEvent = stripe.webhooks.constructEvent(
@@ -154,7 +152,6 @@ module.exports = async (req, res) => {
     } catch (err) {
       return { statusCode: 400 };
     }
-
     // Handle the event
     switch (stripeEvent.type) {
       case "payment_intent.succeeded":

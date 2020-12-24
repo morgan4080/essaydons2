@@ -336,7 +336,7 @@
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
                               </a>
                               <a v-if="$auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
-                                <icon  :name="'trash'" class="block w-4 h-4 fill-gray-400" />
+                                <icon :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
                           </td>
