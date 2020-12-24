@@ -813,6 +813,9 @@ export default {
               ...this.$auth.user.metadata,
             }
           };
+          (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
+          (this.formProfile.password === null) ? delete payload.password : null;
+          (this.formProfile.admin_key === null) ? delete payload.admin_key : null;
           payload.metadata.country = this.formProfile.country;
           payload.metadata.profile.userType = uploadInstance.profile.userType;
           payload.metadata.profile.profile_image = uploadInstance.profile.profile_image;
@@ -939,13 +942,13 @@ export default {
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
 
-    if (this.$auth.user.metadata !== null && this.$auth.user.metadata.userType) {
-      this.formProfile.country = (this.$auth.user.metadata.country) ? this.$auth.user.metadata.country : this.formProfile.country;
+    if (this.$auth.user.metadata !== null && JSON.parse(this.$auth.user.metadata).userType) {
+      this.formProfile.country = (JSON.parse(this.$auth.user.metadata).country) ? this.$auth.user.metadata.country : this.formProfile.country;
       this.formProfile.profile_image = [];
-      this.formProfile.profile_image.push(`${this.$auth.user.metadata.profile_image.secure_url}`);
-      this.formProfile.type = this.$auth.user.metadata.userType;
-      this.formProfile.emailNotifications = this.$auth.user.metadata.emailNotifications;
-      this.formProfile.pushNotifications = this.$auth.user.metadata.pushNotifications;
+      this.formProfile.profile_image.push(`${JSON.parse(this.$auth.user.metadata).profile_image.secure_url}`);
+      this.formProfile.type = JSON.parse(this.$auth.user.metadata).userType;
+      this.formProfile.emailNotifications = JSON.parse(this.$auth.user.metadata).emailNotifications;
+      this.formProfile.pushNotifications = JSON.parse(this.$auth.user.metadata).pushNotifications;
     }
 
     if (this.$auth.user.email_verified_at === null) {
@@ -955,7 +958,7 @@ export default {
         duration: 15000
       });
     }
-    console.log(this.$auth.user.metadata);
+    console.log(JSON.parse(this.$auth.user.metadata));
     console.log('orders', this.orders);
   }
 }
