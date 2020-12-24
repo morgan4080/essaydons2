@@ -133,10 +133,8 @@ module.exports = async (req, res) => {
         error: e
       });
     }
-
   } else if (req.query.payment_succeeded) {
     // payment_succeeded
-
     // Webhook that listens for events sent from Stripe
     // Requires configuration in the Stripe Dashboard
     // For more information read https://stripe.com/docs/webhooks
