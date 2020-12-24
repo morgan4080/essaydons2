@@ -43,6 +43,9 @@ module.exports = async function (req, res) {
           where: {
             account_id: user.account_id,
           },
+          include: {
+            users: true
+          }
         });
 
         res.status(200).json({
@@ -53,6 +56,9 @@ module.exports = async function (req, res) {
           where: {
             user_id: user.id,
           },
+          include: {
+            users: true
+          }
         })
 
         res.status(200).json({

@@ -7,6 +7,9 @@
       <p class="mt-1 max-w-2xl text-sm text-gray-500">
         Specifications data.
       </p>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">
+        <a @click="$emit('back')" class="text-teal-600">Orders</a> > OrderID: {{ order.id }}
+      </p>
     </div>
     <div class="border-t border-gray-200">
       <dl>

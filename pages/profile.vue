@@ -126,7 +126,7 @@
                 </div>
                 <div class="w-full lg:w-5/6 h-auto">
                   <div class="lg:px-6 py-2">
-                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-gray-700 py-2 text-xl">
+                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
                       <div v-if="!orderview && orders.length === 0">
                         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                           <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">The more orders, the higher the discount</h1>
@@ -309,6 +309,7 @@
                           <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgency</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
                           </tr>
@@ -316,24 +317,29 @@
                         <tbody>
                         <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ order.id }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
                               {{ JSON.parse(order.order_details).amount | dollar }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                              {{ JSON.parse(order.order_details).duration.duration }}
+                            </a>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
                             <a @click="switchOrder(order)" class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.status }}
+                              <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <div class="px-4 flex items-center" tabindex="-1">
                               <a @click="switchOrder(order)" href="javascript:void(0);" class="mr-auto">
-                                <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
+                                <icon :name="'cheveron-right'" class="block w-6 h-6 fill-teal-400" />
                               </a>
                               <a v-if="$auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
                                 <icon :name="'trash'" class="block w-4 h-4 fill-gray-400" />
@@ -343,7 +349,7 @@
                         </tr>
                         </tbody>
                       </table>
-                      <SingleOrder v-else-if="orderview && orders.length > 0" :order="currentOrder" />
+                      <SingleOrder v-else-if="orderview && orders.length > 0" @back="orderview = !orderview" :order="currentOrder" />
                     </div>
                     <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-gray-700 py-2 text-xl">
                       <form @submit.prevent="saveProfile('personal')" >
