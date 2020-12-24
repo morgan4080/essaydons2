@@ -943,7 +943,7 @@ export default {
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
 
     if (this.$auth.user.metadata !== null && JSON.parse(this.$auth.user.metadata).userType) {
-      this.formProfile.country = (JSON.parse(this.$auth.user.metadata).country) ? this.$auth.user.metadata.country : this.formProfile.country;
+      this.formProfile.country = (JSON.parse(this.$auth.user.metadata).country) ? JSON.parse(this.$auth.user.metadata).country : this.formProfile.country;
       this.formProfile.profile_image = [];
       this.formProfile.profile_image.push(`${JSON.parse(this.$auth.user.metadata).profile_image.secure_url}`);
       this.formProfile.type = JSON.parse(this.$auth.user.metadata).userType;
