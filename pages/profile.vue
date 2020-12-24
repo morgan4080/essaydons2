@@ -942,14 +942,14 @@ export default {
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
 
-    if (this.$auth.user.metadata !== null && JSON.parse(this.$auth.user.metadata).userType) {
+    /*if (this.$auth.user.metadata !== null && JSON.parse(this.$auth.user.metadata).userType) {
       this.formProfile.country = (JSON.parse(this.$auth.user.metadata).country) ? JSON.parse(this.$auth.user.metadata).country : this.formProfile.country;
       this.formProfile.profile_image = [];
       this.formProfile.profile_image.push(`${JSON.parse(this.$auth.user.metadata).profile_image.secure_url}`);
       this.formProfile.type = JSON.parse(this.$auth.user.metadata).userType;
       this.formProfile.emailNotifications = JSON.parse(this.$auth.user.metadata).emailNotifications;
       this.formProfile.pushNotifications = JSON.parse(this.$auth.user.metadata).pushNotifications;
-    }
+    }*/
 
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
@@ -958,7 +958,9 @@ export default {
         duration: 15000
       });
     }
+
     console.log(JSON.parse(this.$auth.user.metadata));
+
     console.log('orders', this.orders);
   }
 }

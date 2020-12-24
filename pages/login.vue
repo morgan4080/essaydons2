@@ -166,7 +166,7 @@ export default {
             position: "bottom-left",
             duration : 5000
         });
-        this.$router.push('/profile');
+        await this.$router.push('/profile');
       } catch (e) {
         console.log(e.response.data)
         this.loading = false;

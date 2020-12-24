@@ -32,6 +32,11 @@ function authMiddleware(req) {
 }
 
 module.exports = async function (req, res) {
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200)
+  }
   if (Object.keys(req.query).length === 0 && req.method === "GET") {
     let account_id = req.body.account_id
     if (account_id === null) {

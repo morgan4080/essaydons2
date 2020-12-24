@@ -36,45 +36,52 @@ function authMiddleware(req) {
 }
 
 module.exports = async function (req, res) {
-    const user = await authMiddleware(req, res);
 
-    if (Object.keys(req.query).length === 0 && req.method === "GET") {
-        try{
-          let response = await index();
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200)
+  }
 
-          res.status(200).json({
-            data: response
-          });
-        } catch (e) {
-          res.status(500)
-        }
-    } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
-        try {
-          let response = await edit(parseInt(req.query.id));
+  const user = await authMiddleware(req, res);
 
-          res.status(200).json({
-            data: response
-          });
-        } catch (e) {
-          res.status(500)
-        }
+  if (Object.keys(req.query).length === 0 && req.method === "GET") {
+      try{
+        let response = await index();
 
-    }else if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.user_ticket) {
-      // handle complaints
-
-    } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
-        try {
-          let response = await update(req, user.id);
-
-          res.status(200).json({
-            data: response
-          });
-        } catch (e) {
-          res.status(500)
-        }
-    } else {
+        res.status(200).json({
+          data: response
+        });
+      } catch (e) {
         res.status(500)
-    }
+      }
+  } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
+      try {
+        let response = await edit(parseInt(req.query.id));
+
+        res.status(200).json({
+          data: response
+        });
+      } catch (e) {
+        res.status(500)
+      }
+
+  }else if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.user_ticket) {
+    // handle complaints
+
+  } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
+      try {
+        let response = await update(req, user.id);
+
+        res.status(200).json({
+          data: response
+        });
+      } catch (e) {
+        res.status(500)
+      }
+  } else {
+      res.status(500)
+  }
 
 };
 

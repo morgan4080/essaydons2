@@ -39,6 +39,12 @@ function authMiddleware(req) {
 }
 
 module.exports = async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200)
+  }
+
   if (req.query.payment_intent && (req.body && req.body.order)) {
 
     let user;
