@@ -127,7 +127,7 @@
                 <div class="w-full lg:w-5/6 h-auto">
                   <div class="lg:px-6 py-2">
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="text-gray-700 py-2 text-xl">
-                      <div v-if="orders.length === 0">
+                      <div v-if="!orderview && orders.length === 0">
                         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                           <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">The more orders, the higher the discount</h1>
                           <nuxt-link to="/order" class="flex-shrink-0 cta ml-4 text-base font-semibold py-3 px-4 bg-transparent rounded-full transform hover:scale-105 transition ease-in-out duration-100" data-v-4f57e35d="">
@@ -304,42 +304,38 @@
                           </g>
                         </svg>
                       </div>
-                      <table v-else class="w-full px-2 overflow-x-auto whitespace-no-wrap table-auto">
-                        <thead>
-                        <tr class="text-left font-bold">
-                          <th class="px-6 pt-6 pb-4">Id</th>
-                          <th class="px-6 pt-6 pb-4">Total</th>
-                          <th class="px-6 pt-6 pb-4">Status</th>
-                        </tr>
+                      <table v-else-if="!orderview && orders.length > 0" class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                          <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
+                          </tr>
                         </thead>
-                        <tbody v-if="orders.length === 0">
-                        <tr>
-                          <td class="border-t px-6 py-4" colspan="4">No Orders found.</td>
-                        </tr>
-                        </tbody>
-                        <tbody v-else>
+                        <tbody>
                         <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
-                          <td class="border-t">
-                            <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ order.id }}
                             </a>
                           </td>
-                          <td class="border-t">
-                            <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ JSON.parse(order.order_details).amount }}
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                              {{ JSON.parse(order.order_details).amount | dollar }}
                             </a>
                           </td>
-                          <td class="border-t">
-                            <a class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
                               {{ order.status }}
                             </a>
                           </td>
-                          <td class="border-t">
-                            <div class="px-4 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              <a href="javascript:void(0);" class="mr-auto">
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="px-4 flex items-center" tabindex="-1">
+                              <a @click="switchOrder(order)" href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-gray-400" />
                               </a>
-                              <a @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
+                              <a v-if="$auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
                                 <icon  :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
@@ -347,6 +343,7 @@
                         </tr>
                         </tbody>
                       </table>
+                      <SingleOrder v-else-if="orderview && orders.length > 0" :order="currentOrder" />
                     </div>
                     <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-gray-700 py-2 text-xl">
                       <form @submit.prevent="saveProfile('personal')" >
@@ -704,11 +701,13 @@
 import Icon from '@/components/Icon';
 import { mapState } from 'vuex';
 import LoadingButton from "@/components/LoadingButton";
+import SingleOrder from '@/components/SingleOrder'
 
 export default {
   components: {
     LoadingButton,
     Icon,
+    SingleOrder
   },
   async fetch() {
     const response = await this.$axios.get('api/orders');
@@ -717,6 +716,8 @@ export default {
   data() {
     return {
       openTab: 1,
+      currentOrder: null,
+      orderview: false,
       orders: [],
       invoices: [],
       tickets: [],
@@ -906,6 +907,10 @@ export default {
     toggleTabs(tabNumber) {
       console.log({ tabNumber });
       this.openTab = tabNumber;
+    },
+    switchOrder(order) {
+      this.orderview = !this.orderview;
+      this.currentOrder = order;
     },
     deleteOrder(id) {
       if (confirm('Are you sure you want to delete this order?')) {

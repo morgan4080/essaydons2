@@ -256,8 +256,14 @@ padding: 0 15px 0 15px !important;
 </tr>
 
 <tr>
+<td class="hero-subheader__content" style="font-size: 15px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
+<p>A reliable partner for professional academic services. Contact us on this email address for more information.</p>
+</td>
+</tr>
+
+<tr>
 <td class="hero-subheader__content" style="font-size: 16px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
-<a href="https://essaydons.co/reset/email-confirmation?token=${token}" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #42fbb7; color: white;">Confirm Email</a>
+<a href="https://essaydons.co/profile?token=${token}" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #42fbb7; color: white;">Confirm Email</a>
 </td>
 </tr>
 </tbody></table>

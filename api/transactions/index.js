@@ -51,26 +51,13 @@ module.exports = async (req, res) => {
       });
     }
 
-    let response;
-
-    try {
-      response = await prisma.orders.create({
-        data: {
-          accounts: { connect: { id: user.account_id } },
-          users: { connect: { id: user.id } },
-          order_details: JSON.stringify(req.body.order),
-          status: "processing",
-        }
-      });
-    } catch (e) {
-      res.status(400).json({
-        error: e
-      });
-    }
-
     let customer;
 
-    if (!user.metadata.hasOwnProperty("stripe_ck_id")) {
+    if (user.metadata !== null && typeof user.metadata === String) {
+      user.metadata = JSON.parse(user.metadata);
+    }
+
+    if (user.metadata === null || !user.metadata.hasOwnProperty("stripe_ck_id")) {
       try {
         customer = await stripe.customers.create({
           name: user.name,
@@ -105,6 +92,23 @@ module.exports = async (req, res) => {
       customer = {
         id: user.metadata.stripe_ck_id
       };
+    }
+
+    let response;
+
+    try {
+      response = await prisma.orders.create({
+        data: {
+          accounts: { connect: { id: user.account_id } },
+          users: { connect: { id: user.id } },
+          order_details: JSON.stringify(req.body.order),
+          status: "processing",
+        }
+      });
+    } catch (e) {
+      res.status(400).json({
+        error: e
+      });
     }
 
     try {
@@ -183,7 +187,9 @@ module.exports = async (req, res) => {
     // Return a 200 response to acknowledge receipt of the event
     res.status(200)
   } else if (req.query.paypal_intent && (req.body && req.body.order)) {
-
+    res.status(400).json({
+      message: "missing information"
+    });
   } else {
     res.status(400).json({
       message: "missing information"
