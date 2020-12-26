@@ -38,6 +38,30 @@ function authMiddleware(req) {
   })
 }
 
+async function saveSuccessfulPayment(paymentIntent) {
+  try {
+    const response = await prisma.orders.update({
+      where: { id: parseInt(paymentIntent.data.object.metadata.order_id) },
+      data: {
+        status: "success"
+      },
+    });
+    return {
+      status: 200,
+      responseObj: {
+        success: response
+      }
+    }
+  } catch (e) {
+    return {
+      status: 400,
+      responseObj: {
+        error: e
+      }
+    }
+  }
+}
+
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -153,33 +177,21 @@ module.exports = async (req, res) => {
         sig,
         endpointSecret
       );
+      if (typeof stripeEvent === String) {
+        stripeEvent = JSON.parse(stripeEvent)
+      }
     } catch (err) {
-      return { statusCode: 400 };
+      res.status(400).json({
+        error: err
+      });
     }
     // Handle the event
     switch (stripeEvent.type) {
       case "payment_intent.succeeded":
         const paymentIntent = stripeEvent.data.object;
-        console.log('object', paymentIntent)
-        console.log(
-          "Payment was successful! Charge information:",
-          paymentIntent.charges.data.filter(charge => charge.status === "succeeded")
-        );
-        try {
-          await prisma.orders.update({
-            where: { id: paymentIntent.data.object.metadata.order_id },
-            data: {
-              status: "success"
-            },
-          });
-          res.status(200);
-          break;
-        } catch (e) {
-          res.status(400).json({
-            error: e
-          });
-          break;
-        }
+        const { status, responseObj } = await saveSuccessfulPayment(paymentIntent);
+        res.status(status).json(responseObj);
+        break;
       case "charge.dispute.created":
         const charge = stripeEvent.data.object;
         console.log("Someone disputed a payment!");

@@ -355,21 +355,21 @@
                       <div class="flex items-center">
                         <input id="advanced" type="checkbox" v-model="form.advanced_writer" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="advanced" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Advanced Writer (+25%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Advanced Writer (+25%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="editing" type="checkbox" v-model="form.additional_editing" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="editing" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Additional editing (+15%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Additional editing (+15%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="dCopies" type="checkbox" v-model="form.digital_copies" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="dCopies" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Digital copies of sources used ($9.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Digital copies of sources used ($9.99)</span>
                         </label>
                       </div>
 
@@ -382,7 +382,7 @@
                     <label for="username" class="block text-gray-700 text-base font-bold mb-1">
                       Duration
                     </label>
-                    <select v-model="form.duration" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                    <select v-model="form.duration" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
                       <optgroup label="Deadline">
                         <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
                       </optgroup>
@@ -416,21 +416,21 @@
                       <div class="flex items-center">
                         <input id="draft" type="checkbox" v-model="form.initial_draft" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="draft" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Initial Draft (+10%)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Initial Draft (+10%)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="summary" type="checkbox" v-model="form.one_page_summary" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="summary" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">One-page summary ($17.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">One-page summary ($17.99)</span>
                         </label>
                       </div>
 
                       <div class="mt-4 flex items-center">
                         <input id="report" type="checkbox" v-model="form.plagiarism_report" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="report" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-right">Plagiarism report ($7.99)</span>
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Plagiarism report ($7.99)</span>
                         </label>
                       </div>
 
@@ -469,7 +469,7 @@
                   <br />
                   <label for="card" class="font-semibold text-base mt-2">Credit Card</label>
                   <br />
-                  <small class="font-light">
+                  <small class="font-light hidden">
                     Test using these Stripe test credit card numbers with any CVC, postal code, and expiration date in the future:
                     <ul>
                       <li>

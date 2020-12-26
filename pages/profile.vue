@@ -962,7 +962,7 @@ export default {
     this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
-    let metadata = (this.$auth.user.metadata) ? JSON.parse(this.$auth.user.metadata) : null;
+    let metadata = JSON.parse(this.$auth.user.metadata);
     if (typeof metadata === Object) {
       (metadata.hasOwnProperty("country")) ? this.formProfile.country = metadata.country : null;
       (metadata.hasOwnProperty("userType")) ? this.formProfile.type = metadata.userType : null;
