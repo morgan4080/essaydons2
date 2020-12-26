@@ -127,7 +127,7 @@
                 <div class="w-full lg:w-5/6 h-auto">
                   <div class="lg:px-6 py-2">
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
-                      <div v-if="!orderview && orders.length === 0">
+                      <div v-if="!orderview && orders.length === 0" class="py-4">
                         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                           <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">The more orders, the higher the discount</h1>
                           <nuxt-link to="/order" class="flex-shrink-0 cta ml-4 text-base font-semibold py-3 px-4 bg-transparent rounded-full transform hover:scale-105 transition ease-in-out duration-100" data-v-4f57e35d="">
@@ -309,7 +309,8 @@
                           <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgency</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
                           </tr>
@@ -317,27 +318,32 @@
                         <tbody>
                         <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ order.id }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
                               {{ JSON.parse(order.order_details).amount | dollar }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
+                              {{ order.created_at | formatDate }}
+                            </a>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
                               {{ JSON.parse(order.order_details).duration.duration }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="px-6 py-4 flex items-center" href="javascript:void(0);" tabindex="-1">
+                            <a @click="switchOrder(order)" class="flex items-center" href="javascript:void(0);" tabindex="-1">
                               <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="px-4 flex items-center" tabindex="-1">
+                            <div class="pr-4 flex items-center" tabindex="-1">
                               <a @click="switchOrder(order)" href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-teal-400" />
                               </a>
@@ -433,7 +439,7 @@
                                       <div class="col-span-6 sm:col-span-3">
                                         <label for="phone" class="block text-base font-medium leading-5 text-gray-700">Phone number</label>
                                         <div class="relative">
-                                          <div class="absolute inset-y-0 left-0 py-2 pl-3 flex items-center pointer-events-none">
+                                          <div class="absolute inset-y-0 left-0 py-2 pl-3 pr-2 flex items-center pointer-events-none">
                                             <span class="text-gray-700 sm:text-base">
                                               +{{ computedCountry.callingCode }}
                                             </span>
@@ -792,6 +798,7 @@ export default {
       if (this.loadMetaData()) {
         this.currentForm = section;
         let uploadInstance = this.userMeta;
+        let payload = {};
         try {
           if (section === 'personal') {
             console.log('uploading', this.userMeta.profile.profile_image[0]);
@@ -802,26 +809,40 @@ export default {
               upload_preset: 'ybfqkqyu'
             });
           }
-          let payload = {
-            name: uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name,
-            email: uploadInstance.personalInformation.email,
-            password: this.formProfile.password,
-            phone: uploadInstance.personalInformation.phone,
-            admin_key: this.formProfile.admin_key,
-            owner: !!(this.formProfile.admin_key),
-            metadata: {
-              ...this.$auth.user.metadata,
-            }
-          };
-          (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
-          (this.formProfile.password === null) ? delete payload.password : null;
-          (this.formProfile.admin_key === null) ? delete payload.admin_key : null;
-          payload.metadata.country = this.formProfile.country;
-          payload.metadata.profile.userType = uploadInstance.profile.userType;
-          payload.metadata.profile.profile_image = uploadInstance.profile.profile_image;
-          payload.metadata.notifications.emailNotifications = uploadInstance.notifications.emailNotifications;
-          payload.metadata.notifications.pushNotifications = uploadInstance.notifications.pushNotifications;
-          console.log(payload);
+        } catch (e) {
+          console.log(e, 'error uploading image')
+        }
+        payload.name = uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name;
+        payload.email = uploadInstance.personalInformation.email;
+        payload.password = this.formProfile.password;
+        payload.phone = uploadInstance.personalInformation.phone;
+        payload.admin_key = this.formProfile.admin_key;
+        payload.owner = !!(this.formProfile.admin_key);
+        (JSON.parse(this.$auth.user.metadata).hasOwnProperty('profile')) ? payload.metadata = {
+          ...JSON.parse(this.$auth.user.metadata),
+          country: this.formProfile.country
+        } : payload.metadata = {
+          ...JSON.parse(this.$auth.user.metadata),
+          country: this.formProfile.country,
+          profile: {
+            userType: uploadInstance.profile.userType,
+            profile_image: uploadInstance.profile.profile_image
+          }
+        };
+        (JSON.parse(this.$auth.user.metadata).hasOwnProperty('notifications')) ? payload.metadata = {
+          ...payload.metadata,
+        } : payload.metadata = {
+          ...payload.metadata,
+          notifications: {
+            emailNotifications: uploadInstance.notifications.emailNotifications,
+            pushNotifications: uploadInstance.notifications.pushNotifications
+          }
+        };
+        (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
+        (this.formProfile.password === null || this.formProfile.password === "" ) ? delete payload.password : null;
+        (this.formProfile.admin_key === null || this.formProfile.admin_key === "") ? delete payload.admin_key : null;
+        console.log('payload', payload);
+        try {
           const response = await this.$axios.put('api/users?data=' + section, {
             ...payload
           });
@@ -941,15 +962,17 @@ export default {
     this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
-
-    /*if (this.$auth.user.metadata !== null && JSON.parse(this.$auth.user.metadata).userType) {
-      this.formProfile.country = (JSON.parse(this.$auth.user.metadata).country) ? JSON.parse(this.$auth.user.metadata).country : this.formProfile.country;
+    let metadata = (this.$auth.user.metadata) ? JSON.parse(this.$auth.user.metadata) : null;
+    if (typeof metadata === Object) {
+      (metadata.hasOwnProperty("country")) ? this.formProfile.country = metadata.country : null;
+      (metadata.hasOwnProperty("userType")) ? this.formProfile.type = metadata.userType : null;
+      (metadata.hasOwnProperty("emailNotifications")) ? this.formProfile.emailNotifications = metadata.emailNotifications : null;
+      (metadata.hasOwnProperty("pushNotifications")) ? this.formProfile.pushNotifications = metadata.pushNotifications : null;
       this.formProfile.profile_image = [];
-      this.formProfile.profile_image.push(`${JSON.parse(this.$auth.user.metadata).profile_image.secure_url}`);
-      this.formProfile.type = JSON.parse(this.$auth.user.metadata).userType;
-      this.formProfile.emailNotifications = JSON.parse(this.$auth.user.metadata).emailNotifications;
-      this.formProfile.pushNotifications = JSON.parse(this.$auth.user.metadata).pushNotifications;
-    }*/
+      (metadata.hasOwnProperty("profile_image")) ? this.formProfile.profile_image.push(metadata.profile_image.secure_url) : null;
+    } else {
+      console.log("metadata is null", metadata);
+    }
 
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
@@ -959,28 +982,12 @@ export default {
       });
     }
 
-    console.log(JSON.parse(this.$auth.user.metadata));
-
-    console.log('orders', this.orders);
+    console.log(metadata);
   }
 }
 </script>
 
 <style scoped>
-.custom-calc {
-  background: rgb(98,98,98);
-  padding: 20px;
-  border: 1px solid rgb(66, 251, 183);
-  border-radius: 1rem;
-}
-@media (max-width: 359px) {
-  .custom-calc {
-    top: 37rem;
-    left: 5vw;
-    z-index: 10;
-    max-width: 18rem;
-  }
-}
 .cta {
   border: 1px solid #42FBB7;color:#42FBB7;display: flex;align-items: center;
 }

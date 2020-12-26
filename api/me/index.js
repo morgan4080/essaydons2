@@ -27,23 +27,31 @@ function authMiddleware(req) {
   })
 }
 
-module.exports = async  (req, res) => {
-  try {
-    if (req.method === 'OPTIONS') {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-      res.status(200)
-    }
+const allowCORS = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Accept, Accept-Version, Content-Length, Date, X-Api-Version');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  if (req.method === 'OPTIONS') {
+    res.status(200);
+    return
+  }
 
+  return await fn(req, res)
+}
+
+const handler = async  (req, res) => {
+  try {
     const user = await authMiddleware(req)
 
     res.status(200).json({
       ...user
-    })
+    });
 
   } catch (e) {
     res.status(401).json({
       error: e
-    })
+    });
   }
 }
+
+module.exports = allowCORS(handler);
