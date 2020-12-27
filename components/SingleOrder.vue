@@ -18,7 +18,7 @@
             Full name
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Margot Foster
+            {{ order.users.name }}
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -26,8 +26,8 @@
             Contact Information
           </dt>
           <dd class="flex flex-col mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            <a href="mailto:someone@example.com">Email - someone@example.com</a>
-            <a href="tel:+18475555555">Call - 1-847-555-5555</a>
+            <a href="mailto:someone@example.com">Email - {{ order.users.email }}</a>
+            <a href="tel:+18475555555">Call - {{ order.users.phone }}</a>
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -35,7 +35,7 @@
             Paper Type
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Argumentative Essay
+            {{ orderDetails.paper_type }}
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -43,7 +43,7 @@
             Academic Level, Discipline/Subject
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            High School - Art
+            {{ academicLevel }} - {{ orderDetails.subject }}
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -51,7 +51,7 @@
             Urgency
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            12 Hours
+            {{ orderDetails.duration.duration }}
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -59,7 +59,7 @@
             Pages (spacing) (format)
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            1 (Double) (APA)
+            {{ orderDetails.pages }} ({{ orderDetails.spacing }}) ({{ orderDetails.format }})
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -68,15 +68,15 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <ul>
-              <li>Sources = 0</li>
-              <li>Slides = 0</li>
-              <li>Charts = 0</li>
-              <li>Advanced writer</li>
-              <li>Additional editing</li>
-              <li>Digital copies of sources</li>
-              <li>Initial draft</li>
-              <li>Page summary</li>
-              <li>Plagiarism report</li>
+              <li>Sources = {{ orderDetails.sources }}</li>
+              <li>Slides = {{ orderDetails.slides }}</li>
+              <li>Charts = {{ orderDetails.charts }}</li>
+              <li v-if="orderDetails.advanced_writer">Advanced writer</li>
+              <li v-if="orderDetails.additional_editing">Additional editing</li>
+              <li v-if="orderDetails.digital_copies">Digital copies of sources</li>
+              <li v-if="orderDetails.initial_draft">Initial draft</li>
+              <li v-if="orderDetails.one_page_summary">Page summary</li>
+              <li v-if="orderDetails.plagiarism_report">Plagiarism report</li>
             </ul>
           </dd>
         </div>
@@ -85,8 +85,8 @@
             Topic and Paper Details
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            <span class="font-bold mb-1">Preferred topic</span><br>
-            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+            <span class="font-bold mb-1">{{ orderDetails.topic }}</span><br>
+            {{ orderDetails.details }}
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -95,34 +95,18 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
-              <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+              <li v-for="upload in orderDetails.uploads" class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                 <div class="w-0 flex-1 flex items-center">
                   <!-- Heroicon name: paper-clip -->
                   <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
                   </svg>
                   <span class="ml-2 flex-1 w-0 truncate">
-                  resume_back_end_developer.pdf
+                  {{ upload.secure_url.slice(upload.secure_url.lastIndexOf("/")).slice(1) }}
                 </span>
                 </div>
                 <div class="ml-4 flex-shrink-0">
-                  <a @click="genDownload('id_54321')" href="javascript:void(0)" class="font-medium text-indigo-600 hover:text-indigo-500">
-                    Download
-                  </a>
-                </div>
-              </li>
-              <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                <div class="w-0 flex-1 flex items-center">
-                  <!-- Heroicon name: paper-clip -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="ml-2 flex-1 w-0 truncate">
-                  coverletter_back_end_developer.pdf
-                </span>
-                </div>
-                <div class="ml-4 flex-shrink-0">
-                  <a @click="genDownload('id_54321')" href="javascript:void(0)" class="font-medium text-indigo-600 hover:text-indigo-500">
+                  <a @click="genDownload(upload.public_id)" href="javascript:void(0)" class="font-medium text-indigo-600 hover:text-indigo-500">
                     Download
                   </a>
                 </div>
@@ -136,10 +120,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "SingleOrder",
   props: {
     order: Object
+  },
+  computed: {
+    ...mapState(['storedata']),
+    orderDetails() {
+      return JSON.parse(this.order.order_details)
+    },
+    academicLevel() {
+      return this.storedata.find(item => item.id === this.orderDetails.level)
+    }
   },
   mounted() {
     console.log(this.order)

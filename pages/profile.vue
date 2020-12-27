@@ -818,18 +818,18 @@ export default {
         payload.phone = uploadInstance.personalInformation.phone;
         payload.admin_key = this.formProfile.admin_key;
         payload.owner = !!(this.formProfile.admin_key);
-        (JSON.parse(this.$auth.user.metadata).hasOwnProperty('profile')) ? payload.metadata = {
-          ...JSON.parse(this.$auth.user.metadata),
+        (this.$auth.user.metadata.hasOwnProperty('profile')) ? payload.metadata = {
+          ...this.$auth.user.metadata,
           country: this.formProfile.country
         } : payload.metadata = {
-          ...JSON.parse(this.$auth.user.metadata),
+          ...this.$auth.user.metadata,
           country: this.formProfile.country,
           profile: {
             userType: uploadInstance.profile.userType,
             profile_image: uploadInstance.profile.profile_image
           }
         };
-        (JSON.parse(this.$auth.user.metadata).hasOwnProperty('notifications')) ? payload.metadata = {
+        (this.$auth.user.metadata.hasOwnProperty('notifications')) ? payload.metadata = {
           ...payload.metadata,
         } : payload.metadata = {
           ...payload.metadata,
@@ -952,8 +952,6 @@ export default {
   },
   mounted() {
     this.form.subject = this.subjects[0];
-    console.log(this.duration[Object.keys(this.duration)[0]]);
-    console.log(Object.entries(this.duration)[0]);
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
@@ -962,14 +960,16 @@ export default {
     this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
-    let metadata = JSON.parse(this.$auth.user.metadata);
-    if (typeof metadata === Object) {
+    let metadata = this.$auth.user.metadata;
+    if (typeof metadata === "object") {
       (metadata.hasOwnProperty("country")) ? this.formProfile.country = metadata.country : null;
-      (metadata.hasOwnProperty("userType")) ? this.formProfile.type = metadata.userType : null;
       (metadata.hasOwnProperty("emailNotifications")) ? this.formProfile.emailNotifications = metadata.emailNotifications : null;
       (metadata.hasOwnProperty("pushNotifications")) ? this.formProfile.pushNotifications = metadata.pushNotifications : null;
       this.formProfile.profile_image = [];
-      (metadata.hasOwnProperty("profile_image")) ? this.formProfile.profile_image.push(metadata.profile_image.secure_url) : null;
+      if (metadata.hasOwnProperty("profile")) {
+        this.formProfile.type = metadata.profile.userType;
+        this.formProfile.profile_image.push(metadata.profile.profile_image.secure_url)
+      }
     } else {
       console.log("metadata is null", metadata);
     }
@@ -982,7 +982,7 @@ export default {
       });
     }
 
-    console.log(metadata);
+    console.log(this.orders);
   }
 }
 </script>

@@ -38,12 +38,12 @@ function authMiddleware(req) {
   })
 }
 
-async function saveSuccessfulPayment(paymentIntent) {
+async function saveSuccessfulPayment(metadata, status) {
   try {
     const response = await prisma.orders.update({
-      where: { id: parseInt(paymentIntent.data.object.metadata.order_id) },
+      where: { id: parseInt(metadata.order_id) },
       data: {
-        status: "success"
+        status: status
       },
     });
     return {
@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
 
     let customer;
 
-    if (user.metadata !== null && typeof user.metadata === String) {
+    if (user.metadata !== null && typeof user.metadata === "string") {
       user.metadata = JSON.parse(user.metadata);
     }
 
@@ -177,7 +177,7 @@ module.exports = async (req, res) => {
         sig,
         endpointSecret
       );
-      if (typeof stripeEvent === String) {
+      if (typeof stripeEvent === "string") {
         stripeEvent = JSON.parse(stripeEvent)
       }
     } catch (err) {
@@ -186,10 +186,22 @@ module.exports = async (req, res) => {
       });
     }
     // Handle the event
+
+    /*const paymentIntent = stripeEvent.data.object;*/
+    const metadata = stripeEvent.data.object.metadata.order_id;
+
     switch (stripeEvent.type) {
+      case "payment_intent.created":
+        res.status(200).json({
+          message: "Payment intent created!"
+        });
+        break;
+      case "payment_intent.payment_failed":
+        const response = await saveSuccessfulPayment(metadata, "failure");
+        res.status(response.status).json(response.responseObj);
+        break;
       case "payment_intent.succeeded":
-        const paymentIntent = stripeEvent.data.object;
-        const { status, responseObj } = await saveSuccessfulPayment(paymentIntent);
+        const { status, responseObj } = await saveSuccessfulPayment(metadata, "success");
         res.status(status).json(responseObj);
         break;
       case "charge.dispute.created":
@@ -198,6 +210,12 @@ module.exports = async (req, res) => {
         res.status(400).json({
           charge,
           message: "Someone disputed a payment!"
+        });
+        break;
+      case "charge.succeeded":
+        console.log("charge succeeded!");
+        res.status(200).json({
+          message: "Charge succeeded!"
         });
         break;
       // ... handle other event types
