@@ -828,7 +828,6 @@ export default {
           console.log(e, 'error uploading image')
         }
       }
-
       payload.name = uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name;
       payload.email = uploadInstance.personalInformation.email;
       payload.password = this.formProfile.password;
