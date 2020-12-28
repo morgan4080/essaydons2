@@ -46,7 +46,6 @@ export const mutations = {
     state.cartUIStatus = payload;
   },
   clearCart: state => {
-    //this clears the cart
     (state.cart = []), (state.cartUIStatus = "idle");
   },
   addToCart: (state, payload) => {
