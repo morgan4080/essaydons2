@@ -503,7 +503,7 @@
                                         <div class="mt-4">
                                           <div class="flex items-start">
                                             <div class="flex items-center h-5">
-                                              <input v-model="formProfile.emailNotifications.onOrderComplete" id="candidates" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                              <input @change="changer($event)" v-model="formProfile.emailNotifications.onOrderComplete" id="candidates" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                             </div>
                                             <div class="ml-3 text-base leading-5">
                                               <label for="candidates" class="font-medium text-gray-700">Order Complete</label>
@@ -514,7 +514,7 @@
                                         <div class="mt-4">
                                           <div class="flex items-start">
                                             <div class="flex items-center h-5">
-                                              <input v-model="formProfile.emailNotifications.offers" id="offers" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                              <input @change="changer($event)" v-model="formProfile.emailNotifications.offers" id="offers" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                             </div>
                                             <div class="ml-3 text-base leading-5">
                                               <label for="offers" class="font-medium text-gray-700">Offers</label>
@@ -529,13 +529,13 @@
                                       <p class="text-base leading-5 text-gray-500">These are delivered via SMS to your mobile phone.</p>
                                       <div class="mt-4">
                                         <div class="mt-4 flex items-center">
-                                          <input @change="changer($event)" v-model="formProfile.pushNotifications.sameAsEmail" id="push_email" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <input @change="changer($event)" v-model="pushNotificationsState" id="push_email" name="push_same" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                           <label for="push_email" class="ml-3">
                                             <span class="block text-base leading-5 font-medium text-gray-700">Same as email</span>
                                           </label>
                                         </div>
                                         <div class="mt-4 flex items-center">
-                                          <input @change="changer($event)" v-model="formProfile.pushNotifications.none" id="push_nothing" name="push_notifications" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                          <input @change="changer($event)" v-model="pushNotificationsState" id="push_nothing" name="push_same" type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
                                           <label for="push_nothing" class="ml-3">
                                             <span class="block text-base leading-5 font-medium text-gray-700">No push notifications</span>
                                           </label>
@@ -762,10 +762,12 @@ export default {
         password: null,
         admin_key: null,
       },
-      userMeta: null,
+      pushNotificationsState: null,
       loading: false,
       currentForm: '',
-      passwordFieldType: false
+      passwordFieldType: false,
+      profileChanged: false,
+      notificationsChanged: false,
     }
   },
   computed: {
@@ -788,22 +790,35 @@ export default {
   },
   methods: {
     changer(e) {
-      console.log(e)
+      console.log(e);
+      this.notificationsChanged = true;
+      if (e.target.id === "push_nothing") {
+        console.log("push nothing");
+        this.formProfile.pushNotifications.none = true;
+        this.formProfile.pushNotifications.sameAsEmail = false;
+      } else if (e.target.id === "push_email") {
+        console.log("push email");
+        this.formProfile.pushNotifications.none = false;
+        this.formProfile.pushNotifications.sameAsEmail = true;
+      }
     },
     changePasswordFieldType() {
       this.passwordFieldType = !this.passwordFieldType
     },
     async saveProfile(section) {
       this.loading = true;
-      if (this.loadMetaData()) {
-        this.currentForm = section;
-        let uploadInstance = this.userMeta;
-        let payload = {};
+      this.currentForm = section;
+      let uploadInstance = this.loadMetaData();
+      let payload = {};
+      if (uploadInstance.profile.profile_image[0].slice(0,4) === "http") {
+        uploadInstance.profile.profile_image = this.$auth.user.metadata.profile.profile_image
+      } else {
         try {
           if (section === 'personal') {
-            console.log('uploading', this.userMeta.profile.profile_image[0]);
+            this.profileChanged = true;
+            console.log('uploading', uploadInstance.profile.profile_image[0]);
             let public_id = 'profile_photo_' + Math.random().toString(36).substr(2, 16);
-            uploadInstance.profile.profile_image = await this.$cloudinary.upload(this.userMeta.profile.profile_image[0], {
+            uploadInstance.profile.profile_image = await this.$cloudinary.upload(uploadInstance.profile.profile_image[0], {
               public_id: public_id,
               folder: "profile",
               upload_preset: 'ybfqkqyu'
@@ -812,67 +827,68 @@ export default {
         } catch (e) {
           console.log(e, 'error uploading image')
         }
-        payload.name = uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name;
-        payload.email = uploadInstance.personalInformation.email;
-        payload.password = this.formProfile.password;
-        payload.phone = uploadInstance.personalInformation.phone;
-        payload.admin_key = this.formProfile.admin_key;
-        payload.owner = !!(this.formProfile.admin_key);
-        (this.$auth.user.metadata.hasOwnProperty('profile')) ? payload.metadata = {
-          ...this.$auth.user.metadata,
-          country: this.formProfile.country
-        } : payload.metadata = {
-          ...this.$auth.user.metadata,
-          country: this.formProfile.country,
-          profile: {
-            userType: uploadInstance.profile.userType,
-            profile_image: uploadInstance.profile.profile_image
-          }
-        };
-        (this.$auth.user.metadata.hasOwnProperty('notifications')) ? payload.metadata = {
-          ...payload.metadata,
-        } : payload.metadata = {
-          ...payload.metadata,
-          notifications: {
-            emailNotifications: uploadInstance.notifications.emailNotifications,
-            pushNotifications: uploadInstance.notifications.pushNotifications
-          }
-        };
-        (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
-        (this.formProfile.password === null || this.formProfile.password === "" ) ? delete payload.password : null;
-        (this.formProfile.admin_key === null || this.formProfile.admin_key === "") ? delete payload.admin_key : null;
-        console.log('payload', payload);
-        try {
-          const response = await this.$axios.put('api/users?data=' + section, {
-            ...payload
-          });
-          console.log('response', response);
-          this.$toast.success(section + ' Information Updated', {
-            theme: 'outline',
-            position: 'bottom-right',
+      }
+
+      payload.name = uploadInstance.personalInformation.first_name + ' ' + uploadInstance.personalInformation.last_name;
+      payload.email = uploadInstance.personalInformation.email;
+      payload.password = this.formProfile.password;
+      payload.phone = uploadInstance.personalInformation.phone;
+      payload.admin_key = this.formProfile.admin_key;
+      payload.owner = !!(this.formProfile.admin_key);
+      (this.$auth.user.metadata.hasOwnProperty('profile') && !this.profileChanged) ? payload.metadata = {
+        ...this.$auth.user.metadata,
+        country: this.formProfile.country
+      } : payload.metadata = {
+        ...this.$auth.user.metadata,
+        country: this.formProfile.country,
+        profile: {
+          userType: uploadInstance.profile.userType,
+          profile_image: uploadInstance.profile.profile_image
+        }
+      };
+      (this.$auth.user.metadata.hasOwnProperty('notifications') && !this.notificationsChanged) ? payload.metadata = {
+        ...payload.metadata,
+      } : payload.metadata = {
+        ...payload.metadata,
+        notifications: {
+          emailNotifications: uploadInstance.notifications.emailNotifications,
+          pushNotifications: uploadInstance.notifications.pushNotifications
+        }
+      };
+      (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
+      (this.formProfile.password === null || this.formProfile.password === "" ) ? delete payload.password : null;
+      (this.formProfile.admin_key === null || this.formProfile.admin_key === "") ? delete payload.admin_key : null;
+      console.log('payload', payload);
+      try {
+        const response = await this.$axios.put('api/users?data=' + section, {
+          ...payload
+        });
+        console.log('response', response);
+        this.$toast.success(section + ' Information Updated', {
+          theme: 'outline',
+          position: 'bottom-right',
+          duration: 5000
+        });
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+        if (e.response && e.response.data.message) {
+          this.$toast.error(e.response.data.message, {
+            theme: "outline",
+            position: "bottom-right",
             duration: 5000
           });
-          this.loading = false;
-        } catch (e) {
-          this.loading = false;
-          if (e.response && e.response.data.message) {
-            this.$toast.error(e.response.data.message, {
-              theme: "outline",
-              position: "bottom-right",
-              duration: 5000
-            });
-          } else {
-            this.$toast.error("Network Error", {
-              theme: "outline",
-              position: "bottom-right",
-              duration: 5000
-            });
-          }
+        } else {
+          this.$toast.error("Network Error", {
+            theme: "outline",
+            position: "bottom-right",
+            duration: 5000
+          });
         }
       }
     },
     loadMetaData() {
-      this.userMeta = {
+      return {
         profile: {
           profile_image: this.formProfile.profile_image,
           userType: this.formProfile.type
@@ -884,11 +900,16 @@ export default {
           phone: "+" + this.computedCountry.callingCode + " " + this.formProfile.phone,
         },
         notifications: {
-          emailNotifications: this.formProfile.emailNotifications,
-          pushNotifications: this.formProfile.pushNotifications
+          emailNotifications: {
+            onOrderComplete: this.formProfile.emailNotifications.onOrderComplete,
+            offers: this.formProfile.emailNotifications.offers
+          },
+          pushNotifications: {
+            none: this.formProfile.pushNotifications.none,
+            sameAsEmail : this.formProfile.pushNotifications.sameAsEmail,
+          }
         }
       }
-      return true
     },
     async readFileUrl(input) {
 

@@ -5,8 +5,9 @@
   "private": true,
   "author": "morgan4080",
   "scripts": {
-    "dev": "nuxt --port 5000",
-    "local-dev": "vercel dev -A vercel.dev.json"
+    "dev": "nuxt --port $PORT",
+    "local-dev": "vercel dev -A vercel.dev.json",
+    "deploy": "prisma introspect && prisma generate && git add . && $date = date && git commit -m ${\"'$date'\"} && git push origin main"
   },
   "dependencies": {
     "@nuxt/core": "^2.14.6",

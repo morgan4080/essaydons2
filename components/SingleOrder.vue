@@ -133,7 +133,7 @@ export default {
       return JSON.parse(this.order.order_details)
     },
     academicLevel() {
-      return this.storedata.find(item => item.id === this.orderDetails.level)
+      return this.storedata.find(item => item.id === this.orderDetails.level).level
     }
   },
   mounted() {

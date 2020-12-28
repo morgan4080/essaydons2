@@ -22,7 +22,7 @@
                 Blog
               </nuxt-link>
               <nuxt-link to="/services" class="group uppercase mx-2 text-base text-secondary font-semibold py-3 px-4 hover:text-white inline-block" >
-                <span @mouseover="showSubMenu0 = true" class="flex flex-row items-center">
+                <span @mouseover="showSubMenu0 = true" @mouseleave="checkMousePos($event)" class="flex flex-row items-center">
                   Services
                   <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -37,7 +37,7 @@
                   leave-class="opacity-100 translate-y-0"
                   leave-to-class="opacity-0 translate-y-1"
                 >
-                  <div @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/6 capitalize" style="max-width: 15rem;">
+                  <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/6 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
                       <div class="rounded-lg shadow-xs">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -424,6 +424,20 @@ export default {
     showDropdown() {
       this.dropDownOpen = !this.dropDownOpen;
     },
+    checkMousePos(e) {
+      let stt = false;
+      document.querySelector("#evOfInt").addEventListener('mouseenter', (event) => {
+        console.log(event);
+        stt = true;
+      })
+
+      setTimeout(() => {
+        if (!stt) {
+          this.showSubMenu0 = false
+        }
+      }, 200)
+
+    }
   },
 };
 </script>
