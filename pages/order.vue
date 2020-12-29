@@ -340,12 +340,12 @@
                         </div>
                       </div>
                       <div class="">
-                        <label for="username" class="block text-gray-700 text-base font-bold mb-1 text-center">
+                        <label for="spacing" class="block text-gray-700 text-base font-bold mb-1 text-center">
                           Spacing <span class="font-light">({{ (form.spacing === 'Double') ? '275 Words' : '550 Words' }})</span>
                         </label>
                         <div class="flex ml-1 border border-gray-300 rounded-3xl h-10">
                           <button class="w-1/2" :class="{'bg-gray-400 rounded-l-3xl': form.spacing === 'Single'}" @click="form.spacing = 'Single'">Single</button>
-                          <input class="hidden" type="text" v-model="form.spacing" />
+                          <input id="spacing" class="hidden" type="text" v-model="form.spacing" />
                           <button class="w-1/2" :class="{'bg-gray-400 rounded-r-3xl': form.spacing === 'Double'}" @click="form.spacing = 'Double'">Double</button>
                         </div>
                       </div>
@@ -401,12 +401,12 @@
                         </div>
                       </div>
                       <div class="">
-                        <label for="username" class="block text-gray-700 text-base font-bold mb-1 text-center">
+                        <label for="charts" class="block text-gray-700 text-base font-bold mb-1 text-center">
                           Number of charts
                         </label>
                         <div class="flex ml-1 border border-gray-300 rounded-3xl h-10">
                           <button class="w-1/3 bg-gray-400 rounded-l-3xl" @click="form.charts > 0 ? form.charts-- : form.charts = 0">-</button>
-                          <input class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.charts" />
+                          <input id="charts" class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.charts" />
                           <button class="w-1/3 bg-gray-400 rounded-r-3xl" @click="form.charts++">+</button>
                         </div>
                       </div>
@@ -461,7 +461,17 @@
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
               <div class="w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
                 <Notification :message="error" v-if="error"/>
-                <div v-if="cartUIStatus === 'idle'" class="px-5 py-6">
+                <div class="px-4">
+                  <label for="payment" class="block text-gray-700 text-base font-bold mb-1 text-center mt-4">
+                    Payment Method <span class="font-light">({{ (paymentMethod === 'stripe') ? 'Stripe' : 'PayPal' }})</span>
+                  </label>
+                  <div class="flex ml-1 border border-gray-300 rounded-3xl h-10">
+                    <button class="w-1/2" :class="{'bg-gray-400 rounded-l-3xl': paymentMethod === 'stripe'}" @click="paymentMethod = 'stripe'">Stripe</button>
+                    <input id="payment" class="hidden" type="text" v-model="paymentMethod" />
+                    <button class="w-1/2" :class="{'bg-gray-400 rounded-r-3xl': paymentMethod === 'paypal'}" @click="paymentMethod = 'paypal';initPayPalButton()">Paypal</button>
+                  </div>
+                </div>
+                <div v-if="cartUIStatus === 'idle' && paymentMethod === 'stripe'" class="px-5 py-6">
                   <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
                   <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
                   <br />
@@ -503,6 +513,13 @@
                     </svg>
                     Pay with credit card
                   </button>
+                </div>
+                <div v-if="cartUIStatus === 'idle' && paymentMethod === 'paypal'" class="px-5 py-6">
+                  <div id="smart-button-container">
+                    <div style="text-align: center;">
+                      <div id="paypal-button-container"></div>
+                    </div>
+                  </div>
                 </div>
                 <div v-else-if="cartUIStatus === 'success'" class="flex flex-col justify-center items-center h-64">
                   <svg class="animate-pulse green-tick -ml-1 mr-3 h-24 w-24 text-green-600" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
@@ -655,6 +672,7 @@ export default {
   },
   data() {
     return {
+      paymentMethod: 'stripe',
       username: '',
       account_id: 1,
       email: '',
@@ -755,6 +773,61 @@ export default {
     }
   },
   methods: {
+    initPayPalButton() {
+      setTimeout(() => {
+        paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+
+          },
+
+          createOrder: async () => {
+            const files = await this.toBase64(this.form.uploads);
+            console.log(files);
+            this.form.uploads = [];
+            for (let i = 0; i < files.length; i++) {
+              let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
+              this.form.uploads.push(await this.$cloudinary.upload(files[i], {
+                public_id: public_id,
+                folder: "orders",
+                upload_preset: 'ybfqkqyu'
+              }));
+            }
+            let order = {
+              amount: Math.round((this.totalPrice + Number.EPSILON) * 100) / 100,
+              ...this.form
+            };
+            console.log(order);
+            return fetch('/api/transactions?paypal_intent=true', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                order: order
+              })
+            }).then(function(res) {
+              return res.json();
+            }).then(function(data) {
+              return data.id; // Use the key sent by your server's response, ex. 'id' or 'token'
+            });
+          },
+
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+          },
+
+          onError: function(err) {
+            console.log(err);
+          }
+        }).render('#paypal-button-container');
+      }, 500);
+    },
     changePasswordFieldType() {
       this.passwordFieldType = !this.passwordFieldType
     },

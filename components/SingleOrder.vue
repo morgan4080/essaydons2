@@ -106,7 +106,7 @@
                 </span>
                 </div>
                 <div class="ml-4 flex-shrink-0">
-                  <a @click="genDownload(upload.public_id)" href="javascript:void(0)" class="font-medium text-indigo-600 hover:text-indigo-500">
+                  <a @click="genDownload(upload.public_id)" class="font-medium text-indigo-600 hover:text-indigo-500">
                     Download
                   </a>
                 </div>
@@ -141,7 +141,7 @@ export default {
   },
   methods: {
     genDownload(id) {
-      // call backend and make download
+      console.log(id)
     }
   }
 }

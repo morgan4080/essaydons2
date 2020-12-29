@@ -7,7 +7,7 @@ export default {
       lang: 'en'
     },
     title: 'Essaydons',
-    script: [{ src: 'https://js.stripe.com/v3/' }],
+    script: [{ src: 'https://js.stripe.com/v3/' }, { src: "https://www.paypal.com/sdk/js?client-id=AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw&currency=USD", "data-sdk-integration-source": "button-factory" }],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

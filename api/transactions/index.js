@@ -177,13 +177,8 @@ module.exports = async (req, res) => {
         sig,
         endpointSecret
       );
-      if (typeof stripeEvent === "string") {
-        stripeEvent = JSON.parse(stripeEvent)
-      }
     } catch (err) {
-      res.status(400).json({
-        error: err
-      });
+      res.status(400).send(`Webhook Error: ${err.message}`);
     }
     // Handle the event
 
@@ -227,8 +222,73 @@ module.exports = async (req, res) => {
     // Return a 200 response to acknowledge receipt of the event
     res.status(200)
   } else if (req.query.paypal_intent) {
-    res.status(400).json({
-      message: "missing information"
+
+    let response;
+
+    try {
+      response = await prisma.orders.create({
+        data: {
+          accounts: { connect: { id: user.account_id } },
+          users: { connect: { id: user.id } },
+          order_details: JSON.stringify(req.body.order),
+          status: "processing",
+        }
+      });
+    } catch (e) {
+      res.status(400).json({
+        error: e
+      });
+    }
+    // orders api
+    const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+    // environment
+    const environment = function () {
+      let clientId = process.env.PAYPAL_CLIENT_ID || 'AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw';
+      let clientSecret = process.env.PAYPAL_CLIENT_SECRET || 'PAYPAL-SANDBOX-CLIENT-SECRET';
+
+      return new checkoutNodeJssdk.core.SandboxEnvironment(
+        clientId, clientSecret
+      );
+    };
+    // client
+    const payPalclient = function () {
+      return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
+    };
+    // request
+    const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
+    // request headers
+    request.headers["prefer"] = "return=representation";
+    // request body
+    request.requestBody({
+      intent: "CAPTURE",
+      "purchase_units": [
+        {
+          amount: {
+            currency_code: "USD",
+            value: req.body.order.amount
+          }
+        }]
+    });
+    let order;
+
+    try {
+      order = await payPalclient.client().execute(request)
+    } catch (e) {
+      res.status(400).json({
+        error: e
+      });
+    }
+
+    try {
+      await saveSuccessfulPayment(response.id, "success");
+    } catch (e) {
+      res.status(400).json({
+        error: e
+      });
+    }
+
+    res.status(200).json({
+      orderID: order.result.id
     });
   } else {
     res.status(400).json({
