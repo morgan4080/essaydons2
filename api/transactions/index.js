@@ -593,7 +593,7 @@ padding: 0 15px 0 15px !important;
     let order;
 
     try {
-      order = await payPalclient.client().execute(request)
+      order = await payPalclient.execute(request)
     } catch (e) {
       console.log(e);
       res.status(400).json({
