@@ -101,7 +101,7 @@ export const actions = {
       try {
         // Create a PaymentIntent with the information about the order
         const result = await this.$axios.post(
-          "https://essaydons.co/api/transactions?payment_intent=true",
+          "/api/transactions?payment_intent=true",
           {
             order: payload.order
           },
@@ -125,5 +125,20 @@ export const actions = {
         reject(e)
       }
     });
+  },
+  async sendAdminMail(payload) {
+    try {
+      let response = await this.$axios.post('api/transactions?send_attachments=true',
+        payload,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
+      )
+      console.log("mail sent", response);
+    } catch (e) {
+      console.log(e)
+    }
   }
 };

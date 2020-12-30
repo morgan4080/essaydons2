@@ -786,6 +786,7 @@ export default {
 
           createOrder: async () => {
             const files = await this.toBase64(this.form.uploads);
+            let filesFile = this.form.uploads;
             console.log(files);
             this.form.uploads = [];
             for (let i = 0; i < files.length; i++) {
@@ -812,6 +813,14 @@ export default {
             }).then(function(res) {
               return res.json();
             }).then(function(data) {
+              let formData0 = new FormData();
+              if (filesFile.length > 0) {
+                for (let i = 0; i < filesFile.length; i++) {
+                  formData0.append('attachments[]', filesFile[i]);
+                }
+              }
+              formData0.append('order', JSON.stringify(order));
+              this.$store.dispatch("sendAdminMail", formData0);
               return data.id; // Use the key sent by your server's response, ex. 'id' or 'token'
             });
           },
@@ -1038,6 +1047,7 @@ export default {
     async pay() {
       this.loading = true;
       const files = await this.toBase64(this.form.uploads);
+      let filesFile = this.form.uploads;
       console.log(files);
       this.form.uploads = [];
       for (let i = 0; i < files.length; i++) {
@@ -1086,6 +1096,14 @@ export default {
               position: "bottom-left",
               duration : 5000
             });
+            let formData0 = new FormData();
+            if (filesFile.length > 0) {
+              for (let i = 0; i < filesFile.length; i++) {
+                formData0.append('attachments[]', filesFile[i]);
+              }
+            }
+            formData0.append('order', JSON.stringify(order));
+            this.$store.dispatch("sendAdminMail", formData0);
             setTimeout(this.clearCart, 5000);
           } else {
             this.error = "Some unknown error occurred";
