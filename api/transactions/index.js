@@ -72,7 +72,7 @@ function authMiddleware(req) {
 async function saveSuccessfulPayment(metadata, status) {
   try {
     const response = await prisma.orders.update({
-      where: { id: parseInt(metadata.order_id) },
+      where: { id: metadata.order_id },
       data: {
         status: status
       },
@@ -84,6 +84,7 @@ async function saveSuccessfulPayment(metadata, status) {
       }
     }
   } catch (e) {
+    console.log(metadata, e)
     return {
       status: 400,
       responseObj: {
