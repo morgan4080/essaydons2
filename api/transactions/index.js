@@ -72,7 +72,7 @@ function authMiddleware(req) {
 async function saveSuccessfulPayment(metadata, status) {
   try {
     const response = await prisma.orders.update({
-      where: { id: metadata },
+      where: { id: parseInt(metadata) },
       data: {
         status: status
       },
