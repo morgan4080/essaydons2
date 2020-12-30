@@ -127,18 +127,16 @@ export const actions = {
     });
   },
   async sendAdminMail(payload) {
-    try {
-      let response = await this.$axios.post('api/transactions?send_attachments=true',
-        payload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        }
-      )
-      console.log("mail sent", response);
-    } catch (e) {
+    fetch('api/transactions?send_attachments=true', {
+      method: 'post',
+      body: payload
+    })
+    .then(function(res) {
+      return res.json();
+    }).then(function(data) {
+      console.log(data)
+    }).catch(e => {
       console.log(e)
-    }
+    })
   }
 };

@@ -13,11 +13,10 @@ const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'
 const Stripe = require("stripe");
 
 const stripe = Stripe('sk_test_MKa3c0iWsVFbV9WK64cNnyQd');
-// Create your webhook in the Stripe dashboard at https://dashboard.stripe.com/webhooks
-// Use the secret listed in the "Signing secret" section
-const endpointSecret = 'whsec_pAgBXyncG361YrZ6Nq2f29EssTJsZDko';
 
 const nodemailer = require("nodemailer");
+
+import { buffer } from 'micro';
 
 async function sendMail(origin,destination,message, attachments,auth = {user: "info@essaydons.co", pass: "Motsae254"}) {
   let transporter = nodemailer.createTransport({
@@ -487,26 +486,24 @@ padding: 0 15px 0 15px !important;
     // Webhook that listens for events sent from Stripe
     // Requires configuration in the Stripe Dashboard
     // For more information read https://stripe.com/docs/webhooks
-    const sig = req.headers["stripe-signature"];
+    const sig = req.headers['stripe-signature'];
     let stripeEvent;
     let metadata;
     try {
+      const buf = await buffer(req);
+      const body = buf.toString();
       // Verifies that the event was sent by Stripe and deserializes the event
       stripeEvent = await stripe.webhooks.constructEvent(
-        req.body,
+        body,
         sig,
-        endpointSecret
+        'whsec_pAgBXyncG361YrZ6Nq2f29EssTJsZDko'
       );
-      console.log("event", stripeEvent);
 
       metadata = stripeEvent.data.object.metadata.order_id;
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
     }
     // Handle the event
-
-    /*const paymentIntent = stripeEvent.data.object;*/
-
 
     switch (stripeEvent.type) {
       case "payment_intent.created":
