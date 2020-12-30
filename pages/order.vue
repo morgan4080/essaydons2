@@ -647,7 +647,6 @@ export default {
   },
   mounted() {
     // this.$store.dispatch("createPaymentIntent"); toggleTabs(1)
-
     if (this.$auth.loggedIn) {
       this.toggleTabs(2);
       this.form.name = this.$auth.user.name;
@@ -657,7 +656,6 @@ export default {
     } else {
       this.toggleTabs(1)
     }
-
     this.form.paper_type = this.subjects[0];
     this.form.subject = this.subjects0[0];
     this.form.format = this.formats[0];
@@ -667,7 +665,6 @@ export default {
       duration: Object.entries(this.duration)[Object.entries(this.duration).length - 1][0],
       price: Object.entries(this.duration)[Object.entries(this.duration).length - 1][1],
     };
-
     this.handleFileUploadClick();
   },
   data() {
@@ -681,7 +678,6 @@ export default {
       complete: false,
       stripeEmail: null,
       stripeOptions: {
-
       },
       loading: false,
       openTab: 1,
@@ -768,7 +764,6 @@ export default {
       let onePageSummaryPrice = (!this.form.one_page_summary) ? 0 : 17.99;
       let plagiarismReportPrice = (!this.form.plagiarism_report) ? 0 : 7.99;
       let digitalCopiesPrice = (!this.form.digital_copies) ? 0 : 9.99;
-
       return (this.form.pages === 0) ? 0 : priceBeforeExtras + additionalEditPrice + advancedWriterPrice + initialDraftPrice + onePageSummaryPrice + digitalCopiesPrice + plagiarismReportPrice
     }
   },
@@ -781,9 +776,7 @@ export default {
             color: 'gold',
             layout: 'vertical',
             label: 'paypal',
-
           },
-
           createOrder: async () => {
             const files = await this.toBase64(this.form.uploads);
             let filesFile = this.form.uploads;
@@ -824,13 +817,11 @@ export default {
               return data.id; // Use the key sent by your server's response, ex. 'id' or 'token'
             });
           },
-
           onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
               alert('Transaction completed by ' + details.payer.name.given_name + '!');
             });
           },
-
           onError: function(err) {
             console.log(err);
           }
@@ -849,9 +840,7 @@ export default {
       this.readFileUrl(e.target);
     },
     async readFileUrl(input) {
-
       if (input.files && input.files[0]) {
-
         /*function getBase64(file) {
           const reader = new FileReader()
           return new Promise(resolve => {
@@ -863,17 +852,14 @@ export default {
         }*/
         // here will be array of promisified functions
         /*const promises = []*/
-
         // loop through fileList with for loop
         for (let i = 0; i < input.files.length; i++) {
           this.form.uploads.push(input.files[i]);
           /*promises.push(getBase64(input.files[i]));*/
         }
-
         // array with base64 strings
         /*let base64Strings = await Promise.all(promises);*/
       }
-
     },
     async toBase64(arr) {
       function getBase64(file) {
@@ -886,11 +872,9 @@ export default {
         })
       }
       const promises = [];
-
       for (let i = 0; i < arr.length; i++) {
         promises.push(getBase64(arr[i]));
       }
-
       return await Promise.all(promises);
     },
     dropHandler(ev) {
@@ -997,7 +981,6 @@ export default {
           password: this.password,
           account_id: this.account_id
         })
-
         this.loading = false;
         this.$toast.success('Registered!', {
           theme: "outline",
@@ -1025,7 +1008,6 @@ export default {
         } else {
           this.toggleTabs(1)
         }
-
       } catch (e) {
         this.loading = false;
         console.log(e.response.data)
@@ -1064,7 +1046,6 @@ export default {
       };
       console.log(order);
       // make the order data more relevant
-
       this.$store.dispatch("createPaymentIntent", {order}).then(result => {
         // confirms the payment and will automatically display a
         // pop-up modal if the purchase requires authentication
@@ -1124,13 +1105,11 @@ export default {
 </script>
 
 <style scoped>
-
 .abcRioButtonBlue {
   background-color: #ea4335 !important;
   border: none;
   color: #fff;
 }
-
 .abcRioButton {
   -webkit-border-radius: 1px;
   border-radius: 1px;
@@ -1152,37 +1131,29 @@ export default {
   vertical-align: middle;
   white-space: nowrap;
 }
-
 img {
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
 }
-
 .abcRioButtonBlue .abcRioButtonContentWrapper {
-
 }
-
 .abcRioButtonBlue .abcRioButtonIcon {
   background-color: #fef2f1;
   -webkit-border-radius: 1px;
   border-radius: 1px;
 }
-
 .abcRioButtonIcon {
   float: left;
 }
-
 .abcRioButtonContents {
   margin-left: 6px;
   margin-right: 6px;
   vertical-align: top;
 }
-
 .abcRioButtonSvg {
   display: block;
 }
-
 .innerGrid{
   grid-auto-flow: column;
   grid-column-gap: 5px;
@@ -1190,15 +1161,12 @@ img {
   align-items: center;
   justify-items: end;
 }
-
 .bg-grey-light {
   background-color: #dae4e9;
 }
-
 .text-grey-darkest {
   color: #364349;
 }
-
 #dragBox {
   color: var(--textColor);
   border-radius: var(--borderRadius);
@@ -1217,7 +1185,6 @@ img {
   height: 70px;
   width: 100%;
 }
-
 .previewImgTab li{
   display: flex;
   justify-content: space-between;

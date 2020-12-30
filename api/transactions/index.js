@@ -565,9 +565,9 @@ padding: 0 15px 0 15px !important;
     // environment
     const environment = function () {
       let clientId = process.env.PAYPAL_CLIENT_ID || 'AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw';
-      let clientSecret = process.env.PAYPAL_CLIENT_SECRET || 'PAYPAL-SANDBOX-CLIENT-SECRET';
+      let clientSecret = process.env.PAYPAL_CLIENT_SECRET || 'ECOvLwXS5QP4dl8oF0nfQqkwrVCUuE_ZcLXp8HsknoKNJCIFaVqgNPrp6RlSIfjGqD2nbfVyNVbaBE67';
 
-      return new checkoutNodeJssdk.core.SandboxEnvironment(
+      return new checkoutNodeJssdk.core.LiveEnvironment(
         clientId, clientSecret
       );
     };
@@ -595,6 +595,7 @@ padding: 0 15px 0 15px !important;
     try {
       order = await payPalclient.client().execute(request)
     } catch (e) {
+      console.log(e);
       res.status(400).json({
         error: e
       });
