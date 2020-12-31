@@ -771,7 +771,6 @@ export default {
     ...mapActions(['sendAdminMail', 'createPaymentIntent']),
     ...mapMutations(['setToken','updateCartUI']),
     initPayPalButton() {
-      let that = this;
       setTimeout(() => {
         paypal.Buttons({
           style: {
@@ -794,24 +793,23 @@ export default {
               }));
             }
             let order = {
-              amount: Math.round((this.totalPrice + Number.EPSILON) * 100) / 100,
+              amount: this.totalPrice,
               ...this.form
             };
-            console.log(order);
-            return fetch('/api/transactions?paypal_intent=true', {
-              method: 'post',
-              withCredentials: true,
-              credentials: 'include',
-              headers: {
-                'content-type': 'application/json',
-                'Authorization': 'Bearer ' + this.currentToken,
-              },
-              body: JSON.stringify({
-                order: order
-              })
-            }).then((res) => {
-              return res.json();
-            }).then((data) => {
+
+            try {
+              const request = await fetch('/api/transactions?paypal_intent=true', {
+                method: 'post',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                  order: order
+                })
+              });
+              const data = await request.json();
               console.log(data);
               let formData0 = new FormData();
               if (filesFile.length > 0) {
@@ -820,26 +818,30 @@ export default {
                 }
               }
               formData0.append('order', JSON.stringify(order));
-              that.sendAdminMail(formData0);
+              await this.sendAdminMail(formData0);
               return data
-            });
+            } catch (e) {
+              console.log("create order error", e)
+            }
           },
-          onApprove: (data) => {
-            return fetch('/api/transactions?paypal_capture_intent=true', {
-              withCredentials: true,
-              credentials: 'include',
-              headers: {
-                'content-type': 'application/json',
-                'Authorization': 'Bearer ' + this.currentToken,
-              },
-              body: JSON.stringify({
-                orderID: data.orderID
+          onApprove: async (data) => {
+            try {
+              const request = await fetch('/api/transactions?paypal_capture_intent=true', {
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                  orderID: data.orderID
+                })
               })
-            }).then((res) =>  {
-              return res.json();
-            }).then((details) => {
+              const details = await request.json();
+
               alert('Transaction funds captured from ' + details.payer_given_name);
-            })
+            } catch (e) {
+              console.log("on approve error", e)
+            }
           },
           onError: (err) => {
             console.log(err);
