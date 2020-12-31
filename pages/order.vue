@@ -636,7 +636,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from 'vuex'
 import Notification from '@/components/Notification';
 import { Card, handleCardPayment } from "vue-stripe-elements-plus";
 export default {
@@ -720,7 +720,7 @@ export default {
   },
   computed: {
     ...mapState(["storedata", "cartUIStatus"]),
-    ...mapGetters(['currentToken']),
+    ...mapGetters(["currentToken"]),
     advancedWriter() {
       return this.form.advanced_writer
     },
@@ -770,7 +770,6 @@ export default {
   },
   methods: {
     initPayPalButton() {
-      let that = this;
       setTimeout(() => {
         paypal.Buttons({
           style: {
@@ -803,6 +802,7 @@ export default {
               credentials: 'include',
               headers: {
                 'content-type': 'application/json',
+                'Authorization': 'Bearer ' + this.currentToken,
               },
               body: JSON.stringify({
                 order: order
@@ -821,12 +821,13 @@ export default {
               return data
             });
           },
-          onApprove: function(data) {
+          onApprove: (data) => {
             return fetch('/api/transactions?paypal_capture_intent=true', {
               withCredentials: true,
               credentials: 'include',
               headers: {
                 'content-type': 'application/json',
+                'Authorization': 'Bearer ' + this.currentToken,
               },
               body: JSON.stringify({
                 orderID: data.orderID
