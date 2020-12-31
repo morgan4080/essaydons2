@@ -32,7 +32,7 @@ export const getters = {
   clientSecret: state => state.clientSecret,
   isAuthenticated: state => state.auth.loggedIn,
   loggedInUser: state => state.auth.user,
-  currentToken: state => this.state.token
+  currentToken: state => state.token
 };
 
 export const mutations = {
