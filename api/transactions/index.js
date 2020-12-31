@@ -551,14 +551,13 @@ padding: 0 15px 0 15px !important;
         data: {
           accounts: { connect: { id: user.account_id } },
           users: { connect: { id: user.id } },
-          order_details: JSON.stringify(req.body.order),
+          order_details: (typeof req.body.order !== "string") ? JSON.stringify(req.body.order) : req.body.order,
           status: "processing",
         }
       });
     } catch (e) {
-      res.status(400).json({
-        error: e
-      });
+      console.log("create order error", e);
+      res.status(400)
     }
     // orders api
     const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
@@ -601,7 +600,7 @@ padding: 0 15px 0 15px !important;
     try {
       order = await client().execute(request);
     } catch (e) {
-      console.log(e);
+      console.log("create order client error", e);
       res.status(400).json({
         error: e
       });
