@@ -837,7 +837,6 @@ export default {
                 })
               })
               const details = await request.json();
-
               alert('Transaction funds captured from ' + details.payer_given_name);
             } catch (e) {
               console.log("on approve error", e)
