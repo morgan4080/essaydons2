@@ -137,9 +137,9 @@ export const actions = {
         'Authorization': 'Bearer ' + getters.currentToken,
       }
     })
-    .then(function(res) {
+    .then((res) => {
       return res.json();
-    }).then(function(data) {
+    }).then((data) => {
       console.log(data)
     }).catch(e => {
       console.log(e)

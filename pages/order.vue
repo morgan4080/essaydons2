@@ -771,6 +771,7 @@ export default {
     ...mapActions(['sendAdminMail', 'createPaymentIntent']),
     ...mapMutations(['setToken','updateCartUI']),
     initPayPalButton() {
+      let that = this;
       setTimeout(() => {
         paypal.Buttons({
           style: {
@@ -808,9 +809,10 @@ export default {
               body: JSON.stringify({
                 order: order
               })
-            }).then(function(res) {
+            }).then((res) => {
               return res.json();
-            }).then(function(data) {
+            }).then((data) => {
+              console.log(data);
               let formData0 = new FormData();
               if (filesFile.length > 0) {
                 for (let i = 0; i < filesFile.length; i++) {
@@ -818,7 +820,7 @@ export default {
                 }
               }
               formData0.append('order', JSON.stringify(order));
-              this.sendAdminMail(formData0);
+              that.sendAdminMail(formData0);
               return data
             });
           },
@@ -833,13 +835,13 @@ export default {
               body: JSON.stringify({
                 orderID: data.orderID
               })
-            }).then(function(res) {
+            }).then((res) =>  {
               return res.json();
-            }).then(function(details) {
+            }).then((details) => {
               alert('Transaction funds captured from ' + details.payer_given_name);
             })
           },
-          onError: function(err) {
+          onError: (err) => {
             console.log(err);
           }
         }).render('#paypal-button-container');
