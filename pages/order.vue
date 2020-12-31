@@ -828,7 +828,12 @@ export default {
                 dbID: (data.dbID !== null && data.dbID !== undefined) ? data.dbID : this.dbID,
               });
               console.log("successful approval", response);
-              alert('Transaction funds captured from ' + response.data.payer.name.given_name + response.data.payer.name.surname);
+              this.$toast.success(response.data.result.status, {
+                theme: "outline",
+                position: "bottom-left",
+                duration : 5000
+              });
+              alert('Transaction funds captured from ' + response.data.result.payer.name.given_name + response.data.result.payer.name.surname);
             } catch (e) {
               console.log("on approve error", e)
             }
