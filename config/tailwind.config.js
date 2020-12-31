@@ -44,6 +44,7 @@ module.exports = {
     scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     inset: ['responsive'],
+    width: ['responsive', 'hover', 'focus'],
   },
   plugins: [],
   purge: {

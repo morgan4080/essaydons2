@@ -101,17 +101,17 @@ module.exports = async (req, res) => {
     res.status(200)
   }
 
+  let user;
+
+  try {
+    user = await authMiddleware(req);
+  } catch (e) {
+    res.status(400).json({
+      error: e
+    });
+  }
+
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
-
-    let user;
-
-    try {
-      user = await authMiddleware(req);
-    } catch (e) {
-      res.status(400).json({
-        error: e
-      });
-    }
 
     let customer;
 
@@ -563,37 +563,43 @@ padding: 0 15px 0 15px !important;
     // orders api
     const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
     // environment
-    const environment = function () {
+    function environment() {
       let clientId = process.env.PAYPAL_CLIENT_ID || 'AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw';
       let clientSecret = process.env.PAYPAL_CLIENT_SECRET || 'ECOvLwXS5QP4dl8oF0nfQqkwrVCUuE_ZcLXp8HsknoKNJCIFaVqgNPrp6RlSIfjGqD2nbfVyNVbaBE67';
 
       return new checkoutNodeJssdk.core.LiveEnvironment(
         clientId, clientSecret
       );
-    };
+    }
     // client
-    const payPalclient = function () {
+    function client() {
       return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
-    };
+    }
     // request
     const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
     // request headers
     request.headers["prefer"] = "return=representation";
     // request body
-    request.requestBody({
-      intent: "CAPTURE",
-      "purchase_units": [
-        {
-          amount: {
-            currency_code: "USD",
-            value: req.body.order.amount
+    function buildRequestBody() {
+      return {
+        "intent": "CAPTURE",
+        "purchase_units": [
+          {
+            "amount": {
+              "currency_code": "USD",
+              "value": req.body.order.amount + ""
+            }
           }
-        }]
-    });
+        ]
+      };
+    }
+
+    request.requestBody(buildRequestBody());
+
     let order;
 
     try {
-      order = await payPalclient.execute(request)
+      order = await client().execute(request);
     } catch (e) {
       console.log(e);
       res.status(400).json({
@@ -609,9 +615,101 @@ padding: 0 15px 0 15px !important;
       });
     }
 
+    let orderId = "";
+    if (order.statusCode === 201){
+      console.log("Created Successfully");
+      orderId = order.result.id;
+      console.log("Links:");
+      order.result.links.forEach((item, index) => {
+        let rel = item.rel;
+        let href = item.href;
+        let method = item.method;
+        let message = `\t${rel}: ${href}\tCall Type: ${method}`;
+        console.log(message);
+      });
+    } else {
+      res.status(400).json({
+        message: "create order failed",
+        order
+      });
+    }
+
+    // 5. Return a successful response to the client with the order ID
     res.status(200).json({
-      orderID: order.result.id
+      orderID: orderId
     });
+
+  } else if(req.query.paypal_capture_intent  && req.method === "POST") {
+
+    async function captureOrder(orderId, debug=false) {
+      try {
+        const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
+        request.requestBody({});
+        const response = await client().execute(request);
+        if (debug){
+          console.log("Status Code: " + response.statusCode);
+          console.log("Status: " + response.result.status);
+          console.log("Order ID: " + response.result.id);
+          console.log("Links: ");
+          response.result.links.forEach((item, index) => {
+            let rel = item.rel;
+            let href = item.href;
+            let method = item.method;
+            let message = `\t${rel}: ${href}\tCall Type: ${method}`;
+            console.log(message);
+          });
+          console.log("Capture Ids:");
+          response.result.purchase_units.forEach((item,index)=>{
+            item.payments.captures.forEach((item, index)=>{
+              console.log("\t"+item.id);
+            });
+          });
+          // To toggle print the whole body comment/uncomment the below line
+          console.log(JSON.stringify(response.result, null, 4));
+        }
+        return response;
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }
+
+    console.log('Capturing Order...');
+
+    let response = await captureOrder(req.body.orderId);
+
+    let captureId = "";
+
+    if (response.statusCode === 201){
+      console.log("Captured Successfully");
+      console.log("Status Code: " + response.statusCode);
+      console.log("Status: " + response.result.status);
+      console.log("Order ID: " + response.result.id);
+      console.log("Capture Ids:");
+      response.result.purchase_units.forEach((item,index)=>{
+        item.payments.captures.forEach((item, index)=>{
+          console.log("\t"+item.id);
+          captureId = item.id;
+        });
+      });
+      console.log("Links: ");
+      response.result.links.forEach((item, index) => {
+        let rel = item.rel;
+        let href = item.href;
+        let method = item.method;
+        let message = `\t${rel}: ${href}\tCall Type: ${method}`;
+        console.log(message);
+      });
+    } else {
+      res.status(400).json({
+        message: "capture order failed",
+        response
+      });
+    }
+
+    // 6. Return a successful response to the client
+    res.status(200);
+
   } else if (req.query.send_attachments && req.method === "POST") {
     const { IncomingForm } = require('formidable');
     const form = new IncomingForm({ multiples: true });

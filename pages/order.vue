@@ -532,7 +532,7 @@
             </div>
           </div>
           <div class="md:ml-auto col-span-1 mt-6 mb-12 relative h-full">
-            <div class="flex px-4 py-3 flex-col no-wrap w-64 shadow sm:rounded-md sm:overflow-hidden md:sticky md:top-10">
+            <div class="flex px-4 py-3 flex-col no-wrap w-full lg:w-64 shadow sm:rounded-md sm:overflow-hidden md:sticky md:top-10">
               <h2 class="text-base font-light leading-tight mb-4 text-gray-700">
                 Order Information
               </h2>
@@ -814,13 +814,22 @@ export default {
               }
               formData0.append('order', JSON.stringify(order));
               this.$store.dispatch("sendAdminMail", formData0);
-              return data.id; // Use the key sent by your server's response, ex. 'id' or 'token'
+              return data
             });
           },
-          onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
-            });
+          onApprove: function(data) {
+            return fetch('/api/transactions?paypal_capture_intent=true', {
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            }).then(function(res) {
+              return res.json();
+            }).then(function(details) {
+              alert('Transaction funds captured from ' + details.payer_given_name);
+            })
           },
           onError: function(err) {
             console.log(err);
