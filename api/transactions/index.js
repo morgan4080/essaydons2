@@ -546,6 +546,8 @@ padding: 0 15px 0 15px !important;
 
     let response;
 
+    console.log(req.body.order);
+
     try {
       response = await prisma.orders.create({
         data: {
