@@ -797,23 +797,25 @@ export default {
               ...this.form
             };
 
-            try {
-              const response = await this.$axios.post('/api/transactions?paypal_intent=true', {
-                  order: order
-              });
-              console.log(response);
-              let formData0 = new FormData();
+            /*let formData0 = new FormData();
               if (filesFile.length > 0) {
                 for (let i = 0; i < filesFile.length; i++) {
                   formData0.append('attachments[]', filesFile[i]);
                 }
               }
               formData0.append('order', JSON.stringify(order));
-              await this.sendAdminMail(formData0);
-              return response.data
+              await this.sendAdminMail(formData0);*/
+            let response;
+
+            try {
+              response = await this.$axios.post('/api/transactions?paypal_intent=true', {
+                  order: order
+              });
+              console.log(response);
             } catch (e) {
               console.log("create order error", e)
             }
+            return response.data.orderID
           },
           onApprove: async (data) => {
             try {

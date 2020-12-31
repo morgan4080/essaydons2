@@ -54,8 +54,6 @@ function authMiddleware(req) {
 
     if (header === undefined) {
       reject("header undefined")
-    } else {
-      console.log("auth header", header);
     }
 
     const bearer = header.split(' ');
@@ -615,14 +613,6 @@ padding: 0 15px 0 15px !important;
       });
     }
 
-    try {
-      await saveSuccessfulPayment(response.id, "success");
-    } catch (e) {
-      res.status(400).json({
-        error: e
-      });
-    }
-
     let orderId = "";
     if (order.statusCode === 201){
       console.log("Created Successfully");
@@ -644,7 +634,8 @@ padding: 0 15px 0 15px !important;
 
     // 5. Return a successful response to the client with the order ID
     res.status(200).json({
-      orderID: orderId
+      orderID: orderId,
+      dbID: response.id
     });
 
   } else if(req.query.paypal_capture_intent  && req.method === "POST") {
@@ -684,7 +675,7 @@ padding: 0 15px 0 15px !important;
 
     console.log('Capturing Order...');
 
-    let response = await captureOrder(req.body.orderId);
+    let response = await captureOrder(req.body.orderID);
 
     let captureId = "";
 
@@ -715,11 +706,19 @@ padding: 0 15px 0 15px !important;
       });
     }
 
+    // make success order in db
+    /*try {
+      await saveSuccessfulPayment(req.body.dbID, "success");
+    } catch (e) {
+      res.status(400).json({
+        error: e
+      });
+    }*/
+
     // 6. Return a successful response to the client
     res.status(200);
 
   } else if (req.query.send_attachments && req.method === "POST") {
-    console.log("sendmail body", req.body)
     const { IncomingForm } = require('formidable');
     const form = new IncomingForm({ multiples: true });
     let result;
@@ -734,7 +733,9 @@ padding: 0 15px 0 15px !important;
           resolve({fields: fields, files: files})
         })
       });
+      console.log("formindable", result);
     } catch (e) {
+      console.log("formindable error", e);
       res.status(400).json({
         error: e
       });
