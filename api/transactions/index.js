@@ -657,14 +657,24 @@ padding: 0 15px 0 15px !important;
 
     let response = await captureOrder(req.body.orderID);
 
-    let captureId = "";
-
     if (response.statusCode === 201) {
-      response.result.purchase_units.forEach((item,index)=>{
-        item.payments.captures.forEach((item, index)=>{
-          console.log("\t"+item.id);
-          captureId = item.id;
+      /*
+      let captureId = "";
+      captureId = response.result.purchase_units[0]
+        .payments.captures[0].id;
+        */
+      // might save capture id
+      try {
+        await saveSuccessfulPayment(req.body.dbID, "success");
+      } catch (e) {
+        res.status(400).json({
+          error: e
         });
+      }
+
+      // 6. Return a successful response to the client
+      res.status(200).json({
+        ...response
       });
     } else {
       res.status(400).json({
@@ -672,20 +682,6 @@ padding: 0 15px 0 15px !important;
         response
       });
     }
-
-    // make success order in db
-
-    // might save capture id
-    try {
-      await saveSuccessfulPayment(req.body.dbID, "success");
-    } catch (e) {
-      res.status(400).json({
-        error: e
-      });
-    }
-
-    // 6. Return a successful response to the client
-    res.status(200);
 
   } else if (req.query.send_attachments && req.method === "POST") {
     const { IncomingForm } = require('formidable');
