@@ -111,13 +111,13 @@ module.exports = async (req, res) => {
     });
   }
 
+  if (user.metadata !== null && typeof user.metadata === "string") {
+    user.metadata = JSON.parse(user.metadata);
+  }
+
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
 
     let customer;
-
-    if (user.metadata !== null && typeof user.metadata === "string") {
-      user.metadata = JSON.parse(user.metadata);
-    }
 
     if (user.metadata === null || !user.metadata.hasOwnProperty("stripe_ck_id")) {
       try {
@@ -546,7 +546,7 @@ padding: 0 15px 0 15px !important;
 
     let response;
 
-    console.log(req.body.order);
+    console.log(req.body.order, user);
 
     try {
       response = await prisma.orders.create({

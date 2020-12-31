@@ -161,6 +161,7 @@ export default {
         let response = await this.$auth.loginWith('local', { data: this.login });
         this.loading = false;
         console.log(response);
+        this.$store.commit('setToken', response.data.token);
         this.$toast.success('Logged In!', {
             theme: "outline",
             position: "bottom-left",

@@ -8,6 +8,7 @@ export const state = () => ({
   userTypes: ["Student","Writer"],
   cart: [],
   clientSecret: "",
+  token: null,
 });
 
 export const getters = {
@@ -29,15 +30,15 @@ export const getters = {
     });
   },
   clientSecret: state => state.clientSecret,
-  isAuthenticated(state) {
-    return state.auth.loggedIn
-  },
-  loggedInUser(state) {
-    return state.auth.user
-  }
+  isAuthenticated: state => state.auth.loggedIn,
+  loggedInUser: state => state.auth.user,
+  currentToken: state => this.state.token
 };
 
 export const mutations = {
+  setToken: (state, payload)  =>  {
+    state.token = payload
+  },
   setAuth: (state, auth = null) => {
     state.auth.user = auth;
     state.auth.loggedIn = false;
@@ -126,10 +127,15 @@ export const actions = {
       }
     });
   },
-  async sendAdminMail(payload) {
+  async sendAdminMail({ getters }, payload) {
     fetch('api/transactions?send_attachments=true', {
+      withCredentials: true,
+      credentials: 'include',
       method: 'post',
-      body: payload
+      body: payload,
+      header: {
+        'Authorization': 'Bearer ' + getters.currentToken,
+      }
     })
     .then(function(res) {
       return res.json();

@@ -720,6 +720,7 @@ export default {
   },
   computed: {
     ...mapState(["storedata", "cartUIStatus"]),
+    ...mapGetters(['currentToken']),
     advancedWriter() {
       return this.form.advanced_writer
     },
@@ -769,6 +770,7 @@ export default {
   },
   methods: {
     initPayPalButton() {
+      let that = this;
       setTimeout(() => {
         paypal.Buttons({
           style: {
@@ -797,8 +799,11 @@ export default {
             console.log(order);
             return fetch('/api/transactions?paypal_intent=true', {
               method: 'post',
+              withCredentials: true,
+              credentials: 'include',
               headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': 'Bearer ' + that.currentToken,
               },
               body: JSON.stringify({
                 order: order
@@ -819,8 +824,11 @@ export default {
           },
           onApprove: function(data) {
             return fetch('/api/transactions?paypal_capture_intent=true', {
+              withCredentials: true,
+              credentials: 'include',
               headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': 'Bearer ' + that.currentToken,
               },
               body: JSON.stringify({
                 orderID: data.orderID
@@ -953,6 +961,7 @@ export default {
         let response = await this.$auth.loginWith('local', { data: this.login });
         this.loading = false;
         console.log(response);
+        this.$store.commit('setToken', response.data.token);
         this.toggleTabs(2)
         this.$toast.success('Logged In!', {
           theme: "outline",
