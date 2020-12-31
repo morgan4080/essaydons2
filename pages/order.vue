@@ -798,19 +798,10 @@ export default {
             };
 
             try {
-              const request = await fetch('/api/transactions?paypal_intent=true', {
-                method: 'post',
-                withCredentials: true,
-                credentials: 'include',
-                headers: {
-                  'content-type': 'application/json'
-                },
-                body: JSON.stringify({
+              const response = await this.$axios.post('/api/transactions?paypal_intent=true', {
                   order: order
-                })
               });
-              const data = await request.json();
-              console.log(data);
+              console.log(response);
               let formData0 = new FormData();
               if (filesFile.length > 0) {
                 for (let i = 0; i < filesFile.length; i++) {
@@ -819,25 +810,18 @@ export default {
               }
               formData0.append('order', JSON.stringify(order));
               await this.sendAdminMail(formData0);
-              return data
+              return response.data
             } catch (e) {
               console.log("create order error", e)
             }
           },
           onApprove: async (data) => {
             try {
-              const request = await fetch('/api/transactions?paypal_capture_intent=true', {
-                withCredentials: true,
-                credentials: 'include',
-                headers: {
-                  'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                  orderID: data.orderID
-                })
-              })
-              const details = await request.json();
-              alert('Transaction funds captured from ' + details.payer_given_name);
+              const response = await this.$axios.post('/api/transactions?paypal_capture_intent=true', {
+                orderID: data.orderID
+              });
+              console.log("successful approval", response);
+              alert('Transaction funds captured from ' + response.data.payer_given_name);
             } catch (e) {
               console.log("on approve error", e)
             }

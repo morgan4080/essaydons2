@@ -719,6 +719,7 @@ padding: 0 15px 0 15px !important;
     res.status(200);
 
   } else if (req.query.send_attachments && req.method === "POST") {
+    console.log("sendmail body", req.body)
     const { IncomingForm } = require('formidable');
     const form = new IncomingForm({ multiples: true });
     let result;
