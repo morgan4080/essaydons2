@@ -96,7 +96,7 @@ function authMiddleware(req) {
 async function saveSuccessfulPayment(metadata, status) {
   try {
     const response = await prisma.orders.update({
-      where: { id: parseInt(metadata) },
+      where: { id: (typeof metadata === "string") ? parseInt(metadata) : metadata },
       data: {
         status: status
       },
@@ -649,64 +649,22 @@ padding: 0 15px 0 15px !important;
 
     console.log("paypal approval", req.body);
 
-    async function captureOrder(orderId, debug=false) {
-      try {
-        const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
-        request.requestBody({});
-        const response = await client().execute(request);
-        if (debug){
-          console.log("Status Code: " + response.statusCode);
-          console.log("Status: " + response.result.status);
-          console.log("Order ID: " + response.result.id);
-          console.log("Links: ");
-          response.result.links.forEach((item, index) => {
-            let rel = item.rel;
-            let href = item.href;
-            let method = item.method;
-            let message = `\t${rel}: ${href}\tCall Type: ${method}`;
-            console.log(message);
-          });
-          console.log("Capture Ids:");
-          response.result.purchase_units.forEach((item,index)=>{
-            item.payments.captures.forEach((item, index)=>{
-              console.log("\t"+item.id);
-            });
-          });
-          // To toggle print the whole body comment/uncomment the below line
-          console.log(JSON.stringify(response.result, null, 4));
-        }
-        return response;
-      }
-      catch (e) {
-        console.log(e)
-      }
+    async function captureOrder(orderId) {
+      const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
+      request.requestBody({});
+      return await client().execute(request);
     }
-
-    console.log('Capturing Order...');
 
     let response = await captureOrder(req.body.orderID);
 
     let captureId = "";
 
     if (response.statusCode === 201) {
-      console.log("Captured Successfully");
-      console.log("Status Code: " + response.statusCode);
-      console.log("Status: " + response.result.status);
-      console.log("Order ID: " + response.result.id);
-      console.log("Capture Ids:");
       response.result.purchase_units.forEach((item,index)=>{
         item.payments.captures.forEach((item, index)=>{
           console.log("\t"+item.id);
           captureId = item.id;
         });
-      });
-      console.log("Links: ");
-      response.result.links.forEach((item, index) => {
-        let rel = item.rel;
-        let href = item.href;
-        let method = item.method;
-        let message = `\t${rel}: ${href}\tCall Type: ${method}`;
-        console.log(message);
       });
     } else {
       res.status(400).json({
@@ -716,6 +674,8 @@ padding: 0 15px 0 15px !important;
     }
 
     // make success order in db
+
+    // might save capture id
     try {
       await saveSuccessfulPayment(req.body.dbID, "success");
     } catch (e) {
