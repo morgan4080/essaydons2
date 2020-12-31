@@ -133,9 +133,6 @@ export const actions = {
       credentials: 'include',
       method: 'post',
       body: payload,
-      header: {
-        'Authorization': 'Bearer ' + getters.currentToken,
-      }
     })
     .then(function(res) {
       return res.json();

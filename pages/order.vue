@@ -803,7 +803,6 @@ export default {
               credentials: 'include',
               headers: {
                 'content-type': 'application/json',
-                'Authorization': 'Bearer ' + that.currentToken,
               },
               body: JSON.stringify({
                 order: order
@@ -828,7 +827,6 @@ export default {
               credentials: 'include',
               headers: {
                 'content-type': 'application/json',
-                'Authorization': 'Bearer ' + that.currentToken,
               },
               body: JSON.stringify({
                 orderID: data.orderID

@@ -54,11 +54,13 @@ function authMiddleware(req) {
 
     if (header === undefined) {
       reject("header undefined")
+    } else {
+      console.log("auth header", header);
     }
 
-    const bearer = header.split(' ')
+    const bearer = header.split(' ');
 
-    const token = bearer[1]
+    const token = bearer[1];
 
     jwt.verify(token, publicKey,{ algorithm: 'RS256' }, (err, user) => {
       if (err) {
@@ -106,18 +108,23 @@ module.exports = async (req, res) => {
   try {
     user = await authMiddleware(req);
   } catch (e) {
+    console.log("token user not found", e);
     res.status(400).json({
       error: e
     });
   }
 
-  if (user.metadata !== null && typeof user.metadata === "string") {
-    user.metadata = JSON.parse(user.metadata);
-  }
-
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
 
     let customer;
+
+    if (user !== undefined) {
+      if (user.metadata !== null && typeof user.metadata === "string") {
+        user.metadata = JSON.parse(user.metadata);
+      }
+    } else {
+      console.log(user)
+    }
 
     if (user.metadata === null || !user.metadata.hasOwnProperty("stripe_ck_id")) {
       try {
