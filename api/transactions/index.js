@@ -649,6 +649,8 @@ padding: 0 15px 0 15px !important;
 
     console.log("paypal approval", req.body);
 
+    const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+
     async function captureOrder(orderId, debug=false) {
       try {
         const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
@@ -688,7 +690,7 @@ padding: 0 15px 0 15px !important;
 
     let captureId = "";
 
-    if (response.statusCode === 201){
+    if (response.statusCode === 201) {
       console.log("Captured Successfully");
       console.log("Status Code: " + response.statusCode);
       console.log("Status: " + response.result.status);
@@ -716,13 +718,13 @@ padding: 0 15px 0 15px !important;
     }
 
     // make success order in db
-    /*try {
+    try {
       await saveSuccessfulPayment(req.body.dbID, "success");
     } catch (e) {
       res.status(400).json({
         error: e
       });
-    }*/
+    }
 
     // 6. Return a successful response to the client
     res.status(200);

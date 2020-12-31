@@ -820,7 +820,8 @@ export default {
           onApprove: async (data) => {
             try {
               const response = await this.$axios.post('/api/transactions?paypal_capture_intent=true', {
-                orderID: data.orderID
+                orderID: data.orderID,
+                dbID: data.dbID,
               });
               console.log("successful approval", response);
               alert('Transaction funds captured from ' + response.data.payer_given_name);
