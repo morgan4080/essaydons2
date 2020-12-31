@@ -551,8 +551,6 @@ padding: 0 15px 0 15px !important;
 
     let response;
 
-    console.log(req.body.order, user);
-
     try {
       response = await prisma.orders.create({
         data: {
@@ -568,10 +566,16 @@ padding: 0 15px 0 15px !important;
     }
     // orders api
     const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+
+    console.log("node environment", process.env.NODE_ENV);
+    console.log("node environment PAYPAL_CLIENT_ID" , process.env.PAYPAL_CLIENT_ID);
+    console.log("node environment PAYPAL_CLIENT_SECRET" , process.env.PAYPAL_CLIENT_SECRET);
+    console.log("node environment SANDBOX_PAYPAL_CLIENT_ID" , process.env.SANDBOX_PAYPAL_CLIENT_ID);
+    console.log("node environment SANDBOX_PAYPAL_SECRET" , process.env.SANDBOX_PAYPAL_SECRET);
     // environment
     function environment() {
-      let clientId = process.env.PAYPAL_CLIENT_ID || 'AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw';
-      let clientSecret = process.env.PAYPAL_CLIENT_SECRET || 'ECOvLwXS5QP4dl8oF0nfQqkwrVCUuE_ZcLXp8HsknoKNJCIFaVqgNPrp6RlSIfjGqD2nbfVyNVbaBE67';
+      let clientId = process.env.PAYPAL_CLIENT_ID;
+      let clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
       return new checkoutNodeJssdk.core.LiveEnvironment(
         clientId, clientSecret
