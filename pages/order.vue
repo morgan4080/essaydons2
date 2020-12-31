@@ -636,7 +636,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState, mapActions, mapMutations } from 'vuex'
 import Notification from '@/components/Notification';
 import { Card, handleCardPayment } from "vue-stripe-elements-plus";
 export default {
@@ -646,7 +646,6 @@ export default {
     Card
   },
   mounted() {
-    // this.$store.dispatch("createPaymentIntent"); toggleTabs(1)
     if (this.$auth.loggedIn) {
       this.toggleTabs(2);
       this.form.name = this.$auth.user.name;
@@ -720,7 +719,7 @@ export default {
   },
   computed: {
     ...mapState(["storedata", "cartUIStatus"]),
-    ...mapGetters(["currentToken"]),
+    ...mapGetters(["currentToken","clientSecret"]),
     advancedWriter() {
       return this.form.advanced_writer
     },
@@ -769,6 +768,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['sendAdminMail', 'createPaymentIntent']),
+    ...mapMutations(['setToken','updateCartUI']),
     initPayPalButton() {
       setTimeout(() => {
         paypal.Buttons({
@@ -817,7 +818,7 @@ export default {
                 }
               }
               formData0.append('order', JSON.stringify(order));
-              this.$store.dispatch("sendAdminMail", formData0);
+              this.sendAdminMail(formData0);
               return data
             });
           },
@@ -960,7 +961,7 @@ export default {
         let response = await this.$auth.loginWith('local', { data: this.login });
         this.loading = false;
         console.log(response);
-        this.$store.commit('setToken', response.data.token);
+        this.setToken(response.data.token);
         this.toggleTabs(2)
         this.$toast.success('Logged In!', {
           theme: "outline",
@@ -1063,11 +1064,11 @@ export default {
       };
       console.log(order);
       // make the order data more relevant
-      this.$store.dispatch("createPaymentIntent", {order}).then(result => {
+      this.createPaymentIntent({order}).then(result => {
         // confirms the payment and will automatically display a
         // pop-up modal if the purchase requires authentication
-        console.log(result, this.$store.getters.clientSecret);
-        handleCardPayment(this.$store.getters.clientSecret, {
+        console.log(result, this.clientSecret);
+        handleCardPayment(this.clientSecret, {
           receipt_email: this.stripeEmail
         }).then(result => {
           this.loading = false;
@@ -1088,7 +1089,7 @@ export default {
             // payment succeeded! show a success message
             // there's always a chance your customer closes the browser after the payment process and before this code runs so
             // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
-            this.$store.commit("updateCartUI", "success");
+            this.updateCartUI("success");
             this.$toast.success("Payment" + result.paymentIntent.status, {
               theme: "outline",
               position: "bottom-left",
@@ -1101,7 +1102,7 @@ export default {
               }
             }
             formData0.append('order', JSON.stringify(order));
-            this.$store.dispatch("sendAdminMail", formData0);
+            this.sendAdminMail(formData0);
             setTimeout(this.clearCart, 5000);
           } else {
             this.error = "Some unknown error occurred";
