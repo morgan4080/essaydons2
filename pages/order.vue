@@ -714,7 +714,8 @@ export default {
         password: ''
       },
       error: null,
-      passwordFieldType: false
+      passwordFieldType: false,
+      dbID: null,
     }
   },
   computed: {
@@ -813,15 +814,18 @@ export default {
               });
               console.log(response);
             } catch (e) {
-              console.log("create order error", e)
+              console.log("create order error", e);
             }
+
+            this.dbID = response.data.dbID;
+
             return response.data.orderID
           },
           onApprove: async (data) => {
             try {
               const response = await this.$axios.post('/api/transactions?paypal_capture_intent=true', {
                 orderID: data.orderID,
-                dbID: data.dbID,
+                dbID: (data.dbID !== null && data.dbID !== undefined) ? data.dbID : this.dbID,
               });
               console.log("successful approval", response);
               alert('Transaction funds captured from ' + response.data.payer_given_name);

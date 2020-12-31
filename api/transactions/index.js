@@ -18,6 +18,30 @@ const nodemailer = require("nodemailer");
 
 import { buffer } from 'micro';
 
+const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+// environment
+function environment() {
+  if (process.env.NODE_ENV === "development") {
+    let clientId = process.env.PAYPAL_CLIENT_ID;
+    let clientSecret = process.env.PAYPAL_CLIENT_SECRET;
+
+    return new checkoutNodeJssdk.core.LiveEnvironment(
+      clientId, clientSecret
+    );
+  } else {
+    let clientId = process.env.SANDBOX_PAYPAL_CLIENT_ID;
+    let clientSecret = process.env.SANDBOX_PAYPAL_SECRET;
+
+    return new checkoutNodeJssdk.core.SandboxEnvironment(
+      clientId, clientSecret
+    );
+  }
+}
+// client
+function client() {
+  return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
+}
+
 async function sendMail(origin,destination,message, attachments,auth = {user: "info@essaydons.co", pass: "Motsae254"}) {
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
@@ -564,30 +588,6 @@ padding: 0 15px 0 15px !important;
       console.log("create order error", e);
       res.status(400)
     }
-    // orders api
-    const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
-    // environment
-    function environment() {
-      if (process.env.NODE_ENV === "development") {
-        let clientId = process.env.PAYPAL_CLIENT_ID;
-        let clientSecret = process.env.PAYPAL_CLIENT_SECRET;
-
-        return new checkoutNodeJssdk.core.LiveEnvironment(
-          clientId, clientSecret
-        );
-      } else {
-        let clientId = process.env.SANDBOX_PAYPAL_CLIENT_ID;
-        let clientSecret = process.env.SANDBOX_PAYPAL_SECRET;
-
-        return new checkoutNodeJssdk.core.SandboxEnvironment(
-          clientId, clientSecret
-        );
-      }
-    }
-    // client
-    function client() {
-      return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
-    }
     // request
     const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
     // request headers
@@ -648,8 +648,6 @@ padding: 0 15px 0 15px !important;
   } else if(req.query.paypal_capture_intent  && req.method === "POST") {
 
     console.log("paypal approval", req.body);
-
-    const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
 
     async function captureOrder(orderId, debug=false) {
       try {
