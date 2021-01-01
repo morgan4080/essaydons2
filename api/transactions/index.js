@@ -711,12 +711,14 @@ padding: 0 15px 0 15px !important;
     try {
       let attachments = [];
 
-      for (const file of Object.entries(result.files)) {
-        console.log(file);
-        attachments.push({
-          filename: file.name,
-          content: file
-        });
+      for (const arr of Object.entries(result.files)) {
+        for (const file of arr[1]) {
+          console.log("Attached files", file);
+          attachments.push({
+            filename: file.name,
+            content: file
+          });
+        }
       }
 
       // correct
@@ -725,8 +727,8 @@ padding: 0 15px 0 15px !important;
       }
 
       const origin = {
-        name: result.fields.order.name,
-        email: result.fields.order.email,
+        name: "EssayDons Orders",
+        email: "info@essaydons.co",
       };
 
       const destination = {
@@ -754,7 +756,7 @@ padding: 0 15px 0 15px !important;
           id: 5,
           level: "PhD",
         },
-      ].find(item => item.id === result.fields.order.level)
+      ].find(item => item.id === result.fields.order.level).level;
 
       const message = {
         subject: "New Order",
@@ -1048,13 +1050,19 @@ padding: 0 15px 0 15px !important;
 </body></html>`,
       };
 
-      await sendMail(origin,destination,message,attachments)
+      console.log("constructed", attachments);
+
+      let responder = await sendMail(origin,destination,message,attachments);
+
+      res.status(200).json({
+        response: responder
+      });
+
     } catch (e) {
       res.status(400).json({
         error: e
       });
     }
-    res.status(200)
 
   } else {
     res.status(400).json({
