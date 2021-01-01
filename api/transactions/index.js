@@ -12,7 +12,9 @@ const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'
 
 const Stripe = require("stripe");
 
-const stripe = Stripe('sk_test_MKa3c0iWsVFbV9WK64cNnyQd');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
+const webhook_secret = process.env.WEBHOOK_SECRET;
 
 const nodemailer = require("nodemailer");
 
@@ -21,7 +23,7 @@ import { buffer } from 'micro';
 const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
 // environment
 function environment() {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === "production") {
     let clientId = process.env.PAYPAL_CLIENT_ID;
     let clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
@@ -526,7 +528,7 @@ padding: 0 15px 0 15px !important;
       stripeEvent = await stripe.webhooks.constructEvent(
         body,
         sig,
-        'whsec_pAgBXyncG361YrZ6Nq2f29EssTJsZDko'
+        webhook_secret
       );
 
       metadata = stripeEvent.data.object.metadata.order_id;

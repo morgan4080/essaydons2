@@ -497,7 +497,7 @@
                     class="font-mono mt-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="card"
                     :class="{ complete }"
-                    stripe="pk_test_poS6oPZNGfTxtuUFNgr4aG2f"
+                    stripe="pk_live_nUyynGrCMSH1QglZbmMexhMX"
                     :options="stripeOptions"
                     @change="complete = $event.complete"
                   />
@@ -1045,9 +1045,9 @@ export default {
     },
     async pay() {
       this.loading = true;
-      const files = await this.toBase64(this.form.uploads);
+      // const files = await this.toBase64(this.form.uploads);
       let filesFile = this.form.uploads;
-      console.log(files);
+      /*console.log(files);
       this.form.uploads = [];
       for (let i = 0; i < files.length; i++) {
         let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
@@ -1056,14 +1056,24 @@ export default {
           folder: "orders",
           upload_preset: 'ybfqkqyu'
         }));
-      }
+      }*/
       let order = {
         amount: Math.round((this.totalPrice + Number.EPSILON) * 100) / 100,
         ...this.form
       };
       console.log(order);
+      let formData0 = new FormData();
+      if (filesFile.length > 0) {
+        for (let i = 0; i < filesFile.length; i++) {
+          formData0.append('attachments[]', filesFile[i]);
+        }
+      }
+      formData0.append('order', JSON.stringify(order));
+
+      await this.sendAdminMail(formData0);
+
       // make the order data more relevant
-      this.createPaymentIntent({order}).then(result => {
+      /*this.createPaymentIntent({order}).then(result => {
         // confirms the payment and will automatically display a
         // pop-up modal if the purchase requires authentication
         console.log(result, this.clientSecret);
@@ -1115,7 +1125,7 @@ export default {
         });
       }).catch(e => {
         console.log(e)
-      })
+      })*/
     },
   }
 }
