@@ -711,25 +711,50 @@ padding: 0 15px 0 15px !important;
     try {
       let attachments = [];
 
-      for (let i = 0; i < result.files.length; i++) {
+      for (const file of Object.entries(result.files)) {
+        console.log(file);
         attachments.push({
-          filename: result.files[i].name,
-          content: result.files[i]
+          filename: file.name,
+          content: file
         });
       }
 
+      // correct
       if (typeof result.fields.order === "string") {
         result.fields.order = JSON.parse(result.fields.order)
       }
 
       const origin = {
-        name: "EssayDons Orders",
-        email: "info@essaydons.co",
+        name: result.fields.order.name,
+        email: result.fields.order.email,
       };
 
       const destination = {
         email: "info@essaydons.co",
       };
+
+      let academicLevel = [
+        {
+          id: 1,
+          level: "High School",
+        },
+        {
+          id: 2,
+          level: "College",
+        },
+        {
+          id: 3,
+          level: "Undergraduate",
+        },
+        {
+          id: 4,
+          level: "Master's",
+        },
+        {
+          id: 5,
+          level: "PhD",
+        },
+      ].find(item => item.id === result.fields.order.level)
 
       const message = {
         subject: "New Order",
@@ -738,7 +763,7 @@ padding: 0 15px 0 15px !important;
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Responsive Email Template</title>
+<title>EssayDons Order Report</title>
 <style type="text/css">
 /* ----- Custom Font Import ----- */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
@@ -898,12 +923,20 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hello <span style="color: #42fbb7;">admin</span></td>
+<td class="hero-subheader__title" style="font-size: 30px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hello <span style="color: #42fbb7;">admin</span></td>
 </tr>
 
 <tr>
 <td class="hero-subheader__content" style="font-size: 15px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
   <table border="1" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+        <tr>
+            <td>
+                <p style="margin: 0;font-weight: bold;">AAcademic Level</p>
+            </td>
+            <td>
+                <p style="margin: 0;">${academicLevel}</p>
+            </td>
+        </tr>
         <tr>
             <td>
                 <p style="margin: 0;font-weight: bold;">Subject</p>
@@ -914,10 +947,34 @@ padding: 0 15px 0 15px !important;
         </tr>
         <tr>
             <td>
+                <p style="margin: 0;font-weight: bold;">Paper Type</p>
+            </td>
+            <td>
+                <p style="margin: 0;">${result.fields.order.paper_type}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="margin: 0;font-weight: bold;">Duration</p>
+            </td>
+            <td>
+                <p style="margin: 0;">${result.fields.order.duration.duration}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="margin: 0;font-weight: bold;">Client Details</p>
+            </td>
+            <td>
+                <p style="margin: 0;">${result.fields.order.name} - ${result.fields.order.email} - ${result.fields.order.phone}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <p style="margin: 0;font-weight: bold;">Topic</p>
             </td>
             <td>
-                <p style="margin: 0;">${result.fields.order.topic}</p>
+                <p style="margin: 0;">${(result.fields.order.topic) ? result.fields.order.topic : "not specified"}</p>
             </td>
         </tr>
         <tr>
@@ -925,7 +982,7 @@ padding: 0 15px 0 15px !important;
                 <p style="margin: 0;font-weight: bold;">Order Description</p>
             </td>
             <td>
-                <p style="margin: 0;">${result.fields.order.details}</p>
+                <p style="margin: 0;">${(result.fields.order.details) ? result.fields.order.details : "not specified"}</p>
             </td>
         </tr>
         <tr>
@@ -938,10 +995,18 @@ padding: 0 15px 0 15px !important;
         </tr>
         <tr>
             <td>
+                <p style="margin: 0;font-weight: bold;"> Sources - initial draft - Charts - Slides - one page summary - Digital copies - plagiarism report</p>
+            </td>
+            <td>
+                <p style="margin: 0;">${result.fields.order.sources} - ${result.fields.order.initial_draft} - ${result.fields.order.charts} - ${result.fields.order.one_page_summary} - ${result.fields.order.digital_copies} - ${result.fields.order.plagiarism_report}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <p style="margin: 0;font-weight: bold;">Total</p>
             </td>
             <td>
-                <p style="margin: 0;">${result.fields.order.amount}</p>
+                <p style="margin: 0;">${result.fields.order.amount} USD</p>
             </td>
         </tr>
     </table>
@@ -989,6 +1054,8 @@ padding: 0 15px 0 15px !important;
         error: e
       });
     }
+
+    res.status(200)
 
   } else {
     res.status(400).json({
