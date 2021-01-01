@@ -574,7 +574,7 @@
             <div class="w-full lg:w-7/12 h-auto">
               <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
                 <div class="md:block lg:w-auto md:w-full">
-                  <img class="h-80" src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
+                  <img class="h-80 md:w-full lg:w-auto" src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">

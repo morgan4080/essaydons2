@@ -357,29 +357,35 @@
                 </svg>
               </button>
             </div>
-            <div v-if="showMobileMenu" class="absolute block flex flex-col px-4 pt-12 top-0 w-full pb-12 shadow-2xl" style="background: rgba(66, 251, 183, 1);">
-              <nuxt-link to="/about" class="text-secondary font-semibold py-3 px-5">
-                About Us
-              </nuxt-link>
-              <nuxt-link to="/papers" class="text-secondary font-semibold py-3 px-5">
-                Sample Papers
-              </nuxt-link>
-              <nuxt-link to="/blogs" class="text-secondary font-semibold py-3 px-5">
-                Blogs
-              </nuxt-link>
-              <nuxt-link to="/services" class="text-secondary font-semibold py-3 px-5">
-                Services
-              </nuxt-link>
-              <nuxt-link to="/order" class="text-secondary font-semibold py-3 px-5">
-                New Order
-              </nuxt-link>
-              <nuxt-link to="/login" class="text-secondary font-semibold py-3 px-5">
-                Log In
-              </nuxt-link>
-              <nuxt-link to="/register" class="text-secondary font-semibold py-3 px-5">
-                Sign Up
-              </nuxt-link>
-            </div>
+            <transition
+              enter-active-class="transition ease-out duration-200"
+              leave-active-class="transition ease-in duration-150"
+              enter-class="opacity-0 translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 translate-y-1"
+            >
+              <div v-if="showMobileMenu" class="absolute block flex flex-col px-4 pt-12 top-0 w-full pb-12 shadow-2xl" style="background: rgba(66, 251, 183, 1);">
+                <nuxt-link @click="turnOff" to="/about" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">About Us</span>
+                </nuxt-link>
+                <nuxt-link @click="turnOff" to="/papers" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">Sample Papers</span>
+                </nuxt-link>
+                <nuxt-link @click="turnOff" to="/blogs" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">Blogs</span>
+                </nuxt-link>
+                <nuxt-link @click="turnOff" to="/services" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">Services</span>
+                </nuxt-link>
+                <nuxt-link @click="turnOff" to="/order" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">New Order</span>
+                </nuxt-link>
+                <nuxt-link to="/profile" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">My Account</span>
+                </nuxt-link>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
@@ -417,6 +423,10 @@ export default {
     }
   },
   methods: {
+    turnOff() {
+      console.log("remove menu");
+      this.showMobileMenu = !this.showMobileMenu
+    },
     async logout() {
       await this.$auth.logout();
       this.$store.commit('setAuth', null);

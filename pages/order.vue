@@ -248,10 +248,18 @@
               <div class="px-5 py-6 w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
+                    <label for="duration" class="block text-gray-700 text-base font-bold mb-1">
+                      Duration
+                    </label>
+                    <select id="duration" v-model="form.duration" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                      <optgroup label="Deadline">
+                        <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
+                      </optgroup>
+                    </select>
                     <label for="paperType" class="block text-gray-700 text-base font-bold mb-1">
                       Type of paper
                     </label>
-                    <select id="paperType" v-model="form.paper_type" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
+                    <select id="paperType" v-model="form.paper_type" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
                       <optgroup label="Paper">
                         <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
                       </optgroup>
@@ -259,7 +267,7 @@
                     <label for="academic" class="block text-gray-700 text-base font-bold mb-1">
                       Academic level
                     </label>
-                    <select id="academic" @change="setFirstDuration" v-model="form.level" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
+                    <select id="academic" @change="setFirstDuration" v-model="form.level" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
                       <optgroup label="Academic Levels">
                         <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
                       </optgroup>
@@ -267,7 +275,7 @@
                     <label for="subjects" class="block text-gray-700 text-base font-bold mb-1">
                       Subject, Discipline
                     </label>
-                    <select id="subjects" v-model="form.subject" class="w-full rounded hover:bg-gradient-to-r py-3 px-3 form-input border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out">
+                    <select id="subjects" v-model="form.subject" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
                       <optgroup label="Subject, Discipline">
                         <option v-for="subject in subjects0" :value="subject">{{ subject }}</option>
                       </optgroup>
@@ -378,15 +386,11 @@
                       Name
                     </label>
                     <input v-model="form.name" id="names" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="John Doe" type="text">
-
-                    <label for="username" class="block text-gray-700 text-base font-bold mb-1">
-                      Duration
+                    <label for="phone" class="block text-gray-700 text-base font-bold mb-1">
+                      Phone
                     </label>
-                    <select v-model="form.duration" class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
-                      <optgroup label="Deadline">
-                        <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
-                      </optgroup>
-                    </select>
+                    <input v-model="form.phone" id="phone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="cell number" type="text">
+
                   </div>
                   <div class="flex flex-col">
                     <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
@@ -435,10 +439,6 @@
                       </div>
 
                     </div>
-                    <label for="phone" class="block text-gray-700 text-base font-bold mb-1">
-                      Phone
-                    </label>
-                    <input v-model="form.phone" id="phone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="cell number" type="text">
                     <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
                       <div class="">
                         <label for="writer" class="block text-gray-700 text-base font-bold mb-1">
@@ -658,8 +658,6 @@ export default {
     this.form.paper_type = this.subjects[0];
     this.form.subject = this.subjects0[0];
     this.form.format = this.formats[0];
-    console.log(this.duration[Object.keys(this.duration)[0]]);
-    console.log(Object.entries(this.duration)[Object.entries(this.duration).length - 1]);
     this.form.duration = {
       duration: Object.entries(this.duration)[Object.entries(this.duration).length - 1][0],
       price: Object.entries(this.duration)[Object.entries(this.duration).length - 1][1],
@@ -783,7 +781,6 @@ export default {
           createOrder: async () => {
             const files = await this.toBase64(this.form.uploads);
             let filesFile = this.form.uploads;
-            console.log(files);
             this.form.uploads = [];
             for (let i = 0; i < files.length; i++) {
               let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
@@ -798,21 +795,20 @@ export default {
               ...this.form
             };
 
-            /*let formData0 = new FormData();
-              if (filesFile.length > 0) {
-                for (let i = 0; i < filesFile.length; i++) {
-                  formData0.append('attachments[]', filesFile[i]);
-                }
+            let formData0 = new FormData();
+            if (filesFile.length > 0) {
+              for (let i = 0; i < filesFile.length; i++) {
+                formData0.append('attachments[]', filesFile[i]);
               }
-              formData0.append('order', JSON.stringify(order));
-              await this.sendAdminMail(formData0);*/
+            }
+            formData0.append('order', JSON.stringify(order));
+            await this.sendAdminMail(formData0);
             let response;
 
             try {
               response = await this.$axios.post('/api/transactions?paypal_intent=true', {
                   order: order
               });
-              console.log(response);
             } catch (e) {
               console.log("create order error", e);
             }
@@ -827,7 +823,6 @@ export default {
                 orderID: data.orderID,
                 dbID: (data.dbID !== null && data.dbID !== undefined) ? data.dbID : this.dbID,
               });
-              console.log("successful approval", response);
               this.$toast.success(response.data.result.status, {
                 theme: "outline",
                 position: "bottom-left",
@@ -848,7 +843,6 @@ export default {
       this.passwordFieldType = !this.passwordFieldType
     },
     removeFile(file) {
-      console.log('removing file:-', file);
       let index = this.form.uploads.findIndex(file0 => file0 === file);
       this.form.uploads.splice(index, 1);
     },
@@ -857,24 +851,9 @@ export default {
     },
     async readFileUrl(input) {
       if (input.files && input.files[0]) {
-        /*function getBase64(file) {
-          const reader = new FileReader()
-          return new Promise(resolve => {
-            reader.onload = ev => {
-              resolve(ev.target.result)
-            }
-            reader.readAsDataURL(file)
-          })
-        }*/
-        // here will be array of promisified functions
-        /*const promises = []*/
-        // loop through fileList with for loop
         for (let i = 0; i < input.files.length; i++) {
           this.form.uploads.push(input.files[i]);
-          /*promises.push(getBase64(input.files[i]));*/
         }
-        // array with base64 strings
-        /*let base64Strings = await Promise.all(promises);*/
       }
     },
     async toBase64(arr) {
@@ -896,23 +875,16 @@ export default {
     dropHandler(ev) {
       ev.preventDefault();
       if (ev.dataTransfer.items) {
-        console.log("DataTransferItemList interface");
-        // Use DataTransferItemList interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-          // If dropped items aren't files, reject them
           if (ev.dataTransfer.items[i].kind === 'file') {
             let file = ev.dataTransfer.items[i].getAsFile();
-            console.log('... file[' + i + '].name = ' + file.name);
             this.form.uploads.push(file);
             document.querySelector('#dragBox > span > span').innerText = 'Drop files here or click';
             document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
           }
         }
       } else {
-        console.log("DataTransfer interface");
-        // Use DataTransfer interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-          console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
           this.form.uploads.push(ev.dataTransfer.files[i]);
           document.querySelector('#dragBox > span > span').innerText = 'Drop files here or click';
           document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
@@ -959,7 +931,6 @@ export default {
         this.loading = true;
         let response = await this.$auth.loginWith('local', { data: this.login });
         this.loading = false;
-        console.log(response);
         this.setToken(response.data.token);
         this.toggleTabs(2)
         this.$toast.success('Logged In!', {
@@ -978,7 +949,6 @@ export default {
         }
       } catch (e) {
         this.loading = false;
-        console.log(e.response.data)
         if (e.response.data.message) {
           this.$toast.error(e.response.data.message, {
             theme: "outline",
@@ -1045,9 +1015,8 @@ export default {
     },
     async pay() {
       this.loading = true;
-      // const files = await this.toBase64(this.form.uploads);
+      const files = await this.toBase64(this.form.uploads);
       let filesFile = this.form.uploads;
-      /*console.log(files);
       this.form.uploads = [];
       for (let i = 0; i < files.length; i++) {
         let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
@@ -1056,34 +1025,25 @@ export default {
           folder: "orders",
           upload_preset: 'ybfqkqyu'
         }));
-      }*/
+      }
       let order = {
         amount: Math.round((this.totalPrice + Number.EPSILON) * 100) / 100,
         ...this.form
       };
-      console.log(order);
       let formData0 = new FormData();
       if (filesFile.length > 0) {
         for (let i = 0; i < filesFile.length; i++) {
           formData0.append('attachments[]', filesFile[i]);
         }
       }
+
       formData0.append('order', JSON.stringify(order));
-
-      await this.sendAdminMail(formData0);
-
-      // make the order data more relevant
-      /*this.createPaymentIntent({order}).then(result => {
-        // confirms the payment and will automatically display a
-        // pop-up modal if the purchase requires authentication
-        console.log(result, this.clientSecret);
+      this.createPaymentIntent({order}).then(result => {
         handleCardPayment(this.clientSecret, {
           receipt_email: this.stripeEmail
         }).then(result => {
           this.loading = false;
-          console.log("handle card payments", result)
           if (result.error) {
-            // show the error to the customer, let them try to pay again
             this.error = result.error.message;
             this.$toast.error(this.error, {
               theme: "outline",
@@ -1095,22 +1055,12 @@ export default {
             result.paymentIntent &&
             result.paymentIntent.status === "succeeded"
           ) {
-            // payment succeeded! show a success message
-            // there's always a chance your customer closes the browser after the payment process and before this code runs so
-            // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
             this.updateCartUI("success");
             this.$toast.success("Payment" + result.paymentIntent.status, {
               theme: "outline",
               position: "bottom-left",
               duration : 5000
             });
-            let formData0 = new FormData();
-            if (filesFile.length > 0) {
-              for (let i = 0; i < filesFile.length; i++) {
-                formData0.append('attachments[]', filesFile[i]);
-              }
-            }
-            formData0.append('order', JSON.stringify(order));
             this.sendAdminMail(formData0);
             setTimeout(this.clearCart, 5000);
           } else {
@@ -1125,7 +1075,7 @@ export default {
         });
       }).catch(e => {
         console.log(e)
-      })*/
+      })
     },
   }
 }

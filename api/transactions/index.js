@@ -649,8 +649,6 @@ padding: 0 15px 0 15px !important;
 
   } else if(req.query.paypal_capture_intent  && req.method === "POST") {
 
-    console.log("paypal approval", req.body);
-
     async function captureOrder(orderId) {
       const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
       request.requestBody({});
@@ -700,7 +698,6 @@ padding: 0 15px 0 15px !important;
           resolve({fields: fields, files: files})
         })
       });
-      console.log("formindable", result);
     } catch (e) {
       console.log("formindable error", e);
       res.status(400).json({
@@ -713,7 +710,6 @@ padding: 0 15px 0 15px !important;
 
       for (const arr of Object.entries(result.files)) {
         for (const file of arr[1]) {
-          console.log("Attached files", file);
           attachments.push({
             filename: file.name,
             content: file
@@ -1049,8 +1045,6 @@ padding: 0 15px 0 15px !important;
 
 </body></html>`,
       };
-
-      console.log("constructed", attachments);
 
       let responder = await sendMail(origin,destination,message,attachments);
 

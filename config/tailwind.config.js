@@ -1,6 +1,19 @@
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        teal: {
+          '100': '#74fcca',
+          '200': '#63fcc4',
+          '300': '#53fbbd',
+          '400': '#42fbb7',
+          '500': '#31fbb1',
+          '600': '#21faaa',
+          '700': '#10faa4',
+          '800': '#05f49c',
+          '900': '#05e392',
+        }
+      },
       maxWidth: {
         'xxs': '15rem'
       },
