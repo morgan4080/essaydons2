@@ -539,7 +539,7 @@
           <div class="flex flex-col lg:flex-row lg:py-12">
             <div class="w-full lg:w-1/2 h-auto">
               <div class="lg:pr-4 py-2 block h-auto bg-img" >
-                <img class="py-2 mx-auto opacity-75" alt="happy learners" src="~/assets/images/whatyouget.png" />
+                <img class="py-2 mx-auto opacity-75" alt="happy learners" src="~/assets/images/whatyouget.jpg" />
               </div>
             </div>
             <div class="w-full lg:w-1/2 h-auto">
@@ -574,7 +574,7 @@
             <div class="w-full lg:w-7/12 h-auto">
               <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
                 <div class="md:block lg:w-auto md:w-full">
-                  <img class="h-80 md:w-full lg:w-auto" src="~/assets/images/blog_placeholder.png" alt="writing a proposal essay">
+                  <img class="h-80 w-full lg:w-auto" src="~/assets/images/blog_placeholder.jpg" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
@@ -610,7 +610,7 @@
             <div class="w-full lg:w-5/12 h-auto">
               <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
                 <div class="md:block lg:w-1/2 md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" class="md:rounded-l-large" alt="writing a proposal essay">
+                  <img src="~/assets/images/blog_placeholder.jpg" class="md:rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">
@@ -642,7 +642,7 @@
               </div>
               <div class="lg:pr-4 py-2 block flex flex-col md:flex-row" >
                 <div class="md:block lg:w-1/2 md:w-full">
-                  <img src="~/assets/images/blog_placeholder.png" class="md:rounded-l-large" alt="writing a proposal essay">
+                  <img src="~/assets/images/blog_placeholder.jpg" class="md:rounded-l-large" alt="writing a proposal essay">
                 </div>
                 <div class="lg:w-1/2 md:w-full text-secondary">
                   <div class="h-full bg-secondary text-secondary px-8 pt-16 pb-8 md:rounded-r-large overflow-hidden flex flex-col justify-center text-center relative">

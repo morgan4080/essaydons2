@@ -810,22 +810,27 @@ export default {
 
             this.dbID = response.data.dbID;
             // end animation overlay
-            try {
 
-              let formData0 = new FormData();
-              if (filesFile.length > 0) {
-                for (let i = 0; i < filesFile.length; i++) {
-                  formData0.append('attachments[]', filesFile[i]);
+
+            setTimeout(async () => {
+              try {
+
+                let formData0 = new FormData();
+                if (filesFile.length > 0) {
+                  for (let i = 0; i < filesFile.length; i++) {
+                    formData0.append('attachments[]', filesFile[i]);
+                  }
                 }
+                formData0.append('order', JSON.stringify(order));
+
+                await this.sendAdminMail(formData0);
+              } catch (e) {
+                console.log("send mail error", e);
               }
-              formData0.append('order', JSON.stringify(order));
 
-              await this.sendAdminMail(formData0);
-            } catch (e) {
-              console.log("send mail error", e);
-            }
+              this.paymentLoading = false;
 
-            this.paymentLoading = false;
+            },3500);
 
             return response.data.orderID
           },
