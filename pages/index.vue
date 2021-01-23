@@ -18,9 +18,9 @@
               <p class="text-white text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
               </p>
-              <a href="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+              <nuxt-link to="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                 Order Now
-              </a>
+              </nuxt-link>
             </div>
           </div>
           <div class="header-main-shape bg-gray-100"></div>
@@ -67,7 +67,7 @@
           <div class="mt-12">
             <div class="flex flex-col md:flex-row lg:flex-row flex-wrap">
               <div class="w-full lg:w-1/3 lg:pr-3 lg:pl-0 group" >
-                <a href="/features" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse moneyBack bg-right-top transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse moneyBack bg-right-top transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >100% Money Back
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -79,7 +79,7 @@
                 </a>
               </div>
               <div class="w-full lg:w-1/3 lg:px-3 group" >
-                <a href="/features" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse revisions transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse revisions transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >Free Revisions
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -91,7 +91,7 @@
                 </a>
               </div>
               <div class="w-full lg:w-1/3 lg:pl-3 lg:pr-0 group" >
-                <a href="/features" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse safePayments transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse safePayments transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >Safe Payments
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -768,7 +768,7 @@ export default {
   height: 90px;
   position: absolute;
   width: 100%;
-  border-radius: 50% 50% 0 0/90px 90px 0px 0px;
+  border-radius: 50% 50% 0 0/90px 90px 0 0;
   bottom: -1px;
   left: 0;
   z-index: 0;
