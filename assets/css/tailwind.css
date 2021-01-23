@@ -10,6 +10,7 @@
     url('~assets/CalibreWeb-Bold.b4d2f37.woff') format('woff');
     font-weight: 600;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -18,6 +19,7 @@
     url('~assets/CalibreWeb-Bold.b4d2f37.woff') format('woff');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -26,5 +28,6 @@
     url('~assets/CalibreWeb-Regular.a4d333e.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 }

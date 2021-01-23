@@ -109,8 +109,9 @@
           <h2 class="text-4xl font-semibold leading-none pb-4 text-black text-center">
             Why Choose Us
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
-            We guide you through your toughest academic huddles as you learn to overcome them from expert writers.
+          <p class="lg:text-2xl text-secondary text-center">We guide you</p>
+          <p class="mt-3 lg:text-base text-secondary text-center leading-relaxed">
+            We help through your toughest academic huddles as you learn to overcome them from expert writers.
             It is easy to fall victim to unreliable academic help solutions. Our advice is that you
             choose to work with a company that has been in the industry long enough to get recognition in the industry.
             Besides our customer testimonials, we have received a ranking and positive review from Studential for the quality homework help services we
