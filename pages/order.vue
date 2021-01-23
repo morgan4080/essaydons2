@@ -517,7 +517,7 @@
                 <div v-if="cartUIStatus === 'idle' && paymentMethod === 'paypal'" class="px-5 py-6">
                   <div id="smart-button-container">
                     <div style="text-align: center;">
-                      <div id="paypal-button-container"></div>
+                      <div id="paypal-button-container" :class="{'animate-pulse': paymentLoading }"></div>
                     </div>
                   </div>
                 </div>
@@ -667,6 +667,7 @@ export default {
   data() {
     return {
       paymentMethod: 'stripe',
+      paymentLoading: false,
       username: '',
       account_id: 1,
       email: '',
@@ -779,6 +780,8 @@ export default {
             label: 'paypal',
           },
           createOrder: async () => {
+            //start animation animation overlay
+            this.paymentLoading = true;
             const files = await this.toBase64(this.form.uploads);
             let filesFile = this.form.uploads;
             this.form.uploads = [];
@@ -795,14 +798,6 @@ export default {
               ...this.form
             };
 
-            let formData0 = new FormData();
-            if (filesFile.length > 0) {
-              for (let i = 0; i < filesFile.length; i++) {
-                formData0.append('attachments[]', filesFile[i]);
-              }
-            }
-            formData0.append('order', JSON.stringify(order));
-            await this.sendAdminMail(formData0);
             let response;
 
             try {
@@ -814,10 +809,28 @@ export default {
             }
 
             this.dbID = response.data.dbID;
+            // end animation overlay
+            try {
+
+              let formData0 = new FormData();
+              if (filesFile.length > 0) {
+                for (let i = 0; i < filesFile.length; i++) {
+                  formData0.append('attachments[]', filesFile[i]);
+                }
+              }
+              formData0.append('order', JSON.stringify(order));
+
+              await this.sendAdminMail(formData0);
+            } catch (e) {
+              console.log("send mail error", e);
+            }
+
+            this.paymentLoading = false;
 
             return response.data.orderID
           },
           onApprove: async (data) => {
+            // start animation overlay
             try {
               const response = await this.$axios.post('/api/transactions?paypal_capture_intent=true', {
                 orderID: data.orderID,
@@ -832,6 +845,7 @@ export default {
             } catch (e) {
               console.log("on approve error", e)
             }
+            // end animation overlay
           },
           onError: (err) => {
             console.log(err);

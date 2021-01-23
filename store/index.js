@@ -128,16 +128,18 @@ export const actions = {
     });
   },
   async sendAdminMail({ getters }, payload) {
-    try {
-      /*, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }*/
-      const response = await this.$axios.post('api/transactions?send_attachments=true', payload);
-      console.log("success sendmail", response)
-    } catch (e) {
-      console.log("sendmail error", e)
-    }
+    setTimeout(async () => {
+      try {
+        /*, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }*/
+        const response = await this.$axios.post('api/transactions?send_attachments=true', payload);
+        console.log("success sendmail", response)
+      } catch (e) {
+        console.log("sendmail error", e)
+      }
+    },1500);
   }
 };

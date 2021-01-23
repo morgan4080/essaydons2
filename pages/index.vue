@@ -735,22 +735,22 @@ export default {
 
 <style scoped>
 .moneyBack {
-  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/moneyback.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
 }
 .revisions {
-  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/freerevisions.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
 }
 .safePayments {
-  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/safe.png);
+  background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941)),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
 }
 .bg-img {
   background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941));
 }
 .mobile-b {
-  background-image: linear-gradient(rgba(98, 98, 98, .3),rgba(98, 98, 98, .3)),url(~assets/images/Header_Image.png);
+  background-image: linear-gradient(rgba(98, 98, 98, .3),rgba(98, 98, 98, .3)),url(~assets/images/Header_Image.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
