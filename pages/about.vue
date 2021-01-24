@@ -13,11 +13,17 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <p class="text-lg text-secondary text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          <p class="mt-3 lg:text-base text-secondary text-left leading-relaxed">
+            We help through your toughest academic huddles as you learn to overcome them from expert writers.
+            It is easy to fall victim to unreliable academic help solutions. Our advice is that you
+            choose to work with a company that has been in the industry long enough to get recognition in the industry.
+            Besides our customer testimonials, we have received a ranking and positive review from Studential for the quality homework help services we
+            offer. Sit back and watch your academic performance drastically improve by having one of our
+            competent and reliable writers work on your homework and our quality assurance team confirm on
+            the quality of your homework before it is handed over to you.
           </p>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12 hidden">
           <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
             Our Team
           </h2>
@@ -102,7 +108,7 @@
           </h2>
           <div class="mx-auto lg:grid lg:grid-cols-2 lg:gap-8 w-full">
             <div class="w-full">
-              <div class="h-full text-secondary px-8 rounded-r-large overflow-hidden flex flex-col">
+              <div class="h-full text-secondary rounded-r-large overflow-hidden flex flex-col">
                 <p class="text-left leading-relaxed mb-3">
                   It is easy to fall victim to malicious and unreliable academic help Sites. Our advice is that you choose to work with a company that has been in the industry long enough to get recognition from giant companies such as Daily kos, and Life hacks. Besides our customer testimonials, we have received a ranking and positive review from Studential for the quality homework help services we offer. Sit back and watch your academic performance drastically improve by having one of our competent and reliable writers work on your homework and our quality assurance team confirm on the quality of your homework before it is handed over to you.
                   <br>
@@ -597,7 +603,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 lg:pt-12 lg:pb-16 pb-16">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 lg:pt-12 lg:pb-16 pb-16 hidden">
           <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
             Our Writers
           </h2>

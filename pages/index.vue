@@ -24,8 +24,8 @@
             </div>
           </div>
           <div class="header-main-shape bg-gray-100"></div>
-          <div class="absolute text-center flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
-            <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
+          <div class="absolute text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+            <h2 class="text-2xl text-center font-semibold leading-none pb-1 text-white" data-v-409e2651="">
               Place your order
             </h2>
             <select v-model="form.subject" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
@@ -50,18 +50,18 @@
                 <button class="w-1/3" @click="form.pages++">+</button>
               </div>
             </div>
-            <div class="px-1 py-3 text-white font-bold text-xl">{{ totalPrice | dollar }}</div>
+            <div class="px-1 py-3 text-white font-bold text-xl text-center">{{ totalPrice | dollar }}</div>
             <div class="flex">
-              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1">Continue</nuxt-link>
-              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1">10% Discount</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1 text-center font-bold">Continue</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1 text-center font-bold">10% Discount</nuxt-link>
             </div>
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Guarantees
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
+          <p class="lg:text-2xl text-secondary text-left">
             We offer quick and transparent support.
           </p>
           <div class="mt-12">
@@ -106,19 +106,10 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-4 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Why Choose Us
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">We guide you</p>
-          <p class="mt-3 lg:text-base text-secondary text-center leading-relaxed">
-            We help through your toughest academic huddles as you learn to overcome them from expert writers.
-            It is easy to fall victim to unreliable academic help solutions. Our advice is that you
-            choose to work with a company that has been in the industry long enough to get recognition in the industry.
-            Besides our customer testimonials, we have received a ranking and positive review from Studential for the quality homework help services we
-            offer. Sit back and watch your academic performance drastically improve by having one of our
-            competent and reliable writers work on your homework and our quality assurance team confirm on
-            the quality of your homework before it is handed over to you.
-          </p>
+          <p class="lg:text-2xl text-secondary text-left">We guide you through your toughest academic tasks.</p>
           <div class="mt-12" >
             <div class="flex flex-col md:flex-row lg:flex-row flex-wrap -mx-4" >
               <div class="lg:w-1/3 md:w-1/2 sm:w-1/3 w-full flex flex-col group mb-8 px-4" >
@@ -321,13 +312,13 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Frequently Asked Questions about Custom Writing.
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
+          <p class="lg:text-2xl text-secondary text-left">
             What to expect in this virtual service?
           </p>
-          <div class="flex flex-col lg:flex-row lg:py-12">
+          <div class="flex flex-col lg:flex-row lg:py-12 mt-4">
             <div class="w-full lg:w-1/3 h-auto">
               <div class="h-full">
                 <ul>
@@ -425,10 +416,10 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Do You Need an Essay Writer?
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
+          <p class="lg:text-2xl text-secondary text-left">
             Our Essay Writing Service is Here to Help You Out!
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
@@ -531,10 +522,10 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             What You Get in the End
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
+          <p class="lg:text-2xl text-secondary text-left">
             We get you quality grades.
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">
@@ -565,10 +556,10 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Blog
           </h2>
-          <p class="lg:text-2xl text-secondary text-center">
+          <p class="lg:text-2xl text-secondary text-left">
             Read about matters writing.
           </p>
           <div class="flex flex-col lg:flex-row lg:py-12">

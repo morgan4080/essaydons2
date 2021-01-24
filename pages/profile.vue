@@ -816,7 +816,6 @@ export default {
         try {
           if (section === 'personal') {
             this.profileChanged = true;
-            console.log('uploading', uploadInstance.profile.profile_image[0]);
             let public_id = 'profile_photo_' + Math.random().toString(36).substr(2, 16);
             uploadInstance.profile.profile_image = await this.$cloudinary.upload(uploadInstance.profile.profile_image[0], {
               public_id: public_id,
@@ -834,7 +833,8 @@ export default {
       payload.phone = uploadInstance.personalInformation.phone;
       payload.admin_key = this.formProfile.admin_key;
       payload.owner = !!(this.formProfile.admin_key);
-      (this.$auth.user.metadata.hasOwnProperty('profile') && !this.profileChanged) ? payload.metadata = {
+
+      (this.$auth.user.metadata && this.$auth.user.metadata.hasOwnProperty('profile') && !this.profileChanged) ? payload.metadata = {
         ...this.$auth.user.metadata,
         country: this.formProfile.country
       } : payload.metadata = {
@@ -845,7 +845,8 @@ export default {
           profile_image: uploadInstance.profile.profile_image
         }
       };
-      (this.$auth.user.metadata.hasOwnProperty('notifications') && !this.notificationsChanged) ? payload.metadata = {
+
+      (this.$auth.user.metadata && this.$auth.user.metadata.hasOwnProperty('notifications') && !this.notificationsChanged) ? payload.metadata = {
         ...payload.metadata,
       } : payload.metadata = {
         ...payload.metadata,
@@ -854,10 +855,11 @@ export default {
           pushNotifications: uploadInstance.notifications.pushNotifications
         }
       };
+
       (this.$auth.user.phone === uploadInstance.personalInformation.phone) ? delete payload.phone : null;
       (this.formProfile.password === null || this.formProfile.password === "" ) ? delete payload.password : null;
       (this.formProfile.admin_key === null || this.formProfile.admin_key === "") ? delete payload.admin_key : null;
-      console.log('payload', payload);
+
       try {
         const response = await this.$axios.put('api/users?data=' + section, {
           ...payload
