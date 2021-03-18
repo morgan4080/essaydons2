@@ -24,7 +24,7 @@
           </p>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12 hidden">
-          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-left">
             Our Team
           </h2>
           <div class="flex flex-col md:flex-row lg:flex-row flex-wrap -mx-4">
@@ -103,7 +103,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-left">
             Our Story
           </h2>
           <div class="mx-auto lg:grid lg:grid-cols-2 lg:gap-8 w-full">
@@ -388,7 +388,7 @@
           </div>
         </div>
         <div class="mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12 text-gray-300 body-font bg-secondary">
-          <h2 class="text-4xl font-semibold leading-none text-center">
+          <h2 class="text-4xl font-semibold leading-none text-center" style="padding-left: 7%;">
             Our Numbers
           </h2>
           <section class="">
@@ -415,7 +415,7 @@
           </section>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-left">
             Our Mission
           </h2>
           <div class="mx-auto lg:grid lg:grid-cols-2 lg:gap-8 w-full">
@@ -604,7 +604,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 lg:pt-12 lg:pb-16 pb-16 hidden">
-          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-center">
+          <h2 class="text-4xl font-semibold leading-none pb-8 text-black text-left">
             Our Writers
           </h2>
           <div class="flex flex-col md:flex-row lg:flex-row flex-wrap -mx-4">
