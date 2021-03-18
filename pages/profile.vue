@@ -871,6 +871,7 @@ export default {
           duration: 5000
         });
         this.loading = false;
+        this.$nuxt.refresh();
       } catch (e) {
         this.loading = false;
         if (e.response && e.response.data.message) {
@@ -983,7 +984,7 @@ export default {
     this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
     this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
     let metadata = this.$auth.user.metadata;
-    if (typeof metadata === "object") {
+    if (typeof metadata === "object" && metadata ) {
       (metadata.hasOwnProperty("country")) ? this.formProfile.country = metadata.country : null;
       (metadata.hasOwnProperty("emailNotifications")) ? this.formProfile.emailNotifications = metadata.emailNotifications : null;
       (metadata.hasOwnProperty("pushNotifications")) ? this.formProfile.pushNotifications = metadata.pushNotifications : null;
