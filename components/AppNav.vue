@@ -452,7 +452,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .carttotal {
   position: absolute;
   border-radius: 1000px;

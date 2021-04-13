@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .item-contain {
   margin-left: 8%;
   width: 80%;
