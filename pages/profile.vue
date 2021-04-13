@@ -993,9 +993,8 @@ export default {
         this.formProfile.type = metadata.profile.userType;
         this.formProfile.profile_image.push(metadata.profile.profile_image.secure_url)
       }
-    } else {
-
     }
+
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
         theme: "outline",
