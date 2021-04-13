@@ -395,8 +395,7 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
-import { mapGetters, mapState } from 'vuex'
-
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Logo
