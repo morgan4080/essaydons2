@@ -715,8 +715,6 @@ export default {
   },
   mounted() {
     this.form.subject = this.subjects[0];
-    console.log(this.duration[Object.keys(this.duration)[0]]);
-    console.log(Object.entries(this.duration)[0]);
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
