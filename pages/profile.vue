@@ -994,7 +994,7 @@ export default {
         this.formProfile.profile_image.push(metadata.profile.profile_image.secure_url)
       }
     } else {
-      console.log("metadata is null", metadata);
+
     }
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
