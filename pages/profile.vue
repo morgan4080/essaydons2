@@ -996,7 +996,6 @@ export default {
     } else {
       console.log("metadata is null", metadata);
     }
-
     if (this.$auth.user.email_verified_at === null) {
       this.$toast.error("Check Mail Verification", {
         theme: "outline",
