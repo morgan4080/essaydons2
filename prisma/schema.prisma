@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://morgan:2fpLxthn@139.59.83.180:3306/essaydons"
+  url      = "mysql://gibson:0723810706@awesome@104.214.216.154:3306/essaydons"
 }
 
 model accounts {
@@ -25,7 +25,7 @@ model categories {
   name           String?
   slug           String?
   description    String?
-  specifications Json?
+  specifications String?
   created_at     DateTime?  @default(now())
   updated_at     DateTime?  @default(now())
   deleted_at     DateTime?
@@ -37,7 +37,7 @@ model orders {
   id            Int       @id @default(autoincrement())
   user_id       Int
   account_id    Int
-  order_details Json
+  order_details String
   status        String
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
@@ -58,8 +58,8 @@ model posts {
   slug        String
   excerpt     String
   description String?
-  tags        Json?
-  metadata    Json?
+  tags        String?
+  metadata    String?
   created_at  DateTime?  @default(now())
   updated_at  DateTime?  @default(now())
   deleted_at  DateTime?
@@ -77,7 +77,7 @@ model products {
   account_id  Int
   user_id     Int
   category_id Int
-  product     Json
+  product     String
   created_at  DateTime?  @default(now())
   updated_at  DateTime?  @default(now())
   deleted_at  DateTime?
@@ -101,7 +101,7 @@ model users {
   provider          String?
   provider_id       String?
   owner             Boolean    @default(false)
-  metadata          Json?
+  metadata          String?
   created_at        DateTime?  @default(now())
   updated_at        DateTime?  @default(now())
   deleted_at        DateTime?

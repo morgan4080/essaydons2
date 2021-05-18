@@ -80,7 +80,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
-    '@nuxtjs/cloudinary'
+    '@nuxtjs/cloudinary',
+    '@nuxtjs/proxy'
   ],
 
   cloudinary: {
@@ -103,7 +104,12 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     withCredentials: true,
-    baseURL: "https://essaydons.co"
+    baseURL: "/api/",
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': { target: 'https://essaydons.co/api', pathRewrite: {'^/api/': ''}, changeOrigin: true }
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

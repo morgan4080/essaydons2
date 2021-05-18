@@ -254,7 +254,7 @@
               </div>
             </div>
             <div class="flex items-center justify-center py-4" >
-              <button class="rounded-full text-white font-semibold inline-block mt-4 nuxt-link-exact-active nuxt-link-active transform hover:scale-105 transition ease-in-out duration-100 bg-gradient-to-r from-vuegreen to-lightgreen py-3 px-8 text-xl" >
+              <button @click="$router.push({path: '/order'})" type="button" class="rounded-full text-white font-semibold inline-block mt-4 nuxt-link-exact-active nuxt-link-active transform hover:scale-105 transition ease-in-out duration-100 bg-gradient-to-r from-vuegreen to-lightgreen py-3 px-8 text-xl" >
                 Order Now
               </button>
             </div>
@@ -278,7 +278,7 @@
                         <div class="ml-form-formContent" >
                           <div class="ml-form-fieldRow ml-last-item" >
                             <div class="flex items-center w-full lg:w-1/2 ml-field-group ml-field-email ml-validate-email ml-validate-required" >
-                              <input type="email" placeholder="Email" class="form-control py-3 px-6 rounded-full bg-secondary text-lg text-secondary rounded-r-none w-1/2 lg:w-full" >
+                              <input type="email" placeholder="Email" class="form-control text-white py-3 px-6 rounded-full bg-secondary text-lg rounded-r-none w-1/2 lg:w-full" >
                               <button class="rounded-full text-black font-semibold inline-block transform hover:scale-105 transition ease-in-out duration-100 my-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg">
                                 Submit
                               </button>
