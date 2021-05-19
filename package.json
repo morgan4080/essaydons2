@@ -6,7 +6,8 @@
   "author": "morgan4080",
   "scripts": {
     "dev": "nuxt --port $PORT",
-    "local-dev": "vercel dev -A vercel.dev.json"
+    "local-dev": "vercel dev -A vercel.dev.json",
+    "postinstall" : "prisma generate"
   },
   "dependencies": {
     "@nuxt/core": "^2.14.6",
