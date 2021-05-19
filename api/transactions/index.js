@@ -133,9 +133,7 @@ module.exports = async (req, res) => {
     user = await authMiddleware(req);
   } catch (e) {
     console.log("token user not found", e);
-    res.status(400).json({
-      error: e
-    });
+    res.status(400);
   }
 
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
@@ -159,9 +157,8 @@ module.exports = async (req, res) => {
           phone: user.phone,
         });
       } catch (e) {
-        res.status(400).json({
-          error: e
-        });
+        console.log(e);
+        res.status(400);
       }
 
       try {
@@ -177,9 +174,8 @@ module.exports = async (req, res) => {
           },
         });
       } catch (e) {
-        res.status(400).json({
-          error: e
-        });
+        console.log("user update failure", e);
+        res.status(400);
       }
     } else {
       customer = {
@@ -199,9 +195,8 @@ module.exports = async (req, res) => {
         }
       });
     } catch (e) {
-      res.status(400).json({
-        error: e
-      });
+      console.log(e);
+      res.status(400);
     }
 
     try {
@@ -486,9 +481,8 @@ padding: 0 15px 0 15px !important;
 
       await sendMail(origin,destination,message,attachments)
     } catch (e) {
-      res.status(400).json({
-        error: e
-      });
+      console.log(e);
+      res.status(400);
     }
 
     try {
@@ -505,13 +499,12 @@ padding: 0 15px 0 15px !important;
       // Send the client_secret to the client
       // The client secret has a limited set of permissions that
       // let you finalize the payment and update some details from the client
-      res.status(200).json({
+      res.json({
         clientSecret: paymentIntent.client_secret
       });
     } catch (e) {
-      res.status(400).json({
-        error: e
-      });
+      console.log(e);
+      res.status(400);
     }
   } else if (req.query.payment_succeeded && req.method === "POST") {
     // payment_succeeded
@@ -539,7 +532,7 @@ padding: 0 15px 0 15px !important;
 
     switch (stripeEvent.type) {
       case "payment_intent.created":
-        res.status(200).json({
+        res.json({
           message: "Payment intent created!"
         });
         break;
@@ -588,7 +581,7 @@ padding: 0 15px 0 15px !important;
       });
     } catch (e) {
       console.log("create order error", e);
-      res.status(400)
+      res.status(400);
     }
     // request
     const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
@@ -617,9 +610,7 @@ padding: 0 15px 0 15px !important;
       order = await client().execute(request);
     } catch (e) {
       console.log("create order client error", e);
-      res.status(400).json({
-        error: e
-      });
+      res.status(400);
     }
 
     let orderId = "";
@@ -635,14 +626,11 @@ padding: 0 15px 0 15px !important;
         console.log(message);
       });
     } else {
-      res.status(400).json({
-        message: "create order failed",
-        order
-      });
+      res.status(400);
     }
 
     // 5. Return a successful response to the client with the order ID
-    res.status(200).json({
+    res.json({
       orderID: orderId,
       dbID: response.id
     });
@@ -667,9 +655,8 @@ padding: 0 15px 0 15px !important;
       try {
         await saveSuccessfulPayment(req.body.dbID, "success");
       } catch (e) {
-        res.status(400).json({
-          error: e
-        });
+        console.log(e);
+        res.status(400);
       }
 
       // 6. Return a successful response to the client
@@ -677,10 +664,8 @@ padding: 0 15px 0 15px !important;
         ...response
       });
     } else {
-      res.status(400).json({
-        message: "capture order failed",
-        response
-      });
+      console.log(e);
+      res.status(400);
     }
 
   } else if (req.query.send_attachments && req.method === "POST") {
@@ -700,9 +685,7 @@ padding: 0 15px 0 15px !important;
       });
     } catch (e) {
       console.log("formindable error", e);
-      res.status(400).json({
-        error: e
-      });
+      res.status(400);
     }
 
     try {
@@ -1053,15 +1036,12 @@ padding: 0 15px 0 15px !important;
       });
 
     } catch (e) {
-      res.status(400).json({
-        error: e
-      });
+      console.log(e);
+      res.status(400);
     }
 
   } else {
-    res.status(400).json({
-      message: "missing information"
-    });
+    res.status(400);
   }
 }
 
