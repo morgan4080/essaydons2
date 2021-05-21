@@ -7,7 +7,7 @@
 
     </div>
     <div>
-      <div class="min-h-screen bg-gray-100">
+      <div class="min-h-screen bg-white">
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
@@ -23,7 +23,7 @@
               </nuxt-link>
             </div>
           </div>
-          <div class="header-main-shape bg-gray-100"></div>
+          <div class="header-main-shape bg-white"></div>
           <div class="absolute text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
             <h2 class="text-2xl text-center font-semibold leading-none pb-1 text-white" data-v-409e2651="">
               Place your order
@@ -577,7 +577,7 @@
                             <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">08.27.2020</span>
+                        <span class="ml-2 mt-1 text-white">08.27.2020</span>
                       </span>
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
@@ -586,10 +586,10 @@
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">Guide</span>
+                        <span class="ml-2 mt-1 text-white">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font sm:text-2xl text-xl font-medium text-vuegreen mb-3">Steps Towards Mastering Proposal Essay Writting</h1>
+                    <h1 class="title-font sm:text-2xl text-xl font-semibold text-vuegreen mb-3">Steps Towards Mastering Proposal Essay Writting</h1>
                     <p class="leading-relaxed text-white mb-3">What is a proposal essay?<br>
                       A proposal essay is an essay in which the writer has to identify a problem in a specific area and provide a pro ..</p>
                     <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
@@ -613,7 +613,7 @@
                             <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">08.27.2020</span>
+                        <span class="ml-2 mt-1 text-white">08.27.2020</span>
                       </span>
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
@@ -622,10 +622,10 @@
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">Guide</span>
+                        <span class="ml-2 mt-1 text-white">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font md:text-base lg:text-base font-medium text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <h1 class="title-font md:text-base lg:text-base font-semibold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
                     <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
@@ -645,7 +645,7 @@
                             <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">08.27.2020</span>
+                        <span class="ml-2 mt-1 text-white">08.27.2020</span>
                       </span>
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
@@ -654,10 +654,10 @@
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
-                        <span class="ml-2 mt-1">Guide</span>
+                        <span class="ml-2 mt-1 text-white">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font md:text-base lg:text-base font-medium text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <h1 class="title-font md:text-base lg:text-base font-semibold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
                     <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>

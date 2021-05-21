@@ -245,7 +245,7 @@
               </div>
             </div>
             <div :class="{'hidden': openTab !== 2 , 'block': openTab === 2}" class="flex flex-col text-left w-full py-8">
-              <div class="px-5 py-6 w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
+              <div class="px-5 py-6 w-full sm:rounded-md sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
                     <label for="duration" class="block text-gray-700 text-base font-bold mb-1">
@@ -333,7 +333,7 @@
               </div>
             </div>
             <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full py-8">
-              <div class="px-5 py-6 w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
+              <div class="px-5 py-6 w-full sm:rounded-md sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
                     <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
@@ -459,65 +459,81 @@
               </div>
             </div>
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
-              <div class="w-full shadow sm:rounded-md sm:overflow-hidden mx-auto" >
+              <div class="w-full sm:rounded-md sm:overflow-hidden mx-auto" >
                 <Notification :message="error" v-if="error"/>
-                <div class="px-4">
-                  <label for="payment" class="block text-gray-700 text-base font-bold mb-1 text-center mt-4">
-                    Payment Method <span class="font-light">({{ (paymentMethod === 'stripe') ? 'Stripe' : 'PayPal' }})</span>
-                  </label>
-                  <div class="flex ml-1 border border-gray-300 rounded-3xl h-10">
-                    <button class="w-1/2" :class="{'bg-gray-400 rounded-l-3xl': paymentMethod === 'stripe'}" @click="paymentMethod = 'stripe'">Stripe</button>
-                    <input id="payment" class="hidden" type="text" v-model="paymentMethod" />
-                    <button class="w-1/2" :class="{'bg-gray-400 rounded-r-3xl': paymentMethod === 'paypal'}" @click="paymentMethod = 'paypal';initPayPalButton()">Paypal</button>
-                  </div>
-                </div>
-                <div v-if="cartUIStatus === 'idle' && paymentMethod === 'stripe'" class="px-5 py-6">
-                  <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
-                  <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
-                  <br />
-                  <input id="email" type="email" v-model="stripeEmail" class="mt-2 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="name@host.tld" />
-                  <br />
-                  <label for="card" class="font-semibold text-base mt-2">Credit Card</label>
-                  <br />
-                  <small class="font-light hidden">
-                    Test using these Stripe test credit card numbers with any CVC, postal code, and expiration date in the future:
-                    <ul>
-                      <li>
-                        <span class="cc-number">4242 4242 4242 4242</span>
-                      </li>
-                      <li>
-                        <span class="cc-number">4000 0027 6000 3184</span> (requires authentication, will trigger a pop-up)
-                      </li>
-                      <li>
-                        <span class="cc-number">4000 0000 0000 9995</span> (will decline with a decline code of insufficient funds)
-                      </li>
-                    </ul>
-                  </small>
-                  <card
-                    class="font-mono mt-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="card"
-                    :class="{ complete }"
-                    stripe="pk_live_nUyynGrCMSH1QglZbmMexhMX"
-                    :options="stripeOptions"
-                    @change="complete = $event.complete"
-                  />
-                  <small class="text-red-600">{{error}}</small>
-                  <button
-                    class="flex items-center mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100"
-                    @click="pay"
-                    :disabled="!complete || !stripeEmail || loading"
-                  >
-                    <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Pay with credit card
-                  </button>
-                </div>
-                <div v-if="cartUIStatus === 'idle' && paymentMethod === 'paypal'" class="px-5 py-6">
-                  <div id="smart-button-container">
-                    <div style="text-align: center;">
-                      <div id="paypal-button-container" :class="{'animate-pulse': paymentLoading }"></div>
+                <div v-if="cartUIStatus === 'idle'">
+                  <div class="flex flex-col justify-center items-center">
+                    <div class="w-full md:w-11/12 mb-4">
+                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-green-200' : paymentMethod === 'stripe'}">
+                        <div>
+                          <h2 class="text-lg text-gray-900 font-bold title-font mb-2">Stripe <span class="opacity-75 text-sm text-gray-500">- $8.00</span></h2>
+                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">Argumentative Essay / 12 Pages / High School</span></p>
+                        </div>
+                        <input v-model="paymentMethod" class="ml-auto w-5 h-5" name="payment_method" value="stripe" type="radio" />
+                      </div>
+                      <div v-show="paymentMethod === 'stripe'" class="px-5 rounded-lg border-2 border-green-200 mt-2 py-6">
+                        <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
+                        <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
+                        <br />
+                        <input id="email" type="email" v-model="stripeEmail" class="mt-2 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="name@host.tld" />
+                        <br />
+                        <label for="card" class="font-semibold text-base mt-2">Credit Card</label>
+                        <br />
+                        <small class="font-light hidden">
+                          Test using these Stripe test credit card numbers with any CVC, postal code, and expiration date in the future:
+                          <ul>
+                            <li>
+                              <span class="cc-number">4242 4242 4242 4242</span>
+                            </li>
+                            <li>
+                              <span class="cc-number">4000 0027 6000 3184</span> (requires authentication, will trigger a pop-up)
+                            </li>
+                            <li>
+                              <span class="cc-number">4000 0000 0000 9995</span> (will decline with a decline code of insufficient funds)
+                            </li>
+                          </ul>
+                        </small>
+                        <card
+                          class="font-mono mt-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="card"
+                          :class="{ complete }"
+                          stripe="pk_live_nUyynGrCMSH1QglZbmMexhMX"
+                          :options="stripeOptions"
+                          @change="complete = $event.complete"
+                        />
+                        <small class="text-red-600">{{error}}</small>
+                        <button
+                          type="button"
+                          tabindex="0"
+                          role="button"
+                          aria-pressed="false"
+                          class="flex items-center mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100"
+                          @click="pay"
+                          :disabled="!complete || !stripeEmail || loading"
+                        >
+                          <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Pay with credit card
+                        </button>
+                      </div>
+                    </div>
+                    <div class="w-full md:w-11/12">
+                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-green-200' : paymentMethod === 'paypal'}">
+                        <div>
+                          <h2 class="text-lg text-gray-900 font-bold title-font mb-2">Paypal <span class="opacity-75 text-sm text-gray-500">- $8.00</span></h2>
+                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">Argumentative Essay / 12 Pages / High School</span></p>
+                        </div>
+                        <input v-model="paymentMethod" class="ml-auto w-5 h-5" name="payment_method" value="paypal" type="radio" />
+                      </div>
+                      <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-2 border-green-200 mt-2 py-6">
+                        <div id="smart-button-container">
+                          <div style="text-align: center;">
+                            <div id="paypal-button-container" :class="{'animate-pulse': paymentLoading }"></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -532,8 +548,8 @@
             </div>
           </div>
           <div class="md:ml-auto col-span-1 mt-6 mb-12 relative h-full">
-            <div class="flex px-4 py-3 flex-col no-wrap w-full lg:w-64 shadow sm:rounded-md sm:overflow-hidden md:sticky md:top-10">
-              <h2 class="text-base font-light leading-tight mb-4 text-gray-700">
+            <div class="flex px-4 from-green-400 to-cyan-500 pt-5 border pb-3 flex-col no-wrap w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10">
+              <h2 class="text-2xl font-bold leading-tight mb-4 text-gray-700">
                 Order Information
               </h2>
               <div class="grid pb-2 text-lg font-semibold text-gray-700" style="grid-row-gap: 5px;">
@@ -623,7 +639,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="border-t px-1 py-3 text-gray-700 font-medium text-xl flex">
+              <div class="border-t px-1 py-3 text-gray-700 font-medium text-2xl flex">
                 <span class="mr-auto font-bold">Total</span>
                 <span class="ml-auto font-bold">{{ totalPrice | dollar }}</span>
               </div>
@@ -666,6 +682,7 @@ export default {
   },
   data() {
     return {
+      paypalRendered: false,
       paymentMethod: 'stripe',
       paymentLoading: false,
       username: '',
@@ -767,10 +784,20 @@ export default {
       return (this.form.pages === 0) ? 0 : priceBeforeExtras + additionalEditPrice + advancedWriterPrice + initialDraftPrice + onePageSummaryPrice + digitalCopiesPrice + plagiarismReportPrice
     }
   },
+  watch: {
+    'paymentMethod': {
+      handler() {
+        if (this.paymentMethod === 'paypal' && !this.paypalRendered) this.initPayPalButton()
+
+        console.log("Payment method changed", this.paymentMethod);
+      }
+    },
+  },
   methods: {
     ...mapActions(['sendAdminMail', 'createPaymentIntent']),
     ...mapMutations(['setToken','updateCartUI']),
     initPayPalButton() {
+      this.paypalRendered = true;
       setTimeout(() => {
         paypal.Buttons({
           style: {
@@ -1093,7 +1120,12 @@ export default {
           }
         });
       }).catch(e => {
-        console.log(e)
+        console.log(e);
+        this.$toast.error(e.response.data.message, {
+          theme: "outline",
+          position: "bottom-left",
+          duration: 5000
+        });
       })
     },
   }

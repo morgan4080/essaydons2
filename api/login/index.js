@@ -31,6 +31,9 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = async function (req, res) {
+  if (req.method === "GET") {
+    console.log("social callbacks", req.query);
+  }
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({

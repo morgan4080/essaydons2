@@ -1,7 +1,12 @@
 module.exports = {
-  future: {
-    purgeLayersByDefault: true,
-  },
+  purge: [
+    './components/**/*.{vue,js}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+  ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -62,16 +67,5 @@ module.exports = {
     inset: ['responsive'],
     width: ['responsive', 'hover', 'focus'],
   },
-  plugins: [],
-  purge: {
-    // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
-    enabled: true,
-    content: [
-      'components/**/*.vue',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.js',
-      'nuxt.config.js'
-    ]
-  }
+  plugins: []
 }

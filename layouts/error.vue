@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-white">
       <div class="mobile-b flex justify-center items-center  min-h-screen bg-left-0 lg:bg-center-0">
         <div class="max-w-6xl flex justify-center items-center  mx-auto pt-32 lg:pt-32 z-10 px-8 lg:px-0 pb-12">
           <div class="mx-auto flex flex-col items-center justify-center">

@@ -30,6 +30,15 @@ export default {
   ],
 
   auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
+    router: {
+      middleware: ['auth']
+    },
     strategies: {
       local: {
         token: {
@@ -48,19 +57,23 @@ export default {
         }
       },
       google: {
-        client_id: '724202903355-q30cmukn8vkl63pi7pocftde4v20qscb.apps.googleusercontent.com'
+        clientId: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
+        redirectUri: 'https://essaydons.co/api/login',
+        scope: ['openid', 'profile', 'email'],
+        codeChallengeMethod: '',
       },
       facebook: {
         endpoints: {
           userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday'
         },
         clientId: '1671464192946675',
-        scope: ['public_profile', 'email', 'user_birthday']
+        scope: ['public_profile', 'email', 'user_birthday'],
+        redirectUri: '/api/login',
       },
     }
   },
 
-  loading: { color: '#000000' },
+  loading: { color: '#423a3a' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [`~/plugins/currency.js`],
@@ -93,10 +106,6 @@ export default {
     apiKey: '756518659458387',
     apiSecret: 'n8qvU5D-_mBUSSxRLJ1w9b3AbYM',
     useComponent: true
-  },
-
-  router: {
-    middleware: ['auth']
   },
 
   tailwindcss: {

@@ -138,7 +138,7 @@ module.exports = async (req, res) => {
 
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
 
-    let customer;
+    let customer = null;
 
     if (user !== undefined) {
       if (user.metadata !== null && typeof user.metadata === "string") {
@@ -159,6 +159,13 @@ module.exports = async (req, res) => {
       } catch (e) {
         console.log(e);
         res.status(400);
+      }
+
+      if (!customer) {
+        res.status(401).json({
+          message: "Stripe Auth Failed"
+        });
+        return
       }
 
       try {

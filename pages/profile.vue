@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-white">
       <div class="mobile-b min-h-screen bg-left-0 lg:bg-center-0">
         <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-8 lg:px-0 pb-32">
           <div class="mx-auto flex flex-wrap">
@@ -26,7 +26,7 @@
                     </svg>
                     <span class="ml-3 text-base">{{ fullName }}</span>
                   </a>
-                  <p v-if="$auth.user.owner" class="flex items-center text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
+                  <p v-if="$auth.user && $auth.user.owner" class="flex items-center text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
                     Admin
                   </p>
                   <p v-else class="flex items-center text-base text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mx-2">
@@ -43,8 +43,8 @@
               <div class="mt-8 w-full flex flex-wrap">
                 <div class="w-full lg:w-1/6 md:pr-10 md:py-6">
                   <div @click="toggleTabs(1)" class="flex relative pb-6 mb-2 cursor-pointer">
-                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center">
-                      <div :class="{'bg-gray-300': openTab !== 1, 'custom-mg-head': openTab === 1}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center bg-gray-200 opacity-25">
+                      <div :class="{'bg-gray-300': openTab !== 1, 'bg-green-300': openTab === 1}" class="h-px w-32 mt-10 pointer-events-none"></div>
                     </div>
                     <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                       <svg :class="{'': openTab !== 1, 'custom-fill': openTab === 1}" xmlns="http://www.w3.org/2000/svg" width="55.5" height="65.406" viewBox="0 0 55.5 65.406">
@@ -59,8 +59,8 @@
                     </div>
                   </div>
                   <div @click="toggleTabs(2)" class="flex relative pb-6 mb-2 cursor-pointer">
-                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center">
-                      <div :class="{'bg-gray-300': openTab !== 2, 'custom-mg-head': openTab === 2}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center bg-gray-200 opacity-25">
+                      <div :class="{'bg-gray-300': openTab !== 2, 'bg-green-300': openTab === 2}" class="h-px w-32 mt-10 pointer-events-none"></div>
                     </div>
                     <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                       <svg :class="{'': openTab !== 2, 'custom-fill': openTab === 2}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61" height="62" viewBox="0 0 61 62">
@@ -79,8 +79,8 @@
                     </div>
                   </div>
                   <div @click="toggleTabs(3)" class="flex relative pb-6 mb-2 cursor-pointer">
-                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center">
-                      <div :class="{'bg-gray-300': openTab !== 3, 'custom-mg-head': openTab === 3}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center bg-gray-200 opacity-25">
+                      <div :class="{'bg-gray-300': openTab !== 3, 'bg-green-300': openTab === 3}" class="h-px w-32 mt-10 pointer-events-none"></div>
                     </div>
                     <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                       <svg :class="{'def-stroke': openTab !== 3, 'custom-stroke': openTab === 3}" xmlns="http://www.w3.org/2000/svg" width="62.478" height="59.698" viewBox="0 0 62.478 59.698">
@@ -96,8 +96,8 @@
                     </div>
                   </div>
                   <div @click="toggleTabs(4)" class="flex relative pb-6 mb-2 cursor-pointer">
-                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center">
-                      <div :class="{'bg-gray-300': openTab !== 4, 'custom-mg-head': openTab === 4}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center bg-gray-200 opacity-25">
+                      <div :class="{'bg-gray-300': openTab !== 4, 'bg-green-300': openTab === 4}" class="h-px w-32 mt-10 pointer-events-none"></div>
                     </div>
                     <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                       <svg :class="{'': openTab !== 4, 'custom-fill': openTab === 4}" xmlns="http://www.w3.org/2000/svg" width="62.478" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -113,8 +113,8 @@
                     </div>
                   </div>
                   <div @click="toggleTabs(5)" class="flex relative pb-6 mb-2 cursor-pointer">
-                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center">
-                      <div :class="{'bg-gray-300': openTab !== 5, 'custom-mg-head': openTab === 5}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                    <div class="h-full w-32 absolute inset-0 flex items-center justify-center bg-gray-200 opacity-25">
+                      <div :class="{'bg-gray-300': openTab !== 5, 'bg-green-300': openTab === 5}" class="h-px w-32 mt-10 pointer-events-none"></div>
                     </div>
                     <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                       <svg :class="{'': openTab !== 5, 'custom-fill': openTab === 5}" xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 480 480" height="512" viewBox="0 0 480 480" width="62.478"><path d="m215 164c0 57.897 47.103 105 105 105s105-47.103 105-105-47.103-105-105-105-105 47.103-105 105zm194 0c0 49.075-39.925 89-89 89s-89-39.925-89-89 39.925-89 89-89 89 39.925 89 89zm-89-54c4.418 0 8 3.582 8 8v3.376c9.311 3.303 16 12.195 16 22.624 0 4.418-3.582 8-8 8s-8-3.582-8-8c0-4.411-3.589-8-8-8s-8 3.589-8 8v3.237c0 3.518 2.256 6.586 5.614 7.636l9.544 2.982c10.074 3.149 16.842 12.355 16.842 22.908v3.237c0 11.519-8.159 21.166-19 23.473v2.527c0 4.418-3.582 8-8 8s-8-3.582-8-8v-4.68c-7.714-3.996-13-12.05-13-21.32 0-4.418 3.582-8 8-8s8 3.582 8 8c0 4.411 3.589 8 8 8s8-3.589 8-8v-3.237c0-3.518-2.256-6.586-5.614-7.636l-9.544-2.982c-10.074-3.149-16.842-12.355-16.842-22.908v-3.237c0-10.429 6.689-19.321 16-22.624v-3.376c0-4.418 3.582-8 8-8zm130 212v102c0 30.879-25.122 56-56 56h-308c-30.878 0-56-25.121-56-56v-392c0-17.645 14.355-32 32-32h260c17.645 0 32 14.355 32 32 0 4.418-3.582 8-8 8s-8-3.582-8-8c0-8.822-7.178-16-16-16h-260c-8.822 0-16 7.178-16 16v392c0 22.056 17.944 40 40 40h268.862c-10.395-10.172-16.862-24.342-16.862-40v-125c0-4.418 3.582-8 8-8s8 3.582 8 8v125c0 22.056 17.944 40 40 40s40-17.944 40-40v-102c0-8.822-7.178-16-16-16h-34c-4.418 0-8-3.582-8-8s3.582-8 8-8h34c17.645 0 32 14.355 32 32zm-350-107c0-4.418 3.582-8 8-8h68c4.418 0 8 3.582 8 8s-3.582 8-8 8h-68c-4.418 0-8-3.582-8-8zm0-90c0-4.418 3.582-8 8-8h68c4.418 0 8 3.582 8 8s-3.582 8-8 8h-68c-4.418 0-8-3.582-8-8zm184 180c0 4.418-3.582 8-8 8h-168c-4.418 0-8-3.582-8-8s3.582-8 8-8h168c4.418 0 8 3.582 8 8zm0 84c0 4.418-3.582 8-8 8h-168c-4.418 0-8-3.582-8-8s3.582-8 8-8h168c4.418 0 8 3.582 8 8z"/></svg>
@@ -316,7 +316,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-white focus-within:bg-white">
                           <td class="px-6 py-4 whitespace-nowrap">
                             <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ order.id }}
@@ -334,7 +334,7 @@
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ JSON.parse(order.order_details).duration.duration }}
+                              {{ JSON.parse(order.order_details) ? JSON.parse(order.order_details).duration ? JSON.parse(order.order_details).duration.duration : '' : '' }}
                             </a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
@@ -347,7 +347,7 @@
                               <a @click="switchOrder(order)" href="javascript:void(0);" class="mr-auto">
                                 <icon :name="'cheveron-right'" class="block w-6 h-6 fill-teal-400" />
                               </a>
-                              <a v-if="$auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
+                              <a v-if="$auth.user && $auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
                                 <icon :name="'trash'" class="block w-4 h-4 fill-gray-400" />
                               </a>
                             </div>
@@ -370,7 +370,7 @@
                                         Photo
                                       </label>
                                       <div class="mt-2 flex items-center">
-                                        <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                        <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-white">
                                           <img v-if="formProfile.profile_image" class="w-12 h-12 rounded-full" :src="`${formProfile.profile_image[0]}`" alt="profile-photo">
                                           <svg v-else class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -423,7 +423,7 @@
                                       </div>
 
                                       <div class="col-span-6 sm:col-span-3">
-                                        <label for="country" class="block text-base font-medium leading-5 text-gray-700 mb-1">Country / Region</label>
+                                        <label for="country" class="block text-base font-medium leading-5 text-gray-700 mb-1">Country</label>
                                         <div class="relative">
                                           <div class="absolute inset-y-0 left-0 py-2 pl-3 flex items-center pointer-events-none">
                                           <span class="text-gray-500 sm:text-sm">
@@ -574,7 +574,7 @@
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(discount, index) in discounts" :key="discount.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(discount, index) in discounts" :key="discount.id" class="hover:bg-white focus-within:bg-white">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ discount.id }}
@@ -623,7 +623,7 @@
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(ticket, index) in tickets" :key="ticket.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(ticket, index) in tickets" :key="ticket.id" class="hover:bg-white focus-within:bg-white">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ ticket.id }}
@@ -668,7 +668,7 @@
                         </tr>
                         </tbody>
                         <tbody v-else>
-                        <tr v-for="(invoice, index) in invoices" :key="invoice.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                        <tr v-for="(invoice, index) in invoices" :key="invoice.id" class="hover:bg-white focus-within:bg-white">
                           <td class="border-t">
                             <a class="px-6 py-4 flex items-center focus:text-indigo-500" href="javascript:void(0);">
                               {{ invoice.id }}
@@ -721,6 +721,7 @@ export default {
     Icon,
     SingleOrder
   },
+  middleware: 'auth',
   async fetch() {
     const response = await this.$axios.get('api/orders');
     this.orders = [...response.data.orders];
@@ -769,6 +770,11 @@ export default {
       profileChanged: false,
       notificationsChanged: false,
     }
+  },
+  created() {
+    this.orders.forEach(order => {
+      console.log(JSON.parse(order.order_details).duration.duration);
+    });
   },
   computed: {
     ...mapState(["storedata","countries","userTypes"]),
@@ -996,10 +1002,10 @@ export default {
     }
 
     if (this.$auth.user.email_verified_at === null) {
-      this.$toast.error("Check Mail Verification", {
+      this.$toast.error("Verify you account please", {
         theme: "outline",
         position: "bottom-center",
-        duration: 15000
+        duration: 8000
       });
     }
 

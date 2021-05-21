@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 custom-mg-head" >
+    <div class="absolute top-0 w-full z-20 bg-green-300 border-b border-green-300" >
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -37,7 +37,7 @@
                   leave-class="opacity-100 translate-y-0"
                   leave-to-class="opacity-0 translate-y-1"
                 >
-                  <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/6 capitalize" style="max-width: 15rem;">
+                  <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
                       <div class="rounded-lg shadow-xs">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -58,7 +58,7 @@
                               leave-class="opacity-100 translate-y-0"
                               leave-to-class="opacity-0 translate-y-1"
                             >
-                            <div @mouseleave="showSubMenu1 = false" v-if="showSubMenu1" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                            <div @mouseleave="showSubMenu1 = false" v-if="showSubMenu1" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-lg">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -155,7 +155,7 @@
                               leave-class="opacity-100 translate-y-0"
                               leave-to-class="opacity-0 translate-y-1"
                             >
-                            <div @mouseleave="showSubMenu2 = false" v-if="showSubMenu2" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                            <div @mouseleave="showSubMenu2 = false" v-if="showSubMenu2" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-lg">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -259,7 +259,7 @@
                               leave-class="opacity-100 translate-y-0"
                               leave-to-class="opacity-0 translate-y-1"
                             >
-                            <div @mouseleave="showSubMenu3 = false" v-if="showSubMenu3" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:left-1/2 lg:translate-x-full capitalize" style="max-width: 15rem;">
+                            <div @mouseleave="showSubMenu3 = false" v-if="showSubMenu3" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-lg">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -302,9 +302,9 @@
                 New Order
               </nuxt-link>
 
-              <div v-if="!$auth.loggedIn" class="relative inline-block text-left">
-                <button v-on:click="showDropdown" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
-                  My Account
+              <div v-show="!$auth.loggedIn" class="relative inline-block text-left">
+                <button @click="showDropdown" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+                  <span>My Account</span>
                   <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
@@ -317,7 +317,7 @@
                   leave-class="opacity-100 translate-y-0"
                   leave-to-class="opacity-0 translate-y-1"
                 >
-                  <div v-if="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 pt-2 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 capitalize" style="max-width: 15rem;">
+                  <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 pt-2 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
                       <div class="rounded-lg shadow-xs">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6" style="background-color: #42fbb7;">
@@ -341,7 +341,7 @@
                   </div>
                 </transition>
               </div>
-              <div v-else class="relative inline-block text-left">
+              <div v-show="$auth.loggedIn" class="relative inline-block text-left">
                 <button v-on:click="$router.push('/profile')" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   My Account
                 </button>
@@ -420,6 +420,9 @@ export default {
       }
       return this.showSubMenu0
     }
+  },
+  created() {
+    console.log(this.$auth.loggedIn);
   },
   methods: {
     turnOff() {

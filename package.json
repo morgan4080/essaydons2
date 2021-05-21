@@ -5,11 +5,12 @@
   "private": true,
   "author": "morgan4080",
   "scripts": {
-    "dev": "nuxt --port $PORT",
+    "dev": "nuxt --port 5000",
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
     "@nuxt/core": "^2.14.6",
+    "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/auth-next": "^5.0.0-1607600955.506103a",
     "@nuxtjs/axios": "^5.12.3",
     "@nuxtjs/cloudinary": "^1.0.2",
@@ -17,6 +18,7 @@
     "@nuxtjs/toast": "^3.3.1",
     "@paypal/checkout-server-sdk": "^1.0.2",
     "@prisma/client": "^2.13.0",
+    "access-log": "^0.4.1",
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "caniuse-lite": "^1.0.30001208",
@@ -32,12 +34,12 @@
     "nodemailer": "^6.4.17",
     "sass-loader": "^10.0.5",
     "stripe": "^8.129.0",
-    "vue-stripe-elements-plus": "^0.3.2",
-    "access-log": "^0.4.1"
+    "vue-stripe-elements-plus": "^0.3.2"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^4.1.2",
     "@prisma/cli": "^2.13.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.15.6",
+    "postcss": "^8.2.15"
   }
 }

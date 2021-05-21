@@ -38,10 +38,10 @@ p {
   --color-bg-light: #f4f7f7;
   --color-bg-inverse: #1e2625;
   --color-text-secondary: #49544e;
-  --color-text-vuegreen: #42fbb7;
-  --color-text-vuergreen: #42fbb7;
-  --color-text-lightgreen: #42fbb7;
-  --color-text-lightergreen: #42fbb7;
+  --color-text-vuegreen: #6ee7b7;
+  --color-text-vuergreen: #6ee7b7;
+  --color-text-lightgreen: #6ee7b7;
+  --color-text-lightergreen: #6ee7b7;
   --borderRadius: 20px;
   --textColor: #898a95;
   --inputBorderColor: #bdbdbd;
@@ -99,16 +99,12 @@ p {
   color: var(--color-text-vuegreen);
 }
 
-.custom-mg-head {
-  background: rgba(66, 251, 183, 0.8);
-}
-
 .custom-fill {
-  fill: rgba(66, 251, 183, 0.8);
+  fill: #6ee7b7;
 }
 
 .custom-stroke {
-  stroke: rgba(66, 251, 183, 0.8);
+  stroke: #6ee7b7;
 }
 
 .def-stroke {
@@ -116,7 +112,7 @@ p {
 }
 
 .button-bg {
-  background: rgba(66, 251, 183, 1);
+  @apply bg-green-300
 }
 
 /* Chrome, Safari, Edge, Opera */
