@@ -5,7 +5,7 @@
   "private": true,
   "author": "morgan4080",
   "scripts": {
-    "dev": "nuxt --port $PORT",
+    "dev": "nuxt --port 666",
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
