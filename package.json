@@ -6,7 +6,8 @@
   "author": "morgan4080",
   "scripts": {
     "dev": "nuxt --port $PORT",
-    "local-dev": "vercel dev -A vercel.dev.json"
+    "local-dev": "vercel dev -A vercel.dev.json",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@nuxt/core": "^2.14.6",
@@ -20,7 +21,7 @@
     "@prisma/client": "2.23.0",
     "access-log": "^0.4.1",
     "axios": "^0.21.0",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "caniuse-lite": "^1.0.30001208",
     "core-js": "^3.6.5",
     "formidable": "^1.2.2",
