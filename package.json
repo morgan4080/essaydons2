@@ -6,9 +6,11 @@
   "author": "morgan4080",
   "scripts": {
     "dev": "nuxt --port 3000",
-    "local-dev": "vercel dev -A vercel.dev.json"
+    "local-dev": "vercel dev -A vercel.dev.json",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.5",
     "@nuxt/core": "^2.14.6",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/auth-next": "^5.0.0-1607600955.506103a",
@@ -20,7 +22,7 @@
     "@prisma/client": "2.23.0",
     "access-log": "^0.4.1",
     "axios": "^0.21.0",
-    "bcrypt": "5.0.0",
+    "bcrypt": "^5.0.1",
     "caniuse-lite": "^1.0.30001208",
     "core-js": "^3.6.5",
     "formidable": "^1.2.2",
