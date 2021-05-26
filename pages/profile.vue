@@ -816,7 +816,7 @@ export default {
       this.currentForm = section;
       let uploadInstance = this.loadMetaData();
       let payload = {};
-      if (uploadInstance.profile.profile_image[0].slice(0,4) === "http") {
+      if (uploadInstance.profile.profile_image && uploadInstance.profile.profile_image[0].slice(0,4) === "http") {
         uploadInstance.profile.profile_image = this.$auth.user.metadata.profile.profile_image
       } else {
         try {

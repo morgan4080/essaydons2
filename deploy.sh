@@ -7,6 +7,10 @@ prisma generate
 
 git add .
 
-git commit -m "$(date)"
+echo Hello friend, provide a commit message
+
+read COMMENT
+
+git commit -m "$COMMENT"
 
 git push origin main

@@ -59,8 +59,7 @@ export default {
       google: {
         clientId: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
         redirectUri: 'https://essaydons.co/api/login',
-        scope: ['openid', 'profile', 'email'],
-        codeChallengeMethod: '',
+        scope: ['openid', 'profile', 'email']
       },
       facebook: {
         endpoints: {
