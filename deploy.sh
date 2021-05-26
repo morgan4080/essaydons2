@@ -7,9 +7,7 @@ prisma generate
 
 git add .
 
-echo "\n"
-
-echo Hello friend, what is your commit message ?
+echo ::::::: Hello friend, what is your commit message ?
 
 read COMMENT
 
