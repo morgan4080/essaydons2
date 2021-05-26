@@ -6,8 +6,7 @@
   "author": "morgan4080",
   "scripts": {
     "dev": "nuxt --port 3000",
-    "local-dev": "vercel dev -A vercel.dev.json",
-    "postinstall": "prisma generate"
+    "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.5",
