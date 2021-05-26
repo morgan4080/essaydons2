@@ -980,6 +980,7 @@ export default {
     }
   },
   mounted() {
+    console.log("auth", this.$auth);
     this.form.subject = this.subjects[0];
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
