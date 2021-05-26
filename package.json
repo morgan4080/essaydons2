@@ -9,12 +9,10 @@
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.5",
-    "@nuxt/core": "^2.14.6",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/auth-next": "^5.0.0-1607600955.506103a",
     "@nuxtjs/axios": "^5.12.3",
-    "@nuxtjs/cloudinary": "^1.0.2",
+    "@nuxtjs/cloudinary": "^1.0.3-beta-4",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/toast": "^3.3.1",
     "@paypal/checkout-server-sdk": "^1.0.2",
