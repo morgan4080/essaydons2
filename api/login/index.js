@@ -36,9 +36,6 @@ const handler = async function (req, res) {
     if (req.query.provider === 'facebook') {
       console.log(`${req.query.provider}`, req.query);
     }
-    res.status(401).json({
-      error: 'un recognised oath provider'
-    })
   }
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
