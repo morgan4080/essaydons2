@@ -12,6 +12,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        serif: ['"Calibre", sans-serif']
+      },
       colors: {
         teal: {
           '100': '#74fcca',

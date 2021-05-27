@@ -57,25 +57,33 @@ export default {
         }
       },
       google: {
+        scheme: 'oauth2',
         clientId: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
-        codeChallengeMethod: '',
+        codeChallengeMethod: 'S256',
+        scope: ['openid', 'profile', 'email'],
+        responseType: 'code',
         endpoints: {
-          userInfo: '/api/me'
+          userInfo: 'https://essaydons.co/api/me'
         },
-        redirectUri: `https://essaydons.co/api/login?callback=true`,
+        token: {
+          property: 'token',
+          type: 'Bearer'
+        },
+        redirectUri: `https://essaydons.co/api/login?callback=true&provider=google`,
       },
       facebook: {
+        scheme: 'oauth2',
         endpoints: {
-          userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday'
+          userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,name,picture{url}'
         },
         clientId: '1671464192946675',
-        scope: ['public_profile', 'email', 'user_birthday'],
-        redirectUri: '/api/login',
+        scope: ['public_profile', 'email'],
+        redirectUri: `https://essaydons.co/api/login?callback=true&provider=facebook`,
       },
     }
   },
 
-  loading: { color: '#423a3a' },
+  loading: { color: '#170000' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [`~/plugins/currency.js`],
