@@ -36,7 +36,7 @@ const handler = async function (req, res) {
     if (req.query.provider === 'facebook') {
       console.log(`${req.query.provider}`, req.query);
     }
-    res.status(422).json({
+    res.status(401).json({
       error: 'un recognised oath provider'
     })
   }
