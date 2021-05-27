@@ -45,7 +45,7 @@ const handler = async function (req, res) {
 };
 
 async function doLogin(req) {
-  console.log("doooingg login");
+  console.log("doooig login");
   const user = await prisma.users.findFirst({
     where: {
       email: req.body.email,
