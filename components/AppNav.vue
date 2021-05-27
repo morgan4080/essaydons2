@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 bg-green-300 border-b border-green-300" >
+    <div class="absolute top-0 w-full z-20 border-b bg-green-300 border-green-300" >
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -419,6 +419,9 @@ export default {
         this.showSubMenu3 = false;
       }
       return this.showSubMenu0
+    },
+    fullPath() {
+      return this.$router.currentRoute.fullPath
     }
   },
   created() {
@@ -451,6 +454,9 @@ export default {
 
     }
   },
+  mounted() {
+    console.log(this.$router, "the router")
+  }
 };
 </script>
 

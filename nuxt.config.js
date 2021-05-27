@@ -58,8 +58,11 @@ export default {
       },
       google: {
         clientId: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
-        redirectUri: 'https://essaydons.co/api/login',
-        scope: ['openid', 'profile', 'email']
+        codeChallengeMethod: '',
+        endpoints: {
+          userInfo: '/api/me'
+        },
+        redirectUri: `https://essaydons.co/api/login?callback=true`,
       },
       facebook: {
         endpoints: {
