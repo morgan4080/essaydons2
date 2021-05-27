@@ -76,7 +76,7 @@ export default {
         endpoints: {
           userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,name,picture{url}'
         },
-        clientId: '1671464192946675',
+        clientId: '525187695512107',
         scope: ['public_profile', 'email'],
         redirectUri: `https://essaydons.co/api/login?callback=true&provider=facebook`,
       },
