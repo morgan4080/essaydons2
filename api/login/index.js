@@ -9,6 +9,8 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
+const url = require('url')
+
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 const allowCors = fn => async (req, res) => {
@@ -35,7 +37,9 @@ const handler = async function (req, res) {
       //check for the user from google oath server using returned tokens
     }
     if (req.query.provider === 'facebook') {
-      console.log(`${req.query.provider}`, req.url, req.query);
+      console.log(`${req.query.provider}`, req)
+      /*let hashed = url.parse(req.url)
+      console.log("parsed", hashed)*/
       //check for the user from facebook graph server using returned tokens
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
