@@ -32,9 +32,13 @@ const handler = async function (req, res) {
   if (req.method === "GET" && req.query.callback) {
     if (req.query.provider === 'google') {
       console.log(`${req.query.provider}`, req.query);
+      //check for the user from google oath server using returned tokens
     }
     if (req.query.provider === 'facebook') {
-      console.log(`${req.query.provider}`, req.query);
+      console.log(`${req.query.provider}`, req.url, req.query);
+      //check for the user from facebook graph server using returned tokens
+      //gather whether the user exists in database if not create user and redirect to password change view with jwt token
+      // return token to login page if user exists
     }
   }
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
@@ -50,7 +54,6 @@ const handler = async function (req, res) {
 };
 
 async function doLogin(req) {
-  console.log("doooig login");
   const user = await prisma.users.findFirst({
     where: {
       email: req.body.email,

@@ -74,11 +74,17 @@ export default {
       facebook: {
         scheme: 'oauth2',
         endpoints: {
-          userInfo: 'https://graph.facebook.com/v6.0/me?fields=id,name,picture{url}'
+          // userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email'
+          userInfo: 'https://essaydons.co/api/me'
         },
         clientId: '525187695512107',
         scope: ['public_profile', 'email'],
         redirectUri: `https://essaydons.co/api/login?callback=true&provider=facebook`,
+        token: {
+          property: 'token',
+          type: 'Bearer'
+        },
+        responseType: 'code token',
       },
     }
   },
