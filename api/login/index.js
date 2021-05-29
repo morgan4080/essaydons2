@@ -38,9 +38,7 @@ const handler = async function (req, res) {
     }
     if (req.query.provider === 'facebook') {
       console.log(`facebook style`)
-      res.send({
-        request: req
-      })
+      res.send(`${req}`)
       /*let hashed = url.parse(req.url)
       console.log("parsed", hashed)*/
       //check for the user from facebook graph server using returned tokens
