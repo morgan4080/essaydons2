@@ -37,7 +37,7 @@ const handler = async function (req, res) {
       //check for the user from google oath server using returned tokens
     }
     if (req.query.provider === 'facebook') {
-      console.log(`facebook path`)
+      console.log(`facebook style`)
       res.status(401).json({
         request: req
       })
