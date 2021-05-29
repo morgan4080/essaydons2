@@ -38,7 +38,7 @@ const handler = async function (req, res) {
     }
     if (req.query.provider === 'facebook') {
       console.log(`facebook style`)
-      res.status(401).json({
+      res.send({
         request: req
       })
       /*let hashed = url.parse(req.url)
