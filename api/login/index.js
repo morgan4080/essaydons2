@@ -43,55 +43,9 @@ const handler = async function (req, res) {
     }
   }
 
-  /*else if (req.method === "GET" && Object.keys(req.query).length > 0) {
-    let { code, provider, callback } = req.query
-    if (callback && provider === 'google') {
-      if (!code) {
-        console.log(`google login failed`);
-        res.status(405).json({
-          error: {
-            error_code: 'method not allowed',
-            message: 'required details missing'
-          }
-        });
-      }
-      console.log(`google login`);
-      //check for the user from google oath server using returned tokens
-    }
-    if (callback && provider === 'facebook') {
-      if (!code) {
-        console.log(`fb login failed`);
-        res.status(405).json({
-          error: {
-            error_code: 'method not allowed',
-            message: 'required details missing'
-          }
-        })
-      }
-      console.log(`fb login`);
-      //Exchanging Code for an Access Token
-      let client_id = '525187695512107';
-      let client_secret = '35dec4ec88d187f9634366e38c9752fe';
-      let redirect_uri = encodeURI('https://essaydons.co/api/login?callback=true&provider=facebook');
-      let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
-      let d;
-      await
-        fetch(url, { method: 'get' })
-          .then(res => res.json())
-          .then(json => {
-            d = json
-            console.log(json)
-          })
-          .catch(e => {
-            console.log(e)
-          })
-
-      console.log(`data from fb`, d)
-      //check for the user from facebook graph server using returned tokens
-      //gather whether the user exists in database if not create user and redirect to password change view with jwt token
-      // return token to login page if user exists
-    }
-  }*/
+  else if (req.method === "GET" && Object.keys(req.query).length > 0) {
+    // do social login
+  }
 
   else {
     res.status(401).json({
@@ -143,6 +97,60 @@ async function doLogin(req) {
 
     throw new Error(e)
 
+  }
+}
+
+async function doSocialLogin(req, res) {
+  const { code, provider, callback } = req.query
+
+  if (callback && provider === 'google') {
+    if (!code) {
+      console.log(`google login failed`)
+
+      res.status(405).json({
+        error: {
+          error_code: 'method not allowed',
+          message: 'required details missing'
+        }
+      })
+    }
+    console.log(`google login`);
+    //check for the user from google oath server using returned tokens
+  }
+
+  if (callback && provider === 'facebook') {
+    if (!code) {
+      console.log(`fb login failed`);
+      res.status(405).json({
+        error: {
+          error_code: 'method not allowed',
+          message: 'required details missing'
+        }
+      })
+    }
+    console.log(`fb login`);
+    //Exchanging Code for an Access Token
+    let client_id = '525187695512107';
+    let client_secret = '35dec4ec88d187f9634366e38c9752fe';
+    let redirect_uri = encodeURI('https://essaydons.co/api/login?callback=true&provider=facebook');
+    let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
+    let d;
+    await
+      fetch(url, { method: 'get' })
+        .then(res => res.json())
+        .then(json => {
+          d = json
+          console.log(json)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+
+    console.log(`data from fb`, d)
+
+    //check for the user from facebook graph server using returned tokens
+    //gather whether the user exists in database if not create user and redirect to password change view with jwt token
+    // return token to login page if user exists
   }
 }
 
