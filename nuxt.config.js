@@ -83,7 +83,7 @@ export default {
           property: 'token',
           type: 'Bearer'
         },
-        responseType: 'code token',
+        responseType: 'code',
       },
     }
   },
