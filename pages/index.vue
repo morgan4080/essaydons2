@@ -18,42 +18,38 @@
               <p class="text-white text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
               </p>
-              <nuxt-link to="/order" class="button-bg py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+              <nuxt-link to="/order" class="border-2 border-white bg-transparent py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                 Order Now
               </nuxt-link>
             </div>
           </div>
-          <div class="header-main-shape bg-white"></div>
-          <div class="absolute text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
-            <h2 class="text-2xl text-center font-semibold leading-none pb-1 text-white" data-v-409e2651="">
-              Place your order
-            </h2>
-            <select v-model="form.subject" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-              <optgroup label="Subjects">
+          <div class="absolute bg-secondary shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+            <select v-model="form.subject" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-4 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+              <optgroup label="Subjects" class="bg-black">
                 <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
               </optgroup>
             </select>
-            <select @change="setFirstDuration" v-model="form.level" class="bg-secondary text-vuegreen hover:bg-gradient-to-r mt-2 form-input py-3 px-3 border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-              <optgroup label="Academic Levels">
+            <select @change="setFirstDuration" v-model="form.level" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-2 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+              <optgroup class="bg-black" label="Academic Levels">
                 <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
               </optgroup>
             </select>
-            <div class="flex mt-2 sm:text-sm sm:leading-5">
-              <select v-model="form.duration" class="w-1/2 bg-secondary hover:bg-gradient-to-r py-3 px-3 text-vuegreen form-input border border-gray-300 rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out ">
-                <optgroup label="Deadline">
+            <div class="flex mt-2 sm:text-sm sm:leading-5 font-bold font-mono">
+              <select v-model="form.duration" class="w-1/2 bg-transparent border-2 border-white hover:bg-gradient-to-r py-3 px-3 text-white form-input  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out">
+                <optgroup class="bg-black" label="Deadline">
                   <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
                 </optgroup>
               </select>
-              <div class="flex w-1/2 ml-1 text-vuegreen border border-gray-300 bg-secondary rounded-3xl">
+              <div class="flex w-1/2 ml-1 text-white  bg-transparent border-2 border-white rounded-3xl">
                 <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
-                <input class="w-1/3 form-input bg-secondary hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
+                <input class="w-1/3 bg-transparent hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
                 <button class="w-1/3" @click="form.pages++">+</button>
               </div>
             </div>
-            <div class="px-1 py-3 text-white font-bold text-xl text-center">{{ totalPrice | dollar }}</div>
+            <div class="px-1 py-5 text-white font-mono font-bold text-3xl text-center">{{ totalPrice | dollar }}</div>
             <div class="flex">
-              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1 text-center font-bold">Continue</nuxt-link>
-              <nuxt-link to="/order" class="w-1/2  button-bg rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1 text-center font-bold">10% Discount</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1 text-center font-bold">Continue</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1 text-center font-bold">10% Discount</nuxt-link>
             </div>
           </div>
         </div>
@@ -128,7 +124,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >We understand your Style
                       </h4>
-                      <p class="text-secondary leading-none py-2" >Our seasoned writers can imitate your desired style</p>
+                      <p class="text-secondary leading-tight py-2" >Our seasoned writers can imitate your desired style</p>
                     </div>
                   </div>
                 </div>
@@ -152,7 +148,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Young and Ambitious
                       </h4>
-                      <p class="text-secondary leading-none py-2" >We break away from huge conglomerates whose interest is in your dollar</p>
+                      <p class="text-secondary leading-tight py-2" >We break away from huge conglomerates whose interest is in your dollar</p>
                     </div>
                   </div>
                 </div>
@@ -175,7 +171,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >We take data privacy seriously
                       </h4>
-                      <p class="text-secondary leading-none py-2" >Our seasoned writers can imitate your desired style</p>
+                      <p class="text-secondary leading-tight py-2" >Our seasoned writers can imitate your desired style</p>
                     </div>
                   </div>
                 </div>
@@ -200,7 +196,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >High quality for affordable prices
                       </h4>
-                      <p class="text-secondary leading-none py-2" >High-quality content for the most affordable prices on the market</p>
+                      <p class="text-secondary leading-tight py-2" >High-quality content for the most affordable prices on the market</p>
                     </div>
                   </div>
                 </div>
@@ -223,7 +219,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Any subject, any deadline
                       </h4>
-                      <p class="text-secondary leading-none py-2" >We will meet your expectations, just hire an essay writer and take a look</p>
+                      <p class="text-secondary leading-tight py-2" >We will meet your expectations, just hire an essay writer and take a look</p>
                     </div>
                   </div>
                 </div>
@@ -247,7 +243,7 @@
                     <div class="text-center md:text-left" >
                       <h4 class="text-vuegreen text-xl font-semibold leading-none" >Quality Samples
                       </h4>
-                      <p class="text-secondary leading-none py-2" >Some of the best work of our experienced essay writers</p>
+                      <p class="text-secondary leading-tight py-2" >Some of the best work of our experienced essay writers</p>
                     </div>
                   </div>
                 </div>
@@ -323,37 +319,37 @@
               <div class="h-full">
                 <ul>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 1, 'rounded-l-full bg-accordion': openTab === 1}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Who are Essay Dons?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 2, 'rounded-l-full bg-accordion': openTab === 2}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">About free inquiry?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-accordion bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-accordion bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 3, 'rounded-l-full bg-accordion': openTab === 3}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Is your service legal?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-accordion bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-accordion bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 4, 'rounded-l-full bg-accordion': openTab === 4}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Do you have any discounts?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-accordion bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-accordion bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 5, 'rounded-l-full bg-accordion': openTab === 5}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Which formats do you provide?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-accordion bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-accordion bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 6, 'rounded-l-full bg-accordion': openTab === 6}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">How will I receive the completed paper?</div>
                     </a>
@@ -463,7 +459,7 @@
             </div>
             <div class="w-full lg:w-1/2 h-auto">
               <div class="lg:pl-4 text-secondary py-2 text-base block">
-                <h3 class="font-black text-xl">Why Choose Our EssayDons</h3>
+                <h3 class="font-black text-xl">Why Choose us</h3>
                 <p class="py-2">Well, there are multiple reasons for it. The most important among them include but are not limited to:</p>
 
                 <h3 class="font-black text-xl">Plagiarism Free Assignments.</h3>
@@ -740,26 +736,14 @@ export default {
   background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941));
 }
 .mobile-b {
-  background-image: linear-gradient(rgba(98, 98, 98, .3),rgba(98, 98, 98, .3)),url(~assets/images/Header_Image.jpg);
+  background-image: linear-gradient(#6ee7b7,rgba(0, 0, 0, 0.5)),url(~assets/images/Header_Image.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: darken;
 }
 .custom-calc {
-  background: rgb(98,98,98);
+  background: #00000096;
   padding: 20px;
-  border: 1px solid rgb(66, 251, 183);
   border-radius: 1rem;
-}
-.header-main-shape {
-  z-index: 2!important;
-}
-.header-main-shape {
-  height: 90px;
-  position: absolute;
-  width: 100%;
-  border-radius: 50% 50% 0 0/90px 90px 0 0;
-  bottom: -1px;
-  left: 0;
-  z-index: 0;
 }
 </style>
