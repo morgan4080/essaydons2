@@ -45,6 +45,7 @@ const handler = async function (req, res) {
           }
         });
       }
+      console.log(`google login`);
       //check for the user from google oath server using returned tokens
     }
 
@@ -58,31 +59,37 @@ const handler = async function (req, res) {
           }
         })
       }
+      console.log(`fb login`);
       //Exchanging Code for an Access Token
       let client_id = '525187695512107';
       let client_secret = '35dec4ec88d187f9634366e38c9752fe';
       let redirect_uri = 'https://essaydons.co/api/login?callback=true&provider=facebook';
       let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
-      fetch(url)
+      let d;
+      await fetch(url)
         .then(res => res.json())
         .then(json => {
+          d = json
           console.log(json)
-        });
+        }).catch(e => console.log(e))
+
+      console.log(`hfrj`, d)
       //check for the user from facebook graph server using returned tokens
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
     }
   }
+
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
     let response = await doLogin(req)
     res.status(response.status).json({
       ...response
     })
-  } else {
-    res.status(401).json({
-      message: 'required details missing'
-    })
   }
+
+  res.status(401).json({
+    message: 'required details missing'
+  })
 };
 
 async function doLogin(req) {
