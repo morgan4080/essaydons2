@@ -73,7 +73,7 @@ const handler = async function (req, res) {
           console.log(json)
         }).catch(e => console.log(e))
 
-      console.log(`hfrj`, d)
+      console.log(`data from fb`, d)
       //check for the user from facebook graph server using returned tokens
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
