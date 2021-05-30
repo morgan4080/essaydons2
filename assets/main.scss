@@ -61,10 +61,10 @@ p {
   --color-bg-light: #f4f7f7;
   --color-bg-inverse: #1e2625;
   --color-text-secondary: #49544e;
-  --color-text-vuegreen: #6ee7b7;
-  --color-text-vuergreen: #6ee7b7;
-  --color-text-lightgreen: #6ee7b7;
-  --color-text-lightergreen: #6ee7b7;
+  --color-text-vuegreen: rgb(66, 251, 183);
+  --color-text-vuergreen: rgb(66, 251, 183);
+  --color-text-lightgreen: rgb(66, 251, 183);
+  --color-text-lightergreen: rgb(66, 251, 183);
   --borderRadius: 20px;
   --textColor: #898a95;
   --inputBorderColor: #bdbdbd;
@@ -135,7 +135,7 @@ p {
 }
 
 .button-bg {
-  @apply bg-green-300
+  @apply bg-teal-300
 }
 
 /* Chrome, Safari, Edge, Opera */

@@ -19,3 +19,6 @@ Vue.filter("shilling", function(value) {
   // The first is an actual dollar.
   return `Ksh ${parseFloat(value).toFixed(2)}`
 });
+
+export const mixinX = {}
+

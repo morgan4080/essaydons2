@@ -714,7 +714,7 @@ export default {
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
-    };
+    }
   }
 }
 </script>
@@ -736,7 +736,7 @@ export default {
   background-image: linear-gradient(rgba(66, 251, 183,.3),rgba(78,184,120,.92941));
 }
 .mobile-b {
-  background-image: linear-gradient(#6ee7b7,rgba(0, 0, 0, 0.5)),url(~assets/images/Header_Image.jpg);
+  background-image: linear-gradient(rgb(66, 251, 183),rgba(0, 0, 0, 0.5)),url(~assets/images/Header_Image.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: darken;

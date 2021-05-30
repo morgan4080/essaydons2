@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 border-b bg-green-300 border-green-300" >
+    <div class="absolute top-0 w-full z-20" :class="{ 'border-b bg-teal-300 border-teal-300' : !som, 'bg-transparent border-0' : som }">
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -394,8 +394,8 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-import { mapGetters } from 'vuex';
+import Logo from "~/components/Logo.vue"
+import { mapGetters } from 'vuex'
 export default {
   components: {
     Logo
@@ -408,6 +408,8 @@ export default {
       showSubMenu2: false,
       showSubMenu3: false,
       showMobileMenu: false,
+      homeIs: false,
+      som: false
     }
   },
   computed: {
@@ -420,9 +422,6 @@ export default {
       }
       return this.showSubMenu0
     },
-    fullPath() {
-      return this.$router.currentRoute.fullPath
-    }
   },
   created() {
     console.log(this.$auth.loggedIn);
@@ -454,8 +453,15 @@ export default {
 
     }
   },
+  watch:{
+    $route(to, from) {
+      console.log(to, from);
+      this.som = to.path === "/";
+    }
+  },
   mounted() {
-    console.log(this.$router, "the router")
+    console.log(this.$router.currentRoute.fullPath, "the router");
+    if (this.$router.currentRoute.fullPath === "/") this.som = true
   }
 };
 </script>
