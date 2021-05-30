@@ -32,7 +32,6 @@ const allowCors = fn => async (req, res) => {
 const handler = async function (req, res) {
   if (req.method === "GET" && Object.keys(req.query).length > 0) {
     let { code, provider, callback } = req.query
-
     if (callback && provider === 'google') {
       if (!code) {
         console.log(`google login failed`);
@@ -46,7 +45,6 @@ const handler = async function (req, res) {
       console.log(`google login`);
       //check for the user from google oath server using returned tokens
     }
-
     if (callback && provider === 'facebook') {
       if (!code) {
         console.log(`fb login failed`);
