@@ -16,6 +16,7 @@
     "@nuxtjs/toast": "^3.3.1",
     "@paypal/checkout-server-sdk": "^1.0.2",
     "@prisma/client": "2.23.0",
+    "@vercel/node": "^1.11.0",
     "access-log": "^0.4.1",
     "bcrypt": "^5.0.1",
     "caniuse-lite": "^1.0.30001208",

@@ -1,4 +1,3 @@
-
 import prisma from '../../lib/prisma'
 
 const bcrypt = require('bcrypt')
@@ -9,7 +8,7 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
-const url = require('url')
+/*const url = require('url')*/
 
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
@@ -37,8 +36,8 @@ const handler = async function (req, res) {
       //check for the user from google oath server using returned tokens
     }
     if (req.query.provider === 'facebook') {
-      console.log(`facebook stylecvscvx`, req)
-      res.end(req)
+      console.log(`facebook stylecvscvx`, req.url, req.rawHeaders , req.rawTrailers)
+      res.send(req.url)
       /*let hashed = url.parse(req.url)
       console.log("parsed", hashed)*/
       //check for the user from facebook graph server using returned tokens
