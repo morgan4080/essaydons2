@@ -30,7 +30,20 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = async function (req, res) {
-  if (req.method === "GET" && Object.keys(req.query).length > 0) {
+  if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
+    try {
+      let response = await doLogin(req)
+      res.status(response.status).json({
+        ...response
+      })
+    } catch (e) {
+      res.status(401).json({
+        error: e
+      });
+    }
+  }
+
+  /*else if (req.method === "GET" && Object.keys(req.query).length > 0) {
     let { code, provider, callback } = req.query
     if (callback && provider === 'google') {
       if (!code) {
@@ -78,33 +91,24 @@ const handler = async function (req, res) {
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
     }
-  }
+  }*/
 
-  if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
-    try {
-      let response = await doLogin(req)
-      res.status(response.status).json({
-        ...response
-      })
-    } catch (e) {
-      res.status(401).json({
-        error: e
-      });
-    }
+  else {
+    res.status(401).json({
+      message: 'required details missing'
+    })
   }
-
-  res.status(401).json({
-    message: 'required details missing'
-  })
 };
 
 async function doLogin(req) {
   try {
+
     const user = await prisma.users.findFirst({
       where: {
         email: req.body.email,
       },
     })
+
     if (user === null) {
       return {
         message: 'user not found',
@@ -120,19 +124,25 @@ async function doLogin(req) {
 
     if (match) {
       const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+
       return {
         message: 'success',
         status: 200,
         token: token
       }
+
     } else {
+
       return {
         message: 'password/email dont match our record',
         status: 401
       }
+
     }
   } catch (e) {
+
     throw new Error(e)
+
   }
 }
 
