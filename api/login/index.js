@@ -10,8 +10,6 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
-const url = require('url')
-
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
 const allowCors = fn => async (req, res) => {
@@ -85,10 +83,16 @@ const handler = async function (req, res) {
   }
 
   if (req.method === "POST" && Object.keys(req.body).length !== 0 && req.body.email && req.body.password) {
-    let response = await doLogin(req)
-    res.status(response.status).json({
-      ...response
-    })
+    try {
+      let response = await doLogin(req)
+      res.status(response.status).json({
+        ...response
+      })
+    } catch (e) {
+      res.status(401).json({
+        error: e
+      });
+    }
   }
 
   res.status(401).json({
@@ -97,38 +101,40 @@ const handler = async function (req, res) {
 };
 
 async function doLogin(req) {
-  console.log("looogin")
-  const user = await prisma.users.findFirst({
-    where: {
-      email: req.body.email,
-    },
-  })
-
-  if (user === null) {
-    return {
-      message: 'user not found',
-      status: 401
+  try {
+    const user = await prisma.users.findFirst({
+      where: {
+        email: req.body.email,
+      },
+    })
+    if (user === null) {
+      return {
+        message: 'user not found',
+        status: 401
+      }
     }
-  }
 
-  let match = await bcrypt.compare(req.body.password, user.password)
+    let match = await bcrypt.compare(req.body.password, user.password)
 
-  delete user.password
+    delete user.password
 
-  delete user.provider_id
+    delete user.provider_id
 
-  if (match) {
-    const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
-    return {
-      message: 'success',
-      status: 200,
-      token: token
+    if (match) {
+      const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+      return {
+        message: 'success',
+        status: 200,
+        token: token
+      }
+    } else {
+      return {
+        message: 'password/email dont match our record',
+        status: 401
+      }
     }
-  } else {
-    return {
-      message: 'password/email dont match our record',
-      status: 401
-    }
+  } catch (e) {
+    throw new Error(e)
   }
 }
 
