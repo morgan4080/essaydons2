@@ -66,12 +66,16 @@ const handler = async function (req, res) {
       let redirect_uri = 'https://essaydons.co/api/login?callback=true&provider=facebook';
       let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
       let d;
-      await fetch(url)
-        .then(res => res.json())
-        .then(json => {
-          d = json
-          console.log(json)
-        }).catch(e => console.log(e))
+      await
+        fetch(url, { method: 'get' })
+          .then(res => res.json())
+          .then(json => {
+            d = json
+            console.log(json)
+          })
+          .catch(e => {
+            console.log(e)
+          })
 
       console.log(`data from fb`, d)
       //check for the user from facebook graph server using returned tokens
