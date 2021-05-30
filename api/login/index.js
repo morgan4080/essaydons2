@@ -68,11 +68,6 @@ const handler = async function (req, res) {
         .then(json => {
           console.log(json)
         });
-      res.status(200).json({
-        success: {
-          success_code: "request accepted"
-        }
-      })
       //check for the user from facebook graph server using returned tokens
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
