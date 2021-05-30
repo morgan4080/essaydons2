@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 
 const jwt = require('jsonwebtoken')
 
+const fetch = require('node-fetch');
+
 const { readFileSync } = require('fs')
 
 const { join } = require('path')
@@ -30,19 +32,47 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = async function (req, res) {
-  if (req.method === "GET" && req.query.callback) {
-    if (req.query.provider === 'google') {
-      console.log(`${req.query.provider}`, req.query);
+  if (req.method === "GET" && Object.keys(req.query).length > 0) {
+    let { code, provider, callback } = req.query
+
+    if (callback && provider === 'google') {
+      if (!code) {
+        console.log(`google login failed`);
+        res.status(405).json({
+          error: {
+            error_code: 'method not allowed',
+            message: 'required details missing'
+          }
+        });
+      }
       //check for the user from google oath server using returned tokens
     }
-    if (req.query.provider === 'facebook') {
-      console.log(`facebook stylecvscvx`, req.query, req.url)
-      let x = req.query
-      res.status(401).json({
-        ...x
+
+    if (callback && provider === 'facebook') {
+      if (!code) {
+        console.log(`fb login failed`);
+        res.status(405).json({
+          error: {
+            error_code: 'method not allowed',
+            message: 'required details missing'
+          }
+        })
+      }
+      //Exchanging Code for an Access Token
+      let client_id = '525187695512107';
+      let client_secret = '35dec4ec88d187f9634366e38c9752fe';
+      let redirect_uri = 'https://essaydons.co/api/login?callback=true&provider=facebook';
+      let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
+      fetch(url)
+        .then(res => res.json())
+        .then(json => {
+          console.log(json)
+        });
+      res.status(200).json({
+        success: {
+          success_code: "request accepted"
+        }
       })
-      /*let hashed = url.parse(req.url)
-      console.log("parsed", hashed)*/
       //check for the user from facebook graph server using returned tokens
       //gather whether the user exists in database if not create user and redirect to password change view with jwt token
       // return token to login page if user exists
