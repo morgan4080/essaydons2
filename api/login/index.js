@@ -150,6 +150,12 @@ async function doSocialLogin(req, res) {
       const response = await fetch(url)
       const data = await response.json()
       console.log(`data from fb`, data)
+      if (data.hasOwnProperty('error')) {
+        return {
+          status: 405,
+          message: data.error
+        }
+      }
       return {
         status: 200,
         message: data
