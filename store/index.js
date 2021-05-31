@@ -9,6 +9,7 @@ export const state = () => ({
   cart: [],
   clientSecret: "",
   token: null,
+  orderData: null,
 });
 
 export const getters = {
@@ -32,12 +33,16 @@ export const getters = {
   clientSecret: state => state.clientSecret,
   isAuthenticated: state => state.auth.loggedIn,
   loggedInUser: state => state.auth.user,
-  currentToken: state => state.token
+  currentToken: state => state.token,
+  currentFormData: state => state.orderData
 };
 
 export const mutations = {
   setToken: (state, payload)  =>  {
     state.token = payload
+  },
+  setOrderData: (state, payload) => {
+    state.orderData = payload
   },
   setAuth: (state, auth = null) => {
     state.auth.user = auth;

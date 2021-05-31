@@ -45,6 +45,17 @@ const handler = async function (req, res) {
 
   else if (req.method === "GET" && Object.keys(req.query).length > 0) {
     // do social login
+    try {
+      let response = await doSocialLogin(req, res)
+
+      res.status(response.status).json({
+        ...response
+      })
+    } catch (e) {
+      res.status(401).json({
+        error: e
+      });
+    }
   }
 
   else {
@@ -107,12 +118,10 @@ async function doSocialLogin(req, res) {
     if (!code) {
       console.log(`google login failed`)
 
-      res.status(405).json({
-        error: {
-          error_code: 'method not allowed',
-          message: 'required details missing'
-        }
-      })
+      return {
+        status: 405,
+        message: 'required details missing'
+      }
     }
     console.log(`google login`);
     //check for the user from google oath server using returned tokens
@@ -121,12 +130,10 @@ async function doSocialLogin(req, res) {
   if (callback && provider === 'facebook') {
     if (!code) {
       console.log(`fb login failed`);
-      res.status(405).json({
-        error: {
-          error_code: 'method not allowed',
-          message: 'required details missing'
-        }
-      })
+      return {
+        status: 405,
+        message: 'required details missing'
+      }
     }
     console.log(`fb login`);
     //Exchanging Code for an Access Token
@@ -147,6 +154,11 @@ async function doSocialLogin(req, res) {
         })
 
     console.log(`data from fb`, d)
+
+    return {
+      status: 200,
+      message: d
+    }
 
     //check for the user from facebook graph server using returned tokens
     //gather whether the user exists in database if not create user and redirect to password change view with jwt token

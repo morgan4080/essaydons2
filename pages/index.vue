@@ -669,7 +669,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapState, mapMutations } from "vuex"
 export default {
   auth: false,
   data() {
@@ -699,6 +699,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setOrderData']),
     setFirstDuration() {
       this.form.duration = {
         duration: Object.entries(this.duration)[0][0],
@@ -708,6 +709,9 @@ export default {
     toggleTabs(tabNumber){
       this.openTab = tabNumber
     }
+  },
+  beforeDestroy() {
+    this.setOrderData(this.form)
   },
   mounted() {
     this.form.subject = this.subjects[0];

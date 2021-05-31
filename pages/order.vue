@@ -688,6 +688,11 @@ export default {
       price: Object.entries(this.duration)[Object.entries(this.duration).length - 1][1],
     };
     this.handleFileUploadClick();
+
+    this.form = {
+      ...this.form,
+      ...this.currentFormData
+    }
   },
   data() {
     return {
@@ -708,17 +713,17 @@ export default {
       openTab0: 1,
       form: {
         uploads: [],
-        level: 1,
+            level: 1,
         topic: null,
-        subject: null,
+            subject: null,
         paper_type: null,
         sources: 0,
         format: null,
-        duration: {
-          duration: null,
-          price: null
-        },
-        pages: 1,
+            duration: {
+              duration: null,
+              price: null
+            },
+            pages: 1,
         details: null,
         spacing: 'Double',
         charts: 0,
@@ -745,7 +750,7 @@ export default {
   },
   computed: {
     ...mapState(["storedata", "cartUIStatus"]),
-    ...mapGetters(["currentToken","clientSecret"]),
+    ...mapGetters(["currentToken","clientSecret", "currentFormData"]),
     advancedWriter() {
       return this.form.advanced_writer
     },
