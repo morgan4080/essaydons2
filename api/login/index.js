@@ -52,6 +52,10 @@ const handler = async function (req, res) {
     try {
       let response = await doSocialLogin(req, res)
 
+      if (response.status === 308) {
+        res.redirect(308, `/login?access_token=${response.token}`)
+      }
+
       res.status(response.status).json({
         ...response
       })
@@ -174,6 +178,9 @@ async function doSocialLogin(req, res) {
 
       const { email, name, picture } = facebookUserData
 
+      // if user doesnt have email redirect back with facebook details to register route
+      // please provide email address to complete process
+
       const user = await prisma.users.findFirst({
         where: {
           email: email,
@@ -182,9 +189,17 @@ async function doSocialLogin(req, res) {
 
       if (user !== null) {
         // assign jwt token using user data
+        delete user.password
+
+        delete user.provider_id
+
+        const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+
+        console.log("logged in existing client through FB")
+
         return {
-          status: 200,
-          message: user
+          status: 308,
+          token: token
         }
       }
 
