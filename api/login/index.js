@@ -148,18 +148,54 @@ async function doSocialLogin(req, res) {
 
     try {
       const response = await fetch(url)
+
       const data = await response.json()
-      console.log(`data from fb`, data)
+
       if (data.hasOwnProperty('error')) {
         return {
           status: 405,
-          message: data.error
+          error: data.error
         }
       }
+
+      // use token
+      const response0 = await fetch('https://graph.facebook.com/v10.0/me?fields=about,name,picture{url},email&access_token=' + data.access_token)
+
+      const facebookUserData = await response0.json()
+
+      if (facebookUserData.hasOwnProperty('error')) {
+        return {
+          status: 405,
+          error: facebookUserData.error
+        }
+      }
+
+      // check if user exists and return token to login page
+
+      const { email, name, picture } = facebookUserData
+
+      const user = await prisma.users.findFirst({
+        where: {
+          email: email,
+        },
+      })
+
+      if (user !== null) {
+        // assign jwt token using user data
+        return {
+          status: 200,
+          message: user
+        }
+      }
+
+      // sign up user
+      // assign jwt token
+
       return {
         status: 200,
-        message: data
+        message: facebookUserData
       }
+
     } catch (e) {
       console.log(`facebook oauth error`, e)
       return {
