@@ -347,14 +347,14 @@
                     </div>
                     <div class="mt-2 mb-4">
 
-                      <div class="flex items-center">
+                      <div class="flex items-center hidden">
                         <input id="advanced" type="checkbox" v-model="form.advanced_writer" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="advanced" class="ml-3">
                           <span class="block mt-1 text-gray-700 font-normal text-base text-left">Advanced Writer (+25%)</span>
                         </label>
                       </div>
 
-                      <div class="mt-4 flex items-center">
+                      <div class="mt-4 flex items-center hidden">
                         <input id="editing" type="checkbox" v-model="form.additional_editing" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="editing" class="ml-3">
                           <span class="block mt-1 text-gray-700 font-normal text-base text-left">Additional editing (+15%)</span>
@@ -542,7 +542,7 @@
               <div class="grid pb-2 text-lg font-semibold text-gray-700" style="grid-row-gap: 5px;">
                 <div class="grid innerGrid">
                   <div class="h-full flex flex-col">
-                    <span>Type</span>
+                    <span>Paper</span>
                   </div>
                   <ul class="font-normal text-base text-right">
                     <li>{{ form.paper_type }}</li>
@@ -779,8 +779,8 @@ export default {
       let additionalEditPrice = (!this.form.additional_editing) ? 0 : 15/100 * priceBeforeExtras;
       let advancedWriterPrice = (!this.form.advanced_writer) ? 0 : 25/100 * priceBeforeExtras;
       let initialDraftPrice = (!this.form.initial_draft) ? 0 : 10/100 * priceBeforeExtras;
-      let onePageSummaryPrice = (!this.form.one_page_summary) ? 0 : 17.99;
-      let plagiarismReportPrice = (!this.form.plagiarism_report) ? 0 : 7.99;
+      let onePageSummaryPrice = (!this.form.one_page_summary) ? 0 : 10.00;
+      let plagiarismReportPrice = (!this.form.plagiarism_report) ? 0 : 5;
       let digitalCopiesPrice = (!this.form.digital_copies) ? 0 : 9.99;
       return (this.form.pages === 0) ? 0 : priceBeforeExtras + additionalEditPrice + advancedWriterPrice + initialDraftPrice + onePageSummaryPrice + digitalCopiesPrice + plagiarismReportPrice
     }
