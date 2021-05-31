@@ -6,7 +6,8 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
-    title: 'Essaydons',
+    title: 'EssayDons',
+    script: [{ src: 'https://js.stripe.com/v3/', defer: true, async: true },],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

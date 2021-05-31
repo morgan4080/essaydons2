@@ -644,14 +644,11 @@ import Notification from '@/components/Notification';
 import { Card, handleCardPayment } from "vue-stripe-elements-plus";
 export default {
   auth: false,
-  head() {
-    return {
-      title: "Place Order",
-      script: [
-        { src: 'https://js.stripe.com/v3/' },
-        { src: 'https://www.paypal.com/sdk/js?client-id=AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw&currency=USD', 'data-sdk-integration-source': 'button-factory' }
-      ],
-    }
+  head: {
+    title: "Place Order",
+    script: [
+      { src: 'https://www.paypal.com/sdk/js?client-id=AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw&currency=USD', 'data-sdk-integration-source': 'button-factory' }
+    ],
   },
   components: {
     Notification,
