@@ -136,7 +136,7 @@ async function doSocialLogin(req, res) {
       }
     }
     console.log(`fb login`);
-    //Exchanging Code for an Access Token
+    //Exchanging Code for an Access Token please
     let client_id = '525187695512107';
     let client_secret = '35dec4ec88d187f9634366e38c9752fe';
     let redirect_uri = encodeURI('https://essaydons.co/api/login?callback=true&provider=facebook');
