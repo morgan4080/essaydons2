@@ -981,7 +981,16 @@ export default {
       };
     },
     toggleTabs(tabNumber){
-      this.openTab = tabNumber
+      if (this.$auth.loggedIn) {
+        this.openTab = tabNumber
+        return
+      }
+
+      this.$toast.show('Kindly Login to continue', {
+        theme: "outline",
+        position: "bottom-center",
+        duration : 5000
+      })
     },
     toggleTabs0(tabNumber){
       this.openTab0 = tabNumber

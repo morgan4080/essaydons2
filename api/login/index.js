@@ -53,7 +53,8 @@ const handler = async function (req, res) {
       let response = await doSocialLogin(req, res)
 
       if (response.status === 308) {
-        res.redirect(308, `/login?access_token=${response.token}`)
+        res.redirect(`/login?access_token=${response.token}`)
+        return
       }
 
       res.status(response.status).json({
@@ -198,6 +199,7 @@ async function doSocialLogin(req, res) {
         console.log("logged in existing client through FB")
 
         return {
+          message: "redirecting",
           status: 308,
           token: token
         }
