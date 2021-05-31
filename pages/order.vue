@@ -361,13 +361,6 @@
                         </label>
                       </div>
 
-                      <div class="mt-4 flex items-center">
-                        <input id="dCopies" type="checkbox" v-model="form.digital_copies" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
-                        <label for="dCopies" class="ml-3">
-                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Digital copies of sources used ($9.99)</span>
-                        </label>
-                      </div>
-
                     </div>
                     <label for="names" class="block text-gray-700 text-base font-bold mb-1">
                       Name
@@ -405,6 +398,13 @@
                     <div class="mt-2 mb-4">
 
                       <div class="flex items-center">
+                        <input id="dCopies" type="checkbox" v-model="form.digital_copies" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
+                        <label for="dCopies" class="ml-3">
+                          <span class="block mt-1 text-gray-700 font-normal text-base text-left">Digital copies of sources used ($9.99)</span>
+                        </label>
+                      </div>
+
+                      <div class="mt-4 flex items-center">
                         <input id="draft" type="checkbox" v-model="form.initial_draft" class="form-radio h-4 w-4 transition duration-150 ease-in-out">
                         <label for="draft" class="ml-3">
                           <span class="block mt-1 text-gray-700 font-normal text-base text-left">Initial Draft (+10%)</span>
@@ -648,7 +648,7 @@ export default {
     return {
       title: "Place Order",
       script: [
-        { src: 'https://js.stripe.com/v3/', async: true },
+        { src: 'https://js.stripe.com/v3/' },
         { src: 'https://www.paypal.com/sdk/js?client-id=AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw&currency=USD', 'data-sdk-integration-source': 'button-factory' }
       ],
     }
