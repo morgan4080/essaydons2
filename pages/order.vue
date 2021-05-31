@@ -28,8 +28,10 @@
 
                 <div class="flex-1 cursor-pointer" >
                   <div :class="{'bg-white border-2 border-grey-light text-gray-700': openTab === 1, 'bg-teal-300 border-0 text-white': openTab >= 1}" class="w-10 h-10 mx-auto rounded-full text-lg flex items-center">
-                    <span class="text-center w-full">
-                      <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 mx-auto"><title>1</title><path class="a" d="M12.5,2.5H20a.5.5,0,0,1,.5.5V21a.5.5,0,0,1-.5.5H12.5"></path><path class="a" d="M3.5,21.222a.5.5,0,0,0,.392.488l8,1.778A.5.5,0,0,0,12.5,23V1a.5.5,0,0,0-.608-.488l-8,1.778a.5.5,0,0,0-.392.488Z"></path><circle class="a" cx="9" cy="12" r="1.5"></circle></svg>
+                    <span class="flex items-center justify-center w-full">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2C7.23858 2 5 4.23858 5 7V9C3.89543 9 3 9.89543 3 11V16C3 17.1046 3.89543 18 5 18H15C16.1046 18 17 17.1046 17 16V11C17 9.89543 16.1046 9 15 9H7V7C7 5.34315 8.34315 4 10 4C11.3965 4 12.5725 4.95512 12.9055 6.24926C13.0432 6.78411 13.5884 7.1061 14.1232 6.96844C14.6581 6.83078 14.9801 6.28559 14.8424 5.75074C14.2874 3.59442 12.3312 2 10 2Z" fill="#111827"></path>
+                      </svg>
                     </span>
                   </div>
                 </div>
@@ -44,19 +46,13 @@
 
                 <div class="flex-1 cursor-pointer" @click="toggleTabs(2)">
                   <div :class="{'bg-white border-2 border-grey-light text-gray-700': openTab <= 2, 'bg-teal-300 border-0 text-white': openTab >= 2}" class="w-10 h-10 mx-auto rounded-full text-lg flex items-center">
-                    <span class="text-center w-full">
-                      <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve" class="w-5 h-5 mx-auto">
-                        <title>2</title>
-                        <g id="Layer_1_1_">
-                          <path d="M5,7v42h34v-6h6V1H11v6H5z M37,47H7V9h4h19v7h7v27V47z M32,10.414L35.586,14H32V10.414z M13,3h30v38h-4V14.586L31.414,7H13   V3z"/>
-                          <rect x="11" y="20" width="22" height="2"/>
-                          <rect x="11" y="26" width="22" height="2"/>
-                          <rect x="11" y="32" width="22" height="2"/>
-                          <rect x="11" y="40" width="9" height="2"/>
-                          <rect x="24" y="40" width="9" height="2"/>
-                          <rect x="18" y="14" width="8" height="2"/>
-                        </g>
-                        </svg>
+                    <span class="flex items-center justify-center w-full">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.3939 2.08085C10.1424 1.97305 9.85763 1.97305 9.60608 2.08085L2.60608 5.08085C2.2384 5.23843 2 5.59997 2 6C2 6.40003 2.2384 6.76157 2.60608 6.91915L5.25037 8.05241C5.34653 7.94347 5.46706 7.85473 5.60608 7.79515L9.60608 6.08087C10.1137 5.86331 10.7016 6.09846 10.9191 6.60609C11.1367 7.11372 10.9015 7.7016 10.3939 7.91916L7.66668 9.08797L9.60608 9.91915C9.85763 10.027 10.1424 10.027 10.3939 9.91915L17.3939 6.91915C17.7616 6.76157 18 6.40003 18 6C18 5.59997 17.7616 5.23843 17.3939 5.08085L10.3939 2.08085Z" fill="#111827"/>
+                        <path d="M3.31004 9.39673L5 10.121V14.2226C4.65723 14.1449 4.30705 14.0867 3.95071 14.0494C3.48094 14.0001 3.1097 13.6289 3.06044 13.1591C3.02046 12.7778 3 12.391 3 11.9998C3 11.1033 3.10741 10.2315 3.31004 9.39673Z" fill="#111827"/>
+                        <path d="M9.29996 16.5725C8.62708 15.9129 7.85167 15.3584 7 14.9351V10.9781L8.81824 11.7574C9.57289 12.0808 10.4271 12.0808 11.1818 11.7574L16.69 9.39673C16.8926 10.2315 17 11.1033 17 11.9998C17 12.391 16.9795 12.7778 16.9396 13.1591C16.8903 13.6289 16.5191 14.0001 16.0493 14.0494C13.9765 14.2667 12.1124 15.188 10.7 16.5725C10.3112 16.9537 9.68881 16.9537 9.29996 16.5725Z" fill="#111827"/>
+                        <path d="M6 18C6.55228 18 7 17.5523 7 17V14.9351C6.37136 14.6227 5.70117 14.3817 5 14.2226V17C5 17.5523 5.44772 18 6 18Z" fill="#111827"/>
+                      </svg>
                     </span>
                   </div>
                 </div>
@@ -69,15 +65,10 @@
 
                 <div class="flex-1 cursor-pointer" @click="toggleTabs(3)">
                   <div :class="{'bg-white border-2 border-grey-light text-gray-700': openTab <= 3, 'bg-teal-300 border-0 text-white': openTab >= 3}" class="w-10 h-10 mx-auto rounded-full text-lg flex items-center">
-                    <span class="text-center w-full">
-                      <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Icons" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve" class="w-5 h-5 mx-auto">
-                        <title>3</title>
-                        <line class="" x1="17" y1="5" x2="29" y2="5"/>
-                        <line class="" x1="17" y1="9" x2="24" y2="9"/>
-                        <line class="" x1="17" y1="21" x2="29" y2="21"/>
-                        <line class="" x1="17" y1="25" x2="24" y2="25"/>
-                        <circle class="fill-none" cx="8" cy="8" r="5"/>
-                        <circle class="fill-none" cx="8" cy="24" r="5"/>
+                    <span class="flex items-center justify-center w-full">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 2C8.44772 2 8 2.44772 8 3C8 3.55228 8.44772 4 9 4H11C11.5523 4 12 3.55228 12 3C12 2.44772 11.5523 2 11 2H9Z" fill="#111827"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C4 3.89543 4.89543 3 6 3C6 4.65685 7.34315 6 9 6H11C12.6569 6 14 4.65685 14 3C15.1046 3 16 3.89543 16 5V16C16 17.1046 15.1046 18 14 18H6C4.89543 18 4 17.1046 4 16V5ZM7 9C6.44772 9 6 9.44772 6 10C6 10.5523 6.44772 11 7 11H7.01C7.56228 11 8.01 10.5523 8.01 10C8.01 9.44772 7.56228 9 7.01 9H7ZM10 9C9.44772 9 9 9.44772 9 10C9 10.5523 9.44772 11 10 11H13C13.5523 11 14 10.5523 14 10C14 9.44772 13.5523 9 13 9H10ZM7 13C6.44772 13 6 13.4477 6 14C6 14.5523 6.44772 15 7 15H7.01C7.56228 15 8.01 14.5523 8.01 14C8.01 13.4477 7.56228 13 7.01 13H7ZM10 13C9.44772 13 9 13.4477 9 14C9 14.5523 9.44772 15 10 15H13C13.5523 15 14 14.5523 14 14C14 13.4477 13.5523 13 13 13H10Z" fill="#111827"/>
                       </svg>
                     </span>
                   </div>
@@ -91,14 +82,10 @@
 
                 <div class="flex-1 cursor-pointer" @click="toggleTabs(4)">
                   <div :class="{'bg-white border-2 border-grey-light text-gray-700': openTab <= 4, 'bg-teal-300 border-0 text-white': openTab >= 4}" class="w-10 h-10 mx-auto rounded-full text-lg flex items-center">
-                    <span class="text-center w-full">
-                      <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 128 128" class="w-5 h-5 mx-auto">
-                        <title>4</title>
-                        <path class="" d="M110.203,2.36307H17.797a4.32226,4.32226,0,0,0-4.3223,4.3223v114.629a4.32235,4.32235,0,0,0,7.37861,3.0564l8.49446-8.49456,8.49446,8.49456a4.32242,4.32242,0,0,0,6.11261,0l8.49446-8.49456,8.49446,8.49456a4.32242,4.32242,0,0,0,6.11261,0l8.49446-8.49456,8.49446,8.49456a4.32255,4.32255,0,0,0,6.11271,0l8.49426-8.49456,8.49446,8.49456a4.32235,4.32235,0,0,0,7.37861-3.0564V6.68538A4.32226,4.32226,0,0,0,110.203,2.36307Zm-4.3223,108.51634-4.17216-4.17216a4.3223,4.3223,0,0,0-6.11271,0l-8.49426,8.49446-8.49446-8.49446a4.3223,4.3223,0,0,0-6.11271,0l-8.49436,8.49446-8.49446-8.49446a4.32218,4.32218,0,0,0-6.11261,0l-8.49446,8.49446-8.49446-8.49446a4.32218,4.32218,0,0,0-6.11261,0l-4.17216,4.17216V11.00768h83.76139Z"/>
-                        <path class="" d="M38.43962,30.654H81.17154a3.41088,3.41088,0,1,0,0-6.82176H38.43962a3.41088,3.41088,0,0,0,0,6.82176Z"/>
-                        <path class="" d="M38.43962,47.55005H81.17154a3.41088,3.41088,0,1,0,0-6.82176H38.43962a3.41088,3.41088,0,0,0,0,6.82176Z"/>
-                        <path class="" d="M38.43962,64.44663H60.30449a3.41087,3.41087,0,0,0,0-6.82175H38.43962a3.41087,3.41087,0,0,0,0,6.82175Z"/>
-                        <path class="" d="M82.64767,59.68588v4.07743a9.50815,9.50815,0,0,0-2.86922.96275,6.40959,6.40959,0,0,0-1.9633,1.60446,6.3419,6.3419,0,0,0-1.1137,2.09521,8.00936,8.00936,0,0,0-.35871,2.39763A5.77982,5.77982,0,0,0,78.476,75.54248a9.80865,9.80865,0,0,0,2.15179,1.34024q1.18955.54771,2.43516,1.00055,1.28328.45321,2.26519.84935a9.76251,9.76251,0,0,1,1.62361.8118,3.32983,3.32983,0,0,1,.98152.925,2.16242,2.16242,0,0,1,.33969,1.2271,2.05015,2.05015,0,0,1-.84935,1.75553,5.666,5.666,0,0,1-3.1526.6228,13.87209,13.87209,0,0,1-3.86979-.52843,19.8386,19.8386,0,0,1-3.15233-1.17027l-1.62336,4.34164a25.72868,25.72868,0,0,0,2.54831,1.0381,17.65591,17.65591,0,0,0,4.47381.8496V93.098h4.75693v-4.606a9.96826,9.96826,0,0,0,3.11481-.981,6.93294,6.93294,0,0,0,2.05767-1.62284,5.81516,5.81516,0,0,0,1.13247-2.05639,7.65006,7.65006,0,0,0,.33994-2.24514,6.77261,6.77261,0,0,0-.58526-2.90573,6.69692,6.69692,0,0,0-1.62336-2.16979,11.50417,11.50417,0,0,0-2.45393-1.6429,27.91932,27.91932,0,0,0-3.077-1.3243q-1.09544-.37878-1.86893-.70021a8.31258,8.31258,0,0,1-1.30244-.66138,2.25987,2.25987,0,0,1-.774-.774,2.07031,2.07031,0,0,1-.24531-1.03809,1.9,1.9,0,0,1,.79278-1.58581,4.36619,4.36619,0,0,1,2.60487-.6039,15.403,15.403,0,0,1,3.4545.37735,17.47673,17.47673,0,0,1,2.88826.90618l1.17052-4.53039a14.96143,14.96143,0,0,0-2.24643-.75511,21.22529,21.22529,0,0,0-3.37915-.56635V59.68588Z"/>
+                    <span class="flex items-center justify-center w-full">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4C2.89543 4 2 4.89543 2 6V7H18V6C18 4.89543 17.1046 4 16 4H4Z" fill="#111827"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18 9H2V14C2 15.1046 2.89543 16 4 16H16C17.1046 16 18 15.1046 18 14V9ZM4 13C4 12.4477 4.44772 12 5 12H6C6.55228 12 7 12.4477 7 13C7 13.5523 6.55228 14 6 14H5C4.44772 14 4 13.5523 4 13ZM9 12C8.44772 12 8 12.4477 8 13C8 13.5523 8.44772 14 9 14H10C10.5523 14 11 13.5523 11 13C11 12.4477 10.5523 12 10 12H9Z" fill="#111827"/>
                       </svg>
                     </span>
                   </div>
@@ -464,14 +451,14 @@
                 <div v-if="cartUIStatus === 'idle'">
                   <div class="flex flex-col justify-center items-center">
                     <div class="w-full md:w-11/12 mb-4">
-                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-green-200' : paymentMethod === 'stripe'}">
+                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-teal-200' : paymentMethod === 'stripe'}">
                         <div>
-                          <h2 class="text-lg text-gray-900 font-bold title-font mb-2">Stripe <span class="opacity-75 text-sm text-gray-500">- $8.00</span></h2>
-                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">Argumentative Essay / 12 Pages / High School</span></p>
+                          <h2 class="text-2xl text-gray-900 font-bold title-font mb-2">Stripe <span class="opacity-75 text-sm text-gray-500">{{ totalPrice | dollar }}</span></h2>
+                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">{{ form.paper_type }} / {{ form.pages }} Pages / {{ levelName }} / Deadline {{ form.duration.duration }}</span></p>
                         </div>
                         <input v-model="paymentMethod" class="ml-auto w-5 h-5" name="payment_method" value="stripe" type="radio" />
                       </div>
-                      <div v-show="paymentMethod === 'stripe'" class="px-5 rounded-lg border-2 border-green-200 mt-2 py-6">
+                      <div v-show="paymentMethod === 'stripe'" class="px-5 rounded-lg border-2 border-teal-200 mt-2 py-6">
                         <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
                         <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
                         <br />
@@ -520,14 +507,14 @@
                       </div>
                     </div>
                     <div class="w-full md:w-11/12">
-                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-green-200' : paymentMethod === 'paypal'}">
+                      <div class="flex items-center border-2 border-gray-200 p-6 rounded-lg" :class="{'border-teal-200' : paymentMethod === 'paypal'}">
                         <div>
-                          <h2 class="text-lg text-gray-900 font-bold title-font mb-2">Paypal <span class="opacity-75 text-sm text-gray-500">- $8.00</span></h2>
-                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">Argumentative Essay / 12 Pages / High School</span></p>
+                          <h2 class="text-2xl text-gray-900 font-bold title-font mb-2">Paypal <span class="opacity-75 text-sm text-gray-500">{{ totalPrice | dollar }}</span></h2>
+                          <p class="leading-relaxed font-medium text-base"><span class="opacity-75 text-sm text-gray-500">{{ form.paper_type }} / {{ form.pages }} Pages / {{ levelName }} / Deadline {{ form.duration.duration }}</span></p>
                         </div>
                         <input v-model="paymentMethod" class="ml-auto w-5 h-5" name="payment_method" value="paypal" type="radio" />
                       </div>
-                      <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-2 border-green-200 mt-2 py-6">
+                      <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-2 border-teal-200 mt-2 py-6">
                         <div id="smart-button-container">
                           <div style="text-align: center;">
                             <div id="paypal-button-container" :class="{'animate-pulse': paymentLoading }"></div>
@@ -661,7 +648,7 @@ export default {
     return {
       title: "Place Order",
       script: [
-        { src: 'https://js.stripe.com/v3/' },
+        { src: 'https://js.stripe.com/v3/', async: true },
         { src: 'https://www.paypal.com/sdk/js?client-id=AYHrUgvtxhEEASQqu_wD-xzk4kk7jAlXuPnqc5oEiDy_WhfRHn5o3GkSrI013WBMZIwh1ue3Zn8YXLlw&currency=USD', 'data-sdk-integration-source': 'button-factory' }
       ],
     }
