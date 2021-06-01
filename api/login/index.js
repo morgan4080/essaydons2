@@ -151,7 +151,7 @@ async function doSocialLogin(req, res) {
     //Exchanging Code for an Access Token
     let client_id = '525187695512107'
     let client_secret = '35dec4ec88d187f9634366e38c9752fe'
-    let redirect_uri = encodeURIComponent('https://essaydons.co/api/login?callback=true&provider=facebook')
+    let redirect_uri = encodeURIComponent('https://essaydons.co/login')
     let url = `https://graph.facebook.com/v10.0/oauth/access_token?client_id=${client_id}&redirect_uri=${redirect_uri}&client_secret=${client_secret}&code=${code}`
 
     try {
