@@ -38,6 +38,6 @@
     "@nuxtjs/tailwindcss": "^4.1.2",
     "nuxt": "^2.15.6",
     "postcss": "^8.3.0",
-    "prisma": "2.23.0"
+    "prisma": "^2.23.0"
   }
 }

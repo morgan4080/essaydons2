@@ -47,15 +47,15 @@ const handler = async function (req, res) {
     }
   }
 
-  else if (req.method === "GET" && Object.keys(req.query).length > 0) {
+  else if (req.method === "POST" && Object.keys(req.query).length > 0) {
     // do social login
     try {
       let response = await doSocialLogin(req, res)
 
-      if (response.status === 308) {
+      /*if (response.status === 308) {
         res.redirect(`/login?access_token=${response.token}`)
         return
-      }
+      }*/
 
       res.status(response.status).json({
         ...response
@@ -121,7 +121,8 @@ async function doLogin(req) {
 }
 
 async function doSocialLogin(req, res) {
-  const { code, provider, callback } = req.query
+  const { provider, callback } = req.query
+  const { code } = req.body
 
   if (callback && provider === 'google') {
     if (!code) {
@@ -132,7 +133,8 @@ async function doSocialLogin(req, res) {
         message: 'required details missing'
       }
     }
-    console.log(`google login`);
+
+    console.log(`google login`, code)
     //check for the user from google oath server using returned tokens
   }
 
@@ -144,6 +146,7 @@ async function doSocialLogin(req, res) {
         message: 'required details missing'
       }
     }
+
     console.log(`fb login`, code);
     //Exchanging Code for an Access Token
     let client_id = '525187695512107'
@@ -199,8 +202,8 @@ async function doSocialLogin(req, res) {
         console.log("logged in existing client through FB")
 
         return {
-          message: "redirecting",
-          status: 308,
+          message: "Logged In",
+          status: 200,
           token: token
         }
       }

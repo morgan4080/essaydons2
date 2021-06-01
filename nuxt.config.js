@@ -63,23 +63,27 @@ export default {
         scope: ['openid', 'profile', 'email'],
         responseType: 'code',
         endpoints: {
-          userInfo: 'https://essaydons.co/api/me'
+          userInfo: 'https://essaydons.co/api/me',
+          token: 'https://essaydons.co/api/login?callback=true&provider=google', // post request with code property in exchange for token
+          logout: false
         },
         token: {
           property: 'token',
           type: 'Bearer'
         },
-        redirectUri: `https://essaydons.co/api/login?callback=true&provider=google`,
+        redirectUri: `https://essaydons.co/login`,
       },
       facebook: {
         scheme: 'oauth2',
         endpoints: {
           // userInfo: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email'
-          userInfo: 'https://essaydons.co/api/me'
+          userInfo: 'https://essaydons.co/api/me',
+          token: 'https://essaydons.co/api/login?callback=true&provider=facebook',
+          logout: false
         },
         clientId: '525187695512107',
         scope: ['public_profile', 'email'],
-        redirectUri: `https://essaydons.co/api/login?callback=true&provider=facebook`,
+        redirectUri: `https://essaydons.co/login`,
         token: {
           property: 'token',
           type: 'Bearer'
