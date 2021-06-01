@@ -27,17 +27,24 @@
           </div>
           <div class="lg:w-1/4 lg:py-4" >
             <ul >
-              <li class="py-1 lg:py-2" ><a href="https://www.meetup.com/Vue-Toronto/" target="_blank" class="text-lg" >
-                F.A.Q
-              </a>
+              <li class="py-1 lg:py-2" >
+                <nuxt-link to="/faq" target="_blank" class="text-lg" >
+                  F.A.Q
+                </nuxt-link>
               </li>
-              <li class="py-1 lg:py-2" ><a href="/refunds" class="text-lg" >Money Back Guarantee</a></li>
+              <li class="py-1 lg:py-2" >
+                <nuxt-link to="/refunds" class="text-lg" >Money Back Guarantee</nuxt-link>
+              </li>
             </ul>
           </div>
           <div class="lg:w-1/4 lg:py-4" >
             <ul >
-              <li class="py-1 lg:py-2" ><a href="/privacy" class="text-lg" >Privacy</a></li>
-              <li class="py-1 lg:py-2" ><a href="/terms" class="text-lg" >Terms</a></li>
+              <li class="py-1 lg:py-2" >
+                <nuxt-link to="/privacy" class="text-lg" >Privacy</nuxt-link>
+              </li>
+              <li class="py-1 lg:py-2" >
+                <nuxt-link to="/terms" class="text-lg" >Terms</nuxt-link>
+              </li>
             </ul>
           </div>
           <div class="lg:w-1/4 lg:py-4" >
@@ -60,7 +67,7 @@
         <div class="text-center pt-8" >
           <p class="text-white opacity-50 py-1" >
             Copyright © 2020 EssayDons | All Rights Reserved. |
-            <a href="https://twitter.com/morgan4080" target="_blank" class="hover:text-white" >Developed by @morgan4080</a>
+            <a href="https://web.facebook.com/awesomeappservices" target="_blank" class="hover:text-white" >By Awesome</a>
           </p>
         </div>
       </div>

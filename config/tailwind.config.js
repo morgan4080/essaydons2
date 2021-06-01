@@ -13,10 +13,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Calibre", sans-serif']
+        serif: ['"Calibre", sans-serif'],
+        sans: ['"Source Sans Pro", sans-serif'],
       },
       colors: {
         teal: {
+          '50': '#d0feed',
           '100': '#74fcca',
           '200': '#63fcc4',
           '300': '#53fbbd',

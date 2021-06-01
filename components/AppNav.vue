@@ -12,16 +12,16 @@
               </nuxt-link>
             </div>
             <div class="hidden lg:block relative" >
-              <nuxt-link to="/about" class="uppercase mx-2 text-base text-secondary font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/about" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 About us
               </nuxt-link>
-              <nuxt-link to="/papers" class="uppercase mx-2 text-base text-secondary font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/papers" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 Sample papers
               </nuxt-link>
-              <nuxt-link to="/blogs" class="uppercase mx-2 text-base text-secondary font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/blogs" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 Blog
               </nuxt-link>
-              <nuxt-link to="/services" class="group uppercase mx-2 text-base text-secondary font-semibold py-3 px-4 hover:text-white inline-block" >
+              <nuxt-link to="/services" class="group uppercase mx-2 text-base tracking-wide text-secondary font-semibold py-3 px-4 hover:text-white inline-block" >
                 <span @mouseover="showSubMenu0 = true" @mouseleave="checkMousePos($event)" class="flex flex-row items-center">
                   Services
                   <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -32,10 +32,10 @@
                 <transition
                   enter-active-class="transition ease-out duration-200"
                   leave-active-class="transition ease-in duration-150"
-                  enter-class="opacity-0 translate-y-1"
-                  enter-to-class="opacity-100 translate-y-0"
-                  leave-class="opacity-100 translate-y-0"
-                  leave-to-class="opacity-0 translate-y-1"
+                  enter-class="transform opacity-0 translate-y-1"
+                  enter-to-class="transform opacity-100 translate-y-0"
+                  leave-class="transform opacity-100 translate-y-0"
+                  leave-to-class="transform opacity-0 translate-y-1"
                 >
                   <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
@@ -298,12 +298,13 @@
                 </transition>
 
               </nuxt-link>
-              <nuxt-link to="/order" class="uppercase inline-block mx-2 text-base font-semibold py-3 px-4 bg-transparent text-secondary border-2 border-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" style="border-color: #49544e;">
+
+              <nuxt-link to="/order" class="uppercase bg-black inline-block mx-2 text-base tracking-wide font-semibold py-3 px-4 bg-transparent text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" style="border-color: #49544e;">
                 New Order
               </nuxt-link>
 
               <div v-show="!$auth.loggedIn" class="relative inline-block text-left">
-                <button @click="showDropdown" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+                <button @click="showDropdown" class="uppercase inline-flex items-center mx-2 text-secondary tracking-wide font-semibold py-3 px-4 bg-white text-black rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   <span>My Account</span>
                   <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -312,10 +313,10 @@
                 <transition
                   enter-active-class="transition ease-out duration-200"
                   leave-active-class="transition ease-in duration-150"
-                  enter-class="opacity-0 translate-y-1"
-                  enter-to-class="opacity-100 translate-y-0"
-                  leave-class="opacity-100 translate-y-0"
-                  leave-to-class="opacity-0 translate-y-1"
+                  enter-class="transform opacity-0 translate-y-1"
+                  enter-to-class="transform opacity-100 translate-y-0"
+                  leave-class="transform opacity-100 translate-y-0"
+                  leave-to-class="transform opacity-0 translate-y-1"
                 >
                   <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 pt-2 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
@@ -342,7 +343,7 @@
                 </transition>
               </div>
               <div v-show="$auth.loggedIn" class="relative inline-block text-left">
-                <button v-on:click="$router.push('/profile')" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-vuegreen rounded-full transform hover:scale-105 transition ease-in-out duration-100">
+                <button v-on:click="$router.push('/profile')" type="button" class="uppercase inline-flex items-center mx-2 text-base font-semibold py-3 px-4 bg-white text-black rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   My Account
                 </button>
               </div>

@@ -9,18 +9,7 @@
 }
 
 html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-}
-
-html {
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  line-height: 1.5;
-  scroll-behavior: smooth;
-}
-
-html {
-  font-family: "Calibre","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: "Source Sans Pro","Calibre", "Roboto",  sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -28,6 +17,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Source Sans Pro","Calibre", "Roboto",  sans-serif;
+  font-size: 16px;
 }
 
 /* width */
