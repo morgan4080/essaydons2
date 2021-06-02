@@ -39,7 +39,7 @@ node_modules/
 jspm_packages/
 
 # Prisma client
-lib/generated-prisma-client/**
+lib/generated-prisma-client
 
 # TypeScript v1 declaration files
 typings/
