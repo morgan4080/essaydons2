@@ -359,15 +359,24 @@ function getAuthenticatedClient(code) {
     redirect_uri
   )
 
+  console.log("auth client created")
+
   return new Promise(async (resolve, reject) => {
     try {
+      const codes = await oAuth2Client.generateCodeVerifierAsync()
+
+      console.log("codes generated", codes)
+
       // Now that we have the code, use that to acquire tokens.
-      const { tokens } = await oAuth2Client.getToken(code)
+      const { tokens } = await oAuth2Client.getToken({
+        code,
+        codeVerifier: codes.codeVerifier,
+      })
+
+      console.log('Tokens acquired.', tokens)
 
       // Make sure to set the credentials on the OAuth2 client.
       oAuth2Client.setCredentials(tokens)
-
-      console.log('Tokens acquired.', tokens)
 
       resolve(oAuth2Client);
     }
