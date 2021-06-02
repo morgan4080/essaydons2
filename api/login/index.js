@@ -161,6 +161,8 @@ async function doSocialLogin(req, res) {
 
       console.log(res.data)*/
 
+      // refactor auth social out
+
       return {
         status: 405,
         error: tokenInfo
