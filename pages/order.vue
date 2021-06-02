@@ -296,34 +296,34 @@
               <div class="px-5 py-6 w-full sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
-                    <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
-                      <div class="">
+                    <div class="md:grid md:grid-cols-2 sm:text-base sm:leading-5">
+                      <div class="mb-2">
                         <label for="username" class="block text-gray-700 text-base font-bold mb-3">
                           No. of Pages <span class="font-light">({{ (form.spacing === 'Double') ? '275 Words' : '550 Words' }})</span>
                         </label>
-                        <div class="flex ml-3  h-10">
+                        <div class="flex ml-3 border rounded-lg h-10">
                           <button class="w-1/3 bg-gray-200 rounded-l-lg" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
                           <input class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
                           <button class="w-1/3 bg-gray-200 rounded-r-lg" @click="form.pages++">+</button>
                         </div>
                       </div>
-                      <div class="">
+                      <div class="mb-2">
                         <label for="spacing" class="block text-gray-700 text-base font-bold mb-3">
                           Spacing <span class="font-light">({{ (form.spacing === 'Double') ? '275 Words' : '550 Words' }})</span>
                         </label>
-                        <div class="flex ml-3  h-10">
-                          <button class="w-1/2 border border-gray-50" :class="{'bg-gray-200 rounded-l-lg': form.spacing === 'Single'}" @click="form.spacing = 'Single'">Single</button>
+                        <div class="flex ml-3 border rounded-lg h-10">
+                          <button class="w-1/2 border border-gray-50 rounded-l-lg" :class="{'bg-gray-200': form.spacing === 'Single'}" @click="form.spacing = 'Single'">Single</button>
                           <input id="spacing" class="hidden" type="text" v-model="form.spacing" />
-                          <button class="w-1/2 border border-gray-50" :class="{'bg-gray-200 rounded-r-lg': form.spacing === 'Double'}" @click="form.spacing = 'Double'">Double</button>
+                          <button class="w-1/2 border border-gray-50 rounded-r-lg" :class="{'bg-gray-200': form.spacing === 'Double'}" @click="form.spacing = 'Double'">Double</button>
                         </div>
                       </div>
                     </div>
-                    <div class="md:grid md:grid-cols-2 mb-2 sm:text-base sm:leading-5">
+                    <div class="md:grid md:grid-cols-2 sm:text-base sm:leading-5">
                       <div class="mb-2">
                         <label for="username" class="block text-gray-700 text-base font-bold mb-3">
                           Number of slides
                         </label>
-                        <div class="flex ml-3  h-10">
+                        <div class="flex ml-3 border rounded-lg h-10">
                           <button class="w-1/3 bg-gray-200 rounded-l-lg" @click="form.slides > 0 ? form.slides-- : form.slides = 0">-</button>
                           <input class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.slides" />
                           <button class="w-1/3 bg-gray-200 rounded-r-lg" @click="form.slides++">+</button>
@@ -333,7 +333,7 @@
                         <label for="charts" class="block text-gray-700 text-base font-bold mb-3">
                           Number of charts
                         </label>
-                        <div class="flex ml-3  h-10">
+                        <div class="flex ml-3 border rounded-lg h-10">
                           <button class="w-1/3 bg-gray-200 rounded-l-lg" @click="form.charts > 0 ? form.charts-- : form.charts = 0">-</button>
                           <input id="charts" class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.charts" />
                           <button class="w-1/3 bg-gray-200 rounded-r-lg" @click="form.charts++">+</button>
@@ -343,7 +343,7 @@
                         <label for="sources" class="block text-gray-700 text-base font-bold mb-3">
                           Sources
                         </label>
-                        <div class="flex ml-3 h-10">
+                        <div class="flex ml-3 border rounded-lg h-10">
                           <button class="w-1/3 bg-gray-200 rounded-l-lg" @click="form.sources > 0 ? form.sources-- : form.sources = 0">-</button>
                           <input id="sources" class="w-1/3 form-input bg-white hover:bg-gradient-to-r text-center" type="number" v-model="form.sources" />
                           <button class="w-1/3 bg-gray-200 rounded-r-lg" @click="form.sources++">+</button>

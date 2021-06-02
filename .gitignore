@@ -37,7 +37,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
+lib/generated-prisma-client/*
 # TypeScript v1 declaration files
 typings/
 
@@ -101,3 +101,4 @@ sw.*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
