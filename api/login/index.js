@@ -1,5 +1,7 @@
 import prisma from '../../lib/prisma'
 
+const { OAuth2Client } = require('google-auth-library')
+
 const bcrypt = require('bcrypt')
 
 const jwt = require('jsonwebtoken')
@@ -138,7 +140,41 @@ async function doSocialLogin(req, res) {
     }
 
     console.log(`google login`, code)
-    //check for the user from google oath server using returned tokens
+
+    // Exchange authorization code for token
+
+    try {
+
+      const oAuth2Client = await getAuthenticatedClient(code)
+
+      // use sub property of  ID token as the unique-identifier key for a user
+
+      const tokenInfo = await oAuth2Client.getTokenInfo(
+        oAuth2Client.credentials.id_token
+      );
+
+      console.log("google id token info", tokenInfo);
+
+      /*const url = 'https://people.googleapis.com/v1/people/me?personFields=names'
+
+      const res = await oAuth2Client.request({url})
+
+      console.log(res.data)*/
+
+      return {
+        status: 405,
+        error: tokenInfo
+      }
+
+    } catch (e) {
+
+      return {
+        status: 405,
+        error: e
+      }
+
+    }
+
   }
 
   if (callback && provider === 'facebook') {
@@ -170,6 +206,8 @@ async function doSocialLogin(req, res) {
       }
 
       // use token
+      //check for the user from facebook graph server using token
+
       const response0 = await fetch('https://graph.facebook.com/v10.0/me?fields=about,id,name,picture{url},email&access_token=' + data.access_token)
 
       const facebookUserData = await response0.json()
@@ -185,16 +223,17 @@ async function doSocialLogin(req, res) {
 
       const { id, email, name, picture } = facebookUserData
 
-      const user = await prisma.users.findFirst({
-        where: {
-          email: email,
-        },
-      })
-
       // if user doesnt have email redirect back with facebook details to register route
 
       if (!email) {
         // figure out if the user without email exists in db by provider_id
+        // login user using provider_id
+        const user = await prisma.users.findFirst({
+          where: {
+            provider_id: id,
+          },
+        })
+
         if (user && user.provider_id) {
           delete user.password
 
@@ -217,8 +256,17 @@ async function doSocialLogin(req, res) {
         }
       }
 
+      const user = await prisma.users.findFirst({
+        where: {
+          email: email,
+        },
+      })
+
       if (user) {
+        // login existing user
+
         // assign jwt token using user data
+
         delete user.password
 
         delete user.provider_id
@@ -252,6 +300,7 @@ async function doSocialLogin(req, res) {
       }
 
       // sign up user
+
       // assign jwt token
 
       const account_id = 1
@@ -265,6 +314,7 @@ async function doSocialLogin(req, res) {
       })
 
       // add metadata field
+
       let metadata = {
         country: '',
         userType: 'student',
@@ -290,10 +340,42 @@ async function doSocialLogin(req, res) {
         error: e
       }
     }
-    //check for the user from facebook graph server using returned tokens
-    //gather whether the user exists in database if not create user and redirect to password change view with jwt token
-    // return token to login page if user exists
   }
+}
+
+function getAuthenticatedClient(code) {
+
+  const { client_id, client_secret, redirect_uri } = {
+    client_id: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
+    client_secret: 'VpqJRnugdEOA9WXeWeohFXJb',
+    redirect_uri: 'https://essaydons.co/login' // might need encodeURIComponent
+  }
+
+  const oAuth2Client = new OAuth2Client(
+    client_id,
+    client_secret,
+    redirect_uri
+  )
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Now that we have the code, use that to acquire tokens.
+      const { tokens } = await oAuth2Client.getToken(code)
+
+      // Make sure to set the credentials on the OAuth2 client.
+      oAuth2Client.setCredentials(tokens)
+
+      console.log('Tokens acquired.', tokens)
+
+      resolve(oAuth2Client);
+    }
+    catch (e) {
+
+      reject(e)
+
+    }
+  })
+
 }
 
 module.exports = allowCors(handler)
