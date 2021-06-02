@@ -40,6 +40,7 @@ jspm_packages/
 
 # Prisma client
 lib/generated-prisma-client/**
+
 # TypeScript v1 declaration files
 typings/
 

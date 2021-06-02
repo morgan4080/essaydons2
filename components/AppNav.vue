@@ -12,16 +12,16 @@
               </nuxt-link>
             </div>
             <div class="hidden lg:block relative" >
-              <nuxt-link to="/about" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/about" :class="{ 'text-white' : som }" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 About us
               </nuxt-link>
-              <nuxt-link to="/papers" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/papers" :class="{ 'text-white' : som }" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 Sample papers
               </nuxt-link>
-              <nuxt-link to="/blogs" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
+              <nuxt-link to="/blogs" :class="{ 'text-white' : som }" class="uppercase mx-2 text-secondary tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 Blog
               </nuxt-link>
-              <nuxt-link to="/services" class="group uppercase mx-2 text-base tracking-wide text-secondary font-semibold py-3 px-4 hover:text-white inline-block" >
+              <nuxt-link to="/services" :class="{ 'text-white' : som }" class="group uppercase mx-2 text-base tracking-wide text-secondary font-semibold py-3 px-4 hover:text-white inline-block" >
                 <span @mouseover="showSubMenu0 = true" @mouseleave="checkMousePos($event)" class="flex flex-row items-center">
                   Services
                   <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
