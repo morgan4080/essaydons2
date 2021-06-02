@@ -52,10 +52,13 @@ const handler = async function (req, res) {
     try {
       let response = await doSocialLogin(req, res)
 
-      /*if (response.status === 308) {
-        res.redirect(`/login?access_token=${response.token}`)
+      if (response.status === 308) {
+        // send back any data from provider to aid in signup
+        // inform them social cant be used without email
+
+        res.redirect(`/register?message=${response.message}`)
         return
-      }*/
+      }
 
       res.status(response.status).json({
         ...response
@@ -167,7 +170,7 @@ async function doSocialLogin(req, res) {
       }
 
       // use token
-      const response0 = await fetch('https://graph.facebook.com/v10.0/me?fields=about,name,picture{url},email&access_token=' + data.access_token)
+      const response0 = await fetch('https://graph.facebook.com/v10.0/me?fields=about,id,name,picture{url},email&access_token=' + data.access_token)
 
       const facebookUserData = await response0.json()
 
@@ -180,10 +183,7 @@ async function doSocialLogin(req, res) {
 
       // check if user exists and return token to login page
 
-      const { email, name, picture } = facebookUserData
-
-      // if user doesnt have email redirect back with facebook details to register route
-      // please provide email address to complete process
+      const { id, email, name, picture } = facebookUserData
 
       const user = await prisma.users.findFirst({
         where: {
@@ -191,7 +191,33 @@ async function doSocialLogin(req, res) {
         },
       })
 
-      if (user !== null) {
+      // if user doesnt have email redirect back with facebook details to register route
+
+      if (!email) {
+        // figure out if the user without email exists in db by provider_id
+        if (user && user.provider_id) {
+          delete user.password
+
+          delete user.provider_id
+
+          const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+
+          console.log("logged in existing client through provider_id")
+
+          return {
+            message: "Logged In",
+            status: 200,
+            token: token
+          }
+        }
+
+        return {
+          message: "Provide missing email",
+          status: 308
+        }
+      }
+
+      if (user) {
         // assign jwt token using user data
         delete user.password
 
@@ -201,19 +227,60 @@ async function doSocialLogin(req, res) {
 
         console.log("logged in existing client through FB")
 
+        if (!user.provider_id) {
+
+          let data00 = {
+            provider: "facebook",
+            provider_id: id
+          }
+
+          await prisma.users.update({
+            where: { id: user.id },
+            data: {
+              ...data00
+            },
+          })
+
+        }
+
         return {
           message: "Logged In",
           status: 200,
           token: token
         }
+
       }
 
       // sign up user
       // assign jwt token
 
+      const account_id = 1
+
+      let response00 = await prisma.users.create({
+        data: {
+          accounts: { connect: { id: account_id } },
+          name: name,
+          email: email
+        }
+      })
+
+      // add metadata field
+      let metadata = {
+        country: '',
+        userType: 'student',
+        profile_picture: ''
+      }
+
+      delete response00.password
+
+      delete response00.provider_id
+
+      const token00 = jwt.sign({ ...response00 }, privateKey, { algorithm: 'RS256' })
+
       return {
+        message: "Logged In",
         status: 200,
-        message: facebookUserData
+        token: token00
       }
 
     } catch (e) {

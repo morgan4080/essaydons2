@@ -122,7 +122,7 @@
                 </form>
                 <div class="flex flex-row justify-center flex-no-wrap w-full space-x-2 relative" style="border-top: 1px solid #f1f1f1;padding-top: 10px;padding-bottom: 10px;">
                   <span class="absolute" style="top: -9px;font-size: 14px;color: #777;background: #fbfbfb;">Or</span>
-                  <div class="w-1/2 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
+                  <div @click="$auth.loginWith('facebook')" class="w-1/2 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
                     <div class="w-full abcRioButton abcRioButtonBlue" style="height: 40px; background-color: rgb(59, 89, 152) !important;">
                       <div class="abcRioButtonContentWrapper flex items-center" style="height: 40px;">
                         <div class="abcRioButtonIcon" style="padding: 16px; background-color: rgb(46 69 117) !important;">
@@ -136,7 +136,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="w-1/2 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
+                  <div @click="$auth.loginWith('google')" class="w-1/2 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
                     <div class="w-full abcRioButton abcRioButtonBlue" style="height: 40px;">
                       <div class="abcRioButtonContentWrapper flex items-center" style="height: 40px;">
                         <div class="abcRioButtonIcon" style="padding: 16px;">
