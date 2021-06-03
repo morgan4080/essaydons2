@@ -72,6 +72,7 @@ export default {
           type: 'Bearer'
         },
         redirectUri: `https://essaydons.co/login`,
+        grantType: 'authorization_code'
       },
       facebook: {
         scheme: 'oauth2',
