@@ -127,12 +127,14 @@
                 <div class="w-full lg:w-5/6 h-auto">
                   <div class="lg:px-6 py-2">
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
-                      <div v-if="!orderview && orders.length === 0" class="py-4">
-                          <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">The more orders, the higher the discount</h1>
-                          <nuxt-link to="/order" class="flex-shrink-0 cta ml-4 text-base font-semibold py-3 px-4 bg-transparent rounded-full transform hover:scale-105 transition ease-in-out duration-100" data-v-4f57e35d="">
-                            Get Started
-                          </nuxt-link>
-                      </div>
+                      <section v-if="!orderview && orders.length === 0" class="text-gray-600 body-font">
+                        <div class="container px-5 py-24 mx-auto">
+                          <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
+                            <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">We are ready if you are. Start your academic journey with us. Get 10% off your first order.</h1>
+                            <button @click="$router.push('/order')" type="button" class="flex-shrink-0 text-white bg-black border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg mt-10 sm:mt-0">Get Started</button>
+                          </div>
+                        </div>
+                      </section>
                       <table v-else-if="!orderview && orders.length > 0" class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                           <tr>
