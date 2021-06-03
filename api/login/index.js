@@ -127,7 +127,7 @@ async function doLogin(req) {
 
 async function doSocialLogin(req, res) {
   const { provider, callback } = req.query
-  const { code } = req.body
+  const { code, codeVerifier, client_id, redirect_uri } = req.body
 
   if (callback && provider === 'google') {
     if (!code) {
@@ -145,7 +145,7 @@ async function doSocialLogin(req, res) {
 
     try {
 
-      const oAuth2Client = await getAuthenticatedClient(code)
+      const oAuth2Client = await getAuthenticatedClient(code, codeVerifier, client_id, redirect_uri)
 
       // use sub property of  ID token as the unique-identifier key for a user
 
@@ -345,12 +345,12 @@ async function doSocialLogin(req, res) {
   }
 }
 
-function getAuthenticatedClient(code) {
+function getAuthenticatedClient(code, codeVerifier, id, uri) {
 
   const { client_id, client_secret, redirect_uri } = {
-    client_id: '353107788542-qccnahstd2fg37fkldlbgkam3uu8loc0.apps.googleusercontent.com',
+    client_id: id,
     client_secret: 'VpqJRnugdEOA9WXeWeohFXJb',
-    redirect_uri: 'https://essaydons.co/login' // might need encodeURIComponent
+    redirect_uri: uri
   }
 
   const oAuth2Client = new OAuth2Client(
@@ -371,18 +371,19 @@ function getAuthenticatedClient(code) {
 
       // Now that we have the code, use that to acquire tokens.
 
-      oAuth2Client.getToken(
-        code,
-        function(err, tokens) {
-          if (err) reject(err)
-          console.log('Tokens acquired.', tokens)
-
-          // Make sure to set the credentials on the OAuth2 client.
-          oAuth2Client.setCredentials(tokens)
-
-          resolve(oAuth2Client)
+      const r = await oAuth2Client.getToken(
+        {
+          code,
+          codeVerifier
         }
       )
+
+      console.log('Tokens acquired.', r)
+
+      // Make sure to set the credentials on the OAuth2 client.
+      oAuth2Client.setCredentials(r.tokens)
+
+      resolve(oAuth2Client)
     }
     catch (e) {
 
