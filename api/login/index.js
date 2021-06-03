@@ -378,7 +378,7 @@ function getAuthenticatedClient(code, codeVerifier, id, uri) {
         }
       )
 
-      console.log('Tokens acquired.', r)
+      console.log('Tokens', r)
 
       // Make sure to set the credentials on the OAuth2 client.
       oAuth2Client.setCredentials(r.tokens)
