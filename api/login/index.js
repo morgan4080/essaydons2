@@ -127,7 +127,7 @@ async function doLogin(req) {
 
 async function doSocialLogin(req, res) {
   const { provider, callback } = req.query
-  const { code, codeVerifier, client_id, redirect_uri } = req.body
+  const { code, code_verifier, client_id, redirect_uri } = req.body
 
   if (callback && provider === 'google') {
     if (!code) {
@@ -145,7 +145,7 @@ async function doSocialLogin(req, res) {
 
     try {
 
-      const oAuth2Client = await getAuthenticatedClient(code, codeVerifier, client_id, redirect_uri)
+      const oAuth2Client = await getAuthenticatedClient(code, code_verifier, client_id, redirect_uri)
 
       // use sub property of  ID token as the unique-identifier key for a user
 
@@ -345,7 +345,7 @@ async function doSocialLogin(req, res) {
   }
 }
 
-function getAuthenticatedClient(code, codeVerifier, id, uri) {
+function getAuthenticatedClient(code, code_verifier, id, uri) {
 
   const { client_id, client_secret, redirect_uri } = {
     client_id: id,
@@ -371,12 +371,12 @@ function getAuthenticatedClient(code, codeVerifier, id, uri) {
 
       // Now that we have the code, use that to acquire tokens.
 
-      const r = await oAuth2Client.getToken(
-        {
-          code,
-          codeVerifier
-        }
-      )
+      const r = await oAuth2Client.getToken({
+        code: code,
+        codeVerifier: code_verifier,
+        client_id: client_id,
+        redirect_uri: redirect_uri
+      })
 
       console.log('Tokens', r)
 
