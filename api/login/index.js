@@ -151,24 +151,22 @@ async function doSocialLogin(req, res) {
 
       // use sub property of  ID token as the unique-identifier key for a user
 
-      const tokenInfo = await oAuth2Client.getTokenInfo(
+      /*const tokenInfo = await oAuth2Client.getTokenInfo(
         oAuth2Client.credentials.access_token
       );
 
-      console.log("google id token info", tokenInfo);
+      console.log("google id token info", tokenInfo);*/
 
-      /*const url = 'https://people.googleapis.com/v1/people/me?personFields=names'
+      const url = 'https://www.googleapis.com/oauth2/v3/userinfo'
 
       const res = await oAuth2Client.request({url})
 
-      console.log(res.data)*/
-
-      // refactor auth social out
+      console.log("user info", res.data)
 
       return {
         message: 'token information',
         status: 200,
-        token:tokenInfo,
+        token:res.data,
       }
 
     } catch (e) {
@@ -374,17 +372,17 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
 
       // Now that we have the code, use that to acquire tokens.
 
-      const r = await oAuth2Client.getToken({
+      const { tokens } = await oAuth2Client.getToken({
         code: code,
         codeVerifier: code_verifier,
         client_id: client_id,
         redirect_uri: redirect_uri
       })
 
-      console.log('Tokens', r.tokens);
+      console.log('Tokens', tokens);
 
       // Make sure to set the credentials on the OAuth2 client.
-      oAuth2Client.setCredentials(r.tokens)
+      oAuth2Client.setCredentials(tokens)
 
       resolve(oAuth2Client)
     }
