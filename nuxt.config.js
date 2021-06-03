@@ -94,10 +94,20 @@ export default {
     }
   },
 
-  loading: { color: '#170000' },
+  loading: {
+    color: '#3B8070',
+    height: '4px',
+    continuous: true
+  },
+
+  loadingIndicator: {
+    name: 'circle',
+    color: '#3B8070',
+    background: 'white'
+  },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [`~/plugins/currency.js`],
+  plugins: [`~/plugins/currency.js`,`~/plugins/axios.js`,],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
