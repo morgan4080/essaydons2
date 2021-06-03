@@ -40,7 +40,7 @@
                   <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
                 </optgroup>
               </select>
-              <div class="flex w-1/2 ml-1 text-white  bg-transparent border-2 border-white rounded-3xl">
+              <div class="flex w-1/2 ml-1 text-white pagesAf relative bg-transparent border-2 border-white rounded-3xl">
                 <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
                 <input class="w-1/3 bg-transparent hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
                 <button class="w-1/3" @click="form.pages++">+</button>
@@ -729,26 +729,34 @@ export default {
 </script>
 
 <style scoped>
+.pagesAf:after {
+  content: 'Pages';
+  position: absolute;
+  top: -4%;
+  left: 50%;
+  transform: scale(0.58);
+}
+
 .moneyBack {
-  background-image: linear-gradient(50deg,#42fbb7,rgba(0, 0, 0, .78)),url(~assets/images/moneyback.jpg);
+  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
   background-blend-mode: multiply;
 }
 .revisions {
-  background-image: linear-gradient(50deg,#42fbb7,rgba(0, 0, 0, .78)),url(~assets/images/freerevisions.jpg);
+  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
 .safePayments {
-  background-image: linear-gradient(50deg,#42fbb7,rgba(0, 0, 0, .78)),url(~assets/images/safe.jpg);
+  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
 .bg-img {
-  background-image: linear-gradient(50deg,#42fbb7,rgba(0, 0, 0, .78));
+  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1);
 }
 .mobile-b {
-  background-image: linear-gradient(#42fbb7,rgba(0, 0, 0, .78)),url(~assets/images/samplepapers.jpg);
+  background-image: linear-gradient(#42fbb7,#3ff4b1),url(~assets/images/samplepapers.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100% 10%;

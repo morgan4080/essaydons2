@@ -79,13 +79,12 @@
                       Login
                     </button>
                     <div class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
-                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset/email-confirmation" class="underline text-teal-600">Reset</nuxt-link></span>
-                      <nuxt-link to="/register" class="flex-1 underline text-teal-600">Signup</nuxt-link>
+                      <span class="flex-1">Forgot Password? <nuxt-link to="/reset/email-confirmation" class="underline text-black">Reset</nuxt-link></span>
+                      <nuxt-link to="/register" class="flex-1 underline text-black">Signup</nuxt-link>
                     </div>
                   </div>
                 </form>
                 <div class="flex flex-row justify-center flex-no-wrap w-full space-x-2 relative" style="border-top: 1px solid #f1f1f1;padding-top: 10px;padding-bottom: 10px;">
-                  <span class="absolute" style="top: -9px;font-size: 14px;color: #777;background: #fbfbfb;">Or</span>
                   <div @click="$auth.loginWith('facebook')" class="w-1/2 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
                     <div class="w-full abcRioButton abcRioButtonBlue" style="height: 40px; background-color: rgb(59, 89, 152) !important;">
                       <div class="abcRioButtonContentWrapper flex items-center" style="height: 40px;">
@@ -115,7 +114,7 @@
                     </div>
                   </div>
                 </div>
-                <p class="text-center text-gray-500 text-xs">
+                <p class="text-center text-gray-500 font-light text-xs">
                   &copy;2020 EssayDons. All rights reserved.
                 </p>
               </div>

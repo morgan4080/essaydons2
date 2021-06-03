@@ -94,13 +94,13 @@
                         Signup
                       </button>
                       <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
-                        <span class="flex flex-col flex-wrap text-right align-baseline font-light text-xs text-black">
-                          Already have an account? <nuxt-link to="/login" class="flex-1 underline text-teal-600">Login</nuxt-link>
+                        <span class="flex flex-col flex-wrap text-right align-baseline text-xs text-black">
+                          Already have an account? <nuxt-link to="/login" class="flex-1 underline text-black">Login</nuxt-link>
                         </span>
                       </span>
                     </div>
                   </form>
-                  <p class="text-center text-gray-500 text-xs">
+                  <p class="text-center text-gray-500 font-light text-xs">
                     &copy;2020 EssayDons. All rights reserved.
                   </p>
                 </div>
@@ -152,18 +152,25 @@ export default {
           account_id: this.account_id
         })
 
+        console.log("signup res", signupRes)
+
         this.loading = false;
+
         this.$toast.success('Registered!', {
           theme: "outline",
           position: "bottom-left",
           duration : 5000
         });
+
         const result = await this.$auth.loginWith('local', {
           data: {
             email: this.email,
             password: this.password
           },
         });
+
+        console.log("login response reg", result);
+
         this.$toast.success('Logged In!', {
           theme: "outline",
           position: "bottom-left",
