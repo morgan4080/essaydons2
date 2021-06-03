@@ -147,13 +147,15 @@ async function doSocialLogin(req, res) {
 
       const oAuth2Client = await getAuthenticatedClient(code, code_verifier, client_id, redirect_uri)
 
+      console.log("credentials", oAuth2Client.credentials)
+
       // use sub property of  ID token as the unique-identifier key for a user
 
       const tokenInfo = await oAuth2Client.getTokenInfo(
-        oAuth2Client.credentials.id_token
+        oAuth2Client.credentials.access_token
       );
 
-      console.log("google id token info");
+      console.log("google id token info", tokenInfo);
 
       /*const url = 'https://people.googleapis.com/v1/people/me?personFields=names'
 
@@ -164,8 +166,9 @@ async function doSocialLogin(req, res) {
       // refactor auth social out
 
       return {
-        status: 405,
-        error: { ...oAuth2Client, ...tokenInfo },
+        message: 'token information',
+        status: 200,
+        token:tokenInfo,
       }
 
     } catch (e) {
