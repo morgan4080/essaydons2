@@ -153,7 +153,7 @@ async function doSocialLogin(req, res) {
         oAuth2Client.credentials.id_token
       );
 
-      console.log("google id token info", tokenInfo);
+      console.log("google id token info");
 
       /*const url = 'https://people.googleapis.com/v1/people/me?personFields=names'
 
@@ -165,7 +165,7 @@ async function doSocialLogin(req, res) {
 
       return {
         status: 405,
-        error: tokenInfo
+        error: { ...oAuth2Client, ...tokenInfo },
       }
 
     } catch (e) {
@@ -359,7 +359,7 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
     redirect_uri
   )
 
-  console.log("auth client created")
+  console.log("auth client created");
 
   return new Promise(async (resolve, reject) => {
     try {
@@ -378,7 +378,7 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
         redirect_uri: redirect_uri
       })
 
-      console.log('Tokens', r)
+      console.log('Tokens', r.tokens);
 
       // Make sure to set the credentials on the OAuth2 client.
       oAuth2Client.setCredentials(r.tokens)
