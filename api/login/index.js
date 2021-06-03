@@ -147,26 +147,120 @@ async function doSocialLogin(req, res) {
 
       const oAuth2Client = await getAuthenticatedClient(code, code_verifier, client_id, redirect_uri)
 
-      console.log("credentials", oAuth2Client.credentials)
-
       // use sub property of  ID token as the unique-identifier key for a user
-
-      /*const tokenInfo = await oAuth2Client.getTokenInfo(
-        oAuth2Client.credentials.access_token
-      );
-
-      console.log("google id token info", tokenInfo);*/
 
       const url = 'https://www.googleapis.com/oauth2/v3/userinfo'
 
-      const res = await oAuth2Client.request({url})
+      const { data } = await oAuth2Client.request({url})
 
-      console.log("user info", res.data)
+      const { sub, email, name, picture } = data
+
+      if (!email) {
+        // figure out if the user without email exists in db by provider_id
+        // login user using provider_id
+        const user = await prisma.users.findFirst({
+          where: {
+            provider_id: sub,
+          },
+        })
+
+        if (user && user.provider_id) {
+          delete user.password
+
+          delete user.provider_id
+
+          const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+
+          console.log("logged in existing client through provider_id")
+
+          return {
+            message: "Logged In",
+            status: 200,
+            token: token
+          }
+        }
+
+        return {
+          message: "Provide missing email",
+          status: 308
+        }
+      }
+
+      const user = await prisma.users.findFirst({
+        where: {
+          email: email,
+        },
+      })
+
+      if (user) {
+        // login existing user
+
+        // assign jwt token using user data
+
+        delete user.password
+
+        delete user.provider_id
+
+        const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+
+        console.log("logged in existing client through FB")
+
+        if (!user.provider_id) {
+
+          let data00 = {
+            provider: "google",
+            provider_id: sub
+          }
+
+          await prisma.users.update({
+            where: { id: user.id },
+            data: {
+              ...data00
+            },
+          })
+
+        }
+
+        return {
+          message: "Logged In",
+          status: 200,
+          token: token
+        }
+
+      }
+
+      // sign up user
+
+      // assign jwt token
+
+      const account_id = 1
+
+      let response00 = await prisma.users.create({
+        data: {
+          accounts: { connect: { id: account_id } },
+          name: name,
+          email: email
+        }
+      })
+
+      // add metadata field
+
+      let metadata = {
+        country: '',
+        type: 'student',
+        picture: picture
+      }
+
+      delete response00.password
+
+      delete response00.provider_id
+
+      const token00 = jwt.sign({ ...response00 }, privateKey, { algorithm: 'RS256' })
 
       return {
-        message: 'token information',
+        message: "Logged In",
         status: 200,
-        token:res.data,
+        token: token00
       }
 
     } catch (e) {
@@ -320,8 +414,8 @@ async function doSocialLogin(req, res) {
 
       let metadata = {
         country: '',
-        userType: 'student',
-        profile_picture: ''
+        type: 'student',
+        picture: picture
       }
 
       delete response00.password
@@ -364,11 +458,6 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
 
   return new Promise(async (resolve, reject) => {
     try {
-      /*
-        const codes = await oAuth2Client.generateCodeVerifierAsync()
-        console.log("codes generated", codes)
-        codeVerifier: codes.codeVerifier
-      */
 
       // Now that we have the code, use that to acquire tokens.
 
@@ -378,8 +467,6 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
         client_id: client_id,
         redirect_uri: redirect_uri
       })
-
-      console.log('Tokens', tokens);
 
       // Make sure to set the credentials on the OAuth2 client.
       oAuth2Client.setCredentials(tokens)
