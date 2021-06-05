@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div class="pt-16 pb-4" style="background: rgb(73,73,73);">
+    <div class="pt-16 pb-4 bg-secondary">
       <div class="max-w-6xl mx-auto px-4 lg:px-0" >
         <div class="text-white flex flex-col lg:flex-row" >
           <div class="lg:w-1/4 lg:py-4" >

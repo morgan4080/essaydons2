@@ -3,10 +3,10 @@
     <div>
       <div class="min-h-screen" style="background: #FBFBFB;">
         <div class="topServiceBanner mx-auto px-0 lg:px-0 mt-12 lg:mt-12 pt-8">
-          <div style="height: 100%;background: rgba(0, 0, 0, 0.5);">
+          <div style="height: 100%;" class="gb-nav -mt-1">
             <div class="max-w-6xl px-4 md:px-0 mx-auto pt-16 pb-24">
               <div class="flex flex-col w-full" >
-                <span class="font-black text-vuegreen text-6xl">Narrative essay</span>
+                <span class="font-black text-black text-6xl">Narrative essay</span>
                 <span class="text-white font-black text-3xl">Overview</span>
               </div>
             </div>
@@ -119,13 +119,9 @@ export default {
 </script>
 
 <style scoped>
-.topServiceBanner {
-  background-size: contain;
-  background: url(~assets/images/aboutbanner.jpg) no-repeat top center;
-  overflow: hidden; height: 300px;
-}
+
 .custom-calc {
-  background: rgb(98,98,98);
+  background: #000000;
   padding: 20px;
   border: 1px solid rgb(66, 251, 183);
   border-radius: 1rem;

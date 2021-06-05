@@ -34,7 +34,7 @@ export default {
       login: '/login',
       logout: '/',
       callback: '/login',
-      home: '/'
+      home: '/order'
     },
     router: {
       middleware: ['auth']
@@ -95,15 +95,9 @@ export default {
   },
 
   loading: {
-    color: '#3B8070',
+    color: '#000000',
     height: '4px',
     continuous: true
-  },
-
-  loadingIndicator: {
-    name: 'circle',
-    color: '#3B8070',
-    background: 'white'
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -129,7 +123,8 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
     '@nuxtjs/cloudinary',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'portal-vue/nuxt'
   ],
 
   cloudinary: {

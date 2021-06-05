@@ -21,7 +21,7 @@ module.exports = {
           '50': '#d0feed',
           '100': '#74fcca',
           '200': '#63fcc4',
-          '300': '#53fbbd',
+          '300': '#0ef884',
           '400': '#42fbb7',
           '500': '#31fbb1',
           '600': '#21faaa',
@@ -31,7 +31,8 @@ module.exports = {
         }
       },
       maxWidth: {
-        'xxs': '15rem'
+        'xxs': '15rem',
+        'custom': '10rem'
       },
       gridTemplateRows: {
         'orders': '80px 1fr'

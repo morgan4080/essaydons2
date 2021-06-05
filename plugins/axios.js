@@ -1,4 +1,4 @@
-export default function ({ $axios, $toast, redirect }) {
+export default function ({ $axios, $toast,$auth, redirect }) {
   $axios.onError(error => {
     if(error.response.status === 500) {
       $toast.error('Server Error', {

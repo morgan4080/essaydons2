@@ -11,19 +11,18 @@
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
-              <h1 class="text-4xl lg:text-5xl text-white font-bold leading-tight py-2 lg:py-0">
-                Professional Essay Writer You've <br>
-                Been Looking For!
+              <h1 class="text-4xl md:text-5xl lg:text-6xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
+                Professional Essay & Academic <br> Writers
               </h1>
-              <p class="text-white text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
+              <p class="text-black opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
               </p>
-              <nuxt-link to="/order" class="border-2 border-white bg-transparent py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+              <nuxt-link to="/order" class="bg-black py-3 px-8 text-xl rounded-full text-white font-semibold hidden lg:inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                 Order Now
               </nuxt-link>
             </div>
           </div>
-          <div class="absolute bg-secondary shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+          <div class="absolute bg-gradient-to-r from-vuegreen to-lightgreen shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
             <select v-model="form.subject" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-4 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
               <optgroup label="Subjects" class="bg-black">
                 <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
@@ -117,7 +116,7 @@
                     <div class="mx-auto md:mx-0 md:mr-6 py-4" >
 
                       <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" id="ic_phone_in_talk_48px" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
-                        <path id="Path_5" data-name="Path 5" d="M48.557,37.292a28.556,28.556,0,0,1-8.937-1.427,2.512,2.512,0,0,0-2.541.613L31.572,42a37.764,37.764,0,0,1-16.5-16.484l5.507-5.52a2.512,2.512,0,0,0,.613-2.541A28.634,28.634,0,0,1,19.768,8.5a2.5,2.5,0,0,0-2.5-2.5H8.5A2.5,2.5,0,0,0,6,8.5,42.553,42.553,0,0,0,48.557,51.06a2.5,2.5,0,0,0,2.5-2.5V39.8A2.5,2.5,0,0,0,48.557,37.292Zm-2.5-8.762H51.06A22.532,22.532,0,0,0,28.53,6v5.007A17.527,17.527,0,0,1,46.053,28.53Zm-10.013,0h5.007A12.521,12.521,0,0,0,28.53,16.013V21.02A7.516,7.516,0,0,1,36.04,28.53Z" transform="translate(-6 -6)" fill="#42FBB7"/>
+                        <path id="Path_5" data-name="Path 5" d="M48.557,37.292a28.556,28.556,0,0,1-8.937-1.427,2.512,2.512,0,0,0-2.541.613L31.572,42a37.764,37.764,0,0,1-16.5-16.484l5.507-5.52a2.512,2.512,0,0,0,.613-2.541A28.634,28.634,0,0,1,19.768,8.5a2.5,2.5,0,0,0-2.5-2.5H8.5A2.5,2.5,0,0,0,6,8.5,42.553,42.553,0,0,0,48.557,51.06a2.5,2.5,0,0,0,2.5-2.5V39.8A2.5,2.5,0,0,0,48.557,37.292Zm-2.5-8.762H51.06A22.532,22.532,0,0,0,28.53,6v5.007A17.527,17.527,0,0,1,46.053,28.53Zm-10.013,0h5.007A12.521,12.521,0,0,0,28.53,16.013V21.02A7.516,7.516,0,0,1,36.04,28.53Z" transform="translate(-6 -6)" fill="#0ef884"/>
                       </svg>
 
                     </div>
@@ -139,8 +138,8 @@
 
                       <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
                         <g id="archive-paper" transform="translate(-1 -1)">
-                          <path id="Path_6" data-name="Path 6" d="M45.08,13H42.142V31.475a.976.976,0,0,1-.98.972h-9.8a.976.976,0,0,0-.98.972v2.917H16.673V33.419a.976.976,0,0,0-.98-.972H5.9a.976.976,0,0,1-.98-.972V13H1.98a.976.976,0,0,0-.98.972v28.2A3.9,3.9,0,0,0,4.918,46.06H42.142a3.9,3.9,0,0,0,3.918-3.889v-28.2A.976.976,0,0,0,45.08,13Z" fill="#42FBB7"/>
-                          <path id="Path_7" data-name="Path 7" d="M39.088,1H7.972A.986.986,0,0,0,7,2V30a.986.986,0,0,0,.972,1H39.088a.986.986,0,0,0,.972-1V2A.986.986,0,0,0,39.088,1ZM30.336,20H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Zm0-8H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Z" fill="#42FBB7"/>
+                          <path id="Path_6" data-name="Path 6" d="M45.08,13H42.142V31.475a.976.976,0,0,1-.98.972h-9.8a.976.976,0,0,0-.98.972v2.917H16.673V33.419a.976.976,0,0,0-.98-.972H5.9a.976.976,0,0,1-.98-.972V13H1.98a.976.976,0,0,0-.98.972v28.2A3.9,3.9,0,0,0,4.918,46.06H42.142a3.9,3.9,0,0,0,3.918-3.889v-28.2A.976.976,0,0,0,45.08,13Z" fill="#0ef884"/>
+                          <path id="Path_7" data-name="Path 7" d="M39.088,1H7.972A.986.986,0,0,0,7,2V30a.986.986,0,0,0,.972,1H39.088a.986.986,0,0,0,.972-1V2A.986.986,0,0,0,39.088,1ZM30.336,20H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Zm0-8H16.724a1,1,0,0,1,0-2H30.336a1,1,0,0,1,0,2Z" fill="#0ef884"/>
                         </g>
                       </svg>
 
@@ -163,7 +162,7 @@
 
                       <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="45.06" height="45.06" viewBox="0 0 45.06 45.06">
                         <g id="ic_block_48px" transform="translate(-4 -4)">
-                          <path id="Path_8" data-name="Path 8" d="M26.53,4A22.53,22.53,0,1,0,49.06,26.53,22.524,22.524,0,0,0,26.53,4ZM8.506,26.53A18.005,18.005,0,0,1,37.57,12.3L12.3,37.57A17.956,17.956,0,0,1,8.506,26.53ZM26.53,44.554a17.956,17.956,0,0,1-11.04-3.8L40.758,15.49A18.005,18.005,0,0,1,26.53,44.554Z" fill="#42FBB7"/>
+                          <path id="Path_8" data-name="Path 8" d="M26.53,4A22.53,22.53,0,1,0,49.06,26.53,22.524,22.524,0,0,0,26.53,4ZM8.506,26.53A18.005,18.005,0,0,1,37.57,12.3L12.3,37.57A17.956,17.956,0,0,1,8.506,26.53ZM26.53,44.554a17.956,17.956,0,0,1-11.04-3.8L40.758,15.49A18.005,18.005,0,0,1,26.53,44.554Z" fill="#0ef884"/>
                         </g>
                       </svg>
 
@@ -186,9 +185,9 @@
 
                       <svg class=" mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="53.164" height="51.239" viewBox="0 0 53.164 51.239">
                         <g id="handout" transform="translate(-2 -3)">
-                          <path id="Path_9" data-name="Path 9" d="M23.394,3a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,23.394,3Zm2.8,9.327H20.6a.933.933,0,1,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-1.741)" fill="#42FBB7"/>
-                          <path id="Path_10" data-name="Path 10" d="M47.394,15a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,47.394,15Zm2.8,9.327H44.6a.933.933,0,0,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-5.288 -1.62)" fill="#42FBB7"/>
-                          <path id="Path_11" data-name="Path 11" d="M51.553,44.049l-21.17,1.938a9.275,9.275,0,0,1-5.633-1.3l-5.835-3.51H32.53a3.391,3.391,0,0,0,3.3-3.475,3.432,3.432,0,0,0-2.693-3.416L20.915,31.872A45.958,45.958,0,0,0,12.007,31H2V49.415l19.875,8.722a11.047,11.047,0,0,0,6.873.261L55.164,47.534h0A3.4,3.4,0,0,0,51.553,44.049Z" transform="translate(0 -4.581)" fill="#42FBB7"/>
+                          <path id="Path_9" data-name="Path 9" d="M23.394,3a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,23.394,3Zm2.8,9.327H20.6a.933.933,0,1,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-1.741)" fill="#0ef884"/>
+                          <path id="Path_10" data-name="Path 10" d="M47.394,15a8.394,8.394,0,1,0,8.394,8.394A8.4,8.4,0,0,0,47.394,15Zm2.8,9.327H44.6a.933.933,0,0,1,0-1.865h5.6a.933.933,0,0,1,0,1.865Z" transform="translate(-5.288 -1.62)" fill="#0ef884"/>
+                          <path id="Path_11" data-name="Path 11" d="M51.553,44.049l-21.17,1.938a9.275,9.275,0,0,1-5.633-1.3l-5.835-3.51H32.53a3.391,3.391,0,0,0,3.3-3.475,3.432,3.432,0,0,0-2.693-3.416L20.915,31.872A45.958,45.958,0,0,0,12.007,31H2V49.415l19.875,8.722a11.047,11.047,0,0,0,6.873.261L55.164,47.534h0A3.4,3.4,0,0,0,51.553,44.049Z" transform="translate(0 -4.581)" fill="#0ef884"/>
                         </g>
                       </svg>
 
@@ -211,7 +210,7 @@
 
                       <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="36.06" height="56.666" viewBox="0 0 36.06 56.666">
                         <g id="ic_phone_android_48px" transform="translate(-10 -2)">
-                          <path id="Path_12" data-name="Path 12" d="M38.333,2H17.727A7.733,7.733,0,0,0,10,9.727V50.939a7.733,7.733,0,0,0,7.727,7.727H38.333a7.733,7.733,0,0,0,7.727-7.727V9.727A7.733,7.733,0,0,0,38.333,2ZM33.181,53.514h-10.3V50.939h10.3Zm8.371-7.727H14.507V9.727H41.552Z" fill="#42FBB7"/>
+                          <path id="Path_12" data-name="Path 12" d="M38.333,2H17.727A7.733,7.733,0,0,0,10,9.727V50.939a7.733,7.733,0,0,0,7.727,7.727H38.333a7.733,7.733,0,0,0,7.727-7.727V9.727A7.733,7.733,0,0,0,38.333,2ZM33.181,53.514h-10.3V50.939h10.3Zm8.371-7.727H14.507V9.727H41.552Z" fill="#0ef884"/>
                         </g>
                       </svg>
 
@@ -234,8 +233,8 @@
 
                       <svg class="mx-auto transform group-hover:scale-105 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="50" height="62" viewBox="0 0 50 62">
                         <g id="single-folded-content" transform="translate(-7 -1)">
-                          <path id="Path_13" data-name="Path 13" d="M42,2.586V16H55.414Z" fill="#42FBB7"/>
-                          <path id="Path_14" data-name="Path 14" d="M40,17V1H9A2,2,0,0,0,7,3V61a2,2,0,0,0,2,2H55a2,2,0,0,0,2-2V18H41A1,1,0,0,1,40,17ZM20,17h8a1,1,0,0,1,0,2H20a1,1,0,0,1,0-2ZM44,49H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm0-10H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm1-11a1,1,0,0,1-1,1H20a1,1,0,0,1,0-2H44A1,1,0,0,1,45,28Z" fill="#42FBB7"/>
+                          <path id="Path_13" data-name="Path 13" d="M42,2.586V16H55.414Z" fill="#0ef884"/>
+                          <path id="Path_14" data-name="Path 14" d="M40,17V1H9A2,2,0,0,0,7,3V61a2,2,0,0,0,2,2H55a2,2,0,0,0,2-2V18H41A1,1,0,0,1,40,17ZM20,17h8a1,1,0,0,1,0,2H20a1,1,0,0,1,0-2ZM44,49H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm0-10H20a1,1,0,0,1,0-2H44a1,1,0,0,1,0,2Zm1-11a1,1,0,0,1-1,1H20a1,1,0,0,1,0-2H44A1,1,0,0,1,45,28Z" fill="#0ef884"/>
                         </g>
                       </svg>
 
@@ -250,7 +249,7 @@
               </div>
             </div>
             <div class="flex items-center justify-center py-4" >
-              <button @click="$router.push({path: '/order'})" type="button" class="rounded-full text-white font-semibold inline-block mt-4 nuxt-link-exact-active nuxt-link-active transform hover:scale-105 transition ease-in-out duration-100 bg-gradient-to-r from-vuegreen to-lightgreen py-3 px-8 text-xl" >
+              <button @click="$router.push({path: '/order'})" type="button" class="rounded-full text-white font-semibold inline-block mt-4 nuxt-link-exact-active nuxt-link-active transform hover:scale-105 transition ease-in-out duration-100 bg-secondary py-3 px-8 text-xl" >
                 Order Now
               </button>
             </div>
@@ -274,7 +273,7 @@
                         <div class="ml-form-formContent" >
                           <div class="ml-form-fieldRow ml-last-item" >
                             <div class="flex items-center w-full lg:w-1/2 ml-field-group ml-field-email ml-validate-email ml-validate-required" >
-                              <input type="email" placeholder="Email" class="form-control text-white py-3 px-6 rounded-full bg-secondary text-lg rounded-r-none w-1/2 lg:w-full" >
+                              <input type="email" placeholder="Email" class="form-control bg-secondary text-white py-3 px-6 rounded-full text-lg rounded-r-none w-1/2 lg:w-full">
                               <button class="rounded-full text-black font-semibold inline-block transform hover:scale-105 transition ease-in-out duration-100 my-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg">
                                 Submit
                               </button>
@@ -284,12 +283,12 @@
                         <input type="hidden" name="ml-submit" value="1" >
                         <div class="ml-form-embedSubmit" >
                           <button disabled="disabled" type="button" class="loading" style="display: none" >
-                            <div class="ml-form-embedSubmitLoad" >
-                              <div ></div>
-                              <div ></div>
-                              <div ></div>
-                              <div ></div>
-                            </div>
+                            <span class="ml-form-embedSubmitLoad" >
+                              <span ></span>
+                              <span ></span>
+                              <span ></span>
+                              <span ></span>
+                            </span>
                           </button>
                         </div>
                       </form>
@@ -319,37 +318,37 @@
               <div class="h-full">
                 <ul>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-accordion bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(1)" :class="{'text-secondary bg-transparent': openTab !== 1, 'rounded-l-full text-white bg-secondary': openTab === 1}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 1, 'rounded-l-full bg-accordion': openTab === 1}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Who are Essay Dons?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-accordion bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(2)" :class="{'text-secondary bg-transparent': openTab !== 2, 'rounded-l-full text-white bg-secondary': openTab === 2}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 2, 'rounded-l-full bg-accordion': openTab === 2}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">About free inquiry?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-accordion bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(3)" :class="{'text-secondary bg-transparent': openTab !== 3, 'rounded-l-full text-white bg-secondary': openTab === 3}"  class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 3, 'rounded-l-full bg-accordion': openTab === 3}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Is your service legal?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-accordion bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(4)" :class="{'text-secondary bg-transparent': openTab !== 4, 'rounded-l-full text-white bg-secondary': openTab === 4}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 4, 'rounded-l-full bg-accordion': openTab === 4}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Do you have any discounts?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-accordion bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(5)" :class="{'text-secondary bg-transparent': openTab !== 5, 'rounded-l-full text-white bg-secondary': openTab === 5}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 5, 'rounded-l-full bg-accordion': openTab === 5}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">Which formats do you provide?</div>
                     </a>
                   </li>
                   <li class="mb-3 lg:mb-1">
-                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-accordion bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
+                    <a @click="toggleTabs(6)" :class="{'text-secondary bg-transparent': openTab !== 6, 'rounded-l-full text-white bg-secondary': openTab === 6}" class="px-2 py-4 transition duration-200 ease-in-out relative block font-medium rounded-l-3xl overflow-hidden" href="javascript:void(0);">
                       <div :class="{'bg-transparent': openTab !== 6, 'rounded-l-full bg-accordion': openTab === 6}" class="absolute inset-0 w-6"></div>
                       <div class="ml-8 text-lg">How will I receive the completed paper?</div>
                     </a>
@@ -575,7 +574,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#0ef884"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1 text-white">08.27.2020</span>
@@ -583,7 +582,7 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#0ef884"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
@@ -593,7 +592,7 @@
                     <h1 class="title-font sm:text-2xl text-xl font-semibold text-vuegreen mb-3">Steps Towards Mastering Proposal Essay Writting</h1>
                     <p class="leading-relaxed text-white mb-3">What is a proposal essay?<br>
                       A proposal essay is an essay in which the writer has to identify a problem in a specific area and provide a pro ..</p>
-                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <a href="#" class="gb-nav mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -611,7 +610,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#0ef884"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1 text-white">08.27.2020</span>
@@ -619,15 +618,15 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#0ef884"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1 text-white">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font md:text-base lg:text-base font-semibold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
-                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <h1 class="title-font text-xl font-bold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <a href="#" class="gb-nav mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -643,7 +642,7 @@
                       <span class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                           <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"/>
+                            <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#0ef884"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1 text-white">08.27.2020</span>
@@ -651,15 +650,15 @@
                       <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                           <g id="folder-15" transform="translate(-1 -4)">
-                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"/>
+                            <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#0ef884"/>
                             <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"/>
                           </g>
                         </svg>
                         <span class="ml-2 mt-1 text-white">Guide</span>
                       </span>
                     </div>
-                    <h1 class="title-font md:text-base lg:text-base font-semibold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
-                    <a href="#" class="bg-gradient-to-r from-vuegreen to-lightgreen mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <h1 class="title-font text-xl font-bold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
+                    <a href="#" class="gb-nav mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -738,33 +737,36 @@ export default {
 }
 
 .moneyBack {
-  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/moneyback.jpg);
+  background-image: linear-gradient(
+    60deg
+    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
   background-blend-mode: multiply;
 }
 .revisions {
-  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/freerevisions.jpg);
+  background-image: linear-gradient(
+    60deg
+    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
 .safePayments {
-  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1),url(~assets/images/safe.jpg);
+  background-image:linear-gradient(
+    60deg
+    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
-.bg-img {
-  background-image: linear-gradient(50deg,#42fbb7,#3ff4b1);
-}
 .mobile-b {
-  background-image: linear-gradient(#42fbb7,#3ff4b1),url(~assets/images/samplepapers.jpg);
+  background-image: linear-gradient(60deg,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(~assets/images/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100% 10%;
-  background-blend-mode: multiply;
+  background-blend-mode: hard-light;
 }
 .custom-calc {
-  background: #00000096;
   padding: 20px;
   border-radius: 1rem;
+  background: #000000;
 }
 </style>

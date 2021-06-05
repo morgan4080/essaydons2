@@ -33,7 +33,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #f5f5f5;
 }
 
 /* Handle */
@@ -53,21 +53,31 @@ p {
 }
 
 .conf {
-  --color-bg-secondary: rgb(73,73,73);
+  --color-bg-secondary: #273837;
   --color-bg-light: #f4f7f7;
   --color-bg-inverse: #1e2625;
   --color-text-secondary: #49544e;
-  --color-text-vuegreen: rgb(66, 251, 183);
-  --color-text-vuergreen: rgb(66, 251, 183);
-  --color-text-lightgreen: #3ff4b1;
-  --color-text-lightergreen: #3ff4b1;
+  --color-text-vuegreen: #0ef884;
+  --color-text-vuergreen: #03b19a;
+  --color-text-lightgreen: #0ef984;
+  --color-text-lightergreen: #0ef984;
   --borderRadius: 20px;
   --textColor: #898a95;
   --inputBorderColor: #bdbdbd;
 }
 
 .bg-gradient-to-r, .group:hover .group-hover\:bg-gradient-to-r {
-  background-image: linear-gradient( 90deg, var(--gradient-from-color), var(--gradient-to-color, hsla(0,0%,100%,0)));
+  background-image: linear-gradient(
+      60deg
+    ,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(/_nuxt/assets/images/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 10%;
+  background-blend-mode: hard-light;
+}
+
+.gb-nav {
+  background: #0ef884;
 }
 
 .to-lightgreen {
@@ -131,7 +141,7 @@ p {
 }
 
 .button-bg {
-  @apply bg-teal-300
+  background: #0ef884;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -156,7 +166,7 @@ button:focus {
 
 @media (max-width: 767px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 25vw;
     z-index: 10;
   }
@@ -164,7 +174,7 @@ button:focus {
 
 @media (max-width: 600px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 20vw;
     z-index: 10;
   }
@@ -172,7 +182,7 @@ button:focus {
 
 @media (max-width: 500px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 16vw;
     z-index: 10;
   }
@@ -186,7 +196,7 @@ button:focus {
 
 @media (max-width: 449px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 12vw;
     z-index: 10;
   }
@@ -194,7 +204,7 @@ button:focus {
 
 @media (max-width: 400px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 7vw;
     z-index: 10;
   }
@@ -202,7 +212,7 @@ button:focus {
 
 @media (max-width: 359px) {
   .custom-calc {
-    top: 32rem;
+    top: 27rem;
     left: 6vw;
     z-index: 10;
     max-width: 18rem;

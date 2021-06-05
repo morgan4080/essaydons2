@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="header-main-shape"></div>
-          <div class="absolute text-center flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+          <div class="absolute font-mono text-center flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
             <h2 class="text-2xl font-semibold leading-none pb-1 text-white" data-v-409e2651="">
               Place your order
             </h2>
@@ -63,7 +63,7 @@
                     <span  class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                         <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                          <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"></path>
+                          <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#0ef884"></path>
                         </g>
                       </svg>
                       <span class="ml-2 mt-1">08.27.2020</span>
@@ -71,7 +71,7 @@
                     <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                         <g id="folder-15" transform="translate(-1 -4)">
-                          <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"></path>
+                          <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#0ef884"></path>
                           <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"></path>
                         </g>
                       </svg>
@@ -96,7 +96,7 @@
                     <span  class="text-gray-600 mr-auto inline-flex items-center leading-none text-sm pr-3 py-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                         <g id="ic_access_time_48px" transform="translate(-4 -4)">
-                          <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#42FBB7"></path>
+                          <path id="Path_57" data-name="Path 57" d="M13,4a9,9,0,1,0,9,9A8.994,8.994,0,0,0,13,4Zm0,16.2A7.2,7.2,0,1,1,20.2,13,7.2,7.2,0,0,1,13,20.2Zm.45-11.7H12.1v5.4l4.72,2.835.68-1.107-4.05-2.4Z" fill="#0ef884"></path>
                         </g>
                       </svg>
                       <span class="ml-2 mt-1">08.27.2020</span>
@@ -104,7 +104,7 @@
                     <span class="text-gray-600 ml-auto inline-flex items-center leading-none text-sm pr-3 py-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="18" viewBox="0 0 20.7 18">
                         <g id="folder-15" transform="translate(-1 -4)">
-                          <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#42FBB7"></path>
+                          <path id="Path_58" data-name="Path 58" d="M8.2,5.8,6.4,4H1.9a.9.9,0,0,0-.9.9V20.2A1.8,1.8,0,0,0,2.8,22H19.9a1.8,1.8,0,0,0,1.8-1.8V7.6a1.8,1.8,0,0,0-1.8-1.8Z" fill="#0ef884"></path>
                           <path id="Path_59" data-name="Path 59" d="M21.7,8.5H1V4.9A.9.9,0,0,1,1.9,4H6.4L8.2,5.8H19.9a1.8,1.8,0,0,1,1.8,1.8Z" fill="#0dd48b"></path>
                         </g>
                       </svg>
@@ -186,12 +186,12 @@ export default {
 
 <style scoped>
 .mobile-b {
-  background-image: linear-gradient(rgba(101,101,101,.5),rgba(101,101,101,.5)),url(~assets/images/aboutbanner.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, .87),rgba(33, 33, 33, .50)),url(~assets/images/aboutbanner.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 .custom-calc {
-  background: rgb(98,98,98);
+  background: #000000;
   padding: 20px;
   border: 1px solid rgb(66, 251, 183);
   border-radius: 1rem;
