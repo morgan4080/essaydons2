@@ -8,9 +8,9 @@ const { join } = require('path');
 
 const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8');
 
-const Stripe = require("stripe");
-
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2021-06-01'
+});
 
 const webhook_secret = process.env.WEBHOOK_SECRET;
 
