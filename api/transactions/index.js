@@ -497,7 +497,8 @@ padding: 0 15px 0 15px !important;
       const paymentIntent = await stripe.paymentIntents.create({
         currency: "usd",
         amount: req.body.order.amount * 100,
-        description: "essaydons.co - OrderID: " + response.id,
+        payment_method_types: ['card'],
+        description: "essaydons.co - Order ID: " + response.id,
         customer: customer.id,
         metadata: {'order_id': response.id}
       });
