@@ -538,7 +538,7 @@ padding: 0 15px 0 15px !important;
 
     switch (stripeEvent.type) {
       case "payment_intent.created":
-        res.json({
+        res.status(200).json({
           message: "Payment intent created!"
         });
         break;
@@ -552,7 +552,7 @@ padding: 0 15px 0 15px !important;
         break;
       case "charge.dispute.created":
         const charge = stripeEvent.data.object;
-        console.log("Someone disputed a payment!");
+        console.log("Someone disputed a payment!", charge);
         res.status(400).json({
           charge,
           message: "Someone disputed a payment!"
