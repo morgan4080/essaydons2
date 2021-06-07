@@ -138,13 +138,15 @@ module.exports = async (req, res) => {
 
     let customer = null;
 
+    // parse json from metadata
+
     if (user !== undefined) {
       if (user.metadata !== null && typeof user.metadata === "string") {
         user.metadata = JSON.parse(user.metadata);
       }
-    } else {
-      console.log(user)
     }
+
+    // creates stripe customer adding stripe_ck_id to user.metadata
 
     if (user.metadata === null || !user.metadata.hasOwnProperty("stripe_ck_id")) {
       try {
@@ -160,9 +162,11 @@ module.exports = async (req, res) => {
       }
 
       if (!customer) {
-        res.status(401).json({
-          message: "Stripe Auth Failed"
+        res.status(405).json({
+          message: "Stripe Customer Error",
+          error: null
         });
+
         return
       }
 
@@ -180,7 +184,10 @@ module.exports = async (req, res) => {
         });
       } catch (e) {
         console.log("user update failure", e);
-        res.status(400);
+        res.status(405).json({
+          message: "user update failure",
+          error: e
+        });
       }
     } else {
       customer = {
@@ -200,8 +207,11 @@ module.exports = async (req, res) => {
         }
       });
     } catch (e) {
-      console.log(e);
-      res.status(400);
+      console.log("create order error", e);
+      res.status(405).json({
+        message: "create order error",
+        error: e
+      });
     }
 
     try {
@@ -485,9 +495,9 @@ padding: 0 15px 0 15px !important;
       };
 
       await sendMail(origin,destination,message,attachments)
+
     } catch (e) {
-      console.log(e);
-      res.status(400);
+      console.log("Send Mail Error", e)
     }
 
     try {
@@ -505,12 +515,15 @@ padding: 0 15px 0 15px !important;
       // Send the client_secret to the client
       // The client secret has a limited set of permissions that
       // let you finalize the payment and update some details from the client
-      res.json({
+      res.status(200).json({
         clientSecret: paymentIntent.client_secret
       });
     } catch (e) {
-      console.log(e);
-      res.status(400);
+      console.log("stripe payment intent", e)
+      res.status(405).json({
+        message: "stripe payment intent failed",
+        error: e
+      });
     }
   } else if (req.query.payment_succeeded && req.method === "POST") {
     // payment_succeeded

@@ -211,7 +211,7 @@
               </form>
             </div>
             <div :class="{'hidden': openTab !== 2 , 'block': openTab === 2}" class="flex flex-col text-left w-full pb-8">
-              <div class="px-5 py-6 w-full sm:overflow-hidden mx-auto" >
+              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
                     <label for="paperType" class="block text-gray-700 text-base font-bold mb-3">
@@ -292,7 +292,7 @@
               </div>
             </div>
             <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full pb-8">
-              <div class="px-5 py-6 w-full sm:overflow-hidden mx-auto" >
+              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto" >
                 <div class="md:grid md:grid-cols-2 md:gap-3">
                   <div class="flex flex-col">
                     <div class="md:grid md:grid-cols-2 sm:text-base sm:leading-5">
@@ -453,7 +453,7 @@
                         <br />
                         <input id="email" type="email" v-model="stripeEmail" class="mt-2 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="name@host.tld" />
                         <br />
-                        <div class="">
+                        <div class="hidden">
                           <label for="discount" class="block text-gray-700 text-base font-bold mb-3">
                             Discount code
                           </label>
@@ -526,7 +526,7 @@
                         leave-to-class="transform -translate-y-6"
                       >
                       <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-2 mt-2 py-6 bg-gray-100">
-                        <div class="">
+                        <div class="hidden">
                           <label for="discount0" class="block text-gray-700 text-base font-bold mb-3">
                             Discount code
                           </label>
@@ -569,6 +569,14 @@
                   </div>
                   <ul class="font-medium text-base text-right">
                     <li>{{ levelName }}</li>
+                  </ul>
+                </div>
+                <div class="grid innerGrid">
+                  <div class="h-full flex  flex-col">
+                    <span>Discipline</span>
+                  </div>
+                  <ul class="font-medium text-base text-right">
+                    <li>{{ form.subject }}</li>
                   </ul>
                 </div>
                 <div class="grid innerGrid">
@@ -680,7 +688,7 @@ export default {
       this.toggleTabs(1)
     }
     this.form.paper_type = this.subjects[0];
-    this.form.subject = this.subjects0[0];
+    this.form.subject = this.subjects0[1];
     this.form.format = this.formats[0];
     this.form.duration = {
       duration: Object.entries(this.duration)[Object.entries(this.duration).length - 1][0],
@@ -712,9 +720,9 @@ export default {
       openTab0: 1,
       form: {
         uploads: [],
-            level: 1,
+        level: 1,
         topic: null,
-            subject: null,
+        subject: null,
         paper_type: null,
         sources: 0,
         format: null,

@@ -12,7 +12,7 @@
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
               <h1 class="text-4xl md:text-5xl lg:text-6xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
-                Professional Essay & Academic <br> Writers
+                Professional Essay<br> & Academic Writers
               </h1>
               <p class="text-black opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
@@ -306,7 +306,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
           <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Frequently Asked Questions about Custom Writing.
           </h2>
@@ -410,7 +410,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
           <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Do You Need an Essay Writer?
           </h2>
@@ -520,7 +520,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
           <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             What You Get in the End
           </h2>
@@ -555,7 +555,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pb-16">
+        <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
           <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
             Blog
           </h2>
