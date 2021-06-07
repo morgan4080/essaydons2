@@ -131,7 +131,6 @@ module.exports = async (req, res) => {
     user = await authMiddleware(req);
   } catch (e) {
     console.log("token user not found", e);
-    res.status(400);
   }
 
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
