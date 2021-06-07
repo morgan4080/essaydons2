@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             Guarantees
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -62,7 +62,7 @@
           <div class="mt-12">
             <div class="flex flex-col md:flex-row lg:flex-row flex-wrap">
               <div class="w-full lg:w-1/3 lg:pr-3 lg:pl-0 group" >
-                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse moneyBack bg-right-top transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-48 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse moneyBack bg-right-top transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >100% Money Back
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -74,7 +74,7 @@
                 </a>
               </div>
               <div class="w-full lg:w-1/3 lg:px-3 group" >
-                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse revisions transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-48 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse revisions transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >Free Revisions
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -86,7 +86,7 @@
                 </a>
               </div>
               <div class="w-full lg:w-1/3 lg:pl-3 lg:pr-0 group" >
-                <a href="#" class="p-8 h-32 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse safePayments transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
+                <a href="#" class="p-8 h-48 lg:h-64 mb-4 lg:mb-0 rounded-lg flex flex-col-reverse safePayments transform transition ease-in-out duration-100 group-hover:scale-105 cursor-pointer" >
                   <div >
                     <h2 class="text-white text-2xl font-bold" >Safe Payments
                       <span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-3" >
@@ -101,7 +101,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             Why Choose Us
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">We guide you through your toughest academic tasks.</p>
@@ -307,7 +307,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             Frequently Asked Questions about Custom Writing.
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -411,7 +411,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             Do You Need an Essay Writer?
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -521,7 +521,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             What You Get in the End
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -556,7 +556,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-semibold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
             Blog
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">

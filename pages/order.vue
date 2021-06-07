@@ -288,7 +288,7 @@
                     </ul>
                   </div>
                 </div>
-                <button @click="toggleTabs(3)" type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to options</button>
+                <button @click="toggleTabs(3)" type="button" class="mt-8 ml-auto w-48 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to options</button>
               </div>
             </div>
             <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full pb-8">
@@ -417,7 +417,9 @@
 
                   </div>
                 </div>
-                <button @click="toggleTabs(4)" type="button" class="mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to checkout</button>
+                <div class="group ml-auto mt-8">
+                  <button @click="toggleTabs(4)" type="button" class="w-48 bg-black group-hover:bg-teal-300 text-white group-hover:text-black font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline transform group-hover:scale-105 transition ease-in-out duration-100">Checkout&nbsp;<span class="transform inline-block transition ease-in-out duration-150 group-hover:translate-x-2">→</span></button>
+                </div>
               </div>
             </div>
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
