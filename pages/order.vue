@@ -75,6 +75,14 @@
 
               </div>
             </div>
+            <transition
+              enter-active-class="transition ease-in-out duration-500"
+              leave-active-class="transition ease-in-out duration-200"
+              enter-class="transform -translate-x-6"
+              enter-to-class="transform translate-x-0"
+              leave-class="transform translate-x-0"
+              leave-to-class="transform -translate-x-6"
+            >
             <div :class="{'hidden': openTab !== 1 , 'block': openTab === 1}" class="flex flex-col text-left w-full py-8">
               <div :class="{'hidden': openTab0 !== 1 , 'block': openTab0 === 1}" class="w-full max-w-xs mx-auto" >
                 <form @submit.prevent="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
@@ -152,6 +160,15 @@
                 </div>
               </div>
             </div>
+            </transition>
+            <transition
+              enter-active-class="transition ease-in-out duration-500"
+              leave-active-class="transition ease-in-out duration-200"
+              enter-class="transform -translate-x-6"
+              enter-to-class="transform translate-x-0"
+              leave-class="transform translate-x-0"
+              leave-to-class="transform -translate-x-6"
+            >
             <div :class="{'hidden': openTab0 !== 2 , 'block': openTab0 === 2}" class="flex flex-col text-left w-full pb-8" >
               <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgb(14,248,132);">
                 <div class="mb-4">
@@ -210,9 +227,18 @@
                 </div>
               </form>
             </div>
+            </transition>
+            <transition
+              enter-active-class="transition ease-in-out duration-500"
+              leave-active-class="transition ease-in-out duration-200"
+              enter-class="transform -translate-x-6"
+              enter-to-class="transform translate-x-0"
+              leave-class="transform translate-x-0"
+              leave-to-class="transform -translate-x-6"
+            >
             <div :class="{'hidden': openTab !== 2 , 'block': openTab === 2}" class="flex flex-col text-left w-full pb-8">
-              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto" >
-                <div class="md:grid md:grid-cols-2 md:gap-3">
+              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto shadow overflow-hidden sm:rounded-md mt-8" >
+                <div class="md:grid md:grid-cols-2 md:gap-3 lg:gap-6">
                   <div class="flex flex-col">
                     <label for="paperType" class="block text-gray-700 text-base font-bold mb-3">
                       Type of paper
@@ -291,9 +317,18 @@
                 <button @click="toggleTabs(3)" type="button" class="mt-8 ml-auto w-48 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">Proceed to options</button>
               </div>
             </div>
+            </transition>
+            <transition
+              enter-active-class="transition ease-in-out duration-500"
+              leave-active-class="transition ease-in-out duration-200"
+              enter-class="transform -translate-x-6"
+              enter-to-class="transform translate-x-0"
+              leave-class="transform translate-x-0"
+              leave-to-class="transform -translate-x-6"
+            >
             <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full pb-8">
-              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto" >
-                <div class="md:grid md:grid-cols-2 md:gap-3">
+              <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto shadow overflow-hidden sm:rounded-md mt-8" >
+                <div class="md:grid md:grid-cols-2 md:gap-3 lg:gap-6">
                   <div class="flex flex-col">
                     <div class="md:grid md:grid-cols-2 sm:text-base sm:leading-5">
                       <div class="mb-2">
@@ -422,6 +457,15 @@
                 </div>
               </div>
             </div>
+            </transition>
+            <transition
+              enter-active-class="transition ease-in-out duration-500"
+              leave-active-class="transition ease-in-out duration-200"
+              enter-class="transform -translate-x-6"
+              enter-to-class="transform translate-x-0"
+              leave-class="transform translate-x-0"
+              leave-to-class="transform -translate-x-6"
+            >
             <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
               <div class="w-full sm:overflow-hidden mx-auto" >
                 <Notification :message="error" v-if="error"/>
@@ -449,12 +493,9 @@
                         leave-class="transform translate-y-0"
                         leave-to-class="transform -translate-y-6"
                       >
-                      <div v-show="paymentMethod === 'stripe'" class="px-5 rounded-lg border-2 mt-2 py-6 bg-gray-100">
-                        <h3 class="font-bold text-lg mb-4">Please enter your payment details:</h3>
+                      <div v-show="paymentMethod === 'stripe'" class="flex flex-col px-5 rounded-lg border-0 shadow-xl mt-2 py-6 bg-gray-100">
                         <label for="email" class="font-semibold text-base mt-2 mb-2">Email</label>
-                        <br />
                         <input id="email" type="email" v-model="stripeEmail" class="mt-2 mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="name@host.tld" />
-                        <br />
                         <div class="hidden">
                           <label for="discount" class="block text-gray-700 text-base font-bold mb-3">
                             Discount code
@@ -462,7 +503,6 @@
                           <input v-model="form.discount_code" id="discount" class="w-full appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" placeholder="Discount code" type="text">
                         </div>
                         <label for="card" class="font-semibold text-base mt-2">Credit Card</label>
-                        <br />
                         <small class="font-light hidden">
                           Test using these Stripe test credit card numbers with any CVC, postal code, and expiration date in the future:
                           <ul>
@@ -486,21 +526,36 @@
                           @change="complete = $event.complete"
                         />
                         <small class="text-red-600">{{error}}</small>
-                        <button
-                          type="button"
-                          tabindex="0"
-                          role="button"
-                          aria-pressed="false"
-                          class="flex items-center mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100"
-                          @click="pay"
-                          :disabled="!complete || !stripeEmail || loading"
-                        >
-                          <svg v-if="loading" class="animate-spin -ml-3 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Pay with credit card
-                        </button>
+                        <div class="flex justify-between">
+                          <div class="flex flex-row items-end">
+                            <svg class="opacity-75" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5 9V7C5 4.23858 7.23858 2 10 2C12.7614 2 15 4.23858 15 7V9C16.1046 9 17 9.89543 17 11V16C17 17.1046 16.1046 18 15 18H5C3.89543 18 3 17.1046 3 16V11C3 9.89543 3.89543 9 5 9ZM13 7V9H7V7C7 5.34315 8.34315 4 10 4C11.6569 4 13 5.34315 13 7Z" fill="#111827"/>
+                            </svg>
+
+                            <div class="text-xs opacity-75">
+                              SSL Encrypted
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            tabindex="0"
+                            role="button"
+                            aria-pressed="false"
+                            class="flex items-center ml-auto mt-8 bg-black hover:bg-teal-300 text-white hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100"
+                            @click="pay"
+                            :disabled="!complete || !stripeEmail || loading"
+                          >
+                            <svg v-if="loading" class="animate-spin -ml-3 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 20 20" class="mx-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 4C2.89543 4 2 4.89543 2 6V7H18V6C18 4.89543 17.1046 4 16 4H4Z" fill="#FFFFFF"/>
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M18 9H2V14C2 15.1046 2.89543 16 4 16H16C17.1046 16 18 15.1046 18 14V9ZM4 13C4 12.4477 4.44772 12 5 12H6C6.55228 12 7 12.4477 7 13C7 13.5523 6.55228 14 6 14H5C4.44772 14 4 13.5523 4 13ZM9 12C8.44772 12 8 12.4477 8 13C8 13.5523 8.44772 14 9 14H10C10.5523 14 11 13.5523 11 13C11 12.4477 10.5523 12 10 12H9Z" fill="#FFFFFF"/>
+                            </svg>
+                            Pay with card
+                          </button>
+                        </div>
                       </div>
                       </transition>
                     </div>
@@ -527,7 +582,7 @@
                         leave-class="transform translate-y-0"
                         leave-to-class="transform -translate-y-6"
                       >
-                      <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-2 mt-2 py-6 bg-gray-100">
+                      <div v-show="paymentMethod === 'paypal'" class="px-5 rounded-lg border-0 shadow-xl mt-2 py-6 bg-gray-100">
                         <div class="hidden">
                           <label for="discount0" class="block text-gray-700 text-base font-bold mb-3">
                             Discount code
@@ -553,9 +608,10 @@
                 </div>
               </div>
             </div>
+            </transition>
           </div>
           <div class="md:ml-auto col-span-1 mt-6 mb-32 relative h-full">
-            <div class="flex flex-col no-wrap px-4 pt-5 text-secondary border pb-3 w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10">
+            <div class="flex font-serif flex-col no-wrap px-4 pt-5 text-secondary border pb-3 w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10 gb-nav">
               <div class="grid pb-2 text-base font-medium" style="grid-row-gap: 5px;">
                 <div class="grid innerGrid">
                   <div class="h-full flex  flex-col">
@@ -653,7 +709,7 @@
               </div>
               <div class="border-t px-1 py-2 text-secondary font-medium flex">
                 <span class="mr-auto  font-bold">Total</span>
-                <span class="ml-auto text-2xl font-bold">{{ totalPrice | dollar }}</span>
+                <span class="ml-auto text-3xl font-bold text-white">{{ totalPrice | dollar }}</span>
               </div>
             </div>
           </div>
@@ -1128,7 +1184,7 @@ export default {
               position: "bottom-left",
               duration: 5000
             });
-            setTimeout(() => (this.error = ""), 3000);
+            setTimeout(() => (this.error = ""), 15000);
           } else if (
             result.paymentIntent &&
             result.paymentIntent.status === "succeeded"
@@ -1148,7 +1204,7 @@ export default {
               position: "bottom-left",
               duration: 5000
             });
-            setTimeout(() => (this.error = ""), 3000);
+            setTimeout(() => (this.error = ""), 15000);
           }
         });
       }).catch(e => {
