@@ -94,7 +94,7 @@
                     </div>
                   </form>
                   <div class="flex flex-row justify-center flex-no-wrap w-full space-x-2 relative" style="border-top: 1px solid #f1f1f1;padding-top: 10px;padding-bottom: 10px;">
-                    <div @click="$auth.loginWith('facebook')" class="w-1/2 rounded-lg overflow-hidden focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
+                    <div @click="$auth.loginWith('facebook')" class="w-1/2 rounded-lg overflow-hidden shadow-lg focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
                       <div class="w-full abcRioButton abcRioButtonBlue" style="height: 40px; background-color: rgb(59, 89, 152) !important;">
                         <div class="abcRioButtonContentWrapper flex items-center" style="height: 40px;">
                           <div class="abcRioButtonIcon" style="padding: 16px; background-color: rgb(46 69 117) !important;">
@@ -108,7 +108,7 @@
                         </div>
                       </div>
                     </div>
-                    <div @click="$auth.loginWith('google')" class="w-1/2 rounded-lg overflow-hidden focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
+                    <div @click="$auth.loginWith('google')" class="w-1/2 rounded-lg overflow-hidden shadow-lg focus:outline-none focus:shadow-outline transform hover:scale-105 transition ease-in-out duration-100">
                       <div class="w-full abcRioButton abcRioButtonBlue" style="height: 40px;">
                         <div class="abcRioButtonContentWrapper flex items-center" style="height: 40px;">
                           <div class="abcRioButtonIcon" style="padding: 16px;">
@@ -176,12 +176,10 @@ export default {
   beforeCreate() {
     if (this.$auth.loggedIn) this.$router.push('/profile')
   },
-  mounted() {
-    if (window.location.search) {
-      let search = new URLSearchParams(window.location.search)
-      if (search.has('code')) {
-        this.showLoader = true
-      }
+  created() {
+    console.log(this.$router.currentRoute.query)
+    if (this.$router.currentRoute.query.hasOwnProperty('code')) {
+      this.showLoader = true
     }
   },
   methods: {
