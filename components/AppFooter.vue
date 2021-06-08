@@ -72,12 +72,57 @@
         </div>
       </div>
     </div>
+
+    <transition
+      enter-active-class="transition ease-in-out duration-500"
+      leave-active-class="transition ease-in-out duration-200"
+      enter-class="transform -translate-y-6"
+      enter-to-class="transform translate-y-0"
+      leave-class="transform translate-y-0"
+      leave-to-class="transform -translate-y-6"
+    >
+      <div v-show="showLoader" class="min-h-screen flex flex-col justify-center gb-nav">
+        <div class="btn-spinner mx-auto" style="font-size: 55px;" />
+        <div class="text-2xl text-white my-3 font-black mx-auto">{{ emailVerified ? 'Email Verified' : 'Verifying Email' }}</div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AppFooter"
+  name: "AppFooter",
+  data() {
+    return {
+      showLoader: false,
+      emailVerified: false,
+    }
+  },
+  created() {
+    // check for token param
+    // set the token globally and on request header
+    // make request to backend to update users.email_verified_at
+
+    console.log(this.$router.currentRoute.query)
+
+    async function verifyMe() {
+      if (this.$router.currentRoute.query.hasOwnProperty('token')) {
+        this.showLoader = true
+        this.$auth.strategy.token.set(this.$router.currentRoute.query.token)
+        return await this.$axios.post('api/signup?verify=true', {
+          token: this.$router.currentRoute.query,
+        })
+      }
+    }
+
+    verifyMe().then((data)=> {
+      console.log(data)
+      this.emailVerified = true
+    }).catch((e) => {
+      console.log(e)
+    })
+
+  }
 }
 </script>
 

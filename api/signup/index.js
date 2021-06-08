@@ -10,7 +10,28 @@ const { join } = require('path')
 
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
 
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer")
+
+function authMiddleware(req) {
+  return new Promise((resolve, reject) => {
+    const header = req.headers['authorization']
+
+    if (header === undefined) {
+      reject("header undefined")
+    }
+
+    const bearer = header.split(' ');
+
+    const token = bearer[1];
+
+    jwt.verify(token, publicKey,{ algorithm: 'RS256' }, (err, user) => {
+      if (err) {
+        reject(err)
+      }
+      resolve(user)
+    })
+  })
+}
 
 const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
@@ -49,6 +70,33 @@ async function sendMail(origin,destination,message,auth = {user: "info@essaydons
 }
 
 const handler = async function (req, res) {
+  if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.verify && req.body.token) {
+    if (req.method === 'OPTIONS') {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.status(200)
+    }
+
+    let user;
+
+    try {
+      user = await authMiddleware(req);
+    } catch (e) {
+      console.log("token user not found", e)
+      res.status(405).json({
+        message: "User not found",
+        error: e
+      })
+    }
+
+    // update user verified
+
+    res.status(200).json({
+      message: "email verified",
+      response: user
+    })
+  }
+
   if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
     try {
       const saltRounds = 10

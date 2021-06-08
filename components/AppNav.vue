@@ -474,6 +474,7 @@ export default {
     },
     async logout() {
       await this.$auth.logout();
+      this.$auth.strategy.token.reset();
       this.$store.commit('setAuth', null);
       location.reload()
     },
@@ -497,8 +498,8 @@ export default {
   },
   watch:{
     $route(to, from) {
-      console.log(to, from);
-      this.som = to.path === "/";
+      // whether nav is at home make nav transparent
+      this.som = to.path === "/"
     }
   },
   mounted() {
@@ -508,20 +509,5 @@ export default {
 </script>
 
 <style scoped>
-.carttotal {
-  position: absolute;
-  border-radius: 1000px;
-  background: black;
-  color: white;
-  font-size: 10px;
-  padding: 3px;
-  top: -18px;
-  right: -5px;
-  width: 25px;
-  text-align: center;
-  height: 25px;
-  font-size: 10px;
-  padding: 6px 10px;
-  font-weight: bold;
-}
+
 </style>
