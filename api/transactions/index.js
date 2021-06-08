@@ -19,7 +19,7 @@ const nodemailer = require("nodemailer");
 import { buffer } from 'micro';
 
 const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
-// environment
+// paypal environment
 function environment() {
   if (process.env.NODE_ENV === "production") {
     let clientId = process.env.PAYPAL_CLIENT_ID;
@@ -37,7 +37,7 @@ function environment() {
     );
   }
 }
-// client
+// paypal client
 function client() {
   return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
 }
@@ -130,7 +130,7 @@ module.exports = async (req, res) => {
   try {
     user = await authMiddleware(req);
   } catch (e) {
-    console.log("token user not found", e);
+    console.log("token user not found", e)
   }
 
   if (req.query.payment_intent && (req.body && req.body.order) && req.method === "POST") {
