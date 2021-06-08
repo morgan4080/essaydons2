@@ -72,7 +72,7 @@ const handler = async function (req, res) {
         }
       });
 
-      /*const token = jwt.sign({ ...response }, privateKey, { algorithm: 'RS256' });
+      const token = jwt.sign({ ...response }, privateKey, { algorithm: 'RS256' });
 
       const origin = {
         name: "EssayDons Signups",
@@ -92,10 +92,10 @@ const handler = async function (req, res) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Responsive Email Template</title>
 <style type="text/css">
-/!* ----- Custom Font Import ----- *!/
+/* ----- Custom Font Import ----- */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
 
-/!* ----- Text Styles ----- *!/
+/* ----- Text Styles ----- */
 table{
 font-family: 'Lato', Arial, sans-serif;
 -webkit-font-smoothing: antialiased;
@@ -104,7 +104,7 @@ font-smoothing: antialiased;
 }
 
 @media only screen and (max-width: 700px){
-/!* ----- Base styles ----- *!/
+/* ----- Base styles ----- */
 .full-width-container{
 padding: 0 !important;
 }
@@ -113,12 +113,12 @@ padding: 0 !important;
 width: 100% !important;
 }
 
-/!* ----- Header ----- *!/
+/* ----- Header ----- */
 .header td{
 padding: 30px 15px 30px 15px !important;
 }
 
-/!* ----- Projects list ----- *!/
+/* ----- Projects list ----- */
 .projects-list{
 display: block !important;
 }
@@ -139,7 +139,7 @@ display: block !important;
 margin: 0 auto 25px auto;
 }
 
-/!* ----- Half block ----- *!/
+/* ----- Half block ----- */
 .half-block{
 display: block !important;
 }
@@ -163,7 +163,7 @@ box-sizing: border-box;
 padding: 25px 15px 25px 15px !important;
 }
 
-/!* ----- Hero subheader ----- *!/
+/* ----- Hero subheader ----- */
 .hero-subheader__title{
 padding: 80px 15px 15px 15px !important;
 font-size: 35px !important;
@@ -173,17 +173,17 @@ font-size: 35px !important;
 padding: 0 15px 90px 15px !important;
 }
 
-/!* ----- Title block ----- *!/
+/* ----- Title block ----- */
 .title-block{
 padding: 0 15px 0 15px;
 }
 
-/!* ----- Paragraph block ----- *!/
+/* ----- Paragraph block ----- */
 .paragraph-block__content{
 padding: 25px 15px 18px 15px !important;
 }
 
-/!* ----- Info bullets ----- *!/
+/* ----- Info bullets ----- */
 .info-bullets{
 display: block !important;
 }
@@ -213,7 +213,7 @@ text-align: center;
 padding: 25px !important;
 }
 
-/!* ----- CTA block ----- *!/
+/* ----- CTA block ----- */
 .cta-block__title{
 padding: 35px 15px 0 15px !important;
 }
@@ -294,11 +294,12 @@ padding: 0 15px 0 15px !important;
 </body></html>`,
       };
 
-      await sendMail(origin,destination,message)*/
+      await sendMail(origin,destination,message)
 
       res.status(200).json({
         ...response
       })
+
     } catch (e) {
       res.status(401).json({ error: e })
     }
