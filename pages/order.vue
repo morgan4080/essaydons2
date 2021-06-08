@@ -83,7 +83,7 @@
               leave-class="transform translate-x-0"
               leave-to-class="transform -translate-x-6"
             >
-            <div :class="{'hidden': openTab !== 1 , 'block': openTab === 1}" class="flex flex-col text-left w-full py-8">
+            <div v-show="openTab === 1" class="flex flex-col text-left w-full py-8">
               <div :class="{'hidden': openTab0 !== 1 , 'block': openTab0 === 1}" class="w-full max-w-xs mx-auto" >
                 <form @submit.prevent="userLogin" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
                   <div class="mb-4">
@@ -169,7 +169,7 @@
               leave-class="transform translate-x-0"
               leave-to-class="transform -translate-x-6"
             >
-            <div :class="{'hidden': openTab0 !== 2 , 'block': openTab0 === 2}" class="flex flex-col text-left w-full pb-8" >
+            <div v-show="openTab0 === 2" class="flex flex-col text-left w-full pb-8" >
               <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgb(14,248,132);">
                 <div class="mb-4">
                   <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username0">
@@ -236,7 +236,7 @@
               leave-class="transform translate-x-0"
               leave-to-class="transform -translate-x-6"
             >
-            <div :class="{'hidden': openTab !== 2 , 'block': openTab === 2}" class="flex flex-col text-left w-full pb-8">
+            <div v-show="openTab === 2" class="flex flex-col text-left w-full pb-8">
               <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto shadow overflow-hidden sm:rounded-md mt-8" >
                 <div class="md:grid md:grid-cols-2 md:gap-3 lg:gap-6">
                   <div class="flex flex-col">
@@ -326,7 +326,7 @@
               leave-class="transform translate-x-0"
               leave-to-class="transform -translate-x-6"
             >
-            <div :class="{'hidden': openTab !== 3 , 'block': openTab === 3}" class="flex flex-col text-left w-full pb-8">
+            <div v-show="openTab === 3" class="flex flex-col text-left w-full pb-8">
               <div class="flex flex-col px-5 py-6 w-full sm:overflow-hidden mx-auto shadow overflow-hidden sm:rounded-md mt-8" >
                 <div class="md:grid md:grid-cols-2 md:gap-3 lg:gap-6">
                   <div class="flex flex-col">
@@ -466,7 +466,7 @@
               leave-class="transform translate-x-0"
               leave-to-class="transform -translate-x-6"
             >
-            <div :class="{'hidden': openTab !== 4 , 'block': openTab === 4}" class="flex flex-col text-left w-full py-8">
+            <div v-show="openTab === 4" class="flex flex-col text-left w-full py-8">
               <div class="w-full sm:overflow-hidden mx-auto" >
                 <Notification :message="error" v-if="error"/>
                 <div v-if="cartUIStatus === 'idle'">
@@ -474,10 +474,10 @@
                     <div class="w-full md:w-11/12 mb-4">
                       <div class="flex items-center border-2 p-6 rounded-lg" :class="{'bg-gray-100' : paymentMethod === 'stripe', 'border-gray-300' : paymentMethod !== 'stripe'}">
                         <input id="stripe-pay" v-model="paymentMethod" class="w-5 h-5" name="payment_method" value="stripe" type="radio" />
-                        <svg class="ml-2" width="114" height="48" viewBox="0 0 114 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M7.96676 18.8091C7.96676 17.5595 8.97439 17.0787 10.6436 17.0787C13.0366 17.0787 16.0595 17.8159 18.4527 19.1297V11.5994C15.8392 10.5421 13.2571 10.1255 10.6436 10.1255C4.25106 10.1255 0 13.5221 0 19.1939C0 28.0374 11.9659 26.6277 11.9659 30.4409C11.9659 31.9146 10.7065 32.3954 8.94295 32.3954C6.32944 32.3954 2.99146 31.3058 0.346285 29.8319V37.4581C3.27487 38.7399 6.23489 39.2844 8.94295 39.2844C15.4927 39.2844 19.9957 35.9842 19.9957 30.2485C19.9643 20.6998 7.96676 22.3979 7.96676 18.8091V18.8091ZM29.2535 3.71702L21.5702 5.38312L21.5387 31.0495C21.5387 35.792 25.0341 39.2844 29.6946 39.2844C32.2766 39.2844 34.1659 38.8039 35.205 38.2271V31.7224C34.1976 32.139 29.2221 33.6129 29.2221 28.8706V17.4953H35.205V10.6703H29.2221L29.2535 3.71702V3.71702ZM44.9984 13.0413L44.4945 10.6703H37.6928V38.7077H45.5652V19.7064C47.4228 17.2392 50.5719 17.6877 51.5481 18.0401V10.6703C50.5405 10.2857 46.8562 9.58071 44.9984 13.0413V13.0413ZM53.4689 10.6703H61.3727V38.7077H53.4689V10.6703V10.6703ZM53.4689 8.23499L61.3727 6.50468V0L53.4689 1.69832V8.23476V8.23499ZM77.8102 10.1255C74.7242 10.1255 72.7404 11.5994 71.6384 12.625L71.2288 10.6383H64.3013V48L72.1735 46.3019L72.2052 37.2337C73.3388 38.0669 75.0076 39.2525 77.7787 39.2525C83.4154 39.2525 88.5481 34.6383 88.5481 24.4808C88.5167 15.1882 83.3209 10.1255 77.8102 10.1255V10.1255ZM75.9209 32.203C74.0631 32.203 72.9607 31.5302 72.2052 30.6971L72.1735 18.8091C72.9923 17.8799 74.1259 17.2392 75.9209 17.2392C78.7864 17.2392 80.7702 20.5074 80.7702 24.705C80.7702 28.9988 78.8178 32.203 75.9209 32.203V32.203ZM113.362 24.8012C113.362 16.5982 109.457 10.1255 101.994 10.1255C94.4994 10.1255 89.9649 16.5984 89.9649 24.7372C89.9649 34.3819 95.3184 39.2525 103.002 39.2525C106.749 39.2525 109.583 38.3873 111.724 37.1698V30.7611C109.583 31.8506 107.127 32.5236 104.009 32.5236C100.955 32.5236 98.2467 31.434 97.9005 27.653H113.299C113.299 27.2362 113.362 25.5701 113.362 24.8012ZM97.8059 21.7571C97.8059 18.1363 99.9788 16.6302 101.963 16.6302C103.883 16.6302 105.93 18.1363 105.93 21.7571H97.8059Z" fill="#6772E5"/>
-                        </svg>
                         <label for="stripe-pay" class="flex justify-between items-center ml-2 space-x-2 w-full">
+                          <svg class="ml-2" width="114" height="48" viewBox="0 0 114 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.96676 18.8091C7.96676 17.5595 8.97439 17.0787 10.6436 17.0787C13.0366 17.0787 16.0595 17.8159 18.4527 19.1297V11.5994C15.8392 10.5421 13.2571 10.1255 10.6436 10.1255C4.25106 10.1255 0 13.5221 0 19.1939C0 28.0374 11.9659 26.6277 11.9659 30.4409C11.9659 31.9146 10.7065 32.3954 8.94295 32.3954C6.32944 32.3954 2.99146 31.3058 0.346285 29.8319V37.4581C3.27487 38.7399 6.23489 39.2844 8.94295 39.2844C15.4927 39.2844 19.9957 35.9842 19.9957 30.2485C19.9643 20.6998 7.96676 22.3979 7.96676 18.8091V18.8091ZM29.2535 3.71702L21.5702 5.38312L21.5387 31.0495C21.5387 35.792 25.0341 39.2844 29.6946 39.2844C32.2766 39.2844 34.1659 38.8039 35.205 38.2271V31.7224C34.1976 32.139 29.2221 33.6129 29.2221 28.8706V17.4953H35.205V10.6703H29.2221L29.2535 3.71702V3.71702ZM44.9984 13.0413L44.4945 10.6703H37.6928V38.7077H45.5652V19.7064C47.4228 17.2392 50.5719 17.6877 51.5481 18.0401V10.6703C50.5405 10.2857 46.8562 9.58071 44.9984 13.0413V13.0413ZM53.4689 10.6703H61.3727V38.7077H53.4689V10.6703V10.6703ZM53.4689 8.23499L61.3727 6.50468V0L53.4689 1.69832V8.23476V8.23499ZM77.8102 10.1255C74.7242 10.1255 72.7404 11.5994 71.6384 12.625L71.2288 10.6383H64.3013V48L72.1735 46.3019L72.2052 37.2337C73.3388 38.0669 75.0076 39.2525 77.7787 39.2525C83.4154 39.2525 88.5481 34.6383 88.5481 24.4808C88.5167 15.1882 83.3209 10.1255 77.8102 10.1255V10.1255ZM75.9209 32.203C74.0631 32.203 72.9607 31.5302 72.2052 30.6971L72.1735 18.8091C72.9923 17.8799 74.1259 17.2392 75.9209 17.2392C78.7864 17.2392 80.7702 20.5074 80.7702 24.705C80.7702 28.9988 78.8178 32.203 75.9209 32.203V32.203ZM113.362 24.8012C113.362 16.5982 109.457 10.1255 101.994 10.1255C94.4994 10.1255 89.9649 16.5984 89.9649 24.7372C89.9649 34.3819 95.3184 39.2525 103.002 39.2525C106.749 39.2525 109.583 38.3873 111.724 37.1698V30.7611C109.583 31.8506 107.127 32.5236 104.009 32.5236C100.955 32.5236 98.2467 31.434 97.9005 27.653H113.299C113.299 27.2362 113.362 25.5701 113.362 24.8012ZM97.8059 21.7571C97.8059 18.1363 99.9788 16.6302 101.963 16.6302C103.883 16.6302 105.93 18.1363 105.93 21.7571H97.8059Z" fill="#6772E5"/>
+                          </svg>
                           <span class="text-2xl text-gray-900 font-bold title-font"></span>
                           <span class="leading-relaxed font-medium text-base">
                             <span class="opacity-75 text-sm text-gray-500">{{ form.paper_type }} / {{ form.pages }} Pages / {{ levelName }} / Deadline {{ form.duration.duration }}</span>
@@ -562,11 +562,11 @@
                     <div class="w-full md:w-11/12">
                       <div class="flex items-center border-2 p-6 rounded-lg" :class="{'bg-gray-100' : paymentMethod === 'paypal', 'border-gray-300' : paymentMethod !== 'paypal'}">
                         <input id="paypal-pay" v-model="paymentMethod" class="w-5 h-5" name="payment_method" value="paypal" type="radio" />
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"  class="ml-2">
-                          <path fill="#1565C0" d="M18.7,13.767l0.005,0.002C18.809,13.326,19.187,13,19.66,13h13.472c0.017,0,0.034-0.007,0.051-0.006C32.896,8.215,28.887,6,25.35,6H11.878c-0.474,0-0.852,0.335-0.955,0.777l-0.005-0.002L5.029,33.813l0.013,0.001c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,0.991,1,0.991h8.071L18.7,13.767z" ></path>
-                          <path fill="#039BE5" d="M33.183,12.994c0.053,0.876-0.005,1.829-0.229,2.882c-1.281,5.995-5.912,9.115-11.635,9.115c0,0-3.47,0-4.313,0c-0.521,0-0.767,0.306-0.88,0.54l-1.74,8.049l-0.305,1.429h-0.006l-1.263,5.796l0.013,0.001c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,1,1,1h7.333l0.013-0.01c0.472-0.007,0.847-0.344,0.945-0.788l0.018-0.015l1.812-8.416c0,0,0.126-0.803,0.97-0.803s4.178,0,4.178,0c5.723,0,10.401-3.106,11.683-9.102C42.18,16.106,37.358,13.019,33.183,12.994z" ></path><path fill="#283593" d="M19.66,13c-0.474,0-0.852,0.326-0.955,0.769L18.7,13.767l-2.575,11.765c0.113-0.234,0.359-0.54,0.88-0.54c0.844,0,4.235,0,4.235,0c5.723,0,10.432-3.12,11.713-9.115c0.225-1.053,0.282-2.006,0.229-2.882C33.166,12.993,33.148,13,33.132,13H19.66z" ></path>
-                        </svg>
                         <label for="paypal-pay" class="flex justify-between items-center ml-2 space-x-2 w-full" >
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"  class="ml-2">
+                            <path fill="#1565C0" d="M18.7,13.767l0.005,0.002C18.809,13.326,19.187,13,19.66,13h13.472c0.017,0,0.034-0.007,0.051-0.006C32.896,8.215,28.887,6,25.35,6H11.878c-0.474,0-0.852,0.335-0.955,0.777l-0.005-0.002L5.029,33.813l0.013,0.001c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,0.991,1,0.991h8.071L18.7,13.767z" ></path>
+                            <path fill="#039BE5" d="M33.183,12.994c0.053,0.876-0.005,1.829-0.229,2.882c-1.281,5.995-5.912,9.115-11.635,9.115c0,0-3.47,0-4.313,0c-0.521,0-0.767,0.306-0.88,0.54l-1.74,8.049l-0.305,1.429h-0.006l-1.263,5.796l0.013,0.001c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,1,1,1h7.333l0.013-0.01c0.472-0.007,0.847-0.344,0.945-0.788l0.018-0.015l1.812-8.416c0,0,0.126-0.803,0.97-0.803s4.178,0,4.178,0c5.723,0,10.401-3.106,11.683-9.102C42.18,16.106,37.358,13.019,33.183,12.994z" ></path><path fill="#283593" d="M19.66,13c-0.474,0-0.852,0.326-0.955,0.769L18.7,13.767l-2.575,11.765c0.113-0.234,0.359-0.54,0.88-0.54c0.844,0,4.235,0,4.235,0c5.723,0,10.432-3.12,11.713-9.115c0.225-1.053,0.282-2.006,0.229-2.882C33.166,12.993,33.148,13,33.132,13H19.66z" ></path>
+                          </svg>
                           <span class="text-2xl text-gray-900 font-bold title-font"></span>
                           <span class="leading-relaxed font-medium text-base">
                             <span class="opacity-75 text-sm text-gray-500">{{ form.paper_type }} / {{ form.pages }} Pages / {{ levelName }} / Deadline {{ form.duration.duration }}</span>
@@ -610,11 +610,12 @@
             </div>
             </transition>
           </div>
+
           <div class="md:ml-auto col-span-1 mt-6 mb-32 relative h-full">
             <div class="flex font-serif flex-col no-wrap px-4 pt-5 text-secondary border pb-3 w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10 gb-nav">
               <div class="grid pb-2 text-base font-medium" style="grid-row-gap: 5px;">
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Paper</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -622,7 +623,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Level</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -630,7 +631,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Discipline</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -638,7 +639,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Deadline</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -646,7 +647,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Pages</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -654,7 +655,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Paper format</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -662,7 +663,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Sources</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -670,7 +671,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Slides</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -678,7 +679,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full flex  flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Charts</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -686,7 +687,7 @@
                   </ul>
                 </div>
                 <div class="grid innerGrid">
-                  <div class="h-full  flex flex-col">
+                  <div class="h-full flex  flex-col font-bold">
                     <span>Discount</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -694,7 +695,7 @@
                   </ul>
                 </div>
                 <div class="flex flex-col">
-                  <div class="h-full w-full  flex flex-col">
+                  <div class="h-full w-full font-bold flex flex-col">
                     <span>Extra options:</span>
                   </div>
                   <ul class="font-medium text-base text-right">
@@ -708,7 +709,7 @@
                 </div>
               </div>
               <div class="border-t px-1 py-2 text-secondary font-medium flex">
-                <span class="mr-auto  font-bold">Total</span>
+                <span class="mr-auto text-lg font-bold">TOTAL</span>
                 <span class="ml-auto text-3xl font-bold text-white">{{ totalPrice | dollar }}</span>
               </div>
             </div>
