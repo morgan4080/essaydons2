@@ -12,6 +12,8 @@ const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 
 
 const nodemailer = require("nodemailer")
 
+const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8')
+
 function authMiddleware(req) {
   return new Promise((resolve, reject) => {
     const header = req.headers['authorization']
