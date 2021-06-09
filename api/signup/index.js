@@ -52,7 +52,7 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 
-async function sendMail(origin,destination,message,auth = {user: "info@essaydons.co", pass: "Motsae254"}) {
+async function sendMail(origin,destination,message,auth = { user: "info@essaydons.co", pass: process.env.PRIVATE_MAIL_PASSWORD }) {
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -93,9 +93,39 @@ const handler = async function (req, res) {
 
     // update user verified
 
+    const dateTime = require('node-datetime')
+
+    const dt = dateTime.create()
+
+    const formatted = dt.format('Y-m-d H:M:S')
+
+    const data = {
+      email_verified_at: formatted
+    }
+
+    user = await prisma.users.update({
+      where: { id: user.id },
+      data: {
+        ...data
+      },
+    })
+
+    let token = null
+
+    if (user) {
+      delete user.password
+
+      delete user.provider_id
+
+      token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+    }
+
+    console.log("user" + formatted, user)
+
     res.status(200).json({
       message: "email verified",
-      response: user
+      response: user,
+      token: token
     })
   }
 
@@ -137,7 +167,7 @@ const handler = async function (req, res) {
         subject: "Welcome to Essaydons",
         text: "Hey" + req.body.name,
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Responsive Email Template</title>
@@ -287,7 +317,7 @@ padding: 0 15px 0 15px !important;
 </head>
 
 <body style="padding: 0; margin: 0;" bgcolor="#eeeeee">
-<span style="color:transparent !important; overflow:hidden !important; display:none !important; line-height:0px !important; height:0 !important; opacity:0 !important; visibility:hidden !important; width:0 !important; mso-hide:all;">This is your preheader text for this email (Read more about email preheaders here - https://goo.gl/e60hyK)</span>
+<span style="color:transparent !important; overflow:hidden !important; display:none !important; line-height:0 !important; height:0 !important; opacity:0 !important; visibility:hidden !important; width:0 !important; mso-hide:all;">This is your preheader text for this email (Read more about email preheaders here - https://goo.gl/e60hyK)</span>
 
 <!-- / Full width container -->
 <table class="full-width-container" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#eeeeee" style="width: 100%; height: 100%; padding: 30px 0 30px 0;">
