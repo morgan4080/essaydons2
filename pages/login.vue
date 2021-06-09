@@ -213,6 +213,13 @@ export default {
       console.log("verify response", data)
       // set token
       this.emailVerified = true
+
+      this.$toast.success('Email Verified', {
+        theme: "outline",
+        position: "bottom-left",
+        duration : 5000
+      })
+
     }).catch((e) => {
       console.log(e)
     })

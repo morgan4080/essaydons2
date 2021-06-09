@@ -108,7 +108,7 @@ const handler = async function (req, res) {
       token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
     }
 
-    console.log("user" + formatted, user)
+    console.log("user", user)
 
     res.status(200).json({
       message: "email verified",
