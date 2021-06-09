@@ -40,16 +40,14 @@ export default {
       loading: false
     }
   },
-  mounted() {
-    const urlParams = new URLSearchParams(window.location.search);
-    for (let p of urlParams) {
-      console.log(p);
-    }
-  },
   methods: {
-    forgotPassword() {
+    async forgotPassword() {
       try {
         this.loading = true;
+
+        const response = await this.$axios.get(`/api/signup?email=${this.form.email}`)
+
+        console.log("expecting token response", response)
 
         this.$toast.success('Check mail!', {
           theme: "outline",
@@ -62,7 +60,7 @@ export default {
       } catch (e) {
         this.loading = false;
 
-        this.$toast.error('sm went terribly wrong!', {
+        this.$toast.error('something went terribly wrong!', {
           theme: "outline",
           position: "bottom-left",
           duration : 5000

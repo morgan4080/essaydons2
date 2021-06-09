@@ -72,6 +72,80 @@ async function sendMail(origin,destination,message,auth = { user: "info@essaydon
 }
 
 const handler = async function (req, res) {
+  if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.email) {
+    try {
+      const user = await prisma.users.findUnique({
+        where: {
+          email: req.query.email
+        }
+      })
+
+      if (user) {
+        let token = null
+
+        if (user) {
+          delete user.password
+
+          delete user.provider_id
+
+          token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+        }
+
+        res.status(200).json({
+          message: "Input your new password",
+          token: token
+        })
+
+      }
+
+      res.status(405).json({
+        message: "User not found",
+        error: "user not in our records"
+      })
+
+    } catch (e) {
+      res.status(405).json({
+        message: "User not found",
+        error: e
+      })
+    }
+
+  }
+  if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.reset && req.body.email && req.body.password) {
+    if (req.method === 'OPTIONS') {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.status(200)
+    }
+
+    let user;
+
+    try {
+      user = await authMiddleware(req);
+    } catch (e) {
+      console.log("token user not found", e)
+      res.status(405).json({
+        message: "User not found",
+        error: e
+      })
+    }
+
+    const saltRounds = 10
+    const yourPassword = req.body.password
+    const hashedPassword = await bcrypt.hash(yourPassword, saltRounds)
+
+    await prisma.users.update({
+      where: { id: user.id },
+      data: {
+        password: hashedPassword
+      },
+    })
+
+    res.status(200).json({
+      message: "Password Reset Successful"
+    })
+
+  }
   if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.verify && req.body.token) {
     if (req.method === 'OPTIONS') {
       res.setHeader('Access-Control-Allow-Origin', '*');
@@ -116,7 +190,6 @@ const handler = async function (req, res) {
       token: token
     })
   }
-
   if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0  && req.body.name !== undefined) {
     try {
       const saltRounds = 10
