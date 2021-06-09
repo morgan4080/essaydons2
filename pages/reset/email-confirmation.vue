@@ -40,6 +40,28 @@ export default {
       loading: false
     }
   },
+  created() {
+    if (this.$router.currentRoute.query.hasOwnProperty('token')) {
+      // check for token param
+      // set the token globally and on request header
+      // redirect to password route
+      const verifyMe = async () => {
+        this.$auth.strategy.token.set(this.$router.currentRoute.query.token)
+        await this.$router.push('/reset/password')
+      }
+
+      verifyMe().then(()=> {
+        this.$toast.success('Change Password', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 15000
+        })
+      }).catch((e) => {
+        console.log(e)
+      })
+
+    }
+  },
   methods: {
     async forgotPassword() {
       try {
@@ -49,7 +71,7 @@ export default {
 
         console.log("expecting token response", response)
 
-        this.$toast.success('Check mail!', {
+        this.$toast.success('Check mail to start reset', {
           theme: "outline",
           position: "bottom-left",
           duration : 5000

@@ -371,13 +371,6 @@
                               </div>
                             </div>
                           </div>
-                          <div @click="$router.push('/reset/password')" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
-                            <div class="flex-1 space-y-1">
-                              <div class="transform cursor-pointer font-semibold hover:translate-x-2 hover:text-white leading-6 text-left text-secondary text-lg -mb-1 transition ease-in-out duration-150">
-                                Change Password
-                              </div>
-                            </div>
-                          </div>
                           <div @click="logout" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
                             <div class="flex-1 space-y-1">
                               <div class="transform cursor-pointer font-semibold hover:translate-x-2 hover:text-white leading-6 text-left text-secondary text-lg -mb-1 transition ease-in-out duration-150">
