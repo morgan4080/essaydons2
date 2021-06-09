@@ -303,7 +303,7 @@
                 New Order
               </nuxt-link>
 
-              <div v-show="!$auth.loggedIn" class="relative inline-block text-left">
+              <div v-show="!$auth.loggedIn" class="relative flex justify-center text-left">
                 <button @click="showDropdown" class="uppercase inline-flex items-center mx-2 text-secondary tracking-wide font-semibold py-3 px-4 bg-white text-black rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   <span>My Account</span>
                   <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -318,7 +318,7 @@
                   leave-class="transform opacity-100 translate-y-0"
                   leave-to-class="transform opacity-0 translate-y-1"
                 >
-                  <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 pt-2 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
+                  <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
                       <div class="rounded-lg shadow-xs">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
@@ -360,7 +360,7 @@
                   leave-class="transform opacity-100 translate-y-0"
                   leave-to-class="transform opacity-0 translate-y-1"
                 >
-                  <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 pt-2 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
+                  <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-lg">
                       <div class="rounded-lg shadow-xs">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
