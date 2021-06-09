@@ -74,11 +74,15 @@ async function sendMail(origin,destination,message,auth = { user: "info@essaydon
 const handler = async function (req, res) {
   if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.email) {
     try {
+      console.log("email", req.query.email)
+
       const user = await prisma.users.findUnique({
         where: {
           email: req.query.email
         }
       })
+
+      console.log(user)
 
       if (user) {
         let token = null
@@ -97,11 +101,6 @@ const handler = async function (req, res) {
         })
 
       }
-
-      res.status(405).json({
-        message: "User not found",
-        error: "user not in our records"
-      })
 
     } catch (e) {
       res.status(405).json({
