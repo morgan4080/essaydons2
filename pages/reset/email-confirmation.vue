@@ -67,15 +67,13 @@ export default {
       try {
         this.loading = true;
 
-        const response = await this.$axios.get(`/api/signup?email=${this.form.email}`)
+        const { data } = await this.$axios.get(`/api/signup?email=${this.form.email}`)
 
-        console.log("expecting token response", response)
-
-        this.$toast.success('Check mail to start reset', {
+        this.$toast.success(data.message, {
           theme: "outline",
           position: "bottom-left",
-          duration : 5000
-        });
+          duration : 12000
+        })
 
         this.loading = false;
 

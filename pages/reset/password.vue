@@ -78,13 +78,22 @@ export default {
         return
       }
       try {
-        const response = await this.$axios.post('api/signup?reset=true', {
+        const { data } = await this.$axios.post('api/signup?reset=true', {
           email: this.form.email,
           password_confirmation: this.form.password_confirmation,
           password: this.form.password,
         })
 
-        console.log("reset success", response)
+        console.log("reset success", data)
+
+        this.$toast.success(data.message, {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        })
+
+        await this.$router.push('/profile')
+
       } catch (e) {
         this.error = e;
         console.log("password reset error", e)
