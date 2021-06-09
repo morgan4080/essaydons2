@@ -192,37 +192,42 @@ export default {
     if (this.$auth.loggedIn) this.$router.push('/profile')
   },
   created() {
-    console.log(this.$router.currentRoute.query)
     if (this.$router.currentRoute.query.hasOwnProperty('code')) {
       this.showLoader = true
     }
-    // check for token param
-    // set the token globally and on request header
-    // make request to backend to update users.email_verified_at
-    const verifyMe = async () => {
-      if (this.$router.currentRoute.query.hasOwnProperty('token')) {
-        this.showLoader0 = true
-        this.$auth.strategy.token.set(this.$router.currentRoute.query.token)
-        return await this.$axios.post('api/signup?verify=true', {
-          token: this.$router.currentRoute.query.token,
-        })
+
+    if (this.$router.currentRoute.query.hasOwnProperty('token')) {
+      // check for token param
+      // set the token globally and on request header
+      // make request to backend to update users.email_verified_at
+      const verifyMe = async () => {
+
+          this.showLoader0 = true
+          this.$auth.strategy.token.set(this.$router.currentRoute.query.token)
+          return await this.$axios.post('api/signup?verify=true', {
+            token: this.$router.currentRoute.query.token,
+          })
+
       }
-    }
 
-    verifyMe().then((data)=> {
-      console.log("verify response", data)
-      // set token
-      this.emailVerified = true
+      verifyMe().then((data)=> {
+        console.log("verify response", data)
+        // set token
+        this.emailVerified = true
 
-      this.$toast.success('Email Verified', {
-        theme: "outline",
-        position: "bottom-left",
-        duration : 5000
+        this.$toast.success('Email Verified', {
+          theme: "outline",
+          position: "bottom-left",
+          duration : 5000
+        })
+
+        this.showLoader0 = false
+
+      }).catch((e) => {
+        console.log(e)
       })
 
-    }).catch((e) => {
-      console.log(e)
-    })
+    }
   },
   methods: {
     changePasswordFieldType() {

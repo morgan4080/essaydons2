@@ -818,11 +818,11 @@ export default {
     }
 
     if (this.$auth.user.email_verified_at === null) {
-      this.$toast.error("Verify you account please", {
+      this.$toast.error("Check mail to verify account", {
         theme: "outline",
-        position: "bottom-center",
+        position: "bottom-left",
         duration: 8000
-      });
+      })
     }
 
     console.log(this.orders);
