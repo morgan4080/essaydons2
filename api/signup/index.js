@@ -317,7 +317,9 @@ padding: 0 15px 0 15px !important;
 
         await sendMail(origin,destination,message)
 
-        res.status(200)
+        res.status(200).json({
+          message: "Email reset link sent"
+        })
 
       }
 
