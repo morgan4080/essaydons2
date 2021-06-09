@@ -88,11 +88,9 @@ const handler = async function (req, res) {
         let token = null
 
         if (user) {
-          delete user.password
+          const { password,provider_id, ...user0 } = user
 
-          delete user.provider_id
-
-          token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' })
+          token = jwt.sign({ ...user0 }, privateKey, { algorithm: 'RS256' })
         }
 
         const origin = {
