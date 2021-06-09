@@ -91,16 +91,10 @@ const handler = async function (req, res) {
       })
     }
 
-    // update user verified
-
-    const data = {
-      email_verified_at: new Date()
-    }
-
     user = await prisma.users.update({
       where: { id: user.id },
       data: {
-        ...data
+        email_verified_at: new Date()
       },
     })
 
