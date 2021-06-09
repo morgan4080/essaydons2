@@ -93,14 +93,8 @@ const handler = async function (req, res) {
 
     // update user verified
 
-    const dateTime = require('node-datetime')
-
-    const dt = dateTime.create()
-
-    const formatted = dt.format('Y-m-d H:M:S')
-
     const data = {
-      email_verified_at: formatted
+      email_verified_at: new Date()
     }
 
     user = await prisma.users.update({
