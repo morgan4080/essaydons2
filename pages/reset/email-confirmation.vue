@@ -75,16 +75,17 @@ export default {
           duration : 12000
         })
 
-        this.loading = false;
+        this.loading = false
 
       } catch (e) {
-        this.loading = false;
+        this.loading = false
 
         this.$toast.error('something went terribly wrong!', {
           theme: "outline",
           position: "bottom-left",
           duration : 5000
-        });
+        })
+
       }
     }
   }

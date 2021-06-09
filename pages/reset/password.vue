@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     async submit() {
+      this.sending = true
       if (this.form.password !== this.form.password_confirmation) {
         this.$toast.success('Password Mismatch', {
           theme: "outline",
@@ -92,10 +93,13 @@ export default {
           duration : 5000
         })
 
+        this.sending = false
+
         await this.$router.push('/profile')
 
       } catch (e) {
-        this.error = e;
+        this.error = e
+        this.sending = false
         console.log("password reset error", e)
       }
     }

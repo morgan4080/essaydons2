@@ -342,7 +342,7 @@
                   </div>
                 </transition>
               </div>
-              <div v-show="$auth.loggedIn" class="relative inline-block text-left">
+              <div v-show="$auth.loggedIn" class="relative flex justify-center text-left">
                 <button @mouseenter="showDropdown" v-on:click="$router.push('/profile')" type="button" class="capitalize inline-flex items-center mx-2  font-semibold px-1 pr-3 bg-white text-black rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2 24C43.2 34.6039 34.6039 43.2 24 43.2C13.3962 43.2 4.80002 34.6039 4.80002 24C4.80002 13.3961 13.3962 4.79999 24 4.79999C34.6039 4.79999 43.2 13.3961 43.2 24ZM28.8 16.8C28.8 19.451 26.651 21.6 24 21.6C21.3491 21.6 19.2 19.451 19.2 16.8C19.2 14.149 21.3491 12 24 12C26.651 12 28.8 14.149 28.8 16.8ZM23.9999 26.4C19.1578 26.4 14.9855 29.2679 13.089 33.3977C15.7297 36.4609 19.6384 38.4 24 38.4C28.3615 38.4 32.2701 36.4609 34.9108 33.3979C33.0143 29.268 28.842 26.4 23.9999 26.4Z" fill="#111827"/>
@@ -419,8 +419,11 @@
                 <nuxt-link @click="turnOff" to="/order" class="text-secondary font-semibold py-3 px-5">
                   <span class="w-full block" @click="turnOff">New Order</span>
                 </nuxt-link>
-                <nuxt-link to="/profile" class="text-secondary font-semibold py-3 px-5">
-                  <span class="w-full block" @click="turnOff">My Account</span>
+                <nuxt-link to="/register" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">Register</span>
+                </nuxt-link>
+                <nuxt-link to="/register" class="text-secondary font-semibold py-3 px-5">
+                  <span class="w-full block" @click="turnOff">Login</span>
                 </nuxt-link>
               </div>
             </transition>
