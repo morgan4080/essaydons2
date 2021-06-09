@@ -210,7 +210,8 @@ export default {
     }
 
     verifyMe().then((data)=> {
-      console.log(data)
+      console.log("verify response", data)
+      // set token
       this.emailVerified = true
     }).catch((e) => {
       console.log(e)

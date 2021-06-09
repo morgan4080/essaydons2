@@ -156,25 +156,10 @@ export default {
 
         this.loading = false;
 
-        this.$toast.success('Registered!', {
+        this.$toast.success('Check email to confirm your account', {
           theme: "outline",
           position: "bottom-left",
-          duration : 5000
-        });
-
-        const result = await this.$auth.loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password
-          },
-        });
-
-        console.log("login response reg", result);
-
-        this.$toast.success('Logged In!', {
-          theme: "outline",
-          position: "bottom-left",
-          duration : 5000
+          duration : 15000
         });
 
       } catch (e) {
