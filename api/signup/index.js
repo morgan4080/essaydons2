@@ -529,7 +529,7 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #42fbb7;">${req.body.name}</span> welcome to Essaydons.co</td>
+<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #42fbb7;">${user.name}</span> welcome to Essaydons.co</td>
 </tr>
 
 <tr>
