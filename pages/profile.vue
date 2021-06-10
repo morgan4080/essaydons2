@@ -868,15 +868,15 @@ export default {
               onClick: async (e, toastObject) => {
                 const data = await this.sendConfirmation()
                 console.log("is data resend", data)
+                await this.$auth.logout();
+                this.$auth.strategy.token.reset();
                 toastObject.goAway(0)
               }
             },
           ]
         })
       }
-    }, 15000)
-
-    console.log(this.orders);
+    }, 1000)
   }
 }
 </script>
