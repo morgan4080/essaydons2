@@ -32,7 +32,7 @@ export default {
   auth: {
     redirect: {
       login: '/login',
-      logout: '/login',
+      logout: '/',
       callback: '/login',
       home: '/order'
     },
