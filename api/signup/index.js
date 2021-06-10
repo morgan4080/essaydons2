@@ -576,7 +576,7 @@ padding: 0 15px 0 15px !important;
     await sendMail(origin,destination,message)
 
     res.status(200).json({
-      message: 'confirmation sent'
+      message: 'Confirmation Sent, Check mail to confirm'
     })
   }
   if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.reset && req.body.email && req.body.password) {
