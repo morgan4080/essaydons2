@@ -349,7 +349,9 @@ padding: 0 15px 0 15px !important;
       })
     }
 
-    const token = jwt.sign({ ...user }, privateKey, { algorithm: 'RS256' });
+    const { password,provider_id, ...user0 } = user
+
+    const token = jwt.sign({ ...user0 }, privateKey, { algorithm: 'RS256' });
 
     const origin = {
       name: "EssayDons Signups",
@@ -357,12 +359,12 @@ padding: 0 15px 0 15px !important;
     };
 
     const destination = {
-      email: req.body.email,
+      email: user.email,
     };
 
     const message = {
       subject: "Welcome to Essaydons",
-      text: "Hey" + req.body.name,
+      text: "Hey" + user.name,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -569,7 +571,7 @@ padding: 0 15px 0 15px !important;
 </tbody></table>
 
 </body></html>`,
-    };
+    }
 
     await sendMail(origin,destination,message)
 
