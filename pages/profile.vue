@@ -812,8 +812,7 @@ export default {
       return data
     }
   },
-  mounted() {
-    console.log("auth", this.$auth);
+  async mounted() {
     this.form.subject = this.subjects[0];
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
@@ -836,21 +835,24 @@ export default {
     }
 
     if (this.$auth.user.email_verified_at === null) {
+      await this.$auth.fetchUser()
+      if (this.$auth.user.email_verified_at === null) {
         this.$toast.error("Check Mail to Verify Account", {
-        theme: "outline",
-        position: "bottom-left",
-        duration: 8000,
-        action: [
-          {
-            text : 'Resend',
-            onClick : async (e, toastObject) => {
-              const data = await this.sendConfirmation()
-              console.log("is data resend", data)
-              toastObject.goAway(0)
-            }
-          },
-        ]
-      })
+          theme: "outline",
+          position: "bottom-left",
+          duration: 8000,
+          action: [
+            {
+              text: 'Resend',
+              onClick: async (e, toastObject) => {
+                const data = await this.sendConfirmation()
+                console.log("is data resend", data)
+                toastObject.goAway(0)
+              }
+            },
+          ]
+        })
+      }
     }
 
     console.log(this.orders);

@@ -197,10 +197,6 @@ export default {
     }
 
     if (this.$router.currentRoute.query.hasOwnProperty('token')) {
-      if (this.$auth.loggedIn) {
-        // reset token
-        this.$auth.strategy.token.reset()
-      }
       // check for token param
       // set the token globally and on request header
       // make request to backend to update users.email_verified_at
