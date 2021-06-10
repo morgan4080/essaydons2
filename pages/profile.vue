@@ -792,6 +792,24 @@ export default {
         console.log("deleteOrder", id);
         this.$store.dispatch("deleteItem", { uri: 'orders', data: id });
       }
+    },
+    async sendConfirmation() {
+
+      this.$toast.success("sending confirmation email", {
+        theme: "outline",
+        position: "bottom-left",
+        duration : 5000
+      })
+
+      const { data } = await this.$axios.get(`/api/signup?resend=true`)
+
+      this.$toast.success(data.message, {
+        theme: "outline",
+        position: "bottom-left",
+        duration : 12000
+      })
+
+      return data
     }
   },
   mounted() {
@@ -818,10 +836,21 @@ export default {
     }
 
     if (this.$auth.user.email_verified_at === null) {
+
       this.$toast.error("Check mail to verify account", {
         theme: "outline",
         position: "bottom-left",
-        duration: 8000
+        duration: 8000,
+        action: [
+          {
+            text : 'Resend',
+            onClick : async (e, toastObject) => {
+              const data = await this.sendConfirmation()
+              console.log("is data resend", data)
+              toastObject.goAway(0)
+            }
+          },
+        ]
       })
     }
 

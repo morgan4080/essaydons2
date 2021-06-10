@@ -758,7 +758,7 @@ export default {
   background-blend-mode: multiply;
 }
 .mobile-b {
-  background-image: linear-gradient(60deg,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(~assets/images/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg);
+  background-image: linear-gradient(60deg,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(~assets/images/essaydons-writer.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100% 10%;
