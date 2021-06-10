@@ -576,10 +576,12 @@ export default {
       notificationsChanged: false,
     }
   },
-  created() {
+  async created() {
+    await this.$auth.fetchUser()
+
     this.orders.forEach(order => {
       console.log(JSON.parse(order.order_details).duration.duration);
-    });
+    })
   },
   computed: {
     ...mapState(["storedata","countries","userTypes"]),
@@ -812,8 +814,7 @@ export default {
       return data
     }
   },
-  async mounted() {
-    await this.$auth.fetchUser()
+  mounted() {
 
     this.form.subject = this.subjects[0]
 
