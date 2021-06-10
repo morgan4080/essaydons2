@@ -813,29 +813,49 @@ export default {
     }
   },
   async mounted() {
-    this.form.subject = this.subjects[0];
+    await this.$auth.fetchUser()
+
+    this.form.subject = this.subjects[0]
+
     this.form.duration = {
       duration: Object.entries(this.duration)[0][0],
       price: Object.entries(this.duration)[0][1],
-    };
-    this.formProfile.email = this.$auth.user ? this.$auth.user.email : null;
-    this.formProfile.phone = this.$auth.user ? this.$auth.user.phone.split(" ")[1] === undefined ? this.$auth.user.phone.split(" ")[0] : this.$auth.user.phone.split(" ")[1] : null;
-    this.formProfile.first_name = this.$auth.user && this.$auth.user.name.split(" ")[0] ? this.$auth.user.name.split(" ")[0] : null;
-    this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1] ? this.$auth.user.name.split(" ")[1] : null;
+    }
+
+    this.formProfile.email = this.$auth.user ? this.$auth.user.email : null
+
+    this.formProfile.phone = this.$auth.user ?
+      this.$auth.user.phone.split(" ")[1] === undefined ?
+        this.$auth.user.phone.split(" ")[0]
+        : this.$auth.user.phone.split(" ")[1] : null;
+
+    this.formProfile.first_name = this.$auth.user
+      && this.$auth.user.name.split(" ")[0]
+        ? this.$auth.user.name.split(" ")[0]
+        : null;
+
+    this.formProfile.last_name = this.$auth.user && this.$auth.user.name.split(" ")[1]
+      ? this.$auth.user.name.split(" ")[1]
+      : null;
+
     let metadata = this.$auth.user.metadata;
+
     if (typeof metadata === "object" && metadata ) {
       (metadata.hasOwnProperty("country")) ? this.formProfile.country = metadata.country : null;
+
       (metadata.hasOwnProperty("emailNotifications")) ? this.formProfile.emailNotifications = metadata.emailNotifications : null;
+
       (metadata.hasOwnProperty("pushNotifications")) ? this.formProfile.pushNotifications = metadata.pushNotifications : null;
+
       this.formProfile.profile_image = [];
+
       if (metadata.hasOwnProperty("profile")) {
         this.formProfile.type = metadata.profile.userType;
         this.formProfile.profile_image.push(metadata.profile.profile_image.secure_url)
       }
     }
 
-    if (this.$auth.user.email_verified_at === null) {
-      await this.$auth.fetchUser()
+    setTimeout(() => {
       if (this.$auth.user.email_verified_at === null) {
         this.$toast.error("Check Mail to Verify Account", {
           theme: "outline",
@@ -853,7 +873,7 @@ export default {
           ]
         })
       }
-    }
+    }, 15000)
 
     console.log(this.orders);
   }
