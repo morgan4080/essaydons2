@@ -653,8 +653,7 @@ padding: 0 15px 0 15px !important;
     console.log("user", user)
 
     res.status(200).json({
-      message: "email verified",
-      response: user,
+      message: "Account Verified",
       token: token
     })
   }

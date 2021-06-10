@@ -836,8 +836,7 @@ export default {
     }
 
     if (this.$auth.user.email_verified_at === null) {
-
-      this.$toast.error("Check mail to verify account", {
+        this.$toast.error("Check Mail to Verify Account", {
         theme: "outline",
         position: "bottom-left",
         duration: 8000,

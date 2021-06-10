@@ -197,17 +197,20 @@ export default {
     }
 
     if (this.$router.currentRoute.query.hasOwnProperty('token')) {
+      // log out user
+      this.$auth.logout()
+      // reset token
+      this.$auth.strategy.token.reset()
       // check for token param
       // set the token globally and on request header
       // make request to backend to update users.email_verified_at
       const verifyMe = async () => {
-
           this.showLoader0 = true
+          // set new token
           this.$auth.strategy.token.set(this.$router.currentRoute.query.token)
           return await this.$axios.post('api/signup?verify=true', {
             token: this.$router.currentRoute.query.token,
           })
-
       }
 
       verifyMe().then((data)=> {
@@ -215,7 +218,7 @@ export default {
         // set token
         this.emailVerified = true
 
-        this.$toast.success('Email Verified', {
+        this.$toast.success(data.message, {
           theme: "outline",
           position: "bottom-left",
           duration : 5000
