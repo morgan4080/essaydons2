@@ -8,7 +8,7 @@
               <div class="mt-8 w-full flex flex-wrap relative">
                 <div class="absolute flex flex-col top-0 text-xs overflow-auto w-full -mt-12">
                   <div class="flex justify-between items-center w-full overflow-hidden w-full lg:px-6">
-                    <div class="font-black text-3xl">{{ currentSlide }}</div>
+                    <div class="text-3xl sm:text-4xl leading-none font-extrabold text-gray-900 tracking-tight text-left">{{ currentSlide }}</div>
                     <dropdown :auto-close="true" class="flex items-center ml-auto" placement="bottom-start">
                       <svg class="cursor-pointer transform hover:scale-105 transition ease-in-out duration-100" width="50" height="50" viewBox="0 0 50 50"  xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 12.5C7.5 11.1193 8.61929 10 10 10H40C41.3807 10 42.5 11.1193 42.5 12.5C42.5 13.8807 41.3807 15 40 15H10C8.61929 15 7.5 13.8807 7.5 12.5Z" fill="inherit"/>
@@ -17,9 +17,24 @@
                       </svg>
 
                       <div slot="dropdown" class="mt-2 px-4 py-6 w-screen shadow-xl bg-white rounded max-w-custom">
+                        <div v-if="$auth.user.owner" @click="toggleTabs(0)" class="flex relative pb-3 mb-2 cursor-pointer">
+                          <div class="h-full w-32 absolute inset-0 flex items-center justify-center opacity-25">
+                            <div :class="{'bg-gray-300': openTab !== 0, 'bg-teal-300': openTab === 0}" class=" w-32 mt-10 pointer-events-none"></div>
+                          </div>
+                          <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
+                            <svg :class="{'fill-black': openTab !== 0, 'custom-fill': openTab === 0}" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2496 5.30916C15.3368 4.46427 17.6167 4 20 4C29.9411 4 38 12.0589 38 22C38 23.1046 37.1046 24 36 24C34.8954 24 34 23.1046 34 22C34 14.268 27.732 8 20 8C18.1397 8 16.3689 8.36176 14.7504 9.01691C13.7266 9.43136 12.5606 8.93733 12.1461 7.91346C11.7317 6.8896 12.2257 5.72361 13.2496 5.30916ZM9.32347 9.91722C10.1516 10.6482 10.2304 11.912 9.49948 12.7402C7.32014 15.2093 6 18.4481 6 22C6 23.1046 5.10457 24 4 24C2.89543 24 2 23.1046 2 22C2 17.4364 3.70095 13.2651 6.50052 10.0932C7.23145 9.2651 8.49533 9.18629 9.32347 9.91722Z" fill="inherit"/>
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M10 22C10 16.4772 14.4772 12 20 12C25.5229 12 30 16.4772 30 22C30 23.1046 29.1046 24 28 24C26.8954 24 26 23.1046 26 22C26 18.6863 23.3137 16 20 16C16.6863 16 14 18.6863 14 22C14 25.3543 13.3107 28.5528 12.0641 31.4575C11.6285 32.4726 10.4525 32.9423 9.43748 32.5067C8.42244 32.0711 7.95271 30.8951 8.38833 29.88C9.42495 27.4645 10 24.802 10 22ZM27.8423 26.0247C28.9332 26.1977 29.6773 27.2224 29.5043 28.3133C29.241 29.9734 28.8755 31.5997 28.4145 33.1855C28.1062 34.2462 26.9964 34.8561 25.9357 34.5477C24.875 34.2394 24.2652 33.1296 24.5735 32.0689C24.9881 30.6429 25.3168 29.1802 25.5537 27.6867C25.7267 26.5957 26.7514 25.8517 27.8423 26.0247Z" fill="inherit"/>
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 20C21.1046 20 22 20.8954 22 22C22 26.4726 21.0813 30.7358 19.4203 34.6071C18.9848 35.6222 17.8088 36.092 16.7937 35.6565C15.7787 35.221 15.3088 34.045 15.7443 33.03C17.1954 29.6478 18 25.9204 18 22C18 20.8954 18.8954 20 20 20Z" fill="inherit"/>
+                            </svg>
+                          </div>
+                          <div class="flex flex-col justify-center pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 tracking-wider">Admin</h2>
+                          </div>
+                        </div>
                         <div @click="toggleTabs(1)" class="flex relative pb-3 mb-2 cursor-pointer">
                           <div class="h-full w-32 absolute inset-0 flex items-center justify-center opacity-25">
-                            <div :class="{'bg-gray-300': openTab !== 1, 'bg-teal-300': openTab === 1}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                            <div :class="{'bg-gray-300': openTab !== 1, 'bg-teal-300': openTab === 1}" class=" w-32 mt-10 pointer-events-none"></div>
                           </div>
                           <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                             <svg :class="{'': openTab !== 1, 'custom-fill': openTab === 1}" width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +51,7 @@
                         </div>
                         <div @click="toggleTabs(2)" class="flex relative pb-3 mb-2 cursor-pointer">
                           <div class="h-full w-32 absolute inset-0 flex items-center justify-center  opacity-25">
-                            <div :class="{'bg-gray-300': openTab !== 2, 'bg-teal-300': openTab === 2}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                            <div :class="{'bg-gray-300': openTab !== 2, 'bg-teal-300': openTab === 2}" class=" w-32 mt-10 pointer-events-none"></div>
                           </div>
                           <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                             <svg :class="{'': openTab !== 2, 'custom-fill': openTab === 2}" width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +64,7 @@
                         </div>
                         <div @click="toggleTabs(3)" class="flex relative pb-3 mb-2 cursor-pointer">
                           <div class="h-full w-32 absolute inset-0 flex items-center justify-center  opacity-25">
-                            <div :class="{'bg-gray-300': openTab !== 3, 'bg-teal-300': openTab === 3}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                            <div :class="{'bg-gray-300': openTab !== 3, 'bg-teal-300': openTab === 3}" class=" w-32 mt-10 pointer-events-none"></div>
                           </div>
                           <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                             <svg :class="{'': openTab !== 3, 'custom-fill': openTab === 3}" width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +79,7 @@
                         </div>
                         <div @click="toggleTabs(4)" class="flex relative pb-3 mb-2 cursor-pointer">
                           <div class="h-full w-32 absolute inset-0 flex items-center justify-center  opacity-25">
-                            <div :class="{'bg-gray-300': openTab !== 4, 'bg-teal-300': openTab === 4}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                            <div :class="{'bg-gray-300': openTab !== 4, 'bg-teal-300': openTab === 4}" class=" w-32 mt-10 pointer-events-none"></div>
                           </div>
                           <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                             <svg :class="{'': openTab !== 4, 'custom-fill': openTab === 4}" xmlns="http://www.w3.org/2000/svg" width="62.478" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -81,7 +96,7 @@
                         </div>
                         <div @click="toggleTabs(5)" class="flex relative pb-3 mb-2 cursor-pointer">
                           <div class="h-full w-32 absolute inset-0 flex items-center justify-center  opacity-25">
-                            <div :class="{'bg-gray-300': openTab !== 5, 'bg-teal-300': openTab === 5}" class="h-px w-32 mt-10 pointer-events-none"></div>
+                            <div :class="{'bg-gray-300': openTab !== 5, 'bg-teal-300': openTab === 5}" class=" w-32 mt-10 pointer-events-none"></div>
                           </div>
                           <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center text-white relative z-10">
                             <svg :class="{'': openTab !== 5, 'custom-fill': openTab === 5}" width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
@@ -98,6 +113,74 @@
                 </div>
                 <div class="w-full mr-auto h-auto">
                   <div class="lg:px-6 py-6">
+                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2">
+                      <div class="flex flex-col px-4 py-5 bg-white sm:p-6">
+                        <p class="text-3xl pt-3 pb-12 leading-none font-extrabold text-gray-900 tracking-tight text-left">
+                          Dashboard<span class="text-teal-300"> / Order Management</span>
+                        </p>
+
+                        <div class="flex flex-wrap -m-4">
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  All Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ this.orders.length }}</span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
+                                  <path d="M24 9C24 7.34315 25.3431 6 27 6H33C34.6569 6 36 7.34315 36 9C36 10.6569 34.6569 12 33 12H27C25.3431 12 24 10.6569 24 9Z" fill="#111827"/>
+                                  <path d="M18 9C14.6863 9 12 11.6863 12 15V48C12 51.3137 14.6863 54 18 54H42C45.3137 54 48 51.3137 48 48V15C48 11.6863 45.3137 9 42 9C42 13.9706 37.9706 18 33 18H27C22.0294 18 18 13.9706 18 9Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  Delegated Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ delegatedOrders.length }}</span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
+                                  <path d="M27 6C25.3431 6 24 7.34315 24 9C24 10.6569 25.3431 12 27 12H33C34.6569 12 36 10.6569 36 9C36 7.34315 34.6569 6 33 6H27Z" fill="#111827"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 15C12 11.6863 14.6863 9 18 9C18 13.9706 22.0294 18 27 18H33C37.9706 18 42 13.9706 42 9C45.3137 9 48 11.6863 48 15V48C48 51.3137 45.3137 54 42 54H18C14.6863 54 12 51.3137 12 48V15ZM21 27C19.3431 27 18 28.3431 18 30C18 31.6569 19.3431 33 21 33H21.03C22.6869 33 24.03 31.6569 24.03 30C24.03 28.3431 22.6869 27 21.03 27H21ZM30 27C28.3431 27 27 28.3431 27 30C27 31.6569 28.3431 33 30 33H39C40.6569 33 42 31.6569 42 30C42 28.3431 40.6569 27 39 27H30ZM21 39C19.3431 39 18 40.3431 18 42C18 43.6568 19.3431 45 21 45H21.03C22.6869 45 24.03 43.6568 24.03 42C24.03 40.3431 22.6869 39 21.03 39H21ZM30 39C28.3431 39 27 40.3431 27 42C27 43.6568 28.3431 45 30 45H39C40.6569 45 42 43.6568 42 42C42 40.3431 40.6569 39 39 39H30Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  Complete Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ completeOrders.length }}</span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out" >
+                                  <path d="M27 6C25.3431 6 24 7.34315 24 9C24 10.6569 25.3431 12 27 12H33C34.6568 12 36 10.6569 36 9C36 7.34315 34.6568 6 33 6H27Z" fill="#111827"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 15C12 11.6863 14.6863 9 18 9C18 13.9706 22.0294 18 27 18H33C37.9706 18 42 13.9706 42 9C45.3137 9 48 11.6863 48 15V48C48 51.3137 45.3137 54 42 54H18C14.6863 54 12 51.3137 12 48V15ZM41.1213 32.1213C42.2929 30.9498 42.2929 29.0503 41.1213 27.8787C39.9497 26.7071 38.0502 26.7071 36.8787 27.8787L27 37.7574L23.1213 33.8787C21.9497 32.7071 20.0503 32.7071 18.8787 33.8787C17.7071 35.0503 17.7071 36.9498 18.8787 38.1213L24.8787 44.1213C26.0502 45.2929 27.9497 45.2929 29.1213 44.1213L41.1213 32.1213Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  Disputed Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ disputedOrders.length }} </span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
+                                  <path d="M24 6C22.3431 6 21 7.34315 21 9C21 10.6569 22.3431 12 24 12H30C31.6569 12 33 10.6569 33 9C33 7.34315 31.6569 6 30 6H24Z" fill="#111827"/>
+                                  <path d="M9 15C9 11.6863 11.6863 9 15 9C15 13.9706 19.0294 18 24 18H30C34.9706 18 39 13.9706 39 9C42.3137 9 45 11.6863 45 15V33H31.2426L35.1213 29.1213C36.2929 27.9497 36.2929 26.0503 35.1213 24.8787C33.9497 23.7071 32.0503 23.7071 30.8787 24.8787L21.8787 33.8787C20.7071 35.0503 20.7071 36.9497 21.8787 38.1213L30.8787 47.1213C32.0503 48.2929 33.9497 48.2929 35.1213 47.1213C36.2929 45.9497 36.2929 44.0503 35.1213 42.8787L31.2426 39H45V48C45 51.3137 42.3137 54 39 54H15C11.6863 54 9 51.3137 9 48V15Z" fill="#111827"/>
+                                  <path d="M45 33H51C52.6569 33 54 34.3431 54 36C54 37.6569 52.6569 39 51 39H45V33Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
                       <section v-if="!orderview && orders.length === 0" class="text-gray-600 body-font">
                         <div class="container px-5 py-24 mx-auto">
@@ -576,8 +659,12 @@ export default {
       notificationsChanged: false,
     }
   },
-  async created() {
-    await this.$auth.fetchUser()
+  created() {
+    // await this.$auth.fetchUser()
+
+    if (this.$auth.user.owner) {
+      this.openTab = 0
+    }
 
     this.orders.forEach(order => {
       console.log(JSON.parse(order.order_details).duration.duration);
@@ -602,6 +689,8 @@ export default {
     },
     currentSlide() {
       switch (this.openTab) {
+        case 0:
+          return "Admin"
         case 1:
           return "Orders"
         case 2:
@@ -613,6 +702,15 @@ export default {
         case 5:
           return "Invoices"
       }
+    },
+    delegatedOrders() {
+      return this.orders.filter(order => order.state === "delegated")
+    },
+    completeOrders() {
+      return this.orders.filter(order => order.state === "complete")
+    },
+    disputedOrders() {
+      return this.orders.filter(order => order.state === "disputed")
     }
   },
   methods: {
@@ -858,7 +956,7 @@ export default {
 
     setTimeout(() => {
       if (this.$auth.user.email_verified_at === null) {
-        this.$toast.error("Check Mail to Verify Account", {
+        this.$toast.error("Check mail to verify account", {
           theme: "outline",
           position: "bottom-left",
           duration: 8000,
@@ -884,5 +982,8 @@ export default {
 <style scoped>
 .cta {
   border: 1px solid #0ef884;color:#0ef884;display: flex;align-items: center;
+}
+.fill-black {
+  fill: black;
 }
 </style>
