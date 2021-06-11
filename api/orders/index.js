@@ -42,24 +42,45 @@ module.exports = async function (req, res) {
     try {
       const user = await authMiddleware(req);
 
+      // show admin all
+
+      // paginate both to ten records
+
       if (user.owner) {
         let response = await prisma.orders.findMany({
           where: {
             account_id: user.account_id,
           },
+          orderBy: [
+            {
+              role: 'created_at',
+            },
+            {
+              role: 'updated_at',
+            },
+          ],
           include: {
             users: true
           }
-        });
+        })
 
         res.status(200).json({
           orders: response
-        });
+        })
+
       } else {
         let response = await prisma.orders.findMany({
           where: {
             user_id: user.id,
           },
+          orderBy: [
+            {
+              role: 'created_at',
+            },
+            {
+              role: 'updated_at',
+            },
+          ],
           include: {
             users: true
           }

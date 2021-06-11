@@ -179,6 +179,92 @@
                           </div>
                         </div>
 
+                        <section class="rounded-lg bg-gray-100 mt-16">
+                          <table class="w-full whitespace-no-wrap text-sm">
+                            <tr class="text-left">
+                              <th class="px-6 pt-6 pb-4">Client</th>
+                              <th class="px-6 pt-6 pb-4">Paper</th>
+                              <th class="px-6 pt-6 pb-4">Deadline</th>
+                              <th class="px-6 pt-6 pb-4">Status</th>
+                              <th class="px-6 pt-6 pb-4">Total</th>
+                              <th class="px-6 pt-6 pb-4">Options</th>
+                            </tr>
+                            <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                              <td class="border-t">
+                                <a
+                                  href="javascript:void(0)"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  <div class="flex flex-col">
+                                    <div class="text-sm font-medium text-gray-900">
+                                      {{ JSON.parse(order.order_details).name }}
+                                    </div>
+                                    <div class="text-sm text-gray-500">
+                                      {{ JSON.parse(order.order_details).email }}
+                                    </div>
+                                  </div>
+                                </a>
+                              </td>
+                              <td class="border-t">
+                                <a
+                                  href="javascript:void(0)"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  <div class="flex flex-col">
+                                    <div class="text-sm font-medium text-gray-900">
+                                      {{ JSON.parse(order.order_details).paper_type }}
+                                    </div>
+                                    <div class="text-sm text-gray-500">
+                                      {{ JSON.parse(order.order_details).subject }}
+                                    </div>
+                                  </div>
+                                </a>
+                              </td>
+                              <td class="border-t">
+                                <a
+                                  href="javascript:void(0)"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  {{ JSON.parse(order.order_details) ? JSON.parse(order.order_details).duration ? JSON.parse(order.order_details).duration.duration : '' : '' }}
+                                </a>
+                              </td>
+                              <td class="border-t">
+                                <a
+                                  href="javascript:void(0)"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
+                                </a>
+                              </td>
+                              <td class="border-t">
+                                <a
+                                  href="javascript:void(0)"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  {{ JSON.parse(order.order_details).amount | dollar }}
+                                </a>
+                              </td>
+                              <td class="border-t w-px">
+                                <button type="button" @click="switchOrder(order)" tabindex="-1" class="px-4 flex items-center"
+                                ><svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                  class="block w-6 h-6 fill-gray-400"
+                                >
+                                  <polygon
+                                    points="12.95 10.707 13.657 10 8 4.343 6.586 5.757 10.828 10 6.586 14.243 8 15.657 12.95 10.707"
+                                  ></polygon></svg
+                                ></button>
+                              </td>
+                            </tr>
+                          </table>
+                        </section>
+
                       </div>
                     </div>
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
