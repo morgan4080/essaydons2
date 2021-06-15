@@ -37,36 +37,28 @@ module.exports = async function (req, res) {
     res.status(200)
   }
 
-  if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.cursor && req.query.page) {
+  if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.page) {
 
     try {
       const user = await authMiddleware(req)
 
       const page = parseInt(req.query.page)
 
-      // show admin all
-      // paginate both to ten records
+      let paginator
 
-      let paginator = {}
-
-      if (parseInt(req.query.cursor) !== 0) {
-        if (page && page !== 1 && page > 1) {
-          console.log("page " + page)
-          paginator = {
-            skip: 1, // Skip the cursor
-            cursor: {
-              id: parseInt(req.query.cursor),
-            },
-          }
+      if (page && page === 1 ) {
+        paginator = {
+          skip: 0,
+        }
+      } else {
+        paginator = {
+          skip: 10 * page
         }
       }
-
-      // empty paginator
 
       let totalTaken = 10
 
       if (user.owner) {
-        console.log("owner orders", paginator)
 
         let response
 
@@ -94,17 +86,9 @@ module.exports = async function (req, res) {
           })
         }
 
-        console.log("orders", JSON.stringify(response))
-
         const ordersCount = await prisma.orders.count()
 
-        console.log("all orders", ordersCount)
-
         const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
-
-        const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
-
-        const cursor = lastOrderInResults.id
 
         let links = []
 
@@ -116,18 +100,13 @@ module.exports = async function (req, res) {
           })
         }
 
-        // total orders
-
         res.status(200).json({
           orders: response,
           links,
-          cursor,
-          previousCursor: parseInt(req.query.cursor),
           totalCount: ordersCount
         })
 
       } else {
-        console.log("normal users orders")
 
         const response = await prisma.orders.findMany({
           take: 10,
@@ -151,13 +130,7 @@ module.exports = async function (req, res) {
           },
         })
 
-        console.log("order count", ordersCount)
-
         const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
-
-        const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
-
-        const cursor = lastOrderInResults.id
 
         let links = []
 
@@ -172,15 +145,13 @@ module.exports = async function (req, res) {
         res.status(200).json({
           orders: response,
           links,
-          cursor,
-          previousCursor: parseInt(req.query.cursor),
           totalCount: ordersCount
         })
       }
 
     } catch (e) {
 
-      res.status(400).json({
+      res.status(405).json({
         error: e
       })
 

@@ -1,14 +1,14 @@
 <template>
   <div >
     <div class="min-h-screen bg-white">
-      <div class="mobile-b min-h-screen bg-left-0 lg:bg-center-0">
-        <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-8 lg:px-0 pb-32">
+      <div class="mobile-b min-h-screen bg-left-0 bg-gray-100 lg:bg-center-0">
+        <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-2 lg:px-0 pb-32">
           <div class="mx-auto flex flex-wrap">
             <div class="flex flex-wrap w-full text-gray-700 body-font">
               <div class="mt-8 w-full flex flex-wrap relative">
                 <div class="absolute flex flex-col top-0 text-xs overflow-auto w-full -mt-12">
-                  <div class="flex justify-between items-center w-full overflow-hidden w-full lg:px-6">
-                    <div class="text-3xl sm:text-4xl leading-none font-extrabold text-gray-900 tracking-tight text-left">{{ currentSlide }}</div>
+                  <div class="flex justify-between items-center w-full overflow-hidden w-full lg:px-12">
+                    <div class="text-3xl leading-none font-bold tracking-tight text-left capitalize">Profile / &nbsp;<span class="text-teal-300">{{ currentSlide }}</span></div>
                     <dropdown :auto-close="true" class="flex items-center ml-auto" placement="bottom-start">
                       <svg class="cursor-pointer transform hover:scale-105 transition ease-in-out duration-100" width="50" height="50" viewBox="0 0 50 50"  xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 12.5C7.5 11.1193 8.61929 10 10 10H40C41.3807 10 42.5 11.1193 42.5 12.5C42.5 13.8807 41.3807 15 40 15H10C8.61929 15 7.5 13.8807 7.5 12.5Z" fill="inherit"/>
@@ -115,11 +115,8 @@
                   <div class="lg:px-6 py-6">
                     <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2">
                       <div class="flex flex-col px-4 py-5 bg-white sm:p-6">
-                        <p class="text-3xl pt-3 pb-12 leading-none font-extrabold text-gray-900 tracking-tight text-left">
-                          Dashboard<span class="text-teal-300"> / Order Management</span>
-                        </p>
 
-                        <div class="flex flex-wrap -m-4">
+                        <div class="flex flex-wrap -m-4 mt-2">
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
                             <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
@@ -179,7 +176,11 @@
                           </div>
                         </div>
 
-                        <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-inner mt-16">
+                        <p class="text-2xl mt-12 leading-none font-bold text-gray-900 tracking-tight text-left">
+                          Dashboard<span class="text-teal-300"> / All Orders</span>
+                        </p>
+
+                        <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-xl mt-6">
                           <table class="w-full whitespace-no-wrap text-sm">
                             <tr class="text-left">
                               <th class="px-6 pt-6 pb-4">Client</th>
@@ -263,7 +264,7 @@
                               </td>
                             </tr>
                           </table>
-                          <pagination class="px-6 pb-4" :links="links" :cursor="cursor" :previous-cursor="previousCursor" />
+                          <pagination class="px-6 pb-4" :links="links" />
                         </section>
 
                       </div>
@@ -700,19 +701,15 @@ export default {
   },
   middleware: 'auth',
   async fetch() {
-    const {data} = await this.$axios.get('api/orders?page=1&cursor=0')
-    const { orders, links, cursor, previousCursor, totalCount } = data
-    this.orders = [...orders]
-    this.links = [...links]
-    this.cursor = cursor
-    this.previousCursor = previousCursor
-    this.totalCount = totalCount
+    try {
+      await this.doOrdersFetch()
+    } catch (e) {
+      console.log("Orders couldn't be fetched")
+    }
   },
   data() {
     return {
       totalCount: 0,
-      cursor: 0,
-      previousCursor: 0,
       links: [],
       openTab: 1,
       currentOrder: null,
@@ -768,6 +765,17 @@ export default {
       console.log(JSON.parse(order.order_details).duration.duration);
     })
   },
+  watch:{
+    $route(to) {
+      console.log(to)
+      const runner = async () => {
+        return await this.doOrdersFetch()
+      }
+      if (runner()) {
+        console.log("paginate runner")
+      }
+    }
+  },
   computed: {
     ...mapState(["storedata","countries","userTypes"]),
     fullName() {
@@ -812,6 +820,20 @@ export default {
     }
   },
   methods: {
+    async doOrdersFetch() {
+      let url =
+        (this.$router.currentRoute.query.hasOwnProperty('page')) ?
+          `api/orders?page=${this.$router.currentRoute.query.page}` :
+          'api/orders?page=1'
+
+      const { data } = await this.$axios.get(url)
+      const { orders, links, totalCount } = data
+      this.orders = [ ...orders ]
+      this.links = [ ...links ]
+      this.totalCount = totalCount
+
+      return true
+    },
     changer(e) {
       console.log(e);
       this.notificationsChanged = true;
