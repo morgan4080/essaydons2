@@ -58,13 +58,6 @@ module.exports = async function (req, res) {
               id: parseInt(req.query.cursor),
             },
           }
-        } else {
-          console.log("page " + page)
-          paginator = {
-            cursor: {
-              id: parseInt(req.query.cursor),
-            },
-          }
         }
       }
 
@@ -99,7 +92,7 @@ module.exports = async function (req, res) {
           })
         }
 
-        console.log("orders type", JSON.stringify(response))
+        console.log("orders", JSON.stringify(response))
 
         const ordersCount = await prisma.orders.count()
 
