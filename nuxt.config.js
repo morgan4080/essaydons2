@@ -6,7 +6,7 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
-    title: 'EssayDons',
+    title: 'Essay Dons',
     script: [
       { src: 'https://js.stripe.com/v3/', defer: true, async: true },
       { src: 'https://embed.tawk.to/5ad4467d227d3d7edc23f6c8/1f790vmik', async: true, crossorigin: '*', charset: 'UTF-8' },

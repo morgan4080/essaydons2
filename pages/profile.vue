@@ -179,8 +179,8 @@
                           </div>
                         </div>
 
-                        <section class="rounded-lg bg-gray-100 mt-16">
-                          <table class="w-full whitespace-no-wrap text-sm overflow-x-scroll">
+                        <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-inner mt-16">
+                          <table class="w-full whitespace-no-wrap text-sm">
                             <tr class="text-left">
                               <th class="px-6 pt-6 pb-4">Client</th>
                               <th class="px-6 pt-6 pb-4">Paper</th>
@@ -263,7 +263,7 @@
                               </td>
                             </tr>
                           </table>
-                          <pagination :links="links" :cursor="cursor" :previous-cursor="previousCursor" />
+                          <pagination class="px-6 pb-4" :links="links" :cursor="cursor" :previous-cursor="previousCursor" />
                         </section>
 
                       </div>

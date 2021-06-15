@@ -110,7 +110,7 @@ module.exports = async function (req, res) {
 
         for (let i = 1; i < totalPages; i++ ) {
           links.push({
-            url: `/orders?page=${i}`,
+            url: `/profile?page=${i}`,
             label: i,
             active: page === i
           })
@@ -163,7 +163,7 @@ module.exports = async function (req, res) {
 
         for (let i = 1; i < totalPages; i++ ) {
           links.push({
-            url: `/orders?page=${i}`,
+            url: `/profile?page=${i}`,
             label: i,
             active: page === i
           })
