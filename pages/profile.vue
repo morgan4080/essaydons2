@@ -263,13 +263,13 @@
                               </td>
                             </tr>
                           </table>
-                          <pagination :links="links" />
+                          <pagination :links="links" :cursor="cursor" :previous-cursor="previousCursor" />
                         </section>
 
                       </div>
                     </div>
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
-                      <section v-if="!orderview && orders.length === 0" class="text-gray-600 body-font">
+                      <section v-if="!order_view && orders.length === 0" class="text-gray-600 body-font">
                         <div class="container px-5 py-24 mx-auto">
                           <div class="lg:w-2/3 flex flex-col justify-center sm:flex-row items-center md:items-start mx-auto">
                             <h1 class="flex-grow sm:pr-16 text-4xl font-black title-font tracking-tighter text-gray-900 text-center md:text-left">We are ready if you are. Start your academic journey with us. Get 10% off your first order.</h1>
@@ -277,7 +277,7 @@
                           </div>
                         </div>
                       </section>
-                      <table v-else-if="!orderview && orders.length > 0" class="min-w-full divide-y divide-gray-200">
+                      <table v-else-if="!order_view && orders.length > 0" class="min-w-full divide-y divide-gray-200">
                         <thead class="font-bold">
                           <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
@@ -328,7 +328,7 @@
                         </tr>
                         </tbody>
                       </table>
-                      <SingleOrder v-else-if="orderview && orders.length > 0" @back="orderview = !orderview" :order="currentOrder" />
+                      <SingleOrder v-else-if="order_view && orders.length > 0" @back="order_view = !order_view" :order="currentOrder" />
                     </div>
                     <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-gray-700 py-2 text-xl">
                       <form @submit.prevent="saveProfile('personal')" >
@@ -700,7 +700,7 @@ export default {
   },
   middleware: 'auth',
   async fetch() {
-    const {data} = await this.$axios.get('api/orders')
+    const {data} = await this.$axios.get('api/orders?page=1&cursor=0')
     const { orders, links, cursor, previousCursor } = data
     this.orders = [...orders]
     this.links = [...links]
@@ -714,7 +714,7 @@ export default {
       links: [],
       openTab: 1,
       currentOrder: null,
-      orderview: false,
+      order_view: false,
       orders: [],
       invoices: [],
       tickets: [],
@@ -980,7 +980,7 @@ export default {
       this.openTab = tabNumber;
     },
     switchOrder(order) {
-      this.orderview = !this.orderview;
+      this.order_view = !this.order_view;
       this.currentOrder = order;
     },
     deleteOrder(id) {
