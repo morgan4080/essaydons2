@@ -263,6 +263,7 @@
                               </td>
                             </tr>
                           </table>
+                          <pagination :links="links" />
                         </section>
 
                       </div>
@@ -682,28 +683,34 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon';
-import { mapState } from 'vuex';
-import LoadingButton from "@/components/LoadingButton";
+import Icon from '@/components/Icon'
+import { mapState } from 'vuex'
+import LoadingButton from "@/components/LoadingButton"
 import SingleOrder from '@/components/SingleOrder'
 import Dropdown from '@/components/Dropdown'
+import Pagination from '@/components/Pagination'
 
 export default {
   components: {
     LoadingButton,
     Icon,
     SingleOrder,
-    Dropdown
+    Dropdown,
+    Pagination
   },
   middleware: 'auth',
   async fetch() {
-    const {data} = await this.$axios.get('api/orders');
-    const { orders, links, cursor } = data;
-    this.orders = [...orders];
-    this.links = [...links];
+    const {data} = await this.$axios.get('api/orders')
+    const { orders, links, cursor, previousCursor } = data
+    this.orders = [...orders]
+    this.links = [...links]
+    this.cursor = cursor
+    this.previousCursor = previousCursor
   },
   data() {
     return {
+      cursor: 0,
+      previousCursor: 0,
       links: [],
       openTab: 1,
       currentOrder: null,

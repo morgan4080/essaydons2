@@ -11,6 +11,13 @@
 export default {
   props: {
     links: Array,
+    cursor: Number,
+    previousCursor: Number,
   },
+  mounted() {
+    console.log("links", this.cursor)
+    console.log("cursor", this.cursor)
+    console.log("previousCursor", this.previousCursor)
+  }
 }
 </script>
