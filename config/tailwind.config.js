@@ -75,6 +75,7 @@ module.exports = {
     translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     inset: ['responsive'],
     width: ['responsive', 'hover', 'focus'],
+    backgroundImage: ['hover', 'focus'],
   },
   plugins: []
 }

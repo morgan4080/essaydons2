@@ -121,7 +121,7 @@
 
                         <div class="flex flex-wrap -m-4">
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   All Orders
@@ -135,7 +135,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Delegated Orders
@@ -149,7 +149,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Complete Orders
@@ -163,7 +163,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Disputed Orders

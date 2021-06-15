@@ -22,7 +22,7 @@
               </nuxt-link>
             </div>
           </div>
-          <div class="absolute bg-gradient-to-r from-vuegreen to-lightgreen shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
+          <div class="absolute bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
             <select v-model="form.subject" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-4 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
               <optgroup label="Subjects" class="bg-black">
                 <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
@@ -256,7 +256,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 lg:pt-12 lg:pb-16 pb-16">
-          <div class="bg-gradient-to-r from-vuegreen to-lightgreen p-8 rounded-lg">
+          <div class="bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 p-8 rounded-lg">
             <h3 class="font-semibold text-white text-3xl">
               Offers & Updates
             </h3>

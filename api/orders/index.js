@@ -230,5 +230,10 @@ module.exports = async function (req, res) {
       message: "order deletes not active"
     });
 
+  } else {
+    res.status(405).json({
+      message: "missing required credentials",
+      error: "un allowed method"
+    })
   }
 }

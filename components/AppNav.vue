@@ -11,7 +11,7 @@
                 </div>
               </nuxt-link>
             </div>
-            <div class="hidden lg:flex items-center relative" >
+            <div class="hidden lg:flex items-center relative !font-serif" >
               <nuxt-link to="/about" :class="{ 'text-gray-700' : som , 'text-secondary' : !som  }" class="uppercase mx-2 tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 About us
               </nuxt-link>
