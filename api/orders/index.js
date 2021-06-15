@@ -61,6 +61,8 @@ module.exports = async function (req, res) {
         }
       }
 
+      // empty paginator
+
       let totalTaken = 10
 
       if (user.owner) {
