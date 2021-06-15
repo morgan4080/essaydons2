@@ -69,6 +69,7 @@ module.exports = async function (req, res) {
       let totalTaken = 10
 
       if (user.owner) {
+        console.log("owner orders")
         const response = await prisma.orders.findMany({
           take: totalTaken,
           ...paginator,
@@ -86,6 +87,8 @@ module.exports = async function (req, res) {
         })
 
         const ordersCount = await prisma.orders.count()
+
+        console.log("all orders", ordersCount)
 
         const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
 
@@ -111,6 +114,8 @@ module.exports = async function (req, res) {
         })
 
       } else {
+        console.log("normal users orders")
+
         const response = await prisma.orders.findMany({
           take: 10,
           ...paginator,
@@ -132,6 +137,8 @@ module.exports = async function (req, res) {
             user_id: user.id,
           },
         })
+
+        console.log("order count", ordersCount)
 
         const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
 
