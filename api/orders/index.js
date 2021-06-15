@@ -100,7 +100,7 @@ module.exports = async function (req, res) {
 
         console.log("all orders", ordersCount)
 
-        const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
+        const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
         const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
 
@@ -153,7 +153,7 @@ module.exports = async function (req, res) {
 
         console.log("order count", ordersCount)
 
-        const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
+        const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
         const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
 
