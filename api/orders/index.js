@@ -99,7 +99,7 @@ module.exports = async function (req, res) {
           })
         }
 
-        console.log("orders type", typeof response)
+        console.log("orders type", JSON.stringify(response))
 
         const ordersCount = await prisma.orders.count()
 
