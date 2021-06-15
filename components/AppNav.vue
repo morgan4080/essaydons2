@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 font-serif" :class="{ 'border-0 gb-nav' : !som, 'bg-transparent border-0' : som }">
+    <div class="absolute top-0 w-full z-20 font-sans" :class="{ 'border-0 gb-nav' : !som, 'bg-transparent border-0' : som }">
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -11,7 +11,7 @@
                 </div>
               </nuxt-link>
             </div>
-            <div class="hidden lg:flex items-center relative !font-serif" >
+            <div class="hidden lg:flex items-center relative" >
               <nuxt-link to="/about" :class="{ 'text-gray-700' : som , 'text-secondary' : !som  }" class="uppercase mx-2 tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 About us
               </nuxt-link>

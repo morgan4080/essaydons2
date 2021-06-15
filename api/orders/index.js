@@ -42,14 +42,14 @@ module.exports = async function (req, res) {
     try {
       const user = await authMiddleware(req)
 
-      const page = req.query.page ? parseInt(req.query.page) : 1
+      const page = parseInt(req.query.page)
 
       // show admin all
       // paginate both to ten records
 
       let paginator = {}
 
-      if (req.query.cursor && req.query.cursor !== 0) {
+      if (parseInt(req.query.cursor) !== 0) {
         if (page && page !== 1 && page > 1) {
           console.log("page " + page)
           paginator = {
@@ -120,7 +120,8 @@ module.exports = async function (req, res) {
           orders: response,
           links,
           cursor,
-          previousCursor: req.query.cursor,
+          previousCursor: parseInt(req.query.cursor),
+          totalCount: ordersCount
         })
 
       } else {
@@ -170,7 +171,8 @@ module.exports = async function (req, res) {
           orders: response,
           links,
           cursor,
-          previousCursor: req.query.cursor,
+          previousCursor: parseInt(req.query.cursor),
+          totalCount: ordersCount
         })
       }
 

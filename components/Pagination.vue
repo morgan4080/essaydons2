@@ -14,10 +14,21 @@ export default {
     cursor: Number,
     previousCursor: Number,
   },
+  computed: {
+    cLinks() {
+      return this.links
+    },
+    cCursor() {
+      return this.cursor
+    },
+    pCursor() {
+      return this.previousCursor
+    },
+  },
   mounted() {
-    console.log("links", this.cursor)
-    console.log("cursor", this.cursor)
-    console.log("previousCursor", this.previousCursor)
+    console.log("links", this.cLinks)
+    console.log("cursor", this.cCursor)
+    console.log("previousCursor", this.pCursor)
   }
 }
 </script>

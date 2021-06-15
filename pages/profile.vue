@@ -126,7 +126,7 @@
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   All Orders
                                 </p>
-                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ this.orders.length }}</span>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ totalCount }}</span>
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
                                   <path d="M24 9C24 7.34315 25.3431 6 27 6H33C34.6569 6 36 7.34315 36 9C36 10.6569 34.6569 12 33 12H27C25.3431 12 24 10.6569 24 9Z" fill="#111827"/>
                                   <path d="M18 9C14.6863 9 12 11.6863 12 15V48C12 51.3137 14.6863 54 18 54H42C45.3137 54 48 51.3137 48 48V15C48 11.6863 45.3137 9 42 9C42 13.9706 37.9706 18 33 18H27C22.0294 18 18 13.9706 18 9Z" fill="#111827"/>
@@ -701,14 +701,16 @@ export default {
   middleware: 'auth',
   async fetch() {
     const {data} = await this.$axios.get('api/orders?page=1&cursor=0')
-    const { orders, links, cursor, previousCursor } = data
+    const { orders, links, cursor, previousCursor, totalCount } = data
     this.orders = [...orders]
     this.links = [...links]
     this.cursor = cursor
     this.previousCursor = previousCursor
+    this.totalCount = totalCount
   },
   data() {
     return {
+      totalCount: 0,
       cursor: 0,
       previousCursor: 0,
       links: [],
