@@ -51,16 +51,18 @@ module.exports = async function (req, res) {
 
       if (req.query.cursor && req.query.cursor !== 0) {
         if (page && page !== 1 && page > 1) {
+          console.log("page " + page)
           paginator = {
             skip: 1, // Skip the cursor
             cursor: {
-              id: req.query.cursor,
+              id: parseInt(req.query.cursor),
             },
           }
         } else {
+          console.log("page " + page)
           paginator = {
             cursor: {
-              id: req.query.cursor,
+              id: parseInt(req.query.cursor),
             },
           }
         }
@@ -69,22 +71,35 @@ module.exports = async function (req, res) {
       let totalTaken = 10
 
       if (user.owner) {
-        console.log("owner orders")
-        const response = await prisma.orders.findMany({
-          take: totalTaken,
-          ...paginator,
-          where: {
-            account_id: user.account_id,
-          },
-          orderBy: [
-            {
-              updated_at: 'asc',
+        console.log("owner orders", paginator)
+
+        let response
+
+        try {
+          response = await prisma.orders.findMany({
+            take: totalTaken,
+            ...paginator,
+            where: {
+              account_id: user.account_id,
             },
-          ],
-          include: {
-            users: true
-          }
-        })
+            orderBy: [
+              {
+                updated_at: 'asc',
+              },
+            ],
+            include: {
+              users: true
+            }
+          })
+        } catch (e) {
+
+          res.status(405).json({
+            error: e,
+            message: "orders query error"
+          })
+        }
+
+        console.log("orders type", typeof response)
 
         const ordersCount = await prisma.orders.count()
 
