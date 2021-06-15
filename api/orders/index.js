@@ -116,6 +116,8 @@ module.exports = async function (req, res) {
           })
         }
 
+        // total orders
+
         res.status(200).json({
           orders: response,
           links,
