@@ -11,7 +11,7 @@
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
-              <h1 class="text-4xl md:text-5xl lg:text-6xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
+              <h1 class="text-4xl md:text-5xl lg:text-7xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
                 Professional Essay<br> & Academic Writers
               </h1>
               <p class="text-black opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
@@ -737,28 +737,22 @@ export default {
 }
 
 .moneyBack {
-  background-image: linear-gradient(
-    60deg
-    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/moneyback.jpg);
+  background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
   background-blend-mode: multiply;
 }
 .revisions {
-  background-image: linear-gradient(
-    60deg
-    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/freerevisions.jpg);
+  background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
 .safePayments {
-  background-image:linear-gradient(
-    60deg
-    ,#c7e4d9,#42fbb7,#42fbb7),url(~assets/images/safe.jpg);
+  background-image:linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
   background-blend-mode: multiply;
 }
 .mobile-b {
-  background-image: linear-gradient(60deg,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(~assets/images/essaydons-writer.jpg);
+  background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/essaydons-writer.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100% 10%;

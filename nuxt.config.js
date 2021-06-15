@@ -7,7 +7,10 @@ export default {
       lang: 'en'
     },
     title: 'EssayDons',
-    script: [{ src: 'https://js.stripe.com/v3/', defer: true, async: true },],
+    script: [
+      { src: 'https://js.stripe.com/v3/', defer: true, async: true },
+      { src: 'https://embed.tawk.to/5ad4467d227d3d7edc23f6c8/1f790vmik', async: true, crossorigin: '*', charset: 'UTF-8' },
+    ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -118,7 +121,6 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',

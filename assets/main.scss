@@ -67,9 +67,7 @@ p {
 }
 
 .bg-gradient-to-r, .group:hover .group-hover\:bg-gradient-to-r {
-  background-image: linear-gradient(
-      60deg
-    ,#c7e4d9,#42fbb7,#42fbb7,#c7e4d9),url(/_nuxt/assets/images/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg);
+  background-image: linear-gradient(60deg,#0ff985, #0ff985, #0ef984, #0ff985, #13f989, #13f989, #13f989, #13f989),url(/_nuxt/assets/images/glenn-carstens-peters-P1qyEf1g0HU-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100% 10%;

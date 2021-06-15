@@ -113,7 +113,7 @@
                 </div>
                 <div class="w-full mr-auto h-auto">
                   <div class="lg:px-6 py-6">
-                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2">
+                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2">
                       <div class="flex flex-col px-4 py-5 bg-white sm:p-6">
                         <p class="text-3xl pt-3 pb-12 leading-none font-extrabold text-gray-900 tracking-tight text-left">
                           Dashboard<span class="text-teal-300"> / Order Management</span>
@@ -121,7 +121,7 @@
 
                         <div class="flex flex-wrap -m-4">
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   All Orders
@@ -135,7 +135,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Delegated Orders
@@ -149,7 +149,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Complete Orders
@@ -163,7 +163,7 @@
                             </div>
                           </div>
                           <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
-                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-teal-300 via-green-500 to-teal-500 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg transition transform group-hover:bg-gradient-to-r from-vuegreen to-lightgreen duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
                                   Disputed Orders
@@ -180,7 +180,7 @@
                         </div>
 
                         <section class="rounded-lg bg-gray-100 mt-16">
-                          <table class="w-full whitespace-no-wrap text-sm">
+                          <table class="w-full whitespace-no-wrap text-sm overflow-x-scroll">
                             <tr class="text-left">
                               <th class="px-6 pt-6 pb-4">Client</th>
                               <th class="px-6 pt-6 pb-4">Paper</th>
@@ -191,8 +191,8 @@
                             </tr>
                             <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                               <td class="border-t">
-                                <a
-                                  href="javascript:void(0)"
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
                                   tabindex="-1"
                                   class="px-6 py-4 flex items-center"
                                 >
@@ -204,11 +204,11 @@
                                       {{ JSON.parse(order.order_details).email }}
                                     </div>
                                   </div>
-                                </a>
+                                </nuxt-link>
                               </td>
                               <td class="border-t">
-                                <a
-                                  href="javascript:void(0)"
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
                                   tabindex="-1"
                                   class="px-6 py-4 flex items-center"
                                 >
@@ -220,37 +220,37 @@
                                       {{ JSON.parse(order.order_details).subject }}
                                     </div>
                                   </div>
-                                </a>
+                                </nuxt-link>
                               </td>
                               <td class="border-t">
-                                <a
-                                  href="javascript:void(0)"
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
                                   tabindex="-1"
                                   class="px-6 py-4 flex items-center"
                                 >
                                   {{ JSON.parse(order.order_details) ? JSON.parse(order.order_details).duration ? JSON.parse(order.order_details).duration.duration : '' : '' }}
-                                </a>
+                                </nuxt-link>
                               </td>
                               <td class="border-t">
-                                <a
-                                  href="javascript:void(0)"
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
                                   tabindex="-1"
                                   class="px-6 py-4 flex items-center"
                                 >
                                   <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
-                                </a>
+                                </nuxt-link>
                               </td>
                               <td class="border-t">
-                                <a
-                                  href="javascript:void(0)"
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
                                   tabindex="-1"
                                   class="px-6 py-4 flex items-center"
                                 >
                                   {{ JSON.parse(order.order_details).amount | dollar }}
-                                </a>
+                                </nuxt-link>
                               </td>
                               <td class="border-t w-px">
-                                <button type="button" @click="switchOrder(order)" tabindex="-1" class="px-4 flex items-center"
+                                <nuxt-link :to="'orders/' + order.id" tabindex="-1" class="px-4 flex items-center"
                                 ><svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 20 20"
@@ -259,7 +259,7 @@
                                   <polygon
                                     points="12.95 10.707 13.657 10 8 4.343 6.586 5.757 10.828 10 6.586 14.243 8 15.657 12.95 10.707"
                                   ></polygon></svg
-                                ></button>
+                                ></nuxt-link>
                               </td>
                             </tr>
                           </table>
@@ -697,11 +697,14 @@ export default {
   },
   middleware: 'auth',
   async fetch() {
-    const response = await this.$axios.get('api/orders');
-    this.orders = [...response.data.orders];
+    const {data} = await this.$axios.get('api/orders');
+    const { orders, links, cursor } = data;
+    this.orders = [...orders];
+    this.links = [...links];
   },
   data() {
     return {
+      links: [],
       openTab: 1,
       currentOrder: null,
       orderview: false,

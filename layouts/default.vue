@@ -7,14 +7,29 @@
     </div>
 </template>
 <script>
-import AppFooter from "~/components/AppFooter.vue";
-import AppNav from "~/components/AppNav.vue";
+import AppFooter from "~/components/AppFooter.vue"
+import AppNav from "~/components/AppNav.vue"
 import { PortalTarget } from 'portal-vue'
+
 export default {
   components: {
     AppFooter,
     AppNav,
     PortalTarget
+  },
+  mounted() {
+    const Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+
+    Tawk_API.onLoad = () => {
+      if(Tawk_API.isVisitorEngaged()){
+        this.$toast.show("Login to secure chat", {
+          theme: "outline",
+          position: "bottom-center",
+          duration : 5000
+        })
+      }
+    }
   }
 }
 </script>

@@ -1052,7 +1052,7 @@ export default {
         return
       }
 
-      this.$toast.show('Kindly Login to continue', {
+      this.$toast.show('Login to continue', {
         theme: "outline",
         position: "bottom-center",
         duration : 5000

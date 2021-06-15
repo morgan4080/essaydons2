@@ -37,26 +37,47 @@ module.exports = async function (req, res) {
     res.status(200)
   }
 
-  if (Object.keys(req.query).length === 0 && req.method === "GET") {
+  if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.cursor && req.query.page) {
 
     try {
-      const user = await authMiddleware(req);
+      const user = await authMiddleware(req)
+
+      const page = req.query.page ? parseInt(req.query.page) : 1
 
       // show admin all
-
       // paginate both to ten records
 
+      let paginator = {}
+
+      if (req.query.cursor && req.query.cursor !== 0) {
+        if (page && page !== 1 && page > 1) {
+          paginator = {
+            skip: 1, // Skip the cursor
+            cursor: {
+              id: req.query.cursor,
+            },
+          }
+        } else {
+          paginator = {
+            cursor: {
+              id: req.query.cursor,
+            },
+          }
+        }
+      }
+
+      let totalTaken = 10
+
       if (user.owner) {
-        let response = await prisma.orders.findMany({
+        const response = await prisma.orders.findMany({
+          take: totalTaken,
+          ...paginator,
           where: {
             account_id: user.account_id,
           },
           orderBy: [
             {
-              role: 'created_at',
-            },
-            {
-              role: 'updated_at',
+              updated_at: 'asc',
             },
           ],
           include: {
@@ -64,21 +85,41 @@ module.exports = async function (req, res) {
           }
         })
 
+        const ordersCount = await prisma.orders.count()
+
+        const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
+
+        const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
+
+        const cursor = lastOrderInResults.id
+
+        let links = []
+
+        for (let i = 1; i < totalPages; i++ ) {
+          links.push({
+            url: `/orders?page=${i}`,
+            label: i,
+            active: page === i
+          })
+        }
+
         res.status(200).json({
-          orders: response
+          orders: response,
+          links,
+          cursor,
+          previousCursor: req.query.cursor,
         })
 
       } else {
-        let response = await prisma.orders.findMany({
+        const response = await prisma.orders.findMany({
+          take: 10,
+          ...paginator,
           where: {
             user_id: user.id,
           },
           orderBy: [
             {
-              role: 'created_at',
-            },
-            {
-              role: 'updated_at',
+              updated_at: 'asc',
             },
           ],
           include: {
@@ -86,8 +127,33 @@ module.exports = async function (req, res) {
           }
         })
 
+        const ordersCount = await prisma.orders.count({
+          where: {
+            user_id: user.id,
+          },
+        })
+
+        const totalPages = typeof ordersCount === "number" ?  Math.round(ordersCount/10) : 0
+
+        const lastOrderInResults = response[totalTaken - 1] // Remember: zero-based index! :)
+
+        const cursor = lastOrderInResults.id
+
+        let links = []
+
+        for (let i = 1; i < totalPages; i++ ) {
+          links.push({
+            url: `/orders?page=${i}`,
+            label: i,
+            active: page === i
+          })
+        }
+
         res.status(200).json({
-          orders: response
+          orders: response,
+          links,
+          cursor,
+          previousCursor: req.query.cursor,
         })
       }
 
@@ -100,10 +166,32 @@ module.exports = async function (req, res) {
     }
 
   } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
+    try {
+      const user = await authMiddleware(req)
 
-    res.status(400).json({
-      message: "single order views not active"
-    })
+      if (user.owner && req.query.id !== 0) {
+        const order = await prisma.orders.findUnique({
+          where: {
+            id: req.query.id
+          },
+          include: {
+            users: true
+          }
+        })
+
+        res.status(200).json({
+          orders: order
+        })
+      }
+      res.status(405).json({
+        message: "Unauthorized access"
+      })
+    } catch (e) {
+      res.status(405).json({
+        message: "single order error",
+        error: e
+      })
+    }
 
   } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0 ) {
 
