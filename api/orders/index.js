@@ -161,7 +161,7 @@ module.exports = async function (req, res) {
     try {
       const user = await authMiddleware(req)
 
-      if (user.owner && req.query.id !== 0) {
+      if (user && user.owner && req.query.id !== 0) {
         const order = await prisma.orders.findUnique({
           where: {
             id: req.query.id
@@ -172,7 +172,21 @@ module.exports = async function (req, res) {
         })
 
         res.status(200).json({
-          orders: order
+          order
+        })
+      } else {
+        const order = await prisma.orders.findUnique({
+          where: {
+            user_id: user.id,
+            id: req.query.id
+          },
+          include: {
+            users: true
+          }
+        })
+
+        res.status(200).json({
+          order
         })
       }
       res.status(405).json({

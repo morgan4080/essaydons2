@@ -6,8 +6,20 @@
 export default {
   auth: false,
   async fetch() {
-    const { data } = await this.$axios.get('api/orders');
-    this.order = [...data.orders];
+    try {
+      const { data } = await this.$axios.get('api/orders?id=' + this.id)
+
+      this.order = {
+        ...data.order
+      }
+    } catch (e) {
+      console.log(e)
+      this.$toast.error('Order Cannot be fetched', {
+        theme: "outline",
+        position: "bottom-center",
+        duration : 5000
+      })
+    }
   },
   components: {
 
@@ -15,7 +27,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      order: []
+      order: {}
     };
   },
   computed: {

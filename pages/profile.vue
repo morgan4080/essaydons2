@@ -121,7 +121,7 @@
                             <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
-                                  All Orders
+                                  Listed Orders
                                 </p>
                                 <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ totalCount }}</span>
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
@@ -135,7 +135,7 @@
                             <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
-                                  Delegated Orders
+                                  In-Progress
                                 </p>
                                 <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ delegatedOrders.length }}</span>
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
@@ -149,7 +149,7 @@
                             <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
-                                  Complete Orders
+                                  Done Orders
                                 </p>
                                 <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ completeOrders.length }}</span>
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out" >
@@ -163,9 +163,37 @@
                             <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
                               <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
                                 <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
-                                  Disputed Orders
+                                  Finished Orders
                                 </p>
                                 <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ disputedOrders.length }} </span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M36 21C34.3431 21 33 19.6569 33 18C33 16.3431 34.3431 15 36 15H51C52.6569 15 54 16.3431 54 18V33C54 34.6569 52.6569 36 51 36C49.3431 36 48 34.6569 48 33V25.2426L35.1213 38.1213C33.9497 39.2929 32.0503 39.2929 30.8787 38.1213L24 31.2426L11.1213 44.1213C9.94975 45.2929 8.05025 45.2929 6.87868 44.1213C5.70711 42.9497 5.70711 41.0503 6.87868 39.8787L21.8787 24.8787C23.0503 23.7071 24.9497 23.7071 26.1213 24.8787L33 31.7574L43.7574 21H36Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-wrap -m-4 mt-2">
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  Disputed Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">0</span>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
+                                  <path d="M54 9C54 7.96027 53.4616 6.99467 52.5772 6.44805C51.6927 5.90143 50.5883 5.85174 49.6584 6.31672L26.2918 18H15C10.0294 18 6 22.0294 6 27C6 31.9706 10.0294 36 15 36H15.8377L21.154 51.9487C21.5623 53.1737 22.7087 54 24 54H27C28.6569 54 30 52.6569 30 51V37.8541L49.6584 47.6833C50.5883 48.1483 51.6927 48.0986 52.5772 47.552C53.4616 47.0053 54 46.0397 54 45V9Z" fill="#111827"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-4 xl:w-1/4 md:w-1/2 w-full cursor-pointer group">
+                            <div class="relative bg-gray-100 shadow-md h-full rounded-lg  transform transition group-hover:bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 duration-200 ease-in-out flex flex-col relative overflow-hidden">
+                              <div class="flex flex-col m-1 px-6 lg:px-4 py-6 bg-white rounded-lg bg-gray-100">
+                                <p class="text-2xl w-0 text-left font-light leading-none text-gray-900 flex items-center pb-4 mb-4 ">
+                                  Revision Orders
+                                </p>
+                                <span class="absolute top-2/3 left-4.5 text-teal-300 font-semibold text-base">{{ delegatedOrders.length }}</span>
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 opacity-25 group-hover:scale-105 transition transform duration-200 ease-in-out">
                                   <path d="M24 6C22.3431 6 21 7.34315 21 9C21 10.6569 22.3431 12 24 12H30C31.6569 12 33 10.6569 33 9C33 7.34315 31.6569 6 30 6H24Z" fill="#111827"/>
                                   <path d="M9 15C9 11.6863 11.6863 9 15 9C15 13.9706 19.0294 18 24 18H30C34.9706 18 39 13.9706 39 9C42.3137 9 45 11.6863 45 15V33H31.2426L35.1213 29.1213C36.2929 27.9497 36.2929 26.0503 35.1213 24.8787C33.9497 23.7071 32.0503 23.7071 30.8787 24.8787L21.8787 33.8787C20.7071 35.0503 20.7071 36.9497 21.8787 38.1213L30.8787 47.1213C32.0503 48.2929 33.9497 48.2929 35.1213 47.1213C36.2929 45.9497 36.2929 44.0503 35.1213 42.8787L31.2426 39H45V48C45 51.3137 42.3137 54 39 54H15C11.6863 54 9 51.3137 9 48V15Z" fill="#111827"/>
@@ -177,12 +205,13 @@
                         </div>
 
                         <p class="text-2xl mt-12 leading-none font-bold text-gray-900 tracking-tight text-left">
-                          Dashboard<span class="text-teal-300"> / All Orders</span>
+                          Dashboard<span class="text-teal-300"> / Listed Orders</span>
                         </p>
 
                         <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-xl mt-6">
                           <table class="w-full whitespace-no-wrap text-sm">
                             <tr class="text-left">
+                              <th class="px-6 pt-6 pb-4">ID</th>
                               <th class="px-6 pt-6 pb-4">Client</th>
                               <th class="px-6 pt-6 pb-4">Paper</th>
                               <th class="px-6 pt-6 pb-4">Deadline</th>
@@ -191,6 +220,15 @@
                               <th class="px-6 pt-6 pb-4">Options</th>
                             </tr>
                             <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                              <td class="border-t">
+                                <nuxt-link
+                                  :to="'orders/' + order.id"
+                                  tabindex="-1"
+                                  class="px-6 py-4 flex items-center"
+                                >
+                                  {{ order.id }}
+                                </nuxt-link>
+                              </td>
                               <td class="border-t">
                                 <nuxt-link
                                   :to="'orders/' + order.id"
