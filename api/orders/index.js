@@ -37,7 +37,7 @@ module.exports = async function (req, res) {
     res.status(200)
   }
 
-  if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.page) {
+  if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.page) {
 
     try {
       const user = await authMiddleware(req)
@@ -64,14 +64,14 @@ module.exports = async function (req, res) {
 
         try {
           response = await prisma.orders.findMany({
-            take: totalTaken,
             ...paginator,
+            take: totalTaken,
             where: {
               account_id: user.account_id,
             },
             orderBy: [
               {
-                updated_at: 'asc',
+                updated_at: 'desc',
               },
             ],
             include: {
@@ -109,14 +109,14 @@ module.exports = async function (req, res) {
       } else {
 
         const response = await prisma.orders.findMany({
-          take: 10,
           ...paginator,
+          take: totalTaken,
           where: {
             user_id: user.id,
           },
           orderBy: [
             {
-              updated_at: 'asc',
+              updated_at: 'desc',
             },
           ],
           include: {

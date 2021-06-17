@@ -739,17 +739,17 @@ export default {
 .moneyBack {
   background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
-  background-blend-mode: multiply;
+  background-blend-mode: darken;
 }
 .revisions {
   background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
-  background-blend-mode: multiply;
+  background-blend-mode: darken;
 }
 .safePayments {
   background-image:linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
-  background-blend-mode: multiply;
+  background-blend-mode: darken;
 }
 .mobile-b {
   background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/essaydons-writer.jpg);
