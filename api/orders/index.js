@@ -37,37 +37,84 @@ module.exports = async function (req, res) {
     res.status(200)
   }
 
-  if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.page) {
+  try {
+    const user = await authMiddleware(req)
 
-    try {
-      const user = await authMiddleware(req)
+    if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.page) {
 
-      const page = parseInt(req.query.page)
+      try {
 
-      let paginator
+        const page = parseInt(req.query.page)
 
-      if (page && page === 1 ) {
-        paginator = {
-          skip: 0,
+        let paginator
+
+        if (page && page === 1 ) {
+          paginator = {
+            skip: 0,
+          }
+        } else {
+          paginator = {
+            skip: 10 * page
+          }
         }
-      } else {
-        paginator = {
-          skip: 10 * page
-        }
-      }
 
-      let totalTaken = 10
+        let totalTaken = 10
 
-      if (user.owner) {
+        if (user.owner) {
 
-        let response
+          let response
 
-        try {
-          response = await prisma.orders.findMany({
+          try {
+            response = await prisma.orders.findMany({
+              ...paginator,
+              take: totalTaken,
+              where: {
+                account_id: user.account_id,
+              },
+              orderBy: [
+                {
+                  updated_at: 'desc',
+                },
+              ],
+              include: {
+                users: true
+              }
+            })
+          } catch (e) {
+
+            res.status(405).json({
+              error: e,
+              message: "orders query error"
+            })
+          }
+
+          const ordersCount = await prisma.orders.count()
+
+          const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
+
+          let links = []
+
+          for (let i = 1; i < totalPages; i++ ) {
+            links.push({
+              url: `/profile?page=${i}`,
+              label: i,
+              active: page === i
+            })
+          }
+
+          res.status(200).json({
+            orders: response,
+            links,
+            totalCount: ordersCount
+          })
+
+        } else {
+
+          const response = await prisma.orders.findMany({
             ...paginator,
             take: totalTaken,
             where: {
-              account_id: user.account_id,
+              user_id: user.id,
             },
             orderBy: [
               {
@@ -78,168 +125,132 @@ module.exports = async function (req, res) {
               users: true
             }
           })
-        } catch (e) {
 
-          res.status(405).json({
-            error: e,
-            message: "orders query error"
-          })
-        }
-
-        const ordersCount = await prisma.orders.count()
-
-        const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
-
-        let links = []
-
-        for (let i = 1; i < totalPages; i++ ) {
-          links.push({
-            url: `/profile?page=${i}`,
-            label: i,
-            active: page === i
-          })
-        }
-
-        res.status(200).json({
-          orders: response,
-          links,
-          totalCount: ordersCount
-        })
-
-      } else {
-
-        const response = await prisma.orders.findMany({
-          ...paginator,
-          take: totalTaken,
-          where: {
-            user_id: user.id,
-          },
-          orderBy: [
-            {
-              updated_at: 'desc',
+          const ordersCount = await prisma.orders.count({
+            where: {
+              user_id: user.id,
             },
-          ],
-          include: {
-            users: true
+          })
+
+          const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
+
+          let links = []
+
+          for (let i = 1; i < totalPages; i++ ) {
+            links.push({
+              url: `/profile?page=${i}`,
+              label: i,
+              active: page === i
+            })
           }
-        })
 
-        const ordersCount = await prisma.orders.count({
-          where: {
-            user_id: user.id,
-          },
-        })
-
-        const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
-
-        let links = []
-
-        for (let i = 1; i < totalPages; i++ ) {
-          links.push({
-            url: `/profile?page=${i}`,
-            label: i,
-            active: page === i
+          res.status(200).json({
+            orders: response,
+            links,
+            totalCount: ordersCount
           })
         }
 
-        res.status(200).json({
-          orders: response,
-          links,
-          totalCount: ordersCount
+      } catch (e) {
+
+        res.status(405).json({
+          error: e
         })
+
       }
 
-    } catch (e) {
+    } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
+      try {
 
-      res.status(405).json({
-        error: e
-      })
+        if (user && user.owner && req.query.id !== 0) {
+          const order = await prisma.orders.findUnique({
+            where: {
+              id: req.query.id
+            },
+            include: {
+              users: true
+            }
+          })
 
-    }
+          console.log("owner getting order", JSON.stringify(order))
 
-  } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
-    try {
-      const user = await authMiddleware(req)
+          res.status(200).json({
+            order
+          })
+        } else {
+          const order = await prisma.orders.findUnique({
+            where: {
+              user_id: user.id,
+              id: req.query.id
+            },
+            include: {
+              users: true
+            }
+          })
 
-      if (user && user.owner && req.query.id !== 0) {
-        const order = await prisma.orders.findUnique({
-          where: {
-            id: req.query.id
-          },
-          include: {
-            users: true
-          }
-        })
+          console.log("user getting order", JSON.stringify(order))
 
-        res.status(200).json({
-          order
-        })
-      } else {
-        const order = await prisma.orders.findUnique({
-          where: {
-            user_id: user.id,
-            id: req.query.id
-          },
-          include: {
-            users: true
-          }
-        })
-
-        res.status(200).json({
-          order
-        })
-      }
-      res.status(405).json({
-        message: "Unauthorized access"
-      })
-    } catch (e) {
-      res.status(405).json({
-        message: "single order error",
-        error: e
-      })
-    }
-
-  } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0 ) {
-
-    try {
-      let user = await authMiddleware(req)
-
-      let response = await prisma.orders.create({
-        data: {
-          users: { connect: { id: user.id } },
-          accounts: { connect: { id: user.account_id } },
-          status: "processing",
-          order_details: JSON.stringify(req.body.order_details)
+          res.status(200).json({
+            order
+          })
         }
-      });
+        res.status(405).json({
+          message: "Unauthorized access"
+        })
+      } catch (e) {
+        res.status(405).json({
+          message: "single order error",
+          error: e
+        })
+      }
 
-      res.status(200).json({
-        response: response
-      })
-    } catch (e) {
+    } else if (Object.keys(req.query).length === 0 && req.method === "POST" && Object.keys(req.body).length !== 0 ) {
+
+      try {
+        let user = await authMiddleware(req)
+
+        let response = await prisma.orders.create({
+          data: {
+            users: { connect: { id: user.id } },
+            accounts: { connect: { id: user.account_id } },
+            status: "processing",
+            order_details: JSON.stringify(req.body.order_details)
+          }
+        });
+
+        res.status(200).json({
+          response: response
+        })
+      } catch (e) {
+
+        res.status(400).json({
+          error: e
+        })
+
+      }
+
+    } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.query.id) {
 
       res.status(400).json({
-        error: e
+        message: "order edits not active"
       })
 
+    } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
+
+      res.status(400).json({
+        message: "order deletes not active"
+      });
+
+    } else {
+      res.status(405).json({
+        message: "missing required credentials",
+        error: "un allowed method"
+      })
     }
-
-  } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.query.id) {
-
-    res.status(400).json({
-      message: "order edits not active"
-    })
-
-  } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
-
-    res.status(400).json({
-      message: "order deletes not active"
-    });
-
-  } else {
+  } catch (e) {
     res.status(405).json({
-      message: "missing required credentials",
-      error: "un allowed method"
+      error: e,
+      message: "Orders method not allowed"
     })
   }
 }
