@@ -730,6 +730,9 @@ import Dropdown from '@/components/Dropdown'
 import Pagination from '@/components/Pagination'
 
 export default {
+  head: {
+    title: 'Profile',
+  },
   components: {
     LoadingButton,
     Icon,

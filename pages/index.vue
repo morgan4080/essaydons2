@@ -675,6 +675,9 @@
 <script>
 import { mapState, mapMutations } from "vuex"
 export default {
+  head: {
+    title: 'Homepage',
+  },
   auth: false,
   data() {
     return {

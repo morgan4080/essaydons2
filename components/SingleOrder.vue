@@ -1,72 +1,134 @@
 <template>
-  <div class="bg-white overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-        Order Information
-      </h3>
-      <p class="mt-1 max-w-2xl text-base text-gray-500">
-        Specifications data.
-      </p>
-      <p class="mt-1 max-w-2xl text-base text-gray-500">
-        <a @click="$emit('back')" class="font-bold text-teal-600 cursor-pointer underline">Orders</a>  /  OrderID: {{ order.id }}
-      </p>
-    </div>
-    <div class="border-t border-gray-200">
+  <div class="bg-white overflow-hidden w-full rounded-lg shadow-lg">
+    <div class="">
       <dl>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" v-if="isOwner">
-          <dt class="text-base font-medium text-gray-500">
-            Full name
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" >
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Order State
+            </div>
           </dt>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ order.users.name }}
+          <dd class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ order.state }}
+              </div>
+            </div>
           </dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" v-if="isOwner">
-          <dt class="text-base font-medium text-gray-500">
-            Contact Information
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" >
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Client
+            </div>
           </dt>
-          <dd class="flex flex-col mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <a href="mailto:someone@example.com">Email - {{ order.users.email }}</a>
-            <a href="tel:+18475555555">Call - {{ order.users.phone }}</a>
+          <dd class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="flex flex-col">
+              <div class="text-sm font-medium capitalize text-gray-900">
+                {{ order.users.name }}
+              </div>
+            </div>
+          </dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" >
+          <dt>
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                Email
+              </div>
+              <div class="text-sm text-gray-500">
+                Phone
+              </div>
+            </div>
+          </dt>
+          <dd class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ order.users.email }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ order.users.phone }}
+              </div>
+            </div>
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Paper Type
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Paper Type
+            </div>
           </dt>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ orderDetails.paper_type }}
+          <dd class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ orderDetails.paper_type }}
+              </div>
+            </div>
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Academic Level, Discipline/Subject
+          <dt>
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                Academic Level
+              </div>
+              <div class="text-sm text-gray-500">
+                Discipline/Subject
+              </div>
+            </div>
           </dt>
           <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ academicLevel }} - {{ orderDetails.subject }}
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ academicLevel }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ orderDetails.subject }}
+              </div>
+            </div>
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Urgency
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Deadline
+            </div>
           </dt>
           <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ orderDetails.duration.duration }}
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ orderDetails.duration.duration }}
+              </div>
+            </div>
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Pages (spacing) (format)
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Pages
+            </div>
+            <div class="text-sm text-gray-500">
+              Format/Spacing
+            </div>
           </dt>
           <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{ orderDetails.pages }} ({{ orderDetails.spacing }}) ({{ orderDetails.format }})
+            <div class="flex flex-col">
+              <div class="text-sm font-medium text-gray-900">
+                {{ orderDetails.pages }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ orderDetails.format }} / {{ orderDetails.spacing }}
+              </div>
+            </div>
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Extra Options
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Extra Options
+            </div>
           </dt>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <ul>
               <li>Sources = {{ orderDetails.sources }}</li>
               <li>Slides = {{ orderDetails.slides }}</li>
@@ -81,21 +143,31 @@
           </dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Topic and Paper Details
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Topic
+            </div>
+            <div class="text-sm text-gray-500">
+              Paper Details
+            </div>
           </dt>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <span class="font-bold mb-1">{{ orderDetails.topic }}</span><br>
-            {{ orderDetails.details }}
+          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
+            <span class="font-semibold text-sm mb-1 text-gray-700">{{ orderDetails.topic }}</span>
+            <br>
+            <p class="text-sm text-gray-500">
+              {{ orderDetails.details }}
+            </p>
           </dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Attachments
+          <dt class="">
+            <div class="text-sm font-medium text-gray-900">
+              Attachments
+            </div>
           </dt>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
-              <li v-for="upload in orderDetails.uploads" class="pl-3 pr-4 py-3 flex items-center justify-between text-base">
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <ul class="border border-gray-200 divide-y divide-gray-200">
+              <li v-for="upload in orderDetails.uploads" class="pl-3 pr-4 py-3 flex items-center justify-between">
                 <div class="w-0 flex-1 flex items-center">
                   <!-- Heroicon name: paper-clip -->
                   <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -134,13 +206,7 @@ export default {
     },
     academicLevel() {
       return this.storedata.find(item => item.id === this.orderDetails.level).level
-    },
-    isOwner() {
-      return this.$auth.loggedIn ? this.$auth.user.owner : false
     }
-  },
-  mounted() {
-    console.log(this.order)
   },
   methods: {
     genDownload(id) {

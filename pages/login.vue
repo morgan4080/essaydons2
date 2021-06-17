@@ -170,6 +170,9 @@
 import Notification from '~/components/Notification'
 
 export default {
+  head: {
+    title: 'Login',
+  },
   auth: 'guest',
   components: {
     Notification,

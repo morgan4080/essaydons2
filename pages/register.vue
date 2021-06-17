@@ -121,6 +121,9 @@
 import Notification from '~/components/Notification'
 
 export default {
+  head: {
+    title: 'Register',
+  },
   auth: 'guest',
   components: {
     Notification,
