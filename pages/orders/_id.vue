@@ -1,10 +1,16 @@
 <template>
-  <SingleOrder @back="$router.push('/profile')" :order="this.order" />
+  <div>
+    <p v-if="$fetchState.pending">Fetching order : )</p>
+    <p v-else-if="$fetchState.error">An error occurred :(</p>
+    <SingleOrder v-else @back="$router.push('/profile')" :order="this.order" />
+  </div>
 </template>
 
 <script>
+import SingleOrder from '@/components/SingleOrder'
+
 export default {
-  auth: false,
+  middleware: 'auth',
   async fetch() {
     try {
       const { data } = await this.$axios.get('api/orders?id=' + this.id)
@@ -12,6 +18,8 @@ export default {
       this.order = {
         ...data.order
       }
+
+      console.log(this.order)
     } catch (e) {
       console.log(e)
       this.$toast.error('Order Cannot be fetched', {
@@ -22,19 +30,13 @@ export default {
     }
   },
   components: {
-
+    SingleOrder
   },
   data() {
     return {
       id: this.$route.params.id,
-      order: {}
+      order: null
     };
-  },
-  computed: {
-
-  },
-  methods: {
-
   }
 }
 </script>

@@ -136,7 +136,7 @@ export default {
       return this.storedata.find(item => item.id === this.orderDetails.level).level
     },
     isOwner() {
-      return this.$auth.user.owner
+      return this.$auth.loggedIn ? this.$auth.user.owner : false
     }
   },
   mounted() {
