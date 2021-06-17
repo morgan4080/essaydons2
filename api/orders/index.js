@@ -162,10 +162,12 @@ module.exports = async function (req, res) {
     } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
       try {
 
-        if (user && user.owner && req.query.id !== 0) {
+        console.log("user", JSON.stringify(user))
+
+        if (user && user.owner && parseInt(req.query.id) !== 0) {
           const order = await prisma.orders.findUnique({
             where: {
-              id: req.query.id
+              id: parseInt(req.query.id)
             },
             include: {
               users: true
@@ -181,7 +183,7 @@ module.exports = async function (req, res) {
           const order = await prisma.orders.findUnique({
             where: {
               user_id: user.id,
-              id: req.query.id
+              id: parseInt(req.query.id)
             },
             include: {
               users: true
