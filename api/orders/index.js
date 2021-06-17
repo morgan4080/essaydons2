@@ -162,8 +162,6 @@ module.exports = async function (req, res) {
     } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
       try {
 
-        console.log("user", JSON.stringify(user))
-
         if (user && user.owner && parseInt(req.query.id) !== 0) {
           const order = await prisma.orders.findUnique({
             where: {
@@ -174,10 +172,8 @@ module.exports = async function (req, res) {
             }
           })
 
-          console.log("owner getting order", JSON.stringify(order))
-
           res.status(200).json({
-            order
+            order: order
           })
         } else {
           const order = await prisma.orders.findUnique({
@@ -190,15 +186,10 @@ module.exports = async function (req, res) {
             }
           })
 
-          console.log("user getting order", JSON.stringify(order))
-
           res.status(200).json({
-            order
+            order: order
           })
         }
-        res.status(405).json({
-          message: "Unauthorized access"
-        })
       } catch (e) {
         res.status(405).json({
           message: "single order error",
