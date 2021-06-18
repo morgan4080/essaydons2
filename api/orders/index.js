@@ -89,11 +89,7 @@ module.exports = async function (req, res) {
             })
           }
 
-          const ordersCount = await prisma.orders.count({
-            where: {
-              state: req.query.state
-            },
-          })
+          const ordersCount = response.length
 
           const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
@@ -132,12 +128,7 @@ module.exports = async function (req, res) {
             }
           })
 
-          const ordersCount = await prisma.orders.count({
-            where: {
-              user_id: user.id,
-              state: req.query.state
-            },
-          })
+          const ordersCount = response.length
 
           const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
