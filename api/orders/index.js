@@ -100,7 +100,7 @@ module.exports = async function (req, res) {
 
           let links = []
 
-          for (let i = 1; i < totalPages; i++ ) {
+          for (let i = 1; i <= totalPages; i++ ) {
             links.push({
               url: `/profile?page=${i}&state=${req.query.state}`,
               label: i,

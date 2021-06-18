@@ -115,7 +115,7 @@
                 </div>
                 <div class="w-full mr-auto h-auto">
                   <div class="lg:px-6 py-6">
-                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="sm:rounded-lg text-gray-900 py-2">
+                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="sm:rounded-lg text-gray-900">
                       <div class="flex flex-col px-4 py-5">
                         <div class="text-2xl flex leading-none tracking-tight text-left">
                           <div class="flex-grow flex items-center flex-wrap">
@@ -257,7 +257,7 @@
 
                       </div>
                     </div>
-                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2 overflow-x-scroll">
+                    <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 overflow-x-scroll">
                       <section v-if="!order_view && orders.length === 0" class="text-gray-600 body-font">
                         <div class="container px-5 py-24 mx-auto">
                           <div class="lg:w-2/3 flex flex-col justify-center sm:flex-row items-center md:items-start mx-auto">
