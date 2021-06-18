@@ -54,7 +54,7 @@ module.exports = async function (req, res) {
           }
         } else {
           paginator = {
-            skip: 10 * page-1
+            skip: ( (page - 1 ) * 10 )
           }
         }
 
