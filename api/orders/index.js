@@ -241,6 +241,39 @@ module.exports = async function (req, res) {
 
     } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
 
+      try {
+        const user = await authMiddleware(req)
+
+        try {
+          if (user.owner) {
+            const response = await prisma.orders.delete({
+              where: {
+                id: parseInt(req.query.id),
+              }
+            })
+
+            res.status(405).json({
+              data: response,
+              message: "order deleted"
+            })
+          }
+          res.status(405).json({
+            message: "not authorized to perform action"
+          })
+        } catch (e) {
+          res.status(405).json({
+            error: e,
+            message: "could perform delete action"
+          })
+        }
+
+      } catch (e) {
+        res.status(405).json({
+          error: e,
+          message: "token auth error"
+        })
+      }
+
       res.status(405).json({
         message: "order deletes not active"
       });
