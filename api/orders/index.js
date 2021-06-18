@@ -169,7 +169,7 @@ module.exports = async function (req, res) {
 
       }
 
-    } else if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.id) {
+    } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
       try {
 
         if (user && user.owner && parseInt(req.query.id) !== 0) {
@@ -257,9 +257,16 @@ module.exports = async function (req, res) {
               message: "order deleted"
             })
           } else {
-            res.status(405).json({
-              error: "method not allowed",
-              message: "could perform delete action"
+            const response = await prisma.orders.delete({
+              where: {
+                id: parseInt(req.query.id),
+                user_id: user.id,
+              }
+            })
+
+            res.status(200).json({
+              data: response,
+              message: "order deleted"
             })
           }
 

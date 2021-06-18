@@ -125,7 +125,7 @@
                               </svg>
                               Listed
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'listed', 'bg-gray-500' : orderView !== 'listed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
+                              <span v-if="orderView === 'listed'" :class="{'bg-teal-300' : orderView === 'listed', 'bg-gray-500' : orderView !== 'listed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
                             </div>
                             <div @click="filterOrders('in-progress')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'in-progress',  'text-gray-500': orderView !== 'in-progress' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
                               <svg class="mx-1 fill-current stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +133,7 @@
                               </svg>
                               In-progress
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'in-progress', 'bg-gray-500' : orderView !== 'in-progress',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">0</span>
+                              <span v-if="orderView === 'in-progress'" :class="{'bg-teal-300' : orderView === 'in-progress', 'bg-gray-500' : orderView !== 'in-progress',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
                             </div>
                             <div @click="filterOrders('done')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'done',  'text-gray-500': orderView !== 'done' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
                               <svg class="mx-1 fill-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +141,7 @@
                               </svg>
                               Done
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'done', 'bg-gray-500' : orderView !== 'done',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">0</span>
+                              <span v-if="orderView === 'done'" :class="{'bg-teal-300' : orderView === 'done', 'bg-gray-500' : orderView !== 'done',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
                             </div>
                             <div @click="filterOrders('finished')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'finished',  'text-gray-500': orderView !== 'finished' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
                               <svg class="mx-1 stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +149,7 @@
                               </svg>
                               Finished
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'finished', 'bg-gray-500' : orderView !== 'finished',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >0</span>
+                              <span v-if="orderView === 'finished'" :class="{'bg-teal-300' : orderView === 'finished', 'bg-gray-500' : orderView !== 'finished',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
                             </div>
                             <div @click="filterOrders('disputed')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'disputed',  'text-gray-500': orderView !== 'disputed' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
                               <svg class="mx-1 stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +157,7 @@
                               </svg>
                               Disputed
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'disputed', 'bg-gray-500' : orderView !== 'disputed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >0</span>
+                              <span v-if="orderView === 'disputed'" :class="{'bg-teal-300' : orderView === 'disputed', 'bg-gray-500' : orderView !== 'disputed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
                             </div>
                             <div @click="filterOrders('revision')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'revision',  'text-gray-500': orderView !== 'revision' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
                               <svg class="mx-1 fill-current stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +165,7 @@
                               </svg>
                               Revisions
                               &nbsp;
-                              <span :class="{'bg-teal-300' : orderView === 'revision', 'bg-gray-500' : orderView !== 'revision',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >0</span>
+                              <span v-if="orderView === 'revision'" :class="{'bg-teal-300' : orderView === 'revision', 'bg-gray-500' : orderView !== 'revision',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
                             </div>
                           </div>
                         </div>
@@ -266,58 +266,92 @@
                           </div>
                         </div>
                       </section>
-                      <table v-else-if="!order_view && orders.length > 0" class="min-w-full divide-y divide-gray-200">
-                        <thead class="font-bold">
-                          <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
+
+                      <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-xl">
+                        <table class="w-full whitespace-no-wrap text-sm">
+                          <tr class="text-left bg-gray-50 text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paper</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deadline</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
                           </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-white focus-within:bg-white">
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center focus:text-indigo-500" href="javascript:void(0);">
-                              {{ order.id }}
-                            </a>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ JSON.parse(order.order_details).amount | dollar }}
-                            </a>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ order.created_at | formatDate }}
-                            </a>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="text-sm text-gray-900 flex items-center" href="javascript:void(0);" tabindex="-1">
-                              {{ JSON.parse(order.order_details) ? JSON.parse(order.order_details).duration ? JSON.parse(order.order_details).duration.duration : '' : '' }}
-                            </a>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <a @click="switchOrder(order)" class="flex items-center" href="javascript:void(0);" tabindex="-1">
-                              <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
-                            </a>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="pr-4 flex items-center" tabindex="-1">
-                              <a @click="switchOrder(order)" href="javascript:void(0);" class="mr-auto">
-                                <icon :name="'cheveron-right'" class="block w-6 h-6 fill-teal-400" />
-                              </a>
-                              <a v-if="$auth.user && $auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="ml-auto">
-                                <icon :name="'trash'" class="block w-4 h-4 fill-gray-400" />
-                              </a>
-                            </div>
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-                      <SingleOrder v-else-if="order_view && orders.length > 0" @back="order_view = !order_view" :order="currentOrder" />
+                          <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                            <td class="border-t">
+                              <nuxt-link
+                                :to="'orders/' + order.id"
+                                tabindex="-1"
+                                class="px-6 py-4 flex items-center"
+                              >
+                                {{ order.id }}
+                              </nuxt-link>
+                            </td>
+                            <td class="border-t">
+                              <nuxt-link
+                                :to="'orders/' + order.id"
+                                tabindex="-1"
+                                class="px-6 py-4 flex items-center"
+                              >
+                                <div class="flex flex-col">
+                                  <div class="text-sm font-medium text-gray-900">
+                                    {{ JSON.parse(order.order_details).paper_type }}
+                                  </div>
+                                  <div class="text-sm text-gray-500">
+                                    {{ JSON.parse(order.order_details).subject }}
+                                  </div>
+                                </div>
+                              </nuxt-link>
+                            </td>
+                            <td class="border-t">
+                              <nuxt-link
+                                :to="'orders/' + order.id"
+                                tabindex="-1"
+                                class="px-6 py-4 flex items-center"
+                              >
+                                {{ JSON.parse(order.order_details) ? JSON.parse(order.order_details).duration ? JSON.parse(order.order_details).duration.duration : '' : '' }}
+                              </nuxt-link>
+                            </td>
+                            <td class="border-t">
+                              <nuxt-link
+                                :to="'orders/' + order.id"
+                                tabindex="-1"
+                                class="px-6 py-4 flex items-center"
+                              >
+                                {{ JSON.parse(order.order_details).amount | dollar }}
+                              </nuxt-link>
+                            </td>
+                            <td class="border-t">
+                              <nuxt-link
+                                :to="'orders/' + order.id"
+                                tabindex="-1"
+                                class="px-6 py-4 flex items-center"
+                              >
+                                <span :class="{'bg-red-100 text-red-800': order.status === 'processing', 'bg-green-100 text-green-800': order.status === 'success' }" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{ order.status }}</span>
+                              </nuxt-link>
+                            </td>
+                            <td class="border-t">
+                              <div class="bg-gray-100 flex flex-row">
+                                <a v-if="$auth.user && $auth.user.owner" @click="deleteOrder(order.id)" href="javascript:void(0);" class="px-6 py-4 flex-none">
+                                  <icon :name="'trash'" class="block w-6 h-6 fill-gray-300" />
+                                </a>
+                                <nuxt-link :to="'orders/' + order.id" tabindex="-1" class="px-6 py-4 flex-none flex items-center"
+                                ><svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                  class="block w-6 h-6 fill-gray-300"
+                                >
+                                  <polygon
+                                    points="12.95 10.707 13.657 10 8 4.343 6.586 5.757 10.828 10 6.586 14.243 8 15.657 12.95 10.707"
+                                  ></polygon></svg
+                                ></nuxt-link>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                        <pagination class="px-6 pb-4" :links="links" />
+                      </section>
+
                     </div>
                     <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}" class="text-gray-700 py-2 text-xl">
                       <form @submit.prevent="saveProfile('personal')" >
@@ -1013,6 +1047,7 @@ export default {
           })
           let index = this.orders.findIndex(el => el.id === id)
           this.orders.splice(index, 1)
+          this.totalCount = this.totalCount - 1
         })
       }
     },
