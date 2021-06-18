@@ -239,7 +239,7 @@ module.exports = async function (req, res) {
         message: "order edits not active"
       })
 
-    } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
+    } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && req.query.id) {
 
       try {
         const user = await authMiddleware(req)

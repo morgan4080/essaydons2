@@ -2,7 +2,7 @@
   <div >
     <div class="min-h-screen bg-white">
       <div class="mobile-b min-h-screen bg-left-0 bg-gray-100 lg:bg-center-0">
-        <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-6 lg:px-0 pb-32">
+        <div class="max-w-6xl topBanner mx-auto pt-32 lg:pt-32 z-10 px-2 lg:px-0 pb-32">
           <div class="mx-auto flex flex-wrap">
             <div class="flex flex-wrap w-full text-gray-700 body-font">
               <div class="mt-8 w-full flex flex-wrap relative">
@@ -115,8 +115,8 @@
                 </div>
                 <div class="w-full mr-auto h-auto">
                   <div class="lg:px-6 py-6">
-                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 py-2">
-                      <div class="flex flex-col px-4 py-5 bg-white sm:p-6">
+                    <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="sm:rounded-lg text-gray-900 py-2">
+                      <div class="flex flex-col px-4 py-5">
                         <div class="text-2xl flex leading-none tracking-tight text-left">
                           <div class="flex-grow flex items-center flex-wrap">
                             <div @click="filterOrders('listed')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'listed',  'text-gray-500': orderView !== 'listed' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
@@ -1004,9 +1004,16 @@ export default {
       this.currentOrder = order;
     },
     deleteOrder(id) {
-      if (confirm('Are you sure you want to delete this order?')) {
-        console.log("deleteOrder", id);
-        this.$store.dispatch("deleteItem", { uri: 'orders', data: id });
+      if (confirm(`Are you sure you want to delete order ${id}?`)) {
+        this.$store.dispatch("deleteItem", { uri: 'api/orders', id: id }).then(data => {
+          this.$toast.show(data.message, {
+            theme: "outline",
+            position: "bottom-left",
+            duration : 5000
+          })
+          let index = this.orders.findIndex(el => el.id === id)
+          this.orders.splice(index, 1)
+        })
       }
     },
     async sendConfirmation() {
