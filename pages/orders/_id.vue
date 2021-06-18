@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-left-0 bg-gray-100 lg:bg-center-0">
     <div class="max-w-6xl mx-auto pt-32 lg:pt-32 z-10 px-6 lg:px-0 pb-32">
-      <div class="lg:grid lg:grid-cols-8 lg:gap-16">
-        <div class="col-span-5 mt-8 flex flex-wrap relative text-gray-700">
+      <div class="lg:grid lg:grid-cols-8 lg:gap-8">
+        <div class="col-span-4 mt-8 flex flex-wrap relative text-gray-700">
           <p v-if="$fetchState.pending">Fetching order : )</p>
           <p v-else-if="$fetchState.error">An error occurred :(</p>
 
@@ -25,6 +25,19 @@
             </div>
           </div>
           <SingleOrder v-if="!$fetchState.pending" :order="this.order" />
+        </div>
+        <div class="col-span-4 mt-8 flex flex-wrap relative text-gray-700">
+          <p v-if="$fetchState.pending">Fetching order : )</p>
+          <p v-else-if="$fetchState.error">An error occurred :(</p>
+
+          <div v-if="!$fetchState.pending" class="flex flex-col top-0 text-xs overflow-auto -mt-12 w-full">
+            <div class="flex flex-row flex-wrap items-center leading-none font-bold tracking-tight text-left capitalize overflow-hidden">
+              <div class="flex-none flex flex-row flex-wrap items-center ml-auto space-x-1 mr-1.5 mb-6">
+<!--                order actions-->
+              </div>
+            </div>
+          </div>
+<!--          comments section-->
         </div>
       </div>
     </div>

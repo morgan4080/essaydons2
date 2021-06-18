@@ -44,7 +44,7 @@
               <div class="lg:flex-grow md:w-1/4 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                 <div class="w-full max-w-xs" >
                   <Notification :message="error" v-if="error"/>
-                  <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style="border: 1px solid rgba(66, 251, 183, 0.8);">
+                  <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
                     <div class="mb-4">
                       <label class="block text-left text-gray-700 text-sm font-bold mb-2" for="username">
                         Name

@@ -40,7 +40,7 @@ module.exports = async function (req, res) {
   try {
     const user = await authMiddleware(req)
 
-    if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.page) {
+    if ( Object.keys(req.query).length === 2 && req.method === "GET" && req.query.page && req.query.state ) {
 
       try {
 
@@ -70,6 +70,7 @@ module.exports = async function (req, res) {
               take: totalTaken,
               where: {
                 account_id: user.account_id,
+                state: req.query.state
               },
               orderBy: [
                 {
@@ -96,7 +97,7 @@ module.exports = async function (req, res) {
 
           for (let i = 1; i < totalPages; i++ ) {
             links.push({
-              url: `/profile?page=${i}`,
+              url: `/profile?page=${i}&state=${req.query.state}`,
               label: i,
               active: page === i
             })
@@ -115,6 +116,7 @@ module.exports = async function (req, res) {
             take: totalTaken,
             where: {
               user_id: user.id,
+              state: req.query.state
             },
             orderBy: [
               {
@@ -129,6 +131,7 @@ module.exports = async function (req, res) {
           const ordersCount = await prisma.orders.count({
             where: {
               user_id: user.id,
+              state: 'listed'
             },
           })
 
@@ -138,7 +141,7 @@ module.exports = async function (req, res) {
 
           for (let i = 1; i < totalPages; i++ ) {
             links.push({
-              url: `/profile?page=${i}`,
+              url: `/profile?page=${i}&state=${req.query.state}`,
               label: i,
               active: page === i
             })
@@ -159,13 +162,13 @@ module.exports = async function (req, res) {
 
       }
 
-    } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
+    } else if (Object.keys(req.query).length === 2 && req.method === "GET" && req.query.id) {
       try {
 
         if (user && user.owner && parseInt(req.query.id) !== 0) {
           const order = await prisma.orders.findUnique({
             where: {
-              id: parseInt(req.query.id)
+              id: parseInt(req.query.id),
             },
             include: {
               users: true
@@ -179,7 +182,7 @@ module.exports = async function (req, res) {
           const order = await prisma.orders.findUnique({
             where: {
               user_id: user.id,
-              id: parseInt(req.query.id)
+              id: parseInt(req.query.id),
             },
             include: {
               users: true
