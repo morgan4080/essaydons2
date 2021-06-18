@@ -252,14 +252,17 @@ module.exports = async function (req, res) {
               }
             })
 
-            res.status(405).json({
+            res.status(200).json({
               data: response,
               message: "order deleted"
             })
+          } else {
+            res.status(405).json({
+              error: "method not allowed",
+              message: "could perform delete action"
+            })
           }
-          res.status(405).json({
-            message: "not authorized to perform action"
-          })
+
         } catch (e) {
           res.status(405).json({
             error: e,
@@ -273,10 +276,6 @@ module.exports = async function (req, res) {
           message: "token auth error"
         })
       }
-
-      res.status(405).json({
-        message: "order deletes not active"
-      });
 
     } else {
       res.status(405).json({
