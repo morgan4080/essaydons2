@@ -89,7 +89,11 @@ module.exports = async function (req, res) {
             })
           }
 
-          const ordersCount = await prisma.orders.count()
+          const ordersCount = await prisma.orders.count({
+            where: {
+              state: req.query.state
+            },
+          })
 
           const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
@@ -131,7 +135,7 @@ module.exports = async function (req, res) {
           const ordersCount = await prisma.orders.count({
             where: {
               user_id: user.id,
-              state: 'listed'
+              state: req.query.state
             },
           })
 
@@ -219,7 +223,8 @@ module.exports = async function (req, res) {
         })
       } catch (e) {
 
-        res.status(400).json({
+        res.status(405).json({
+          message: 'unable to create order',
           error: e
         })
 
@@ -227,13 +232,13 @@ module.exports = async function (req, res) {
 
     } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0  && req.query.id) {
 
-      res.status(400).json({
+      res.status(405).json({
         message: "order edits not active"
       })
 
     } else if (Object.keys(req.query).length === 1 && req.method === "DELETE" && Object.keys(req.body).length !== 0  && req.query.id) {
 
-      res.status(400).json({
+      res.status(405).json({
         message: "order deletes not active"
       });
 
