@@ -54,7 +54,7 @@ module.exports = async function (req, res) {
           }
         } else {
           paginator = {
-            skip: 10 * page
+            skip: 10 * page-1
           }
         }
 
@@ -100,7 +100,7 @@ module.exports = async function (req, res) {
 
           let links = []
 
-          for (let i = 0; i < totalPages; i++ ) {
+          for (let i = 1; i < totalPages; i++ ) {
             links.push({
               url: `/profile?page=${i}&state=${req.query.state}`,
               label: i,
@@ -146,7 +146,7 @@ module.exports = async function (req, res) {
 
           let links = []
 
-          for (let i = 0; i < totalPages; i++ ) {
+          for (let i = 1; i < totalPages; i++ ) {
             links.push({
               url: `/profile?page=${i}&state=${req.query.state}`,
               label: i,
