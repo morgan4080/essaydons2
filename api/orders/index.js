@@ -89,7 +89,12 @@ module.exports = async function (req, res) {
             })
           }
 
-          const ordersCount = response.length
+          const ordersCount = await prisma.orders.count({
+            where: {
+              account_id: user.account_id,
+              state: req.query.state
+            },
+          })
 
           const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
@@ -115,6 +120,7 @@ module.exports = async function (req, res) {
             ...paginator,
             take: totalTaken,
             where: {
+              account_id: user.account_id,
               user_id: user.id,
               state: req.query.state
             },
@@ -128,7 +134,13 @@ module.exports = async function (req, res) {
             }
           })
 
-          const ordersCount = response.length
+          const ordersCount = await prisma.orders.count({
+            where: {
+              account_id: user.account_id,
+              user_id: user.id,
+              state: req.query.state
+            },
+          })
 
           const totalPages = typeof ordersCount === "number" ?  Math.ceil(ordersCount/10) : 0
 
