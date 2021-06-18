@@ -8,7 +8,7 @@
               <h1 v-if="error.statusCode === 404" class="font-black text-center text-6xl">404 : Page not found</h1>
               <h1 class="font-black text-center text-6xl" v-else>An error occurred</h1>
             </div>
-            <button @click="doRedirect" type="button" class="cursor-pointer mt-12 text-teal-500 border border-4 border-dotted border-teal-700 px-4 py-5" >Back to {{ error.statusCode === 404 ? 'home' : $router.currentRoute.name }}</button>
+            <button @click="doRedirect" type="button" class="cursor-pointer mt-12 text-teal-500 border border-4 border-dotted border-teal-700 px-4 py-5" >Back to Profile</button>
           </div>
         </div>
       </div>
@@ -20,16 +20,9 @@
 export default {
   props: ['error'],
   layout: 'error',
-  mounted() {
-    console.log(this.$router.currentRoute.name)
-  },
   methods: {
-    doRedirect(path) {
-      if (this.error.statusCode === 404) {
-        this.$router.push('/')
-      } else {
-        window.location.reload()
-      }
+    doRedirect() {
+      this.$router.push('/profile')
     }
   }
 }

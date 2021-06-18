@@ -27,7 +27,17 @@
           <SingleOrder v-if="!$fetchState.pending" :order="this.order" />
         </div>
         <div class="col-span-4 mt-8 flex flex-wrap relative text-gray-700">
-          <p v-if="$fetchState.pending">Fetching order : )</p>
+          <div v-if="$fetchState.pending" class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+            <div class="animate-pulse flex space-x-4">
+              <div class="flex-1 space-y-4 py-1">
+                <div class="h-4 bg-blue-400 rounded w-3/4"></div>
+                <div class="space-y-2">
+                  <div class="h-4 bg-blue-400 rounded"></div>
+                  <div class="h-4 bg-blue-400 rounded w-5/6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <p v-else-if="$fetchState.error">An error occurred :(</p>
 
           <div v-if="!$fetchState.pending" class="flex flex-col top-0 text-xs overflow-auto -mt-12 w-full">

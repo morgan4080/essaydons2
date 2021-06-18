@@ -1,7 +1,7 @@
 <template>
     <div class="conf">
       <app-nav />
-        <Nuxt />
+        <nuxt keep-alive :keep-alive-props="{ max: 10 }" />
       <app-footer />
       <portal-target name="dropdown" slim />
     </div>
