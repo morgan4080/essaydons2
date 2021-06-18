@@ -822,7 +822,7 @@ export default {
     currentSlide() {
       switch (this.openTab) {
         case 0:
-          return "Order Management"
+          return "Management"
         case 1:
           return "Orders"
         case 2:

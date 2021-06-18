@@ -203,8 +203,14 @@ module.exports = async (req, res) => {
           users: { connect: { id: user.id } },
           order_details: JSON.stringify(req.body.order),
           status: "processing",
+          state: "listed"
         }
-      });
+      })
+
+      // send attachments to google drive
+
+      // create public preview and download links
+
     } catch (e) {
       console.log("create order error", e);
       res.status(405).json({
@@ -232,7 +238,7 @@ module.exports = async (req, res) => {
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Responsive Email Template</title>
+<title>Essay Dons Order Confirmation Email</title>
 <style type="text/css">
 /* ----- Custom Font Import ----- */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
@@ -392,7 +398,7 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #42fbb7;">${user.name}</span> you have made an order of ${req.body.order.amount} USD to Essaydons.co</td>
+<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #0ef884">${user.name}</span> you have made an order of ${req.body.order.amount} USD to Essaydons.co. Check your accout orders for more <a style="box-shadow: inset 0 -0.125em 0 0 #fff, inset 0 -0.375em 0 0 rgba(14, 248, 132,.4)" target="_blank" rel="noopener noreferrer" href="https://essaydons.com/profile">details</a> </td>
 </tr>
 
 <tr>
@@ -460,7 +466,7 @@ padding: 0 15px 0 15px !important;
 
 <tr>
 <td class="hero-subheader__content" style="font-size: 16px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
-<a href="https://essaydons.co/profile" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #42fbb7; color: white;">Order Details</a>
+<a href="https://essaydons.co/profile" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #0ef884 color: white;">Order Details</a>
 </td>
 </tr>
 </tbody></table>
@@ -595,6 +601,7 @@ padding: 0 15px 0 15px !important;
           users: { connect: { id: user.id } },
           order_details: (typeof req.body.order !== "string") ? JSON.stringify(req.body.order) : req.body.order,
           status: "processing",
+          state: "listed"
         }
       });
     } catch (e) {
@@ -922,7 +929,7 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 30px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hello <span style="color: #42fbb7;">admin</span></td>
+<td class="hero-subheader__title" style="font-size: 30px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hello <span style="color: #0ef884">admin</span></td>
 </tr>
 
 <tr>
@@ -1014,7 +1021,7 @@ padding: 0 15px 0 15px !important;
 
 <tr>
 <td class="hero-subheader__content" style="font-size: 16px; line-height: 27px; padding: 0 60px 90px 0;" align="left">
-<a href="https://essaydons.co/profile" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #42fbb7; color: white;">Order Details</a>
+<a href="https://essaydons.co/profile" target="_blank" rel="noopener noreferrer" style="padding: 10px 20px 10px 20px; background-color: #0ef884 color: white;">Order Details</a>
 </td>
 </tr>
 </tbody></table>
