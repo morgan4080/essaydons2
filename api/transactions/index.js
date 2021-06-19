@@ -398,7 +398,7 @@ padding: 0 15px 0 15px !important;
 <!-- / Hero subheader -->
 <table class="container hero-subheader" border="0" cellpadding="0" cellspacing="0" width="620" style="width: 620px;">
 <tbody><tr>
-<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #0ef884">${user.name}</span> you have made an order of ${req.body.order.amount} USD to Essaydons.co. Check your accout orders for more <a style="box-shadow: inset 0 -0.125em 0 0 #fff, inset 0 -0.375em 0 0 rgba(14, 248, 132,.4)" target="_blank" rel="noopener noreferrer" href="https://essaydons.com/profile">details</a> </td>
+<td class="hero-subheader__title" style="font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;" align="left">Hey <span style="color: #0ef884">${user.name}</span> you have made an order of ${req.body.order.amount} USD to Essaydons.co. Check your account orders for more <a style="box-shadow: inset 0 -0.125em 0 0 #fff, inset 0 -0.375em 0 0 rgba(14, 248, 132,.4)" target="_blank" rel="noopener noreferrer" href="https://essaydons.com/profile">details</a> </td>
 </tr>
 
 <tr>
