@@ -1,14 +1,14 @@
 import prisma from '../../lib/prisma'
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
-const { readFileSync } = require('fs');
+const { readFileSync } = require('fs')
 
-const { join } = require('path');
+const { join } = require('path')
 
-const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8');
+const publicKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key.pub'), 'utf8')
 
 function authMiddleware(req) {
   return new Promise((resolve, reject) => {

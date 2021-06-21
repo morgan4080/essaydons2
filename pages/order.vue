@@ -888,56 +888,67 @@ export default {
           },
           createOrder: async () => {
             //start animation animation overlay
-            this.paymentLoading = true;
-            const files = await this.toBase64(this.form.uploads);
-            let filesFile = this.form.uploads;
-            this.form.uploads = [];
+            this.paymentLoading = true
+
+            const files = await this.toBase64(this.form.uploads)
+
+            let filesFile = this.form.uploads
+
+            this.form.uploads = []
+
             for (let i = 0; i < files.length; i++) {
-              let public_id = 'ordersdoc' + Math.random().toString(36).substr(2, 16);
-              this.form.uploads.push(await this.$cloudinary.upload(files[i], {
-                public_id: public_id,
-                folder: "orders",
-                upload_preset: 'ybfqkqyu'
-              }));
+
+              console.log("files", files[i])
             }
+
             let order = {
               amount: this.totalPrice,
               ...this.form
-            };
-
-            let response;
-
-            try {
-              response = await this.$axios.post('/api/transactions?paypal_intent=true', {
-                  order: order
-              });
-            } catch (e) {
-              console.log("create order error", e);
             }
 
-            this.dbID = response.data.dbID;
-            // end animation overlay
+            let response
 
+            try {
+
+              response = await this.$axios.post('/api/transactions?paypal_intent=true', {
+                  order: order
+              })
+
+            } catch (e) {
+              console.log("paypal intent failed", e);
+              this.$toast.error("paypal order failed", {
+                theme: "outline",
+                position: "bottom-left",
+                duration : 5000
+              })
+            }
+
+            this.dbID = response.data.dbID
 
             setTimeout(async () => {
               try {
 
-                let formData0 = new FormData();
+                let formData0 = new FormData()
+
                 if (filesFile.length > 0) {
                   for (let i = 0; i < filesFile.length; i++) {
-                    formData0.append('attachments[]', filesFile[i]);
+                    formData0.append('attachments[]', filesFile[i])
                   }
                 }
-                formData0.append('order', JSON.stringify(order));
 
-                await this.sendAdminMail(formData0);
+                formData0.append('order', JSON.stringify(order))
+
+                await this.sendAdminMail(formData0)
+
               } catch (e) {
-                console.log("send mail error", e);
+
+                console.log("send mail error", e)
+
               }
 
-              this.paymentLoading = false;
+              this.paymentLoading = false
 
-            },3500);
+            },500);
 
             return response.data.orderID
           },

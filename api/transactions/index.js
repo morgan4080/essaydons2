@@ -694,34 +694,41 @@ padding: 0 15px 0 15px !important;
     }
 
   } else if (req.query.send_attachments && req.method === "POST") {
-    const { IncomingForm } = require('formidable');
-    const form = new IncomingForm({ multiples: true });
-    let result;
+    const { IncomingForm } = require('formidable')
+
+    const form = new IncomingForm({ multiples: true })
+
+    let result
+
     try {
       result = await new Promise((resolve, reject) => {
         form.parse(req, function(err, fields, files) {
           if (err) {
             // Check for and handle any errors here.
-            console.error(err.message);
+            console.error("form parsing error", err.message)
             reject(err)
           }
           resolve({fields: fields, files: files})
         })
-      });
+      })
     } catch (e) {
-      console.log("formindable error", e);
-      res.status(400);
+      console.log("formindable error", e)
+
+      res.status(405).json({
+        error: e,
+        message: "formindable: attachments not sent"
+      })
     }
 
     try {
-      let attachments = [];
+      let attachments = []
 
       for (const arr of Object.entries(result.files)) {
         for (const file of arr[1]) {
           attachments.push({
             filename: file.name,
             content: file
-          });
+          })
         }
       }
 
@@ -733,11 +740,11 @@ padding: 0 15px 0 15px !important;
       const origin = {
         name: "EssayDons Orders",
         email: "info@essaydons.co",
-      };
+      }
 
       const destination = {
         email: "info@essaydons.co",
-      };
+      }
 
       let academicLevel = [
         {
@@ -760,7 +767,7 @@ padding: 0 15px 0 15px !important;
           id: 5,
           level: "PhD",
         },
-      ].find(item => item.id === result.fields.order.level).level;
+      ].find(item => item.id === result.fields.order.level).level
 
       const message = {
         subject: "New Order",
@@ -937,7 +944,7 @@ padding: 0 15px 0 15px !important;
   <table border="1" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
         <tr>
             <td>
-                <p style="margin: 0;font-weight: bold;">AAcademic Level</p>
+                <p style="margin: 0;font-weight: bold;">Academic Level</p>
             </td>
             <td>
                 <p style="margin: 0;">${academicLevel}</p>
@@ -1052,21 +1059,28 @@ padding: 0 15px 0 15px !important;
 </tbody></table>
 
 </body></html>`,
-      };
+      }
 
-      let responder = await sendMail(origin,destination,message,attachments);
+      let responder = await sendMail(origin,destination,message,attachments)
 
       res.status(200).json({
         response: responder
-      });
+      })
 
     } catch (e) {
-      console.log(e);
-      res.status(400);
+      console.log("sending attachments email failed", e)
+
+      res.status(405).json({
+        error: e,
+        message: "sending attachments email failed"
+      })
     }
 
   } else {
-    res.status(400);
+    res.status(405).json({
+      message: "request did not satisfy requirements",
+      error: "method not allowed"
+    })
   }
 }
 

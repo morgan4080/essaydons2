@@ -3,7 +3,17 @@
     <div class="max-w-6xl mx-auto pt-32 lg:pt-32 z-10 px-6 lg:px-0 pb-32">
       <div class="lg:grid lg:grid-cols-8 lg:gap-8">
         <div class="col-span-4 mt-8 flex flex-wrap relative text-gray-700">
-          <p v-if="$fetchState.pending">Fetching order : )</p>
+          <div v-if="$fetchState.pending" >
+            <div class="animate-pulse flex space-x-4">
+              <div class="flex-1 space-y-4 py-1">
+                <div class="h-4 bg-blue-400 rounded w-3/4"></div>
+                <div class="space-y-2">
+                  <div class="h-4 bg-blue-400 rounded"></div>
+                  <div class="h-4 bg-blue-400 rounded w-5/6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <p v-else-if="$fetchState.error">An error occurred :(</p>
 
           <div v-if="!$fetchState.pending" class="flex flex-col top-0 text-xs overflow-auto -mt-12 w-full">
@@ -38,7 +48,7 @@
               </div>
             </div>
           </div>
-          <p v-else-if="$fetchState.error">An error occurred :(</p>
+          <div v-else-if="$fetchState.error">An error occurred :(</div>
 
           <div v-if="!$fetchState.pending" class="flex flex-col top-0 text-xs overflow-auto -mt-12 w-full">
             <div class="flex flex-row flex-wrap items-center leading-none font-bold tracking-tight text-left capitalize overflow-hidden">

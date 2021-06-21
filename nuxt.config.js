@@ -8,7 +8,7 @@ export default {
     },
     title: 'Essay Dons',
     script: [
-      { src: 'https://js.stripe.com/v3/', defer: true, async: true },
+      { src: 'https://js.stripe.com/v3/', async: true },
       { src: 'https://embed.tawk.to/5ad4467d227d3d7edc23f6c8/1f790vmik', async: true, crossorigin: '*', charset: 'UTF-8' },
     ],
     meta: [
@@ -124,17 +124,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
-    '@nuxtjs/cloudinary',
     '@nuxtjs/proxy',
     'portal-vue/nuxt'
   ],
-
-  cloudinary: {
-    cloudName: 'essaydonsco',
-    apiKey: '756518659458387',
-    apiSecret: 'n8qvU5D-_mBUSSxRLJ1w9b3AbYM',
-    useComponent: true
-  },
 
   tailwindcss: {
     configPath: '~/config/tailwind.config.js',
