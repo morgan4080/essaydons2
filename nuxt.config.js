@@ -129,12 +129,16 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/tailwindcss'
   ],
 
   serverMiddleware: [
     '~/server-middleware/log.js'
   ],
+
+  image: {
+    // Options
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -142,7 +146,8 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
     '@nuxtjs/proxy',
-    'portal-vue/nuxt'
+    'portal-vue/nuxt',
+    '@nuxt/image',
   ],
 
   tailwindcss: {
