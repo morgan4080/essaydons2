@@ -7,11 +7,15 @@
             <div class="flex flex-wrap w-full text-gray-700 body-font">
               <div class="mt-8 w-full flex flex-wrap relative">
                 <div class="absolute flex flex-col top-0 text-xs overflow-auto w-full -mt-12">
-                  <div class="flex justify-between items-center w-full overflow-hidden w-full lg:px-12">
+                  <div class="flex justify-between items-center w-full overflow-hidden w-full px-4 md:px-8 lg:px-12">
                     <div class="text-2xl leading-none font-black tracking-tight text-left capitalize">
-                      <span class="testLink">Profile </span>
-                      &nbsp;
-                      <span class="text-teal-300">{{ currentSlide }}</span>
+                      <div class="flex items-center">
+                        <span class="testLink">Profile </span>
+                        &nbsp;<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.875 9.375L30 22.5L16.875 35.625" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                        <span class="text-teal-300">{{ currentSlide }}</span>
+                      </div>
                     </div>
                     <dropdown :auto-close="true" class="flex items-center ml-auto" placement="bottom-start">
                       <svg stroke="#000000" fill="none" viewBox="0 0 24 24" class="h-6 w-6 cursor-pointer transform hover:scale-105 transition ease-in-out duration-100" >
@@ -114,7 +118,7 @@
                   </div>
                 </div>
                 <div class="w-full mr-auto h-auto">
-                  <div class="lg:px-6 py-6">
+                  <div class="py-6">
                     <div :class="{'hidden': openTab !== 0, 'block': openTab === 0 && $auth.user.owner }" class="sm:rounded-lg text-gray-900">
                       <div class="flex flex-col px-4 py-5">
                         <div class="text-2xl flex leading-none tracking-tight text-left">
@@ -253,22 +257,22 @@
                             </tr>
                             <tr v-if="$fetchState.pending" v-for="(x) in '0000000000'" class="hover:bg-gray-100 focus-within:bg-gray-100">
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
                               <td class="border-t">
-                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                                <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
                               </td>
 
                             </tr>
@@ -847,7 +851,7 @@ export default {
         case 1:
           return "Orders"
         case 2:
-          return "Profile"
+          return "Account"
         case 3:
           return "Discounts"
         case 4:

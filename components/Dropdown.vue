@@ -49,7 +49,6 @@ export default {
           })
         })
       } else if (this.popper) {
-          console.log("destroying popper");
           setTimeout(() => this.popper.destroy(), 100);
       }
     },

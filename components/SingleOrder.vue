@@ -1,10 +1,10 @@
 <template>
-  <div class="shadow-xl border-b bg-white border-gray-200 overflow-hidden rounded-lg text-gray-900 block w-full">
+  <div class="shadow-xl border-b bg-white border-gray-200 overflow-hidden rounded-xl text-gray-900 block w-full">
     <div class="">
       <div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Client</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Client</div>
           </dt>
           <dd class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="flex flex-col">
@@ -19,7 +19,7 @@
         >
           <dt>
             <div class="flex flex-col">
-              <div class="text-sm font-medium text-gray-900">Email</div>
+              <div class="text-sm font-semibold opacity-90 text-gray-900">Email</div>
               <div class="text-sm text-gray-500">Phone</div>
             </div>
           </dt>
@@ -36,7 +36,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Paper Type</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Paper Type</div>
           </dt>
           <dd class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="flex flex-col">
@@ -51,7 +51,7 @@
         >
           <dt>
             <div class="flex flex-col">
-              <div class="text-sm font-medium text-gray-900">
+              <div class="text-sm font-semibold opacity-90 text-gray-900">
                 Academic Level
               </div>
               <div class="text-sm text-gray-500">Discipline/Subject</div>
@@ -70,7 +70,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Deadline</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Deadline</div>
           </dt>
           <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
             <div class="flex flex-col">
@@ -84,7 +84,7 @@
           class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
         >
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Pages</div>
+            <div class="text-sm font-semibold opacity-90text-gray-900">Pages</div>
             <div class="text-sm text-gray-500">Format/Spacing</div>
           </dt>
           <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
@@ -100,7 +100,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Extra Options</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Extra Options</div>
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <ul>
@@ -122,7 +122,7 @@
           class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
         >
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Topic</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Topic</div>
             <div class="text-sm text-gray-500">Paper Details</div>
           </dt>
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
@@ -137,7 +137,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="">
-            <div class="text-sm font-medium text-gray-900">Attachments</div>
+            <div class="text-sm font-semibold opacity-90 text-gray-900">Attachments</div>
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <ul class="border border-gray-200 divide-y divide-gray-200">

@@ -5,7 +5,7 @@
         <div class="max-w-6xl px-3 md:px-0 mx-auto pt-16 pb-24"></div>
       </div>
     </div>
-    <div class="max-w-6xl mx-auto z-10 px-6 lg:px-0 pb-32 -mt-24">
+    <div class="max-w-6xl mx-auto z-10 px-6 lg:px-0 pb-32 -mt-24 space-y-12">
       <div class="lg:grid lg:grid-cols-12 lg:gap-4">
         <div class="col-span-8 mt-8 flex flex-wrap relative text-gray-700">
           <div v-if="$fetchState.error">An error occurred :(</div>
@@ -36,16 +36,19 @@
                   mb-4
                 "
               >
-                <span class="cursor-pointer" @click="$router.push('/profile')"
+                <div class="flex items-center">
+                  <span class="cursor-pointer" @click="$router.push('/profile')"
                   >Orders</span
-                >
-                &nbsp;
-                <span v-if="!$fetchState.pending" class="text-white"
+                  >
+                  <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.875 9.375L30 22.5L16.875 35.625" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span v-if="!$fetchState.pending" class="text-white"
                   >Id: {{ order.id }}</span
-                >
-                <span
-                  v-else
-                  class="
+                  >
+                  <span
+                    v-if="$fetchState.pending"
+                    class="
                     animate-pulse
                     inline-block
                     w-12
@@ -53,7 +56,8 @@
                     bg-gray-400
                     rounded
                   "
-                ></span>
+                  ></span>
+                </div>
               </div>
               <div class="flex-none flex flex-row flex-wrap items-center mb-4">
                 <span class="flex space-x-1 items-center ml-0.5">
@@ -61,9 +65,9 @@
                   <span
                     v-if="!$fetchState.pending"
                     :class="{
-                      'bg-transparent border-red-200 text-red-800':
+                      'bg-transparent text-red-800':
                         !order.state,
-                      'bg-black border-white text-white': order.state,
+                      'bg-black text-white': order.state,
                     }"
                     class="
                       px-2
@@ -87,10 +91,6 @@
                     "
                   ></span>
                 </span>
-                <div
-                  v-if="!$fetchState.pending && order.status !== 'success'"
-                  class="border-l border-white w-0 h-6 opacity-75 mx-0.5"
-                ></div>
               </div>
             </div>
           </div>
@@ -116,9 +116,9 @@
         <div class="col-span-4 mt-8 flex flex-wrap relative text-gray-700">
           <div v-if="$fetchState.error">An error occurred :(</div>
 
-          <div class="flex flex-col">
+          <div class="flex flex-col w-full">
             <div
-              class="shadow-lg rounded-xl flex-none md:w-xl"
+              class="shadow-lg rounded-xl flex-none md:w-xl sm:overflow-hidden md:sticky md:top-10 w-full"
             >
               <div
                 class="
@@ -126,6 +126,7 @@
                         bg-white
                         px-6
                         py-8
+                        relative
                         md:p-10
                         text-lg
                         md:text-xl
@@ -133,22 +134,19 @@
                         md:leading-8
                         font-semibold
                         text-gray-900
+                        w-full
                       "
               >
-                <svg
-                  width="45"
-                  height="36"
-                  class="mb-5 fill-current text-orange-100"
-                >
-                  <path
-                    d="M13.415.001C6.07 5.185.887 13.681.887 23.041c0 7.632 4.608 12.096 9.936 12.096 5.04 0 8.784-4.032 8.784-8.784 0-4.752-3.312-8.208-7.632-8.208-.864 0-2.016.144-2.304.288.72-4.896 5.328-10.656 9.936-13.536L13.415.001zm24.768 0c-7.2 5.184-12.384 13.68-12.384 23.04 0 7.632 4.608 12.096 9.936 12.096 4.896 0 8.784-4.032 8.784-8.784 0-4.752-3.456-8.208-7.776-8.208-.864 0-1.872.144-2.16.288.72-4.896 5.184-10.656 9.792-13.536L38.183.001z"
-                  ></path>
-                </svg>
-                <p>
-                  I have no design skills and with Tailwind I can actually
-                  make good looking websites with ease and it's everything
-                  I ever wanted in a CSS framework.
-                </p>
+                <span v-if="!$fetchState.pending" class="text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl-xl rounded-tr-xl" :class="{'bg-red-300': order.status === 'processing', 'bg-black text-green-300': order.status === 'success'}" >{{ order.status === 'processing' ? 'unpaid' : 'paid' }}</span>
+                <span v-if="$fetchState.pending" class="absolute right-0 top-0 rounded-bl-xl rounded-tr-xl animate-pulse inline-block w-12 h-4 bg-gray-400 rounded"></span>
+                <div class="flex justify-between items-center">
+                  <svg class="fill-current text-teal-100" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 13.125L37.5 13.125M37.5 13.125L30 5.625M37.5 13.125L30 20.625M30 31.875L7.5 31.875M7.5 31.875L15 39.375M7.5 31.875L15 24.375" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <p class="ml-4">
+                    Order Actions
+                  </p>
+                </div>
               </div>
               <div
                 class="
@@ -167,14 +165,14 @@
                         to-teal-600
                       "
               >
-                <div class="flex-auto">
+                <div class="flex-auto flex justify-between items-center">
 <!--                  complete order -->
                   <button type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="
                     group
                     ml-0.5
                     bg-black
-                    px-4
-                    py-3
+                    px-3
+                    py-2
                     font-semibold
                     rounded-full
                     text-sm
@@ -193,17 +191,118 @@
                     duration-150
                     ease-in-out
                   ">
-                    Complete Order
+                    Complete
                   </button>
-                  <span v-else class="animate-pulse inline-block w-12 h-4 bg-gray-400 rounded"></span>
+                  <span v-else-if="$fetchState.pending" class="animate-pulse inline-block w-12 h-4 bg-gray-50 rounded"></span>
+                  <button type="button" v-if="!$fetchState.pending && order.status === 'success'" class="
+                    group
+                    ml-0.5
+                    bg-black
+                    px-3
+                    py-2
+                    font-semibold
+                    rounded-full
+                    text-sm
+                    leading-4
+                    text-white
+                    hover:text-white
+                    hover:bg-black
+                    focus:outline-none
+                    focus:border-gray-300
+                    focus:shadow-outline-blue
+                    active:bg-gray-50
+                    active:text-gray-800
+                    transform
+                    hover:scale-105
+                    transition
+                    duration-150
+                    ease-in-out
+                  ">
+                    Save Actions
+                  </button>
+                  <span v-if="!$fetchState.pending" class="font-semibold text-base">{{ JSON.parse(order.order_details).amount | dollar }}</span>
+                  <span v-else class="animate-pulse inline-block w-12 h-4 bg-gray-50 rounded"></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-if="!$fetchState.pending" class="flex flex-wrap">
-        <!--          comments section-->
+      <div v-if="!$fetchState.pending" class="lg:grid lg:grid-cols-12 lg:gap-4">
+        <div class="col-span-12 flex flex-col">
+          <div  class="shadow-lg rounded-xl flex-none md:w-xl sm:overflow-hidden md:sticky md:top-10">
+            <div  class="rounded-t-xl bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
+               <div class="flex justify-between">
+                 <div  class="flex space-x-6 items-center">
+                   <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M31.875 15H35.625C37.6961 15 39.375 16.6789 39.375 18.75V30C39.375 32.0711 37.6961 33.75 35.625 33.75H31.875V41.25L24.375 33.75H16.875C15.8395 33.75 14.902 33.3303 14.2233 32.6516M14.2233 32.6516L20.625 26.25H28.125C30.1961 26.25 31.875 24.5711 31.875 22.5V11.25C31.875 9.17893 30.1961 7.5 28.125 7.5H9.375C7.30393 7.5 5.625 9.17893 5.625 11.25V22.5C5.625 24.5711 7.30393 26.25 9.375 26.25H13.125V33.75L14.2233 32.6516Z" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                   </svg>
+                   <p class="ml-4 text-sm md:text-base lg:text-base">
+                     Support Chat
+                   </p>
+                 </div>
+                 <div  class="flex space-x-2 items-center">
+                   <p class="ml-4 text-sm md:text-base lg:text-base">
+                     25
+                   </p>
+                   <div class="cursor-pointer bg-gradient-to-br from-teal-300 to-teal-600 rounded-xl">
+                     <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M7.5 7.5V16.875H8.59034M37.3839 20.625C36.4613 13.2257 30.1493 7.5 22.5 7.5C16.2049 7.5 10.8155 11.3778 8.59034 16.875M8.59034 16.875H16.875M37.5 37.5V28.125H36.4097M36.4097 28.125C34.1845 33.6222 28.7951 37.5 22.5 37.5C14.8507 37.5 8.53873 31.7743 7.61605 24.375M36.4097 28.125H28.125" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                   </div>
+                 </div>
+               </div>
+            </div>
+            <div class="flex flex-col">
+              <div  class="bg-white px-6 py-5 relative md:px-10 md:py-4 text-lg md:text-xl leading-8 space-y-3 md:leading-8 font-semibold text-gray-900">
+                <div v-for="comment in comments" :key="comment.id" class="flex p-4 rounded-xl">
+                  <div v-if="!comment.user.owner" class="w-full md:w-1/2 ml-auto flex flex-wrap bg-gradient-to-br from-teal-300 to-teal-600 items-center justify-end p-2 rounded-tl-xl rounded-br-xl rounded-bl-xl">
+                    <p class="ml-4 mb-1 text-sm capitalize text-left mr-auto">
+                      {{ comment.user.name }} <span class="opacity-60 text-gray-500 text-xs font-thin">{{ comment.updated_at | formatDate }}</span>
+                    </p>
+                    <p class="ml-4 font-normal text-gray-700 text-sm">
+                      {{ comment.comment }}
+                    </p>
+                  </div>
+                  <div v-if="comment.user.owner" class="w-full md:w-1/2 flex flex-wrap items-center bg-gray-100 justify-start p-2 rounded-tr-xl rounded-bl-xl rounded-tr-xl rounded-br-xl">
+                    <p class="ml-4 mb-1 text-sm capitalize">
+                      {{ comment.user.name }} <span class="opacity-60 text-gray-500 text-xs font-thin">{{ comment.updated_at | formatDate }}</span>
+                    </p>
+                    <p class="ml-4 font-normal text-gray-700 text-sm">
+                      {{ comment.comment }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div  class="bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
+              <div class="flex justify-between space-x-2 relative">
+                <div  class="flex space-x-6 items-center w-full">
+                  <input type="text" placeholder="Comment here ..." class="py-3 font-visible-shut px-5 w-full bg-gray-100 rounded-full focus:shadow-outline text-sm md:text-base lg:text-base">
+                </div>
+                <div class="absolute right-0 top-2 flex items-center justify-center space-x-1 pr-1">
+                  <div class="flex-1 flex items-center cursor-pointer bg-gradient-to-br from-black to-gray-900 rounded-full p-1.5">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.643 5.83333L7.15482 11.3215C6.50394 11.9724 6.50394 13.0276 7.15482 13.6785C7.80569 14.3294 8.86097 14.3294 9.51184 13.6785L14.857 8.19036C16.1588 6.88861 16.1588 4.77806 14.857 3.47631C13.5553 2.17456 11.4447 2.17456 10.143 3.47631L4.79779 8.96447C2.84517 10.9171 2.84517 14.0829 4.79779 16.0355C6.75042 17.9882 9.91624 17.9882 11.8689 16.0355L17.0833 10.8333" stroke="#F2F2F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 flex items-center cursor-pointer bg-gradient-to-br from-teal-300 to-teal-600 rounded-full p-0.5">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0)">
+                        <path d="M9.19338 17.1715L11.5 24.5L20.7404 10.5048L4.00001 11.5096L9.19338 17.1715ZM9.19338 17.1715L14.9669 13.8382" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0">
+                          <rect width="20" height="20" fill="white" transform="translate(17.9054 0.594604) rotate(60)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -240,6 +339,48 @@ export default {
     return {
       id: this.$route.params.id,
       order: null,
+      comments: [
+        {
+          id: 1,
+          user: {
+            name: 'Gaitho Gibson',
+            owner: true,
+          },
+          comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
+          files: [],
+          updated_at: new Date(),
+        },
+        {
+          id: 2,
+          user: {
+            name: 'murungi mutugi',
+            owner: false,
+          },
+          comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
+          files: [],
+          updated_at: new Date(),
+        },
+        {
+          id: 3,
+          user: {
+            name: this.$auth.user.name,
+            owner: this.$auth.user.owner,
+          },
+          comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
+          files: [],
+          updated_at: new Date(),
+        },
+        {
+          id: 4,
+          user: {
+            name: this.$auth.user.name,
+            owner: this.$auth.user.owner,
+          },
+          comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
+          files: [],
+          updated_at: new Date(),
+        }
+      ]
     }
   },
 }

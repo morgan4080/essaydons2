@@ -35,7 +35,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -53,7 +53,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -71,7 +71,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -89,7 +89,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -615,7 +615,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -633,7 +633,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -651,7 +651,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -669,7 +669,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -689,7 +689,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -707,7 +707,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -725,7 +725,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
@@ -743,7 +743,7 @@
 
                   </div>
                   <div class="flex justify-center py-4">
-                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-400 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
+                    <img src="https://dummyimage.com/400x400/b5b5b5/fff" alt="" width="160" height="160" class="h-40 w-40 bg-gray-50 rounded-full transform group-hover:scale-105 transition duration-200 ease-in-out">
                   </div>
                   <div class="flex flex-col items-center text-center">
                     <h3 class="text-vuegreen text-xl font-semibold leading-none">
