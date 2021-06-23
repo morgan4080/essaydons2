@@ -3,7 +3,7 @@
     <div>
       <div class="min-h-screen" style="background: #FBFBFB;">
         <div class="topServiceBanner mx-auto px-0 lg:px-0 mt-12 lg:mt-12 pt-8">
-          <div style="height: 100%;" class="gb-nav -mt-1">
+          <div style="height: 100%;" class="bg-gradient-to-br from-teal-300 to-teal-600 -mt-1">
             <div class="max-w-6xl px-4 md:px-0 mx-auto pt-16 pb-24">
               <div class="flex flex-col w-full" >
                 <span class="font-black text-black text-6xl">Admission essay</span>

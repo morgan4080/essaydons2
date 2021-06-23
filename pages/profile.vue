@@ -9,7 +9,7 @@
                 <div class="absolute flex flex-col top-0 text-xs overflow-auto w-full -mt-12">
                   <div class="flex justify-between items-center w-full overflow-hidden w-full lg:px-12">
                     <div class="text-2xl leading-none font-black tracking-tight text-left capitalize">
-                      <span class="testLink">Profile /</span>
+                      <span class="testLink">Profile </span>
                       &nbsp;
                       <span class="text-teal-300">{{ currentSlide }}</span>
                     </div>

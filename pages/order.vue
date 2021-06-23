@@ -612,7 +612,7 @@
           </div>
 
           <div class="md:ml-auto col-span-1 mt-6 mb-32 relative h-full">
-            <div class="flex font-serif flex-col no-wrap px-4 pt-5 text-secondary border pb-3 w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10 gb-nav">
+            <div class="flex font-serif flex-col no-wrap px-4 pt-5 text-secondary border pb-3 w-full lg:w-64 shadow-xl rounded-lg sm:overflow-hidden md:sticky md:top-10 bg-gradient-to-br from-teal-300 to-teal-600">
               <div class="grid pb-2 text-base font-medium" style="grid-row-gap: 5px;">
                 <div class="grid innerGrid">
                   <div class="h-full flex  flex-col font-bold">

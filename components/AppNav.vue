@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute top-0 w-full z-20 font-serif" :class="{ 'border-0 gb-nav' : !som, 'bg-transparent border-0' : som }">
+    <div class="absolute top-0 w-full z-20 font-serif" :class="{ 'border-0 bg-gradient-to-tr from-teal-300 to-teal-600' : !som, 'bg-transparent border-0' : som }">
       <div class="max-w-6xl mx-auto" >
         <div class="w-full h-auto" >
           <div class="flex items-center justify-between" >
@@ -11,7 +11,7 @@
                 </div>
               </nuxt-link>
             </div>
-            <div class="hidden lg:flex items-center relative" >
+            <div class="hidden lg:flex items-center relative text-black" >
               <nuxt-link to="/about" :class="{ 'text-black' : som , 'text-black' : !som  }" class="uppercase mx-2 tracking-wide font-semibold py-3 px-4 hover:text-white" >
                 About us
               </nuxt-link>
@@ -40,7 +40,7 @@
                   <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
                       <div class="rounded-lg shadow-xs">
-                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
+                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                           <a href="javascript:void(0)" class="group -m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                             <div class="flex-1 space-y-1">
                               <p @mouseover="showSubMenu2 = false;showSubMenu1 = true;showSubMenu3 = false;" class="transform hover:translate-x-2 hover:text-white leading-6 text-black flex flex-row items-center text-lg -mb-1 transition ease-in-out duration-150">
@@ -61,7 +61,7 @@
                             <div @mouseleave="showSubMenu1 = false" v-if="showSubMenu1" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
-                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/academic/college-papers" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
                                         <p class="transform hover:translate-x-2 hover:text-white leading-6 text-black text-lg -mb-1 transition ease-in-out duration-150">
@@ -158,7 +158,7 @@
                             <div @mouseleave="showSubMenu2 = false" v-if="showSubMenu2" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
-                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/essay/argumentative" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
                                         <p class="transform hover:translate-x-2 hover:text-white leading-6 text-black text-lg -mb-1 transition ease-in-out duration-150">
@@ -262,7 +262,7 @@
                             <div @mouseleave="showSubMenu3 = false" v-if="showSubMenu3" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
-                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6  gb-nav" >
+                                  <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6  bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/editing/essay" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
                                         <p class="transform hover:translate-x-2 hover:text-white leading-6 text-black text-lg -mb-1 transition ease-in-out duration-150">
@@ -299,7 +299,7 @@
 
               </nuxt-link>
 
-              <nuxt-link to="/order" class="uppercase bg-black inline-block mx-2  tracking-wide font-semibold py-3 px-4 bg-transparent text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" style="border-color: #49544e;">
+              <nuxt-link to="/order" class="uppercase bg-black inline-block mx-2 tracking-wide font-semibold py-3 px-4 text-white rounded-full transform hover:scale-105 transition ease-in-out duration-100" style="border-color: #49544e;">
                 New Order
               </nuxt-link>
 
@@ -321,7 +321,7 @@
                   <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
                       <div class="rounded-lg shadow-xs">
-                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
+                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                           <nuxt-link to="/login" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
                             <div class="flex-1 space-y-1">
                               <p class="transform font-semibold hover:translate-x-2 hover:text-white leading-6 text-black text-lg -mb-1 transition ease-in-out duration-150">
@@ -345,7 +345,7 @@
               <div @mouseleave="showDropdown" v-show="$auth.loggedIn" class="relative flex justify-center text-left">
                 <button @mouseenter="showDropdown" v-on:click="$router.push('/profile')" type="button" class="capitalize inline-flex items-center mx-2  font-semibold px-1 pr-3 bg-white text-black rounded-full transform hover:scale-105 transition ease-in-out duration-100">
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2 24C43.2 34.6039 34.6039 43.2 24 43.2C13.3962 43.2 4.80002 34.6039 4.80002 24C4.80002 13.3961 13.3962 4.79999 24 4.79999C34.6039 4.79999 43.2 13.3961 43.2 24ZM28.8 16.8C28.8 19.451 26.651 21.6 24 21.6C21.3491 21.6 19.2 19.451 19.2 16.8C19.2 14.149 21.3491 12 24 12C26.651 12 28.8 14.149 28.8 16.8ZM23.9999 26.4C19.1578 26.4 14.9855 29.2679 13.089 33.3977C15.7297 36.4609 19.6384 38.4 24 38.4C28.3615 38.4 32.2701 36.4609 34.9108 33.3979C33.0143 29.268 28.842 26.4 23.9999 26.4Z" fill="#111827"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.2 24C43.2 34.6039 34.6039 43.2 24 43.2C13.3962 43.2 4.80002 34.6039 4.80002 24C4.80002 13.3961 13.3962 4.79999 24 4.79999C34.6039 4.79999 43.2 13.3961 43.2 24ZM28.8 16.8C28.8 19.451 26.651 21.6 24 21.6C21.3491 21.6 19.2 19.451 19.2 16.8C19.2 14.149 21.3491 12 24 12C26.651 12 28.8 14.149 28.8 16.8ZM23.9999 26.4C19.1578 26.4 14.9855 29.2679 13.089 33.3977C15.7297 36.4609 19.6384 38.4 24 38.4C28.3615 38.4 32.2701 36.4609 34.9108 33.3979C33.0143 29.268 28.842 26.4 23.9999 26.4Z" fill="#000000"/>
                   </svg>
                   <span>{{ names }}</span>
                   <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -363,8 +363,8 @@
                   <div v-show="dropDownOpen" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
                       <div class="rounded-lg shadow-xs">
-                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 gb-nav" >
-                          <div @click="$router.push('/profile')" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
+                        <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
+                          <div @click="$router.push('/profile');showDropdown;" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
                             <div class="flex-1 space-y-1">
                               <div class="transform cursor-pointer font-semibold hover:translate-x-2 hover:text-white leading-6 text-left text-black text-lg -mb-1 transition ease-in-out duration-150">
                                   Profile

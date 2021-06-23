@@ -145,7 +145,7 @@
       leave-class="transform translate-y-0"
       leave-to-class="transform -translate-y-6"
     >
-    <div v-show="showLoader" class="min-h-screen flex flex-col justify-center gb-nav">
+    <div v-show="showLoader" class="min-h-screen flex flex-col justify-center bg-gradient-to-br from-teal-300 to-teal-600">
       <div class="btn-spinner mx-auto" style="font-size: 55px;" />
       <div class="text-2xl text-white my-3 font-black mx-auto">Logging in</div>
     </div>
@@ -158,7 +158,7 @@
       leave-class="transform translate-y-0"
       leave-to-class="transform -translate-y-6"
     >
-      <div v-show="showLoader0" class="min-h-screen flex flex-col justify-center gb-nav">
+      <div v-show="showLoader0" class="min-h-screen flex flex-col justify-center bg-gradient-to-br from-teal-300 to-teal-600">
         <div class="btn-spinner mx-auto" style="font-size: 55px;" />
         <div class="text-2xl text-white my-3 font-black mx-auto">{{ emailVerified ? 'Email Verified' : 'Verifying Email' }}</div>
       </div>

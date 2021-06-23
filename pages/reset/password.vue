@@ -36,7 +36,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-          <loading-button type="submit" :loading="sending" class="inline-flex items-center px-4 py-2 gb-nav border border-transparent rounded-md font-semibold text-xs text-gray-900 uppercase tracking-widest hover:bg-black hover:text-white active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+          <loading-button type="submit" :loading="sending" class="inline-flex items-center px-4 py-2 bg-gradient-to-br from-teal-300 to-teal-600 border border-transparent rounded-md font-semibold text-xs text-gray-900 uppercase tracking-widest hover:bg-black hover:text-white active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
             Reset Password
           </loading-button>
         </div>

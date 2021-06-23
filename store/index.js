@@ -1,5 +1,5 @@
-import data from "~/static/storedata.json";
-import countries from "~/static/countries.json";
+import data from "~/static/storedata.json"
+import countries from "~/static/countries.json"
 
 export const state = () => ({
   cartUIStatus: "idle",
@@ -10,7 +10,7 @@ export const state = () => ({
   clientSecret: "",
   token: null,
   orderData: null,
-});
+})
 
 export const getters = {
   cartCount: state => {
@@ -35,7 +35,7 @@ export const getters = {
   loggedInUser: state => state.auth.user,
   currentToken: state => state.token,
   currentFormData: state => state.orderData
-};
+}
 
 export const mutations = {
   setToken: (state, payload)  =>  {
@@ -76,7 +76,7 @@ export const mutations = {
   removeAllFromCart: (state, payload) => {
     state.cart = state.cart.filter(el => el.id !== payload.id)
   },
-};
+}
 
 export const actions = {
   async deleteItem({ commit, dispatch }, payload) {
@@ -144,5 +144,16 @@ export const actions = {
         console.log("sendmail error", e)
       }
     },1500);
-  }
-};
+  },
+  async nuxtServerInit ({ commit }, { req }) {
+    let auth = null
+    if (req.headers.cookie) {
+      // cookie found
+      try {
+        console.log("we have cookies", req)
+      } catch (err) {
+        console.log("cookie not found")
+      }
+    }
+  },
+}

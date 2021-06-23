@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Calibre", sans-serif'],
+        serif: ['"Nunito", sans-serif'],
         sans: ['"Source Sans Pro", sans-serif'],
       },
       colors: {

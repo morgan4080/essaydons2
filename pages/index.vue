@@ -23,32 +23,32 @@
             </div>
           </div>
           <div class="absolute bg-gradient-to-r from-teal-300 via-teal-300 to-teal-300 shadow-lg text-left flex flex-col py-6 text-xl custom-calc md:right-10 md:top-30 lg:top-30 max-w-xs">
-            <select v-model="form.subject" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-4 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+            <select v-model="form.subject" class="bg-transparent border-2 border-white font-mono font-bold text-white  mt-4 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
               <optgroup label="Subjects" class="bg-black">
                 <option v-for="subject in subjects" :value="subject">{{ subject }}</option>
               </optgroup>
             </select>
-            <select @change="setFirstDuration" v-model="form.level" class="bg-transparent border-2 border-white font-mono font-bold text-white hover:bg-gradient-to-r mt-2 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+            <select @change="setFirstDuration" v-model="form.level" class="bg-transparent border-2 border-white font-mono font-bold text-white  mt-2 form-input py-3 px-3  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
               <optgroup class="bg-black" label="Academic Levels">
                 <option v-for="data in storedata" :key="data.id" :value="data.id" >{{ data.level }}</option>
               </optgroup>
             </select>
             <div class="flex mt-2 sm:text-sm sm:leading-5 font-bold font-mono">
-              <select v-model="form.duration" class="w-1/2 bg-transparent border-2 border-white hover:bg-gradient-to-r py-3 px-3 text-white form-input  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out">
+              <select v-model="form.duration" class="w-1/2 bg-transparent border-2 border-white  py-3 px-3 text-white form-input  rounded-3xl shadow-sm focus:outline-none focus:shadow-outline-blue focus:bg-gradient-to-r transition duration-150 ease-in-out">
                 <optgroup class="bg-black" label="Deadline">
                   <option v-for="[key, value] of Object.entries(duration)" :value="{duration: key, price: value}" >{{ key }}</option>
                 </optgroup>
               </select>
               <div class="flex w-1/2 ml-1 text-white pagesAf relative bg-transparent border-2 border-white rounded-3xl">
                 <button class="w-1/3" @click="form.pages > 0 ? form.pages-- : form.pages = 0">-</button>
-                <input class="w-1/3 bg-transparent hover:bg-gradient-to-r text-center" type="number" v-model="form.pages" />
+                <input class="w-1/3 bg-transparent  text-center" type="number" v-model="form.pages" />
                 <button class="w-1/3" @click="form.pages++">+</button>
               </div>
             </div>
             <div class="px-1 py-3 text-white font-mono font-bold text-3xl text-center">{{ totalPrice | dollar }}</div>
             <div class="flex">
-              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1 text-center font-bold">Continue</nuxt-link>
-              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1 text-center font-bold">10% Discount</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 mr-1 text-center font-semibold font-sans">Continue</nuxt-link>
+              <nuxt-link to="/order" class="w-1/2 bg-transparent border-2 border-white rounded-full text-base px-3 py-2 text-white font-medium transform hover:scale-105 transition ease-in-out duration-100 ml-1 text-center font-semibold font-sans">10% Discount</nuxt-link>
             </div>
           </div>
         </div>
@@ -592,7 +592,7 @@
                     <h1 class="title-font sm:text-2xl text-xl font-semibold text-vuegreen mb-3">Steps Towards Mastering Proposal Essay Writting</h1>
                     <p class="leading-relaxed text-white mb-3">What is a proposal essay?<br>
                       A proposal essay is an essay in which the writer has to identify a problem in a specific area and provide a pro ..</p>
-                    <a href="#" class="gb-nav mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <a href="#" class="bg-gradient-to-br from-teal-300 to-teal-600 mx-auto w-40 py-3 px-8 text-xl rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -626,7 +626,7 @@
                       </span>
                     </div>
                     <h1 class="title-font text-xl font-bold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
-                    <a href="#" class="gb-nav mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <a href="#" class="bg-gradient-to-br from-teal-300 to-teal-600 mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -658,7 +658,7 @@
                       </span>
                     </div>
                     <h1 class="title-font text-xl font-bold text-vuegreen mb-3">How To Write A Character Analysis Essay?</h1>
-                    <a href="#" class="gb-nav mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
+                    <a href="#" class="bg-gradient-to-br from-teal-300 to-teal-600 mx-auto w-32 py-2 px-3 text-base rounded-full text-white font-semibold inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
                       Read More
                     </a>
                   </div>
@@ -740,19 +740,19 @@ export default {
 }
 
 .moneyBack {
-  background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/moneyback.jpg);
+  background-image: linear-gradient(60deg,hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4)),url(~assets/images/moneyback.jpg);
   background-position: 85% 33%;
-  background-blend-mode: darken;
+  background-blend-mode: hard-light;
 }
 .revisions {
-  background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/freerevisions.jpg);
+  background-image: linear-gradient(60deg,hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4)),url(~assets/images/freerevisions.jpg);
   background-position: 33% 33%;
-  background-blend-mode: darken;
+  background-blend-mode: hard-light;
 }
 .safePayments {
-  background-image:linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/safe.jpg);
+  background-image:linear-gradient(60deg,hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4),hsla(0,0%,0%, 0.4)),url(~assets/images/safe.jpg);
   background-position: 33% 33%;
-  background-blend-mode: darken;
+  background-blend-mode: hard-light;
 }
 .mobile-b {
   background-image: linear-gradient(60deg,hsl(158,96%,62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96%, 62%),hsl(158, 96% ,62%),hsl(158, 96%, 62%)),url(~assets/images/essaydons-writer.jpg);
