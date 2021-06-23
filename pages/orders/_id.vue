@@ -195,6 +195,7 @@
                   ">
                     Complete Order
                   </button>
+                  <span v-else class="animate-pulse inline-block w-12 h-4 bg-gray-400 rounded"></span>
                 </div>
               </div>
             </div>
