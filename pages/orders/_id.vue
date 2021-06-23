@@ -167,7 +167,7 @@
               >
                 <div class="flex-auto flex justify-between items-center">
 <!--                  complete order -->
-                  <button type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="
+                  <button @click="$router.push(`/order?edit=${order.id}`)" type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="
                     group
                     ml-0.5
                     bg-black
@@ -256,7 +256,8 @@
             <div class="flex flex-col">
               <div  class="bg-white px-6 py-5 relative md:px-10 md:py-4 text-lg md:text-xl leading-8 space-y-3 md:leading-8 font-semibold text-gray-900">
                 <div v-for="comment in comments" :key="comment.id" class="flex p-4 rounded-xl">
-                  <div v-if="!comment.user.owner" class="w-full md:w-1/2 ml-auto flex flex-wrap bg-gradient-to-br from-teal-300 to-teal-600 items-center justify-end p-2 rounded-tl-xl rounded-br-xl rounded-bl-xl">
+                  <div v-if="!comment.user.owner" class="w-full relative shadow-xl md:w-1/2 ml-auto flex flex-wrap bg-gradient-to-br from-teal-300 to-teal-600 items-center justify-end p-2 rounded-tl-xl rounded-br-xl rounded-bl-xl">
+                    <div class="text-teal-300 tracking-widest text-xs absolute right-0 top-0 -mr-1 -mr-1 transform rotate-90" style="margin-top: -3px;">▶</div>
                     <p class="ml-4 mb-1 text-sm capitalize text-left mr-auto">
                       {{ comment.user.name }} <span class="opacity-60 text-gray-500 text-xs font-thin">{{ comment.updated_at | formatDate }}</span>
                     </p>
@@ -264,7 +265,8 @@
                       {{ comment.comment }}
                     </p>
                   </div>
-                  <div v-if="comment.user.owner" class="w-full md:w-1/2 flex flex-wrap items-center bg-gray-100 justify-start p-2 rounded-tr-xl rounded-bl-xl rounded-tr-xl rounded-br-xl">
+                  <div v-if="comment.user.owner" class="w-full relative shadow-xl md:w-1/2 flex flex-wrap items-center bg-gray-200 justify-start p-2 rounded-tr-xl rounded-bl-xl rounded-tr-xl rounded-br-xl">
+                    <div class="text-gray-200 tracking-widest text-xs absolute left-0 top-0 -ml-1 -mt-1 transform rotate-90" style="margin-top: -3px;">▶</div>
                     <p class="ml-4 mb-1 text-sm capitalize">
                       {{ comment.user.name }} <span class="opacity-60 text-gray-500 text-xs font-thin">{{ comment.updated_at | formatDate }}</span>
                     </p>
@@ -275,19 +277,20 @@
                 </div>
               </div>
             </div>
-            <div  class="bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
+            <div class="bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
               <div class="flex justify-between space-x-2 relative">
-                <div  class="flex space-x-6 items-center w-full">
-                  <input type="text" placeholder="Comment here ..." class="py-3 font-visible-shut px-5 w-full bg-gray-100 rounded-full focus:shadow-outline text-sm md:text-base lg:text-base">
+                <div class="flex space-x-6 items-center w-full">
+                  <input type="text" placeholder="Comment here ..." class="py-3 border border-gray-100 font-visible-shut px-5 w-full bg-gray-200 rounded-full focus:shadow-outline text-sm md:text-base lg:text-base shadow-xl">
                 </div>
-                <div class="absolute right-0 top-2 flex items-center justify-center space-x-1 pr-1">
-                  <div class="flex-1 flex items-center cursor-pointer bg-gradient-to-br from-black to-gray-900 rounded-full p-1.5">
+                <div id="dragBox" @drop="dropHandler" @dragover="handleDragOver" @dragleave="handleDragLeave" @dragenter="handleDragEnter" class="absolute right-0 top-2 flex items-center justify-center space-x-1 pr-1">
+                  <div @click="handleFileUploadClick()" class="flex-1 flex items-center cursor-pointer bg-gradient-to-br from-black to-gray-900 rounded-full p-1.5">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12.643 5.83333L7.15482 11.3215C6.50394 11.9724 6.50394 13.0276 7.15482 13.6785C7.80569 14.3294 8.86097 14.3294 9.51184 13.6785L14.857 8.19036C16.1588 6.88861 16.1588 4.77806 14.857 3.47631C13.5553 2.17456 11.4447 2.17456 10.143 3.47631L4.79779 8.96447C2.84517 10.9171 2.84517 14.0829 4.79779 16.0355C6.75042 17.9882 9.91624 17.9882 11.8689 16.0355L17.0833 10.8333" stroke="#F2F2F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </div>
+                  <input id="fileUploader" @change="change" accept="text/plain,image/jpeg,image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/x-iwork-pages-sffpages" multiple="" type="file" autocomplete="off" tabindex="-1" class="hidden h-full w-full" style="z-index: 2;">
                   <div class="flex-1 flex items-center cursor-pointer bg-gradient-to-br from-teal-300 to-teal-600 rounded-full p-0.5">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="animate-pulse" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0)">
                         <path d="M9.19338 17.1715L11.5 24.5L20.7404 10.5048L4.00001 11.5096L9.19338 17.1715ZM9.19338 17.1715L14.9669 13.8382" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </g>
@@ -301,7 +304,13 @@
                 </div>
               </div>
             </div>
+            <div class="bg-white px-6 pt-2 mb-12 relative md:px-10 md:pt-0 md:pb-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
+              <ul class="text-xs previewImgTab max-h-48 overflow-auto">
+                <li class="rounded-full shadow-xl" v-for="upload in form.uploads">{{ upload.name }} - {{ upload.size }} bytes<svg @click="removeFile(upload)" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg></li>
+              </ul>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -347,7 +356,7 @@ export default {
             owner: true,
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
-          files: [],
+          upload: [],
           updated_at: new Date(),
         },
         {
@@ -357,7 +366,7 @@ export default {
             owner: false,
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
-          files: [],
+          upload: [],
           updated_at: new Date(),
         },
         {
@@ -367,7 +376,7 @@ export default {
             owner: this.$auth.user.owner,
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
-          files: [],
+          upload: [],
           updated_at: new Date(),
         },
         {
@@ -377,13 +386,87 @@ export default {
             owner: this.$auth.user.owner,
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
-          files: [],
+          upload: [],
           updated_at: new Date(),
         }
-      ]
+      ],
+      form: {
+        comment: "",
+        uploads: [],
+        user: {
+          name: this.$auth.user.name,
+          owner: this.$auth.user.owner,
+        },
+      }
     }
   },
+  methods: {
+    change(e) {
+      this.readFileUrl(e.target);
+    },
+    async readFileUrl(input) {
+      if (input.files && input.files[0]) {
+        for (let i = 0; i < input.files.length; i++) {
+          this.form.uploads.push(input.files[i]);
+        }
+      }
+    },
+    removeFile(file) {
+      let index = this.form.uploads.findIndex(file0 => file0 === file);
+      this.form.uploads.splice(index, 1);
+    },
+    dropHandler(ev) {
+      ev.preventDefault();
+      if (ev.dataTransfer.items) {
+        for (let i = 0; i < ev.dataTransfer.items.length; i++) {
+          if (ev.dataTransfer.items[i].kind === 'file') {
+            let file = ev.dataTransfer.items[i].getAsFile();
+            this.form.uploads.push(file);
+            document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
+          }
+        }
+      } else {
+        for (let i = 0; i < ev.dataTransfer.files.length; i++) {
+          this.form.uploads.push(ev.dataTransfer.files[i]);
+          document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
+        }
+      }
+    },
+    handleFileUploadClick() {
+      const fileSelect = document.getElementById("dragBox"),
+        fileElem = document.getElementById("fileUploader");
+      fileSelect.addEventListener("click", function (e) {
+        if (fileElem) {
+          fileElem.click();
+        }
+      }, false);
+    },
+    handleDragOver(ev) {
+      ev.preventDefault();
+      console.log('File(s) in drop zone');
+      document.querySelector('#dragBox').style.borderColor = 'rgb(66, 251, 183)';
+    },
+    handleDragEnter(ev) {
+      ev.preventDefault();
+    },
+    handleDragLeave(ev) {
+      ev.preventDefault();
+      document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
+    },
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.previewImgTab li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  border: 1px solid #dbdbdb;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin-top: 5px;
+}
+</style>
