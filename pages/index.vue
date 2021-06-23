@@ -11,7 +11,7 @@
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
-              <h1 class="text-4xl md:text-5xl lg:text-7xl text-gray-900 font-black leading-tight tracking-tighter py-2 lg:py-0">
+              <h1 class="text-4xl md:text-5xl lg:text-7xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
                 Professional Essay<br> & Academic Writers
               </h1>
               <p class="text-gray-900 opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
