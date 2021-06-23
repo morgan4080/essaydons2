@@ -180,7 +180,7 @@
                               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
                             </tr>
-                            <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                            <tr v-if="!$fetchState.pending" v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
                               <td class="border-t">
                                 <nuxt-link
                                   :to="'orders/' + order.id"
@@ -250,6 +250,27 @@
                                   ></nuxt-link>
                                 </div>
                               </td>
+                            </tr>
+                            <tr v-if="$fetchState.pending" v-for="(x) in '0000000000'" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+                              <td class="border-t">
+                                <span class="animate-pulse w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-400 rounded"></span>
+                              </td>
+
                             </tr>
                           </table>
                           <pagination class="px-6 pb-4" :links="links" />

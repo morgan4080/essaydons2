@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-xl border-b bg-white border-gray-200 overflow-hidden sm:rounded-lg text-gray-900 block w-full">
+  <div class="shadow-xl border-b bg-white border-gray-200 overflow-hidden rounded-lg text-gray-900 block w-full">
     <div class="">
       <div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

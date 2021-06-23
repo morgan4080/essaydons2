@@ -87,71 +87,10 @@
                     "
                   ></span>
                 </span>
-                <span class="flex space-x-1 items-center ml-0.5">
-                  <span class="text-sm">Payment:</span>
-                  <span
-                    v-if="!$fetchState.pending"
-                    :class="{
-                      'bg-red-200 text-red-800': order.status === 'processing',
-                      'bg-green-200 text-green-500': order.status === 'success',
-                    }"
-                    class="
-                      px-2
-                      inline-flex
-                      text-xs
-                      border
-                      leading-5
-                      font-semibold
-                      rounded-full
-                    "
-                    >{{ order.status }}</span
-                  >
-                  <span
-                    v-else
-                    class="
-                      animate-pulse
-                      inline-block
-                      w-12
-                      h-4
-                      bg-gray-400
-                      rounded
-                    "
-                  ></span>
-                </span>
                 <div
                   v-if="!$fetchState.pending && order.status !== 'success'"
-                  class="border-l border-gray-400 w-0 h-6 opacity-75 mx-0.5"
+                  class="border-l border-white w-0 h-6 opacity-75 mx-0.5"
                 ></div>
-                <button
-                  v-if="!$fetchState.pending && order.status === 'processing'"
-                  type="button"
-                  class="
-                    group
-                    ml-0.5
-                    bg-black
-                    px-3
-                    border border-white
-                    rounded-full
-                    text-sm
-                    leading-4
-                    font-medium
-                    text-white
-                    hover:text-white
-                    hover:bg-black
-                    focus:outline-none
-                    focus:border-gray-300
-                    focus:shadow-outline-blue
-                    active:bg-gray-50
-                    active:text-gray-800
-                    transform
-                    hover:scale-105
-                    transition
-                    duration-150
-                    ease-in-out
-                  "
-                >
-                  Complete
-                </button>
               </div>
             </div>
           </div>
@@ -179,7 +118,7 @@
 
           <div class="flex flex-col">
             <div
-              class="shadow-lg rounded-xl flex-none w-80 md:w-xl"
+              class="shadow-lg rounded-xl flex-none md:w-xl"
             >
               <div
                 class="
@@ -217,7 +156,7 @@
                         items-center
                         space-x-4
                         p-6
-                        md:px-10
+                        md:px-6
                         md:py-6
                         bg-gradient-to-br
                         rounded-b-xl
@@ -230,6 +169,32 @@
               >
                 <div class="flex-auto">
 <!--                  complete order -->
+                  <button type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="
+                    group
+                    ml-0.5
+                    bg-black
+                    px-4
+                    py-3
+                    font-semibold
+                    rounded-full
+                    text-sm
+                    leading-4
+                    text-white
+                    hover:text-white
+                    hover:bg-black
+                    focus:outline-none
+                    focus:border-gray-300
+                    focus:shadow-outline-blue
+                    active:bg-gray-50
+                    active:text-gray-800
+                    transform
+                    hover:scale-105
+                    transition
+                    duration-150
+                    ease-in-out
+                  ">
+                    Complete Order
+                  </button>
                 </div>
               </div>
             </div>

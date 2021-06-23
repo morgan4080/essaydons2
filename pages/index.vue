@@ -11,10 +11,10 @@
         <div class="mobile-b min-h-screen relative bg-left-0 lg:bg-center-0">
           <div class="max-w-6xl topBanner mx-auto pt-40 lg:pt-70 z-10 px-8 lg:px-0 pb-56">
             <div>
-              <h1 class="text-4xl md:text-5xl lg:text-7xl text-black font-black leading-tight tracking-tighter py-2 lg:py-0">
+              <h1 class="text-4xl md:text-5xl lg:text-7xl text-gray-900 font-black leading-tight tracking-tighter py-2 lg:py-0">
                 Professional Essay<br> & Academic Writers
               </h1>
-              <p class="text-black opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
+              <p class="text-gray-900 opacity-75 text-lg lg:text-2xl py-6 max-w-4xl leading-normal">
                 We write your papers - you get top grades!
               </p>
               <nuxt-link to="/order" class="bg-black py-3 px-8 text-xl rounded-full text-white font-semibold hidden lg:inline-block mt-4 transform hover:scale-105 transition ease-in-out duration-100">
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 pt-12">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             Guarantees
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -101,7 +101,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             Why Choose Us
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">We guide you through your toughest academic tasks.</p>
@@ -274,7 +274,7 @@
                           <div class="ml-form-fieldRow ml-last-item" >
                             <div class="flex items-center w-full lg:w-1/2 ml-field-group ml-field-email ml-validate-email ml-validate-required" >
                               <input type="email" placeholder="Email" class="form-control bg-secondary text-white py-3 px-6 rounded-full text-lg rounded-r-none w-1/2 lg:w-full">
-                              <button class="rounded-full text-black font-semibold inline-block transform hover:scale-105 transition ease-in-out duration-100 my-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg">
+                              <button class="rounded-full text-gray-900 font-semibold inline-block transform hover:scale-105 transition ease-in-out duration-100 my-4 rounded-r-full rounded-l-none py-3 -ml-1 whitespace-no-wrap bg-white py-2 px-6 text-lg">
                                 Submit
                               </button>
                             </div>
@@ -307,7 +307,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             Frequently Asked Questions about Custom Writing.
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -411,7 +411,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             Do You Need an Essay Writer?
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -435,39 +435,39 @@
                 </p>
 
 
-                <h3 class="font-black text-xl text-black">Our Unique Features</h3>
+                <h3 class="font-black text-xl text-gray-900">Our Unique Features</h3>
 
                 <p class="py-2">
                   After years in this business, we know for sure what a student needs from an online essay writing service. We have fine-tuned our services to these needs to stay on top of things. Meet an extensive list of every single feature that makes us unique and outstanding. And believe us, we are not bragging. We are just being realistic
                 </p>
 
-                <h4 class="font-bold text-black">A massive team of online essay writers.</h4>
+                <h4 class="font-bold text-gray-900">A massive team of online essay writers.</h4>
 
                 <p class="py-2">We do our best to hire as many talents on our as possible. We scan each resume that comes our way to ensure that not one excellent essay writer is left unnoticed. Our team consists of dozens of experts from various fields and backgrounds. And all this is done to meet the growing demand for quality online ghost writing.
 
-                <h4 class="font-bold text-black">Reasonable prices.</h4>
+                <h4 class="font-bold text-gray-900">Reasonable prices.</h4>
 
                 <p class="py-2">We aim to establish prices that will both motivate the essay writers and not leave our customers wanting. Affordability is at the core of our principles, so be sure you won't have to rob the bank to get your piece written by our experts.</p>
 
-                <h4 class="font-bold text-black">100% originality.</h4>
+                <h4 class="font-bold text-gray-900">100% originality.</h4>
 
                 <p class="py-2">Yes, we do have a substantial base of ready-made essays. But rest assured: we craft each new essay from scratch. Knowing how bad plagiarism is to your good name at school, we avoid it by all means and check each paper for its instances...</p>
 
-                <h4 class="font-bold text-black">Excellent quality-price ratio.</h4>
+                <h4 class="font-bold text-gray-900">Excellent quality-price ratio.</h4>
 
                 <p class="py-2">When you pay us to write your essay, you are practically investing fair money into top college grades. With our help, you get to stretch a buck and meet every single deadline at school without sacrificing your sleep, social life, and sanity</p>
 
-                <h3 class="font-black text-xl text-black mt-6">How It Works</h3>
+                <h3 class="font-black text-xl text-gray-900 mt-6">How It Works</h3>
 
                 <p class="py-2">By now, you might probably be looking for ways to place your first order. If so, then we’ve got fantastic news for you! It will only take a couple of minutes.</p>
               </div>
             </div>
             <div class="w-full lg:w-1/2 h-auto">
               <div class="lg:pl-4 text-secondary py-2 text-lg block">
-                <h3 class="font-black text-xl text-black">Why Choose us</h3>
+                <h3 class="font-black text-xl text-gray-900">Why Choose us</h3>
                 <p class="py-2">Well, there are multiple reasons for it. The most important among them include but are not limited to:</p>
 
-                <h3 class="font-black text-xl text-black">Plagiarism Free Assignments.</h3>
+                <h3 class="font-black text-xl text-gray-900">Plagiarism Free Assignments.</h3>
                 <p class="py-2">
                   All our services are 100% original content, expect no trace of plagiarism in any of your assignments
                   handled by our competent homework writers. The company has clear guidelines and rules on
@@ -479,13 +479,13 @@
                   your assignment is uploaded to you.
                 </p>
 
-                <h3 class="font-black text-xl text-black">Professional writing team.</h3>
+                <h3 class="font-black text-xl text-gray-900">Professional writing team.</h3>
                 <p class="py-2">
                   Our team of writers has been hired after a thorough recruitment exercise conducted after every two years.
                   We want to ensure consistency, and for this reason, we like to train and perfect on the writers we have as opposed to having new writers in the company every other month, which will certainly not work in favour of the company’s standards.
                 </p>
 
-                <h3 class="font-black text-xl text-black">Timely delivery.</h3>
+                <h3 class="font-black text-xl text-gray-900">Timely delivery.</h3>
                 <p class="py-2">Your assignment will be delivered on time. We know the implications late assignment submission
                   could have on your academic life, for this reason, we will ensure that you get to submit all your
                   assignments in time by having our writers upload to you your homework in good time to allow you
@@ -495,7 +495,7 @@
                   pressure working on your assignments. It is not late, place your order now.
                 </p>
 
-                <h3 class="font-black text-xl text-black">High quality.</h3>
+                <h3 class="font-black text-xl text-gray-900">High quality.</h3>
                 <p class="py-2">
                   Our writers have gained industry
                   experience in their various fields of expertise. Therefore, they not only apply academic knowledge to
@@ -505,7 +505,7 @@
                   our writers.
                 </p>
 
-                <h3 class="font-black text-xl text-black">Round-the-clock support.</h3>
+                <h3 class="font-black text-xl text-gray-900">Round-the-clock support.</h3>
                 <p class="py-2">
                   You can always get your homework needs tended to 24/7 regardless of your location.
                   <a href="/">Essaydons.com</a> has hired enough writers and support personnel to ensure that you do not have to
@@ -521,7 +521,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             What You Get in the End
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
@@ -556,7 +556,7 @@
           </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 lg:px-0 mt-4 lg:mt-12 py-16">
-          <h2 class="text-4xl font-bold leading-none pb-1 text-black text-left">
+          <h2 class="text-4xl font-bold leading-none pb-1 text-gray-900 text-left">
             Blog
           </h2>
           <p class="lg:text-2xl text-secondary text-left mb-4">
