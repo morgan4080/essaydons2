@@ -422,13 +422,11 @@ export default {
           if (ev.dataTransfer.items[i].kind === 'file') {
             let file = ev.dataTransfer.items[i].getAsFile();
             this.form.uploads.push(file);
-            document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
           }
         }
       } else {
         for (let i = 0; i < ev.dataTransfer.files.length; i++) {
           this.form.uploads.push(ev.dataTransfer.files[i]);
-          document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
         }
       }
     },
@@ -444,14 +442,12 @@ export default {
     handleDragOver(ev) {
       ev.preventDefault();
       console.log('File(s) in drop zone');
-      document.querySelector('#dragBox').style.borderColor = 'rgb(66, 251, 183)';
     },
     handleDragEnter(ev) {
       ev.preventDefault();
     },
     handleDragLeave(ev) {
       ev.preventDefault();
-      document.querySelector('#dragBox').style.borderColor = '2px dashed var(--inputBorderColor)';
     },
   }
 }
