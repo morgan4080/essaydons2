@@ -165,10 +165,5 @@ export default {
 
   proxy: {
     '/api/': { target: 'https://essaydons.co/api', pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  },
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-
   }
 }
