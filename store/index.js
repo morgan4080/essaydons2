@@ -146,14 +146,6 @@ export const actions = {
     },1500);
   },
   async nuxtServerInit ({ commit }, { req }) {
-    let auth = null
-    if (req.headers.cookie) {
-      // cookie found
-      try {
-        console.log("we have cookies", req)
-      } catch (err) {
-        console.log("cookie not found")
-      }
-    }
+
   },
 }
