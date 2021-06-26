@@ -118,10 +118,10 @@
 
           <div class="flex flex-col w-full">
             <div class="shadow-lg rounded-xl flex-none md:w-xl sm:overflow-hidden md:sticky md:top-10 w-full">
-              <div class="rounded-t-xl bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8  md:leading-8 font-semibold text-gray-900 w-full">
+              <div class="relative rounded-t-xl bg-white p-6 md:px-6 md:py-6 text-lg md:text-xl leading-8  md:leading-8 font-semibold text-gray-900 w-full">
                 <span v-if="!$fetchState.pending" class="text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl-xl rounded-tr-xl" :class="{'bg-red-300': order.status === 'processing', 'bg-black text-green-300': order.status === 'success'}" >{{ order.status === 'processing' ? 'unpaid' : 'paid' }}</span>
                 <span v-if="$fetchState.pending" class="absolute right-0 top-0 rounded-bl-xl rounded-tr-xl animate-pulse inline-block w-12 h-4 bg-gray-400 rounded"></span>
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mb-6">
                   <svg class="fill-current text-teal-100" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 13.125L37.5 13.125M37.5 13.125L30 5.625M37.5 13.125L30 20.625M30 31.875L7.5 31.875M7.5 31.875L15 39.375M7.5 31.875L15 24.375" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -129,16 +129,19 @@
                     Order Actions
                   </p>
                 </div>
-                <div class="p-4 flex flex-col">
-                  <div class="flex justify-between">
-                    <p class="">
+                <div class="flex flex-col">
+                  <div  class="flex justify-between">
+                    <p v-if="$auth.user.owner && !$fetchState.pending  && order.status === 'success' && order.state === 'listed'" class="text-sm ml-2 mb-2 w-1/3 flex items-center">
                       Assign Writer
                     </p>
 
-                    <select id="assign-writer" v-model="assignedWriter" class="block mt-2 w-1/2 pl-2 form-select w-full py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                    <span v-else class="animate-pulse inline-block w-12 h-4 bg-gray-200 rounded ml-2 mb-2 w-1/3"></span>
+
+                    <select v-if="$auth.user.owner && !$fetchState.pending  && order.status === 'success' && order.state === 'listed'" id="assign-writer" v-model="assignedWriter" class="block w-2/3 mb-2 form-select py-1 border border-gray-300 bg-white rounded-lg shadow-xl focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                       <option v-for="writer in writers" :value="writer.id" >{{ writer.name }}</option>
                     </select>
 
+                    <span v-else class="animate-pulse inline-block w-2/3 h-4 bg-gray-200 rounded mb-2"></span>
 
                   </div>
                 </div>

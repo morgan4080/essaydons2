@@ -39,7 +39,7 @@
                 >
                   <div id="evOfInt" @mouseleave="showSubMenu0 = false" v-if="showSubMenu" class="absolute right-0 -mr-3 pt-5 transform px-2 w-screen lg:mt-2 sm:px-0 lg:ml-0 lg:left-1/2 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
-                      <div class="rounded-lg shadow-xs">
+                      <div class="rounded-lg shadow-xl">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                           <a href="javascript:void(0)" class="group -m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                             <div class="flex-1 space-y-1">
@@ -60,7 +60,7 @@
                             >
                             <div @mouseleave="showSubMenu1 = false" v-if="showSubMenu1" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
-                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                <div class="rounded-lg shadow-xl overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/academic/college-papers" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
@@ -157,7 +157,7 @@
                             >
                             <div @mouseleave="showSubMenu2 = false" v-if="showSubMenu2" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
-                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                <div class="rounded-lg shadow-xl overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/essay/argumentative" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
@@ -261,7 +261,7 @@
                             >
                             <div @mouseleave="showSubMenu3 = false" v-if="showSubMenu3" class="absolute right-0 -mr-3 pt-0 transform px-2 w-screen lg:mt-0 sm:px-0 lg:ml-0 lg:translate-x-full capitalize" style="max-width: 15rem;">
                               <div class="rounded-lg shadow-2xl">
-                                <div class="rounded-lg shadow-xs overflow-hidden">
+                                <div class="rounded-lg shadow-xl overflow-hidden">
                                   <div class="z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6  bg-gradient-to-br from-teal-300 to-teal-600" >
                                     <nuxt-link to="/service/editing/essay" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150">
                                       <div class="flex-1 space-y-1">
@@ -320,7 +320,7 @@
                 >
                   <div v-show="dropDownOpen" @mouseleave="showDropdown" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
-                      <div class="rounded-lg shadow-xs">
+                      <div class="rounded-lg shadow-xl">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                           <nuxt-link to="/login" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
                             <div class="flex-1 space-y-1">
@@ -362,7 +362,7 @@
                 >
                   <div v-show="dropDownOpen" class="absolute right-0 -mr-3 px-2 w-screen mt-16 sm:px-0 lg:ml-0 capitalize" style="max-width: 15rem;">
                     <div class="rounded-lg shadow-2xl">
-                      <div class="rounded-lg shadow-xs">
+                      <div class="rounded-lg shadow-xl">
                         <div class="rounded-lg z-20 relative grid gap-6 px-5 sm:gap-8 sm:p-6 bg-gradient-to-br from-teal-300 to-teal-600" >
                           <div @click="$router.push('/profile');showDropdown;" class="-m-4 p-2 flex items-start space-x-4 rounded-lg transition ease-in-out duration-150" role="menuitem">
                             <div class="flex-1 space-y-1">
