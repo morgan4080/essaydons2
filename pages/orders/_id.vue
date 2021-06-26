@@ -117,26 +117,8 @@
           <div v-if="$fetchState.error">An error occurred :(</div>
 
           <div class="flex flex-col w-full">
-            <div
-              class="shadow-lg rounded-xl flex-none md:w-xl sm:overflow-hidden md:sticky md:top-10 w-full"
-            >
-              <div
-                class="
-                        rounded-t-xl
-                        bg-white
-                        px-6
-                        py-8
-                        relative
-                        md:p-10
-                        text-lg
-                        md:text-xl
-                        leading-8
-                        md:leading-8
-                        font-semibold
-                        text-gray-900
-                        w-full
-                      "
-              >
+            <div class="shadow-lg rounded-xl flex-none md:w-xl sm:overflow-hidden md:sticky md:top-10 w-full">
+              <div class="rounded-t-xl bg-white px-6 py-8 relative md:p-10 text-lg md:text-xl leading-8  md:leading-8 font-semibold text-gray-900 w-full">
                 <span v-if="!$fetchState.pending" class="text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl-xl rounded-tr-xl" :class="{'bg-red-300': order.status === 'processing', 'bg-black text-green-300': order.status === 'success'}" >{{ order.status === 'processing' ? 'unpaid' : 'paid' }}</span>
                 <span v-if="$fetchState.pending" class="absolute right-0 top-0 rounded-bl-xl rounded-tr-xl animate-pulse inline-block w-12 h-4 bg-gray-400 rounded"></span>
                 <div class="flex justify-between items-center">
@@ -147,77 +129,28 @@
                     Order Actions
                   </p>
                 </div>
+                <div class="p-4 flex flex-col">
+                  <div class="flex justify-between">
+                    <p class="">
+                      Assign Writer
+                    </p>
+
+                    <select id="assign-writer" v-model="assignedWriter" class="block mt-2 w-1/2 pl-2 form-select w-full py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline focus:bg-gradient-to-r focus:outline-none focus:shadow-outline focus:bg-gradient-to-r transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <option v-for="writer in writers" :value="writer.id" >{{ writer.name }}</option>
+                    </select>
+
+
+                  </div>
+                </div>
               </div>
-              <div
-                class="
-                        flex
-                        items-center
-                        space-x-4
-                        p-6
-                        md:px-6
-                        md:py-6
-                        bg-gradient-to-br
-                        rounded-b-xl
-                        leading-6
-                        font-semibold
-                        text-white
-                        from-teal-300
-                        to-teal-600
-                      "
-              >
+              <div class="flex items-center space-x-4 p-6 md:px-6 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-teal-300 to-teal-600">
                 <div class="flex-auto flex justify-between items-center">
 <!--                  complete order -->
-                  <button @click="$router.push(`/order?edit=${order.id}`)" type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="
-                    group
-                    ml-0.5
-                    bg-black
-                    px-3
-                    py-2
-                    font-semibold
-                    rounded-full
-                    text-sm
-                    leading-4
-                    text-white
-                    hover:text-white
-                    hover:bg-black
-                    focus:outline-none
-                    focus:border-gray-300
-                    focus:shadow-outline-blue
-                    active:bg-gray-50
-                    active:text-gray-800
-                    transform
-                    hover:scale-105
-                    transition
-                    duration-150
-                    ease-in-out
-                  ">
+                  <button @click="$router.push(`/order?edit=${order.id}`)" type="button" v-if="!$fetchState.pending && order.status === 'processing'" class="group ml-0.5 bg-black px-3 py-2 font-semibold rounded-full text-sm leading-4 text-white hover:text-white hover:bg-black focus:outline-none focus:border-gray-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transform hover:scale-105 transition duration-150 ease-in-out">
                     Complete
                   </button>
                   <span v-else-if="$fetchState.pending" class="animate-pulse inline-block w-12 h-4 bg-gray-50 rounded"></span>
-                  <button type="button" v-if="!$fetchState.pending && order.status === 'success'" class="
-                    group
-                    ml-0.5
-                    bg-black
-                    px-3
-                    py-2
-                    font-semibold
-                    rounded-full
-                    text-sm
-                    leading-4
-                    text-white
-                    hover:text-white
-                    hover:bg-black
-                    focus:outline-none
-                    focus:border-gray-300
-                    focus:shadow-outline-blue
-                    active:bg-gray-50
-                    active:text-gray-800
-                    transform
-                    hover:scale-105
-                    transition
-                    duration-150
-                    ease-in-out
-                  ">
+                  <button type="button" v-if="!$fetchState.pending && order.status === 'success'" class="group ml-0.5 bg-black px-3 py-2 font-semibold rounded-full text-sm leading-4 text-white hover:text-white hover:bg-black focus:outline-none focus:border-gray-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transform hover:scale-105 transition duration-150 ease-in-out">
                     Save Actions
                   </button>
                   <span v-if="!$fetchState.pending" class="font-semibold text-base">{{ JSON.parse(order.order_details).amount | dollar }}</span>
@@ -328,13 +261,23 @@ export default {
   async fetch() {
     try {
       const { data } = await this.$axios.get('api/orders?id=' + this.id)
-
       this.order = {
         ...data.order,
       }
     } catch (e) {
-      console.log(e)
+      console.log("order error", e)
       this.$toast.error('Order Cannot be fetched', {
+        theme: 'outline',
+        position: 'bottom-center',
+        duration: 5000,
+      })
+    }
+    try {
+      const { data } = await this.$axios.get('api/users?type=writer')
+      this.writers = [...data]
+    } catch (e) {
+      console.log("writers error", e)
+      this.$toast.error('Writers Cannot be fetched', {
         theme: 'outline',
         position: 'bottom-center',
         duration: 5000,
@@ -347,6 +290,8 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      assignedWriter: null,
+      writers: [],
       order: null,
       comments: [
         {

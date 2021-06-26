@@ -48,38 +48,59 @@ module.exports = async function (req, res) {
         res.status(200).json({
           data: response
         });
+
       } catch (e) {
-        res.status(500)
+        res.status(405).json({
+          error: e,
+          message: "couldn't fetch users"
+        })
       }
   } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
       try {
-        let response = await edit(parseInt(req.query.id));
+        let response = await edit(parseInt(req.query.id))
 
         res.status(200).json({
           data: response
-        });
+        })
+
       } catch (e) {
-        res.status(500)
+        res.status(405).json({
+          error: e,
+          message: "couldn't fetch users"
+        })
       }
 
-  }else if (Object.keys(req.query).length === 1 && req.method === "POST" && req.query.user_ticket) {
-    // handle complaints
-
-  } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0 ) {
+  } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.type) {
       try {
-        let response = await update(req, user.id);
+        let response = await fetchWriters(req.query.type)
 
         res.status(200).json({
           data: response
-        });
+        })
+
       } catch (e) {
-        res.status(500)
+        res.status(405).json({
+          error: e,
+          message: "couldn't fetch users"
+        })
+      }
+
+  } else if (Object.keys(req.query).length === 1 && req.method === "PUT" && Object.keys(req.body).length !== 0) {
+      try {
+        let response = await update(req, user.id)
+        res.status(200).json({
+          data: response
+        })
+      } catch (e) {
+        res.status(405).json({
+          error: e,
+          message: "couldn't fetch users"
+        })
       }
   } else {
       res.status(500)
   }
-
-};
+}
 
 /**
  * Display a listing of the users.
@@ -104,6 +125,21 @@ async function edit(id) {
         id: id
       }
     });
+}
+
+/**
+ * Show the form for editing the specified user.
+ *
+ * @return Array
+ * @param type
+ */
+
+async function fetchWriters(type) {
+    return await prisma.users.findUnique({
+      where: {
+        type: type
+      }
+    })
 }
 
 /**
