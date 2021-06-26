@@ -302,7 +302,7 @@ export default {
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
           upload: [],
-          updated_at: new Date(),
+          updated_at: new Date().toLocaleString(),
         },
         {
           id: 2,
@@ -312,7 +312,7 @@ export default {
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
           upload: [],
-          updated_at: new Date(),
+          updated_at: new Date().toLocaleString(),
         },
         {
           id: 3,
@@ -322,7 +322,7 @@ export default {
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
           upload: [],
-          updated_at: new Date(),
+          updated_at: new Date().toLocaleString(),
         },
         {
           id: 4,
@@ -332,7 +332,7 @@ export default {
           },
           comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget mi interdum, sagittis tellus vel, ullamcorper lacus. Integer eget sem magna. ",
           upload: [],
-          updated_at: new Date(),
+          updated_at: new Date().toLocaleString(),
         }
       ],
       form: {

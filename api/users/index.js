@@ -94,7 +94,7 @@ module.exports = async function (req, res) {
       } catch (e) {
         res.status(405).json({
           error: e,
-          message: "couldn't fetch users"
+          message: "couldn't update user"
         })
       }
   } else {
@@ -135,7 +135,8 @@ async function edit(id) {
  */
 
 async function fetchWriters(type) {
-    return await prisma.users.findUnique({
+    console.log("type")
+    return await prisma.users.findMany({
       where: {
         type: type
       }
