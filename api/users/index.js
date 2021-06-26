@@ -135,7 +135,8 @@ async function edit(id) {
  */
 
 async function fetchWriters(type) {
-    console.log("type")
+    const cpus = require('os').cpus()
+    console.log("type", cpus)
     return await prisma.users.findMany({
       where: {
         type: type

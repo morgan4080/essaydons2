@@ -274,7 +274,8 @@ export default {
     }
     try {
       const { data } = await this.$axios.get('api/users?type=writer')
-      this.writers = [...data]
+      console.log("user writers", data.data)
+      this.writers = [...data.data]
     } catch (e) {
       console.log("writers error", e)
       this.$toast.error('Writers Cannot be fetched', {
