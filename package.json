@@ -5,7 +5,7 @@
   "private": true,
   "author": "morgan4080",
   "scripts": {
-    "dev": "nuxt --port $PORT",
+    "dev": "nuxt --port 3000",
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "dependencies": {
@@ -14,7 +14,7 @@
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/toast": "^3.3.1",
     "@paypal/checkout-server-sdk": "^1.0.2",
-    "@prisma/client": "^2.25.0",
+    "@prisma/client": "^2.26.0",
     "@vercel/node": "^1.11.0",
     "access-log": "^0.4.1",
     "bcrypt": "^5.0.1",
@@ -41,6 +41,6 @@
     "@nuxtjs/tailwindcss": "^4.1.2",
     "nuxt": "^2.15.6",
     "postcss": "^8.3.0",
-    "prisma": "^2.25.0"
+    "prisma": "^2.26.0"
   }
 }

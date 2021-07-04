@@ -1038,14 +1038,11 @@ export default {
       }
     },
     changer(e) {
-      console.log(e);
       this.notificationsChanged = true;
       if (e.target.id === "push_nothing") {
-        console.log("push nothing");
         this.formProfile.pushNotifications.none = true;
         this.formProfile.pushNotifications.sameAsEmail = false;
       } else if (e.target.id === "push_email") {
-        console.log("push email");
         this.formProfile.pushNotifications.none = false;
         this.formProfile.pushNotifications.sameAsEmail = true;
       }
