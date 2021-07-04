@@ -7,13 +7,13 @@
             <div class="flex flex-wrap w-full text-gray-700 body-font">
               <div class="mt-8 w-full flex flex-wrap relative">
                 <div class="absolute flex flex-col top-0 text-xs overflow-auto w-full -mt-12">
-                  <div class="flex justify-between items-center w-full overflow-hidden w-full px-4 md:px-8 lg:px-12">
-                    <div class="text-2xl leading-none font-black tracking-tight text-left capitalize">
+                  <div class="flex justify-between items-center w-full overflow-hidden w-full px-4 md:px-8 lg:px-6">
+                    <div class="text-xl md:text-2xl leading-none font-black tracking-tight text-left capitalize">
                       <div class="flex items-center">
-                        <span class="testLink">Profile </span>
-                        &nbsp;<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.875 9.375L30 22.5L16.875 35.625" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                        <span class="testLink">Profile</span>
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M16.875 9.375L30 22.5L16.875 35.625" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <span class="text-teal-300">{{ currentSlide }}</span>
                       </div>
                     </div>
@@ -283,6 +283,58 @@
                       </div>
                     </div>
                     <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}" class="shadow border-b bg-white border-gray-200 sm:rounded-lg text-gray-900 overflow-x-scroll">
+                      <div class="text-2xl flex leading-none tracking-tight text-left">
+                        <div class="flex-grow flex items-center flex-wrap">
+                          <div @click="filterOrders('listed')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'listed',  'text-gray-500': orderView !== 'listed' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 fill-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M10.875 4.375V11.875H12.875V4.375H10.875ZM10.625 12.125H4.375V14.125H10.625V12.125ZM4.125 11.875V4.375H2.125V11.875H4.125ZM4.375 4.125H5.625V2.125H4.375V4.125ZM9.375 4.125H10.625V2.125H9.375V4.125ZM4.375 12.125C4.23693 12.125 4.125 12.0131 4.125 11.875H2.125C2.125 13.1176 3.13236 14.125 4.375 14.125V12.125ZM10.875 11.875C10.875 12.0131 10.7631 12.125 10.625 12.125V14.125C11.8676 14.125 12.875 13.1176 12.875 11.875H10.875ZM12.875 4.375C12.875 3.13236 11.8676 2.125 10.625 2.125V4.125C10.7631 4.125 10.875 4.23693 10.875 4.375H12.875ZM4.125 4.375C4.125 4.23693 4.23693 4.125 4.375 4.125V2.125C3.13236 2.125 2.125 3.13236 2.125 4.375H4.125ZM6.875 2.875H8.125V0.875H6.875V2.875ZM8.125 3.375H6.875V5.375H8.125V3.375ZM6.875 3.375C6.73693 3.375 6.625 3.26307 6.625 3.125H4.625C4.625 4.36764 5.63236 5.375 6.875 5.375V3.375ZM8.375 3.125C8.375 3.26307 8.26307 3.375 8.125 3.375V5.375C9.36764 5.375 10.375 4.36764 10.375 3.125H8.375ZM8.125 2.875C8.26307 2.875 8.375 2.98693 8.375 3.125H10.375C10.375 1.88236 9.36764 0.875 8.125 0.875V2.875ZM6.875 0.875C5.63236 0.875 4.625 1.88236 4.625 3.125H6.625C6.625 2.98693 6.73693 2.875 6.875 2.875V0.875Z" />
+                            </svg>
+                            Listed
+                            &nbsp;
+                            <span v-if="orderView === 'listed'" :class="{'bg-teal-300' : orderView === 'listed', 'bg-gray-500' : orderView !== 'listed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
+                          </div>
+                          <div @click="filterOrders('in-progress')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'in-progress',  'text-gray-500': orderView !== 'in-progress' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 fill-current stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.125 4.375H13.125M13.125 4.375V9.375M13.125 4.375L8.125 9.375L5.625 6.875L1.875 10.625"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            In-progress
+                            &nbsp;
+                            <span v-if="orderView === 'in-progress'" :class="{'bg-teal-300' : orderView === 'in-progress', 'bg-gray-500' : orderView !== 'in-progress',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
+                          </div>
+                          <div @click="filterOrders('done')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'done',  'text-gray-500': orderView !== 'done' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 fill-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6.33211 8.04289C5.94158 7.65237 5.30842 7.65237 4.91789 8.04289C4.52737 8.43342 4.52737 9.06658 4.91789 9.45711L6.33211 8.04289ZM6.875 10L6.16789 10.7071C6.55842 11.0976 7.19158 11.0976 7.58211 10.7071L6.875 10ZM10.0821 8.20711C10.4726 7.81658 10.4726 7.18342 10.0821 6.79289C9.69158 6.40237 9.05842 6.40237 8.66789 6.79289L10.0821 8.20711ZM10.875 4.375V11.875H12.875V4.375H10.875ZM10.625 12.125H4.375V14.125H10.625V12.125ZM4.125 11.875V4.375H2.125V11.875H4.125ZM4.375 4.125H5.625V2.125H4.375V4.125ZM9.375 4.125H10.625V2.125H9.375V4.125ZM4.375 12.125C4.23693 12.125 4.125 12.0131 4.125 11.875H2.125C2.125 13.1176 3.13236 14.125 4.375 14.125V12.125ZM10.875 11.875C10.875 12.0131 10.7631 12.125 10.625 12.125V14.125C11.8676 14.125 12.875 13.1176 12.875 11.875H10.875ZM12.875 4.375C12.875 3.13236 11.8676 2.125 10.625 2.125V4.125C10.7631 4.125 10.875 4.23693 10.875 4.375H12.875ZM4.125 4.375C4.125 4.23693 4.23693 4.125 4.375 4.125V2.125C3.13236 2.125 2.125 3.13236 2.125 4.375H4.125ZM4.91789 9.45711L6.16789 10.7071L7.58211 9.29289L6.33211 8.04289L4.91789 9.45711ZM7.58211 10.7071L10.0821 8.20711L8.66789 6.79289L6.16789 9.29289L7.58211 10.7071ZM6.875 2.875H8.125V0.875H6.875V2.875ZM8.125 3.375H6.875V5.375H8.125V3.375ZM6.875 3.375C6.73693 3.375 6.625 3.26307 6.625 3.125H4.625C4.625 4.36764 5.63236 5.375 6.875 5.375V3.375ZM8.375 3.125C8.375 3.26307 8.26307 3.375 8.125 3.375V5.375C9.36764 5.375 10.375 4.36764 10.375 3.125H8.375ZM8.125 2.875C8.26307 2.875 8.375 2.98693 8.375 3.125H10.375C10.375 1.88236 9.36764 0.875 8.125 0.875V2.875ZM6.875 0.875C5.63236 0.875 4.625 1.88236 4.625 3.125H6.625C6.625 2.98693 6.73693 2.875 6.875 2.875V0.875Z" />
+                            </svg>
+                            Done
+                            &nbsp;
+                            <span v-if="orderView === 'done'" :class="{'bg-teal-300' : orderView === 'done', 'bg-gray-500' : orderView !== 'done',}" class="rounded-full px-1 leading-none text-white text-xs font-medium">{{ totalCount }}</span>
+                          </div>
+                          <div @click="filterOrders('finished')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'finished',  'text-gray-500': orderView !== 'finished' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.75 6.25H11.7275C12.6567 6.25 13.2611 7.22789 12.8455 8.05902L10.658 12.434C10.4463 12.8575 10.0134 13.125 9.53996 13.125H7.02888C6.92668 13.125 6.82486 13.1125 6.72571 13.0877L4.375 12.5M8.75 6.25V3.125C8.75 2.43464 8.19036 1.875 7.5 1.875H7.44033C7.12811 1.875 6.875 2.12811 6.875 2.44033C6.875 2.88677 6.74285 3.32322 6.49521 3.69468L4.375 6.875V12.5M8.75 6.25H7.5M4.375 12.5H3.125C2.43464 12.5 1.875 11.9404 1.875 11.25V7.5C1.875 6.80964 2.43464 6.25 3.125 6.25H4.6875"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Finished
+                            &nbsp;
+                            <span v-if="orderView === 'finished'" :class="{'bg-teal-300' : orderView === 'finished', 'bg-gray-500' : orderView !== 'finished',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
+                          </div>
+                          <div @click="filterOrders('disputed')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'disputed',  'text-gray-500': orderView !== 'disputed' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.875 13.125V10.625M1.875 10.625V3.125C1.875 2.43464 2.43464 1.875 3.125 1.875H7.1875L7.8125 2.5H13.125L11.25 6.25L13.125 10H7.8125L7.1875 9.375H3.125C2.43464 9.375 1.875 9.93464 1.875 10.625ZM7.5 2.1875V5.625"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Disputed
+                            &nbsp;
+                            <span v-if="orderView === 'disputed'" :class="{'bg-teal-300' : orderView === 'disputed', 'bg-gray-500' : orderView !== 'disputed',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
+                          </div>
+                          <div @click="filterOrders('revision')" :class="{ 'border-teal-300 border-b-2 text-teal-300': orderView === 'revision',  'text-gray-500': orderView !== 'revision' }" class="flex justify-center text-base font-semibold font-serif items-center px-3 py-2 border-b cursor-pointer">
+                            <svg class="mx-1 fill-current stroke-current" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.125 10.625H13.125M13.125 10.625V5.625M13.125 10.625L8.125 5.625L5.625 8.125L1.875 4.375"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Revisions
+                            &nbsp;
+                            <span v-if="orderView === 'revision'" :class="{'bg-teal-300' : orderView === 'revision', 'bg-gray-500' : orderView !== 'revision',}" class="rounded-full px-1 leading-none text-white text-xs font-medium" >{{ totalCount }}</span>
+                          </div>
+                        </div>
+                      </div>
                       <section v-if="!order_view && orders.length === 0" class="text-gray-600 body-font">
                         <div class="container px-5 py-24 mx-auto">
                           <div class="lg:w-2/3 flex flex-col justify-center sm:flex-row items-center md:items-start mx-auto">
@@ -292,7 +344,7 @@
                         </div>
                       </section>
 
-                      <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-xl">
+                      <section class="rounded-lg bg-gray-100 overflow-x-auto overflow-y-hidden shadow-xl mt-6">
                         <table class="w-full whitespace-no-wrap text-sm">
                           <tr class="text-left bg-gray-50 text-gray-500">
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
@@ -302,7 +354,7 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
                           </tr>
-                          <tr v-for="(order, index) in orders" :key="order.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                          <tr v-if="!$fetchState.pending" v-for="(order, index) in orders.filter(x => x.user_id === $auth.user.id)" :key="index" class="hover:bg-gray-100 focus-within:bg-gray-100">
                             <td class="border-t">
                               <nuxt-link
                                 :to="'orders/' + order.id"
@@ -372,6 +424,27 @@
                                 ></nuxt-link>
                               </div>
                             </td>
+                          </tr>
+                          <tr v-if="$fetchState.pending" v-for="(x) in '0000000000'" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+                            <td class="border-t">
+                              <span class="animate-pulse mx-2 w-11/12 px-6 py-3 my-2 inline-block w-full h-4 bg-gray-200 rounded"></span>
+                            </td>
+
                           </tr>
                         </table>
                         <pagination class="px-6 pb-4" :links="links" />
@@ -947,18 +1020,22 @@ export default {
       this.$router.push(`/profile?page=1&state=${current}`);
     },
     async doOrdersFetch() {
-      let url =
-        (this.$router.currentRoute.query.hasOwnProperty('page') && this.$router.currentRoute.query.hasOwnProperty('state')) ?
-          `api/orders?page=${this.$router.currentRoute.query.page}&state=${this.$router.currentRoute.query.state}` :
-          'api/orders?page=1&state=listed'
+      try {
+        let url =
+          (this.$router.currentRoute.query.hasOwnProperty('page') && this.$router.currentRoute.query.hasOwnProperty('state')) ?
+            `api/orders?page=${this.$router.currentRoute.query.page}&state=${this.$router.currentRoute.query.state}` :
+            'api/orders?page=1&state=listed'
 
-      const { data } = await this.$axios.get(url)
-      const { orders, links, totalCount } = data
-      this.orders = [ ...orders ]
-      this.links = [ ...links ]
-      this.totalCount = totalCount
+        const { data } = await this.$axios.get(url)
+        const { orders, links, totalCount } = data
+        this.orders = [...orders]
+        this.links = [...links]
+        this.totalCount = totalCount
 
-      return true
+        return true
+      } catch (e) {
+        console.log("orders fetch error", e)
+      }
     },
     changer(e) {
       console.log(e);

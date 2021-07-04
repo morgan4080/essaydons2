@@ -169,7 +169,8 @@ module.exports = async function (req, res) {
 
       }
 
-    } else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
+    }
+    else if (Object.keys(req.query).length === 1 && req.method === "GET" && req.query.id) {
       try {
 
         if (user && user.owner && parseInt(req.query.id) !== 0) {
@@ -185,10 +186,12 @@ module.exports = async function (req, res) {
           res.status(200).json({
             order: order
           })
-        } else {
+        }
+
+        if (user && !user.owner && parseInt(req.query.id) !== 0) {
           const order = await prisma.orders.findUnique({
             where: {
-              user_id: user.id,
+              user: { id: user.id },
               id: parseInt(req.query.id),
             },
             include: {

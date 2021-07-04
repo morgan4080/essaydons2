@@ -9,7 +9,20 @@ export default {
     title: 'Essay Dons',
     script: [
       { src: 'https://js.stripe.com/v3/', async: true },
-      { src: 'https://embed.tawk.to/5ad4467d227d3d7edc23f6c8/1f790vmik', async: true, crossorigin: '*', charset: 'UTF-8' },
+      { src: 'https://embed.tawk.to/60e191e2649e0a0a5cca71b2/1f9oi3nnu',
+        async: true,
+        crossorigin: '*',
+        charset: 'UTF-8',
+        callback: () => {
+          const Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+
+          Tawk_API.onLoad = () => {
+            if(Tawk_API.isVisitorEngaged()){
+              console.log("visitor engaged")
+            }
+          }
+        } },
     ],
     meta: [
       { charset: 'utf-8' },
