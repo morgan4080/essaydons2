@@ -188,10 +188,18 @@ module.exports = async function (req, res) {
           })
         }
 
+      } catch (e) {
+        res.status(405).json({
+          message: "admin single order error",
+          error: e
+        })
+      }
+
+      try {
         if (user && !user.owner && parseInt(req.query.id) !== 0) {
           const order = await prisma.orders.findUnique({
             where: {
-              user: { id: user.id },
+              users: { connect: { id: user.id } },
               id: parseInt(req.query.id),
             },
             include: {
@@ -204,8 +212,9 @@ module.exports = async function (req, res) {
           })
         }
       } catch (e) {
+        console.log("single order user_id", e)
         res.status(405).json({
-          message: "single order error",
+          message: "user single order error",
           error: e
         })
       }
