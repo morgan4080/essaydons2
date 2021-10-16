@@ -1313,7 +1313,7 @@ img {
   height: 70px;
   width: 100%;
 }
-.previewImgTab li{
+.previewImgTab li {
   display: flex;
   justify-content: space-between;
   align-items: center;
