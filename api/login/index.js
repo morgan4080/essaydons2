@@ -4,11 +4,9 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors')
 
-app.use(cors({}))
+import { PrismaClient } from '@prisma/client'
 
-app.use(bodyParser.json())
-
-import prisma from '../../lib/prisma'
+const prisma = new PrismaClient()
 
 const { OAuth2Client } = require('google-auth-library')
 
@@ -23,6 +21,13 @@ const { readFileSync } = require('fs')
 const { join } = require('path')
 
 const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), { encoding : 'utf8' })
+
+app.use(cors({}))
+
+app.use(bodyParser.json())
+
+
+
 
 if (!globalThis.fetch) {
   globalThis.fetch = fetch;
