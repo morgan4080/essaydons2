@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "caniuse-lite": "^1.0.30001208",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "formidable": "^1.2.2",
     "google-auth-library": "^6.1.6",
