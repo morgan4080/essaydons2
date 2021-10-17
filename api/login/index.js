@@ -26,9 +26,6 @@ app.use(cors({}))
 
 app.use(bodyParser.json())
 
-
-
-
 if (!globalThis.fetch) {
   globalThis.fetch = fetch;
 }
