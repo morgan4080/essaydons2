@@ -146,7 +146,17 @@ export default {
   ],
 
   serverMiddleware: [
-    '~/server-middleware/log.js'
+    '~/server-middleware/log.js',
+    /*{ handler: '~/api/users/index.js' },
+    { handler: '~/api/transactions/index.js' },
+    { handler: '~/api/storedata/index.js' },
+    { handler: '~/api/signup/index.js' },
+    { handler: '~/api/posts/index.js' },
+    { handler: '~/api/orders/index.js' },
+    { handler: '~/api/me/index.js' },*/
+    { handler: '~/api/login/index.js' },
+    /*{ handler: '~/api/categories/index.js' },
+    { handler: '~/api/accounts/index.js' },*/
   ],
 
   image: {
@@ -158,7 +168,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
-    '@nuxtjs/proxy',
     'portal-vue/nuxt',
     '@nuxt/image',
   ],
@@ -175,8 +184,4 @@ export default {
     baseURL: "/api/",
     proxy: true
   },
-
-  proxy: {
-    '/api/': { target: 'https://essaydons.co/api', pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  }
 }

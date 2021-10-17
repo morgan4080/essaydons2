@@ -1,3 +1,9 @@
+const app = require('express')();
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json())
+
 import prisma from '../../lib/prisma'
 
 const { OAuth2Client } = require('google-auth-library')
@@ -12,13 +18,20 @@ const { readFileSync } = require('fs')
 
 const { join } = require('path')
 
-const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), 'utf8')
+const privateKey = readFileSync(join(__dirname, '../_JWTKeys', 'jwtRS256.key'), { encoding : 'utf8' })
 
 if (!globalThis.fetch) {
   globalThis.fetch = fetch;
 }
 
-const allowCors = fn => async (req, res) => {
+app.get("/api/login", async (req, res) => {
+  console.log("Be magnified GOD");
+  res.json({ data: 'data' });
+});
+
+module.exports = app;
+
+/*const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
@@ -482,4 +495,4 @@ function getAuthenticatedClient(code, code_verifier, id, uri) {
 
 }
 
-module.exports = allowCors(handler)
+module.exports = allowCors(handler)*/

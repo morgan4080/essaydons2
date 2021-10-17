@@ -145,7 +145,4 @@ export const actions = {
       }
     },1500);
   },
-  async nuxtServerInit ({ commit }, { req }) {
-
-  },
 }
