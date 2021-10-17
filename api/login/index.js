@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors')
 
-import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('@prisma/client')
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient({
+  log: ["info"]
+})
 
 const { OAuth2Client } = require('google-auth-library')
 
