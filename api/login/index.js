@@ -1,6 +1,6 @@
-global.__base = __dirname + '/';
+import { PrismaClient } from '@prisma/client'
 
-const prisma = require(`${__base}lib/prisma`);
+const prisma = new PrismaClient()
 
 const app = require('express')();
 
