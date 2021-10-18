@@ -9,7 +9,6 @@
     "local-dev": "vercel dev -A vercel.dev.json"
   },
   "_moduleAliases": {
-    "@root": ".",
     "@lib": "lib"
   },
   "dependencies": {
