@@ -1,6 +1,6 @@
-require('module-alias/register');
+global.__base = __dirname + '/';
 
-const prisma = require('@lib/prisma');
+const prisma = require(`${__base}lib/prisma`);
 
 const app = require('express')();
 
