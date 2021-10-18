@@ -1,14 +1,12 @@
+require('module-alias/register');
+
+const prisma = require('@lib/prisma');
+
 const app = require('express')();
 
 const bodyParser = require('body-parser');
 
 const cors = require('cors')
-
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient({
-  log: ["info"]
-})
 
 const { OAuth2Client } = require('google-auth-library')
 

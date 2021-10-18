@@ -8,6 +8,10 @@
     "dev": "nuxt --port $PORT",
     "local-dev": "vercel dev -A vercel.dev.json"
   },
+  "_moduleAliases": {
+    "@root": ".",
+    "@lib": "lib"
+  },
   "dependencies": {
     "@nuxtjs/auth-next": "^5.0.0-1607600955.506103a",
     "@nuxtjs/axios": "^5.12.3",
@@ -26,6 +30,7 @@
     "google-auth-library": "^6.1.6",
     "jsonwebtoken": "^8.5.1",
     "micro": "^9.3.4",
+    "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "nanoid": "^2.1.11",
     "node-fetch": "^2.6.1",
